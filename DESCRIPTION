@@ -1,0 +1,26 @@
+Package: spatialEco
+Type: Package
+Title: Spatial Analysis and Modeling
+Version: 0.1-0
+Date: 2015-02-02
+Authors@R: c(person(family="Evans", given="Jeffrey S.", email = "jeffrey_evans@tnc.org", 
+             role = c("aut", "cre")), person(family="Ram", given="Karthik", role = "ctb") )
+Description: Utilities to support spatial data manipulation, query, sampling  and modeling. 
+             Functions include models for species population density, download utilities for 
+			 climate and global deforestation spatial products, spatial smoothing, 
+			 multivariate separability, point process model for creating pseudo-absences 
+			 and subsampling, polygon and point-distance landscape metrics, auto-logistic 
+			 model, sampling models, cluster optimization and statistical exploratory tools.    
+Depends: R (>= 3.1.0)
+Imports: RANN, rms, sp (>= 1.0-15), raster (>= 2.3-10), spatstat (>=
+        1.35-0), cluster, spdep, SDMTools, RCurl, rgeos
+Maintainer: Jeffrey S. Evans <jeffrey_evans@tnc.org>
+License: GPL-3
+URL: http://evansmurphy.wix.com/evansspatial
+NeedsCompilation: no
+Repository: CRAN
+LazyData: true
+Packaged: 2015-02-02 21:43:22 UTC; jevans
+Author: Jeffrey S. Evans [aut, cre],
+  Karthik Ram [ctb]
+Date/Publication: 2015-02-02 23:10:33
