@@ -9,7 +9,7 @@ download.prism(data.type, date.range, time.step = "monthly",
   ftp.site = "ftp://prism.oregonstate.edu")
 }
 \arguments{
-\item{data.type}{Specifie climate metric ('ppt','tmin','tmax','tmean')}
+\item{data.type}{Specify climate metric ('ppt','tmin','tmax','tmean')}
 
 \item{date.range}{A vector with start and end date in y/m/d format}
 
@@ -30,7 +30,7 @@ Compressed or uncompressed PRISM monthly gridded data(bil raster format)
 Batch download of monthly gridded PRISM climate data
 }
 \note{
-Monthly data 1895-1980 is avaliable in a single zip file on the ftp site
+Monthly data 1895-1980 is available in a single zip file on the ftp site
 
 PRISM URL: \url{http://prism.nacse.org/}
 

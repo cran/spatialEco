@@ -1,8 +1,8 @@
 Package: spatialEco
 Type: Package
 Title: Spatial Analysis and Modeling
-Version: 0.1-0
-Date: 2015-02-02
+Version: 0.1-1
+Date: 2015-02-23
 Authors@R: c(person(family="Evans", given="Jeffrey S.", email = "jeffrey_evans@tnc.org", 
              role = c("aut", "cre")), person(family="Ram", given="Karthik", role = "ctb") )
 Description: Utilities to support spatial data manipulation, query, sampling  and modeling. 
@@ -20,7 +20,7 @@ URL: http://evansmurphy.wix.com/evansspatial
 NeedsCompilation: no
 Repository: CRAN
 LazyData: true
-Packaged: 2015-02-02 21:43:22 UTC; jevans
+Packaged: 2015-02-23 23:38:31 UTC; jevans
 Author: Jeffrey S. Evans [aut, cre],
   Karthik Ram [ctb]
-Date/Publication: 2015-02-02 23:10:33
+Date/Publication: 2015-02-24 08:03:40

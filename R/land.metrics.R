@@ -5,7 +5,7 @@
 #' @param x          SpatalPointsDataFrame or SpatalPolgonsDataFrame class object 
 #' @param y          raster class object (binary raster)
 #' @param bkgd       Background value
-#' @param metrics    Numeric index of desired metrice (see avaliable metrics)
+#' @param metrics    Numeric index of desired metric (see available metrics)
 #' @param bw         Buffer distance (ignored if x is SpatalPolgonsDataFrame) 
 #' @param latlon     Is raster data in lat-long (TRUE/FALSE)
 #' @param Trace      Plot raster subsets and echo object ID at each iteration (TRUE | FALSE)

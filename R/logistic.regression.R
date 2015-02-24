@@ -1,38 +1,45 @@
 #' @title Logistic and Auto-logistic regression
-#' @description Performs a logistic (binomial) and auto-logistic (spatially lagged binomial) regression
+#' @description Performs a logistic (binomial) or auto-logistic (spatially lagged binomial) regression using maximum likelihood or penalized maximum likelihood estimation. 
 #'
 #' @export
-#' @param ldata data.frame object contaning variables
+#' @param ldata data.frame object containing variables
 #' @param y Dependent variable (y) in ldata
 #' @param x Independent variable(s) (x) in ldata  
-#' @param penalty Apply regression penelty (TRUE/FALSE)
+#' @param penalty Apply regression penalty (TRUE/FALSE)
 #' @param autologistic Add auto-logistic term (TRUE/FALSE)  
-#' @param coords Geographic coordinates for auto-logistc model
-#' @param bw Distance bandwidth to calculate spatial lags (if empty neighbors result, need to increase bandwith)
-#' @param type Neighbor weighting scheme (see autocov_dist)
-#' @param style Type of neighbor matrix (Wij), default is mean of neighbors 
+#' @param coords Geographic coordinates for auto-logistic model matrix or sp object.
+#' @param bw Distance bandwidth to calculate spatial lags (if empty neighbours result, need to increase bandwith). If not provided it will be calculated automatically based on the minimum distance that includes at least one neighbor.
+#' @param type Neighbour weighting scheme (see autocov_dist)
+#' @param style Type of neighbour matrix (Wij), default is mean of neighbours 
 #' @param longlat Are coordinates (coords) in geographic, lat/long (TRUE/FALSE)
 #' @param ... Additional arguments passed to lrm
 #'
 #' @return A list class object with the following components: 
 #' @return     model lrm model object (rms class)
+#' @return     bandwidth If AutoCov = TRUE returns the distance bandwidth used for the auto-covariance function
 #' @return     diagTable data.frame of regression diagnostics
-#' @return     coefTable data.frame of regression coefficents
+#' @return     coefTable data.frame of regression coefficients
 #' @return     Residuals data.frame of residuals and standardized residuals
 #' @return     AutoCov If an auto-logistic model, AutoCov represents lagged auto-covariance term
 #'
+#' @note It should be noted that the auto-logistic model (Besag 1972) is intended for exploratory analysis of spatial effects. Auto-logistic are know to underestimate the effect of environmental variables and tend to be unreliable (Dormann 2007).     
+#' @note Wij matrix options under style argument - B is the basic binary coding, W is row standardised (sums over all links to n), C is globally standardised (sums over all links to n), U is equal to C divided by the number of neighbours (sums over all links to unity) and S is variance-stabilizing. 
 #' @note Spatially lagged y defined as:  
 #' @note   W(y)ij=sumj_(Wij yj)/ sumj_(Wij)
-#' @note     where; Wij=1/Euclidian[i,j]
+#' @note     where; Wij=1/Euclidean[i,j]
 #'
 #' @note depends: rms, spdep
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
-#'   
+#'
 #' @references
-#' Le Cessie S, Van Houwelingen JC (1992) Ridge estimators in logistic regression. Applied Statistics 41:191-201
+#' Besag, J.E., (1972) Nearest-neighbour systems and the auto-logistic model for binary data. Journal of the Royal Statistical Society, Series B Methodological 34:75-83
 #' @references
-#' Shao J (1993) Linear model selection by cross-validation. JASA 88:486-494
+#' Dormann, C.F., (2007) Assessing the validity of autologistic regression. Ecological Modelling 207:234-242   
+#' @references
+#' Le Cessie, S., Van Houwelingen, J.C., (1992) Ridge estimators in logistic regression. Applied Statistics 41:191-201
+#' @references
+#' Shao, J., (1993) Linear model selection by cross-validation. JASA 88:486-494
 #'
 #' @examples
 #' require(sp)
@@ -68,22 +75,27 @@
 #' resid(lmodel$model, "partial", pl=TRUE)                 # plot residuals    
 #' resid(lmodel$model, "gof")                              # global test of goodness of fit
 #' lp1 <- resid(lmodel$model, "lp1")                       # Approx. leave-out linear predictors 
-#' -2 * sum(meuse@@data$DepVar * lp1 + log(1-plogis(lp1))) # Approx leave-out-1 deviance
-#' spplot(meuse, c('Probs'))                               # plot estimated probs at points
+#' -2 * sum(meuse@@data$DepVar * lp1 + log(1-plogis(lp1)))  # Approx leave-out-1 deviance
+#' spplot(meuse, c('Probs'))                               # plot estimated probabilities at points
 #'
 logistic.regression <- function(ldata, y, x, penalty = TRUE, autologistic = FALSE, coords = NULL, bw = NULL, type = "inverse", 
-    style = "W", longlat = FALSE, ...) {
+                                style = "W", longlat = FALSE, ...) {
     if (is.na(match(y, names(ldata)))) 
         stop("Dependent variable not present in data")
     xNames <- intersect(x, names(ldata))
     if (length(xNames) < length(x)) 
         stop("Mismatch in Independent Variable Names")
     if (autologistic == TRUE) {
-        if (is.null(coords)) 
+        if (is.null(coords)) { 
             stop("Need coordinates")
-        if (is.null(bw)) 
-            stop("Need distance bandwidth")
-        ldata$AutoCov <- spdep::autocov_dist(ldata$DepVar, xy = coords, nbs = bw, style = style, type = type)
+	    } else {
+		coords <- as.matrix(coords)	
+		}
+        if (is.null(bw)) {       
+		  k.nn <- spdep::knn2nb(spdep::knearneigh(coords))
+          bw <- max(unlist(spdep::nbdists(k.nn, coords)))	
+		}	
+        ldata$AutoCov <- spdep::autocov_dist(ldata[,y], xy = coords, nbs = bw, style = style, type = type)
         x <- append(x, "AutoCov")
     }
     form <- as.formula(paste(y, paste(x, collapse = "+"), sep = "~"))
@@ -119,10 +131,10 @@ logistic.regression <- function(ldata, y, x, penalty = TRUE, autologistic = FALS
     coefFrame <- data.frame(coefList)
     diagFrame <- data.frame(Names = c(names(fit$stats), "PEN", "AIC"), Value = c(as.vector(fit$stats), pen, aic))
     if (autologistic == TRUE) {
-        return(list(model = fit, diagTable = diagFrame, coefTable = coefFrame, Residuals = data.frame(res = res, 
-            resSTD = resSTD), AutoCov = ldata$AutoCov))
+      return(list(model = fit, bandwidth=bw, diagTable = diagFrame, coefTable = coefFrame,  
+             Residuals = data.frame(res = res, resSTD = resSTD), AutoCov = ldata$AutoCov))
     } else {
-        return(list(model = fit, diagTable = diagFrame, coefTable = coefFrame, Residuals = data.frame(res = res, 
-            resSTD = resSTD)))
+      return(list(model = fit, diagTable = diagFrame, coefTable = coefFrame, 
+             Residuals = data.frame(res = res, resSTD = resSTD)))
     }
 } 

@@ -14,11 +14,11 @@ separability(x, y, plot = FALSE, cols = c("red", "blue"),
 
 \item{plot}{plot separability (TRUE/FALSE)}
 
-\item{cols}{colors for plot (must be equal to number of classes)}
+\item{cols}{colours for plot (must be equal to number of classes)}
 
 \item{clabs}{labels for two classes}
 
-\item{...}{additional agruments passes to plot}
+\item{...}{additional arguments passes to plot}
 }
 \value{
 A data.frame with the following separability metrics:
@@ -42,8 +42,8 @@ minimized and between-class variance maximized (M <1 poor, M >1 good).
 
 Bhattacharyya distance (Bhattacharyya 1943; Harold 2003) - Measures the similarity of two discrete or continuous probability distributions.
 
-Jeffries-Matusita distance (Bruzzone et al., 2005; Swain et al., 1971) - The J-M distance is a function of separablity that directly relates to the
-probability of how good a resultant classification will be. The J-M distance is asymptotic to v2, where values of v2 suggest complete separablity
+Jeffries-Matusita distance (Bruzzone et al., 2005; Swain et al., 1971) - The J-M distance is a function of separability that directly relates to the
+probability of how good a resultant classification will be. The J-M distance is asymptotic to v2, where values of v2 suggest complete separability
 
 Divergence and transformed Divergence (Du et al., 2004) - Maximum likelihood approach. Transformed divergence gives an exponentially
 decreasing weight to increasing distances between the classes.

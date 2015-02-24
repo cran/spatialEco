@@ -1,0 +1,9 @@
+spatialEco_0.1-1
+=================
+
+* Fixed bug in logistic.regression where autocovariance function did not recognize the specified variable
+* Added an automatic all-neighbour minimum distance for autocovariance in logistic.regression function
+* Added function "csi" for cosine similarity index and angular similarity index
+* Added function "local.min.max" for finding local minimum and maximum values in a numeric vector
+* Added function "outliers" for identifying outliers using modified z-score
+    

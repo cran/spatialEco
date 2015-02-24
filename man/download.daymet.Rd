@@ -12,7 +12,7 @@ download.daymet(years, tile, data.type = "all", download.folder = getwd(),
 
 \item{tile}{Tile index value (see url for tile index grid in notes section)}
 
-\item{data.type}{Typ of climate metric: 'all', 'vp', 'tmin', 'tmax', 'swe', 'srad', 'prcp', 'dayl'.}
+\item{data.type}{Type of climate metric: 'all', 'vp', 'tmin', 'tmax', 'swe', 'srad', 'prcp', 'dayl'.}
 
 \item{download.folder}{local download directory, defaults to current working directory}
 
@@ -25,9 +25,9 @@ DAYMET netCDF format climate metrics
 Batch download of daily gridded DAYMET climate data
 }
 \note{
-Avaliable products
+Available products
 
-vp        Water Vapor Pressure Daily average partial pressure of water vapor
+vp        Water Vapour Pressure Daily average partial pressure of water vapour
 
 tmin      Daily minimum (degrees C) 2-meter air temperature
 

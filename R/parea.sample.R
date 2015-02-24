@@ -4,7 +4,7 @@
 #' @param x sp SpatialPolygonsDataFrame object
 #' @param pct Percent of area sampled
 #' @param join Join polygon attributed to point sample
-#' @param msamp Minimium samples
+#' @param msamp Minimum samples
 #' @param sf Scaling factor (default is meters to acres conversion factor)
 #' @param stype Sampling type ('random', 'regular', 'nonaligned', 'hexagonal')
 #' @param ... Additional arguments passed to spsample

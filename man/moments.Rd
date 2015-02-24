@@ -14,7 +14,7 @@ moments(x, plot = FALSE)
 \value{
 A vector with the following values
 
-min Minimun
+min Minimum
 
 25th  25th percentile
 
@@ -34,9 +34,9 @@ stdv  Standard deviation
 
 var  Variance
 
-cv  Coefficent of variation (percent)
+cv  Coefficient of variation (percent)
 
-mad  Median absoulte deviation
+mad  Median absolute deviation
 
 skew  Skewness
 

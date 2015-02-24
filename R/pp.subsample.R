@@ -9,7 +9,7 @@
 #' @param gradient A scaling factor applied to the sigma parameter used to adjust the gradient decent of the density estimate. The default is 1, for no adjustment (downweight < 1 | upweight > 1)   
 #' @param edge Apply Diggle edge correction (TRUE/FALSE)
 #'
-#' @return sp class SpatialPointsDataFrame contaning random subsamples
+#' @return sp class SpatialPointsDataFrame containing random subsamples
 #'
 #' @export
 #' @note

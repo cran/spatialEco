@@ -23,7 +23,7 @@ pp.subsample(x, n, window = "hull", sigma = "Scott", wts = NULL,
 \item{edge}{Apply Diggle edge correction (TRUE/FALSE)}
 }
 \value{
-sp class SpatialPointsDataFrame contaning random subsamples
+sp class SpatialPointsDataFrame containing random subsamples
 }
 \description{
 Generates random subsample based on density estimate of observations

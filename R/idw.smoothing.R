@@ -4,15 +4,15 @@
 #' @param x Object of class SpatialPointsDataFrame
 #' @param y Numeric data in x@@data
 #' @param d Distance constraint       
-#' @param k Maximum number of k-nearest neighbors within d    
+#' @param k Maximum number of k-nearest neighbours within d    
 #' 
 #' @return A vector, same length as nrow(x), of adjusted y values 
 #'
 #' @export
 #' @note
 #' Smoothing is conducted with a weighted-mean where; weights represent inverse standardized distance lags
-#' Distance-based or neighbor-based smoothing can be specified by setting the desired neighbor smoothing method to a specifed value then the other parameter to the potential maximum. 
-#' For example; a constraint distance, including all neighbors within 1000 (d=1000) would require k to equal all of the potential neighbors (n-1 or k=nrow(x)-1).  
+#' Distance-based or neighbour-based smoothing can be specified by setting the desired neighbour smoothing method to a specified value then the other parameter to the potential maximum. 
+#' For example; a constraint distance, including all neighbours within 1000 (d=1000) would require k to equal all of the potential neighbours (n-1 or k=nrow(x)-1).  
 #'    
 #' @note Depends: sp, RANN 
 #'                                                                     

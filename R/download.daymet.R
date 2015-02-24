@@ -3,15 +3,15 @@
 #'
 #' @param years Years to download (valid years 1980-2012)
 #' @param tile Tile index value (see url for tile index grid in notes section)
-#' @param data.type Typ of climate metric: 'all', 'vp', 'tmin', 'tmax', 'swe', 'srad', 'prcp', 'dayl'. 
+#' @param data.type Type of climate metric: 'all', 'vp', 'tmin', 'tmax', 'swe', 'srad', 'prcp', 'dayl'. 
 #' @param download.folder local download directory, defaults to current working directory
 #' @param http option to change URL
 #'
 #' @export
 #' @return DAYMET netCDF format climate metrics 
 #' 
-#' @note Avaliable products
-#' @note   vp        Water Vapor Pressure Daily average partial pressure of water vapor
+#' @note Available products
+#' @note   vp        Water Vapour Pressure Daily average partial pressure of water vapour
 #' @note   tmin      Daily minimum (degrees C) 2-meter air temperature
 #' @note   tmax      Daily maximum (degrees C) 2-meter air temperature
 #' @note   swe       Snow water equivalent (kg/m^2). Amount of water contained within snowpack.       

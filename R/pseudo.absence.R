@@ -5,7 +5,7 @@
 #' @param n Number of random samples to generate
 #' @param window Type of window (hull OR extent), overridden if mask provided
 #' @param Mask Optional rasterLayer class mask raster. The resolution of the density estimate will match mask.        
-#' @param s Optional resolution passed to window argument. Caution should be used due to long processing times associted with high resolution. In contrast, coarse resolution can exclude known points.            
+#' @param s Optional resolution passed to window argument. Caution should be used due to long processing times associated with high resolution. In contrast, coarse resolution can exclude known points.            
 #' @param sigma Bandwidth selection method for KDE, default is 'Scott'. Options are 'Scott', 'Stoyan', 'Diggle', 'likelihood', and 'geometry'
 #' @param wts Optional vector of weights corresponding to point pattern
 #' @param KDE save KDE raster (TRUE/FALSE)
@@ -16,7 +16,7 @@
 #'
 #' @export
 #' @return A list class object with the following components: 
-#'   @return sample SpatialPointsDataFrame contaning random samples
+#'   @return sample SpatialPointsDataFrame containing random samples
 #'   @return kde sp RasterLayer class of KDE estimates (IF KDE = TRUE)
 #'   @return sigma Selected bandwidth of KDE 
 #'
@@ -30,7 +30,7 @@
 #'   geometry, Bandwidth is based on simple window geometry (1st order)
 #'   Stoyan (Stoyan & Stoyan 1995), Based on pair-correlation function (strong 2nd order)
 #'
-#' Note; resulting bandwidth can vary widly by method. the 'diggle' method is intended for selecting bandwidth representing 2nd order spatial variation whereas the 'scott' method will represent 1st order trend. the 'geometry' approach will also represent 1st order trend. for large datasets, caution should be used with the 2nd order 'likelihood' approach, as it is slow and computationaly expensive. finally, the 'stoyan' method will produce very strong 2nd order results. '
+#' Note; resulting bandwidth can vary widely by method. the 'diggle' method is intended for selecting bandwidth representing 2nd order spatial variation whereas the 'scott' method will represent 1st order trend. the 'geometry' approach will also represent 1st order trend. for large datasets, caution should be used with the 2nd order 'likelihood' approach, as it is slow and computationally expensive. finally, the 'stoyan' method will produce very strong 2nd order results.
 #'
 #' @note Depends: sp, spatstat, raster
 #'

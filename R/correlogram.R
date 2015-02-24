@@ -3,13 +3,13 @@
 #' 
 #' @param x         SpatialPointsDataFrame object
 #' @param v         Test variable in x@@data
-#' @param dist      Distance of correlation lags, if latlong=TRUE units are in kilometers
+#' @param dist      Distance of correlation lags, if latlong=TRUE units are in kilometres
 #' @param latlong   Coordinates are in latlong (TRUE/FALSE)
 #' @param dmatrix   Should the distance matrix be include in output (TRUE/FALSE)
 #' @param ns        Number of simulations to derive simulation envelope 
 #' @param ...       Arguments passed to cor ('pearson', 'kendall' or 'spearman')
 #' 
-#' @return A list object contaning: 
+#' @return A list object containing: 
 #' @return      autocorrelation is a data.frame object with the following components
 #' @return      autocorrelation - Autocorrelation value for each distance lag 
 #' @return      dist - Value of distance lag

@@ -1,4 +1,4 @@
-#' @title Average Nearest Neighbor Index (NNI)
+#' @title Average Nearest Neighbour Index (NNI)
 #' @description Calculates the NNI as a measure of clustering or dispersal 
 #'
 #' @param x An sp point object
@@ -8,18 +8,18 @@
 #'
 #' @export
 #' @note
-#' The nearest neighbor index is expressed as the ratio of the observed distance divided by the expected distance. The expected distance is the average distance between neighbors in a hypothetical random distribution. If the index is less than 1, the pattern exhibits clustering; if the index is greater than 1, the trend is toward dispersion or competition.
-#' The Nearest Neighbor Index is calculated as:
-#'   Nearest Neighbor Distance (observed) D(nn) = sum(min(Dij)/N) 
+#' The nearest neighbour index is expressed as the ratio of the observed distance divided by the expected distance. The expected distance is the average distance between neighbours in a hypothetical random distribution. If the index is less than 1, the pattern exhibits clustering; if the index is greater than 1, the trend is toward dispersion or competition.
+#' The Nearest Neighbour Index is calculated as:
+#'   Nearest Neighbour Distance (observed) D(nn) = sum(min(Dij)/N) 
 #'   Mean Random Distance (expected) D(e) = 0.5 SQRT(A/N)
-#'   Nearest Neighbor Index NNI = D(nn)/D(e)
-#'       Where; D=neighbor distance, A=Area
+#'   Nearest Neighbour Index NNI = D(nn)/D(e)
+#'       Where; D=neighbour distance, A=Area
 #'
 #' @note Depends: sp, spatstat
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'
-#' @references Clark, P.J., and F.C. Evans (1954) Distance to nearest neighbor as a measure of spatial relationships in populations. Ecology 35:445-453
+#' @references Clark, P.J., and F.C. Evans (1954) Distance to nearest neighbour as a measure of spatial relationships in populations. Ecology 35:445-453
 #' @references Cressie, N (1991) Statistics for spatial data. Wiley & Sons, New York.
 #'
 #' @examples 

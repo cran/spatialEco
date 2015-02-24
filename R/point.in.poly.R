@@ -42,13 +42,8 @@ point.in.poly <- function(pts, polys) {
         stop("MUST BE SP SpatialPolygonsDataFrame OBJECT")
     if ((inherits(pts, "SpatialPointsDataFrame") | inherits(pts, "SpatialPoints")) == FALSE) 
         stop("Must be sp SpatialPointsDataFrame object")
-    z <- sp::over(pts, polys)
-    x2 <- cbind(pts, z)
-    if (("coords.x1" %in% colnames(x2)) & ("coords.x2" %in% colnames(x2))) {
-        sp::coordinates(x2) <- ~coords.x1 + coords.x2
-    } else if (("x" %in% colnames(x2)) & ("x" %in% colnames(x2))) {
-        sp::coordinates(x2) <- ~x + y
-    }
-    x2@proj4string <- pts@proj4string
-    x2
+    z <- pts[!is.na(sp::over(pts, sp::geometry(polys))),]
+    z@data <- data.frame(z@data, na.omit(sp::over(pts,polys)) )
+    z@proj4string <- pts@proj4string
+    z
 } 

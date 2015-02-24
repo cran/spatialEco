@@ -15,7 +15,7 @@ trend.line(x, y, type = "linear", plot = TRUE, ...)
 
 \item{plot}{plot results (TRUE/FALSE)}
 
-\item{...}{Additional agruments passed to plot}
+\item{...}{Additional arguments passed to plot}
 }
 \value{
 A list class object with the following components:

@@ -9,7 +9,7 @@ breeding.density(x, pop, p = 0.75, bw = 1000, b = 6400, self = TRUE)
 \arguments{
 \item{x}{sp SpatialPointsDataFrame object}
 
-\item{pop}{Population count/density coulmn in x@data}
+\item{pop}{Population count/density column in x@data}
 
 \item{p}{Target percent of population}
 
@@ -17,7 +17,7 @@ breeding.density(x, pop, p = 0.75, bw = 1000, b = 6400, self = TRUE)
 
 \item{b}{Buffer distance (eg., p < 0.75 b=6400m, p >= 0.75 b=8500m)}
 
-\item{self}{Should source observsation be included in neighbor count (TRUE/FALSE)}
+\item{self}{Should source observations be included in neighbour count (TRUE/FALSE)}
 }
 \value{
 A list object with:
@@ -26,7 +26,7 @@ pop.pts     sp point object with points identified within the specified p
 
 pop.area    sp polygon object of buffered points specified by parameter b
 
-bandwidth   Specified distance bandwith used in identifying neighbor counts
+bandwidth   Specified distance bandwidth used in identifying neighbour counts
 
 buffer      Specified buffer distance used in buffering points for pop.area
 

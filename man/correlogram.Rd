@@ -12,7 +12,7 @@ correlogram(x, v, dist = 5000, dmatrix = FALSE, ns = 99,
 
 \item{v}{Test variable in x@data}
 
-\item{dist}{Distance of correlation lags, if latlong=TRUE units are in kilometers}
+\item{dist}{Distance of correlation lags, if latlong=TRUE units are in kilometres}
 
 \item{dmatrix}{Should the distance matrix be include in output (TRUE/FALSE)}
 
@@ -23,7 +23,7 @@ correlogram(x, v, dist = 5000, dmatrix = FALSE, ns = 99,
 \item{...}{Arguments passed to cor ('pearson', 'kendall' or 'spearman')}
 }
 \value{
-A list object contaning:
+A list object containing:
 
 autocorrelation is a data.frame object with the following components
 

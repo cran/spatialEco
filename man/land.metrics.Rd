@@ -14,7 +14,7 @@ land.metrics(x, y, bkgd = NA, metrics = c(4, 14, 33, 34, 35, 37, 38),
 
 \item{bkgd}{Background value}
 
-\item{metrics}{Numeric index of desired metrice (see avaliable metrics)}
+\item{metrics}{Numeric index of desired metric (see available metrics)}
 
 \item{bw}{Buffer distance (ignored if x is SpatalPolgonsDataFrame)}
 

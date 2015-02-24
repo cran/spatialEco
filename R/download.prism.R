@@ -1,7 +1,7 @@
 #' @title Download PRISM 
 #' @description Batch download of monthly gridded PRISM climate data 
 #'
-#' @param data.type Specifie climate metric ('ppt','tmin','tmax','tmean')
+#' @param data.type Specify climate metric ('ppt','tmin','tmax','tmean')
 #' @param date.range A vector with start and end date in y/m/d format 
 #' @param time.step Timestep of product ('daily'/'monthly') 
 #' @param download.folder Local download directory, defaults to current working directory
@@ -12,7 +12,7 @@
 #' @export
 #' @return Compressed or uncompressed PRISM monthly gridded data(bil raster format)
 #' 
-#' @note Monthly data 1895-1980 is avaliable in a single zip file on the ftp site
+#' @note Monthly data 1895-1980 is available in a single zip file on the ftp site
 #'
 #' @note PRISM URL: \url{http://prism.nacse.org/}
 #' @note FTP download sites for 400m gridded daily/monthly climate data

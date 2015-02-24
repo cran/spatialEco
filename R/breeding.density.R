@@ -2,16 +2,16 @@
 #' @description Calculates breeding density areas base on population counts/density and spatial point density.
 #' 
 #' @param x        sp SpatialPointsDataFrame object
-#' @param pop      Population count/density coulmn in x@@data 
+#' @param pop      Population count/density column in x@@data 
 #' @param p        Target percent of population 
 #' @param bw       Bandwidth distance 
 #' @param b        Buffer distance (eg., p < 0.75 b=6400m, p >= 0.75 b=8500m)   
-#' @param self     Should source observsation be included in neighbor count (TRUE/FALSE)
+#' @param self     Should source observations be included in neighbour count (TRUE/FALSE)
 #' @export
 #' @return A list object with:
 #' @return   pop.pts     sp point object with points identified within the specified p
 #' @return   pop.area    sp polygon object of buffered points specified by parameter b
-#' @return   bandwidth   Specified distance bandwith used in identifying neighbor counts 
+#' @return   bandwidth   Specified distance bandwidth used in identifying neighbour counts 
 #' @return   buffer      Specified buffer distance used in buffering points for pop.area  
 #' @return   p           Specified population percent
 #'

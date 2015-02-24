@@ -5,7 +5,7 @@
 #' @param y Vector of y
 #' @param type   Trend line types are: 'linear', 'exponential', 'logarithmic', 'polynomial'
 #' @param plot plot results (TRUE/FALSE)
-#' @param ... Additional agruments passed to plot 
+#' @param ... Additional arguments passed to plot 
 #'
 #' @export
 #' @return A list class object with the following components:

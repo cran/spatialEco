@@ -9,23 +9,23 @@ logistic.regression(ldata, y, x, penalty = TRUE, autologistic = FALSE,
   longlat = FALSE, ...)
 }
 \arguments{
-\item{ldata}{data.frame object contaning variables}
+\item{ldata}{data.frame object containing variables}
 
 \item{y}{Dependent variable (y) in ldata}
 
 \item{x}{Independent variable(s) (x) in ldata}
 
-\item{penalty}{Apply regression penelty (TRUE/FALSE)}
+\item{penalty}{Apply regression penalty (TRUE/FALSE)}
 
 \item{autologistic}{Add auto-logistic term (TRUE/FALSE)}
 
-\item{coords}{Geographic coordinates for auto-logistc model}
+\item{coords}{Geographic coordinates for auto-logistic model matrix or sp object.}
 
-\item{bw}{Distance bandwidth to calculate spatial lags (if empty neighbors result, need to increase bandwith)}
+\item{bw}{Distance bandwidth to calculate spatial lags (if empty neighbours result, need to increase bandwith). If not provided it will be calculated automatically based on the minimum distance that includes at least one neighbor.}
 
-\item{type}{Neighbor weighting scheme (see autocov_dist)}
+\item{type}{Neighbour weighting scheme (see autocov_dist)}
 
-\item{style}{Type of neighbor matrix (Wij), default is mean of neighbors}
+\item{style}{Type of neighbour matrix (Wij), default is mean of neighbours}
 
 \item{longlat}{Are coordinates (coords) in geographic, lat/long (TRUE/FALSE)}
 
@@ -36,23 +36,29 @@ A list class object with the following components:
 
 model lrm model object (rms class)
 
+bandwidth If AutoCov = TRUE returns the distance bandwidth used for the auto-covariance function
+
 diagTable data.frame of regression diagnostics
 
-coefTable data.frame of regression coefficents
+coefTable data.frame of regression coefficients
 
 Residuals data.frame of residuals and standardized residuals
 
 AutoCov If an auto-logistic model, AutoCov represents lagged auto-covariance term
 }
 \description{
-Performs a logistic (binomial) and auto-logistic (spatially lagged binomial) regression
+Performs a logistic (binomial) or auto-logistic (spatially lagged binomial) regression using maximum likelihood or penalized maximum likelihood estimation.
 }
 \note{
+It should be noted that the auto-logistic model (Besag 1972) is intended for exploratory analysis of spatial effects. Auto-logistic are know to underestimate the effect of environmental variables and tend to be unreliable (Dormann 2007).
+
+Wij matrix options under style argument - B is the basic binary coding, W is row standardised (sums over all links to n), C is globally standardised (sums over all links to n), U is equal to C divided by the number of neighbours (sums over all links to unity) and S is variance-stabilizing.
+
 Spatially lagged y defined as:
 
 W(y)ij=sumj_(Wij yj)/ sumj_(Wij)
 
-where; Wij=1/Euclidian[i,j]
+where; Wij=1/Euclidean[i,j]
 
 depends: rms, spdep
 }
@@ -90,15 +96,19 @@ resid(lmodel$model, "partial", pl="loess")
 resid(lmodel$model, "partial", pl=TRUE)                 # plot residuals
 resid(lmodel$model, "gof")                              # global test of goodness of fit
 lp1 <- resid(lmodel$model, "lp1")                       # Approx. leave-out linear predictors
--2 * sum(meuse@data$DepVar * lp1 + log(1-plogis(lp1))) # Approx leave-out-1 deviance
-spplot(meuse, c('Probs'))                               # plot estimated probs at points
+-2 * sum(meuse@data$DepVar * lp1 + log(1-plogis(lp1)))  # Approx leave-out-1 deviance
+spplot(meuse, c('Probs'))                               # plot estimated probabilities at points
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
 \references{
-Le Cessie S, Van Houwelingen JC (1992) Ridge estimators in logistic regression. Applied Statistics 41:191-201
+Besag, J.E., (1972) Nearest-neighbour systems and the auto-logistic model for binary data. Journal of the Royal Statistical Society, Series B Methodological 34:75-83
 
-Shao J (1993) Linear model selection by cross-validation. JASA 88:486-494
+Dormann, C.F., (2007) Assessing the validity of autologistic regression. Ecological Modelling 207:234-242
+
+Le Cessie, S., Van Houwelingen, J.C., (1992) Ridge estimators in logistic regression. Applied Statistics 41:191-201
+
+Shao, J., (1993) Linear model selection by cross-validation. JASA 88:486-494
 }
 

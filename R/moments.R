@@ -7,7 +7,7 @@
 #'
 #' @export
 #' @return A vector with the following values
-#' @return     min Minimun           
+#' @return     min Minimum           
 #' @return     25th  25th percentile     
 #' @return     mean  Arithmetic mean 
 #' @return     gmean  Geometric mean
@@ -17,8 +17,8 @@
 #' @return     max  Maximum          
 #' @return     stdv  Standard deviation         
 #' @return     var  Variance     
-#' @return     cv  Coefficent of variation (percent)         
-#' @return     mad  Median absoulte deviation         
+#' @return     cv  Coefficient of variation (percent)         
+#' @return     mad  Median absolute deviation         
 #' @return     skew  Skewness    
 #' @return     kurt  Kurtosis     
 #' @return     nmodes  Number of modes   
