@@ -8,7 +8,6 @@
 #' 
 #' @return A vector, same length as nrow(x), of adjusted y values 
 #'
-#' @export
 #' @note
 #' Smoothing is conducted with a weighted-mean where; weights represent inverse standardized distance lags
 #' Distance-based or neighbour-based smoothing can be specified by setting the desired neighbour smoothing method to a specified value then the other parameter to the potential maximum. 
@@ -30,6 +29,7 @@
 #'   plot(density(meuse@@data$cadmium.wm), main='IDW Cadmium')
 #'   par <- opar
 #'
+#' @export
 idw.smoothing <- function(x, y, d, k) {
     if (!inherits(x, "SpatialPointsDataFrame")) 
         stop(deparse(substitute(x)), " MUST BE A sp SpatialPointsDataFrame OBJECT")
@@ -61,7 +61,7 @@ idw.smoothing <- function(x, y, d, k) {
             wt <- round(append(dsub, 1, after = 0), digits = 0)
             wt <- wts[wt]
         }
-        wm <- weighted.mean(lsub@data[, y], wt, na.rm = TRUE)
+        wm <- stats::weighted.mean(lsub@data[, y], wt, na.rm = TRUE)
         wm[is.nan(wm)] <- NA
         v <- append(v, wm, after = length(v))
     }

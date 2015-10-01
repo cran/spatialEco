@@ -1,7 +1,6 @@
 #' @title Landscape metrics for points and polygons
 #' @description Calculates a variety of landscape metrics, on binary rasters, for polygons or points with a buffer distance 
 #'
-#'
 #' @param x          SpatalPointsDataFrame or SpatalPolgonsDataFrame class object 
 #' @param y          raster class object (binary raster)
 #' @param bkgd       Background value
@@ -10,7 +9,6 @@
 #' @param latlon     Is raster data in lat-long (TRUE/FALSE)
 #' @param Trace      Plot raster subsets and echo object ID at each iteration (TRUE | FALSE)
 #'
-#' @export
 #' @return data.frame with specified metrics in columns. The data.frame is ordered the same as the input feature class and can be directly joined to the @@data slot   
 #'
 #' @note
@@ -30,15 +28,16 @@
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'
 #' @examples 
-#' require(raster)
-#' require(sp)
+#' library(raster)
+#' library(sp)
 #' r <- raster(ncol=1000, nrow=1000)
 #'   r[] <- rpois(ncell(r), lambda=1)
 #'     r <- calc(r, fun=function(x) { x[x >= 1] <- 1; return(x) } )  
-#' xy <- SpatialPointsDataFrame(SpatialPoints(cbind(-50, seq(-80, 80, by=20))), 
-#'                              data.frame(ID=seq(1,9,1)))
+#' x <- sampleRandom(r, 10, na.rm = TRUE, sp = TRUE)
 #' 
-#' land.metrics(x=xy, y=r, bw=0.72, bkgd = 0, Trace=FALSE)
+#' land.metrics(x=x, y=r, bw=0.72, bkgd = 0, latlon = TRUE, Trace = FALSE)
+#'
+#' @export 
 land.metrics <- function(x, y, bkgd = NA, metrics = c(4, 14, 33, 34, 35, 37, 38), bw = 1000, latlon = FALSE, Trace = TRUE) {
     if (!inherits(x, "SpatialPointsDataFrame") & !inherits(x, "SpatialPolygonsDataFrame")) 
         stop("MUST BE sp SpatialPointsDataFrame OR SpatialPolygonsDataFrame CLASS OBJECT")
@@ -58,8 +57,9 @@ land.metrics <- function(x, y, bkgd = NA, metrics = c(4, 14, 33, 34, 35, 37, 38)
             cat("Processing OBSERVATION -", j, "\n")
         lsub <- x[j, ]
         if (class(x) == "SpatialPointsDataFrame") {
-            f <- rgeos::gBuffer(lsub, byid = FALSE, id = NULL, width = bw, joinStyle = "ROUND", quadsegs = 10)
-            cr <- raster::crop(y, raster::extent(f), snap = "out")
+            f <- rgeos::gBuffer(lsub, width = bw, joinStyle = "ROUND", quadsegs = 10)
+			fext <- methods::as(raster::extent(f), "SpatialPolygons") 
+            cr <- raster::crop(y, fext, snap = "out")
             crop.NA <- raster::setValues(cr, NA)
             fr <- raster::rasterize(f, cr)
             lr <- raster::mask(x = cr, mask = fr)
@@ -71,7 +71,7 @@ land.metrics <- function(x, y, bkgd = NA, metrics = c(4, 14, 33, 34, 35, 37, 38)
             lr <- raster::mask(x = cr, mask = fr)
         }
         if (Trace == TRUE) {
-            plot(lr, main = paste("Feature class", j, sep = " - "))
+            graphics::plot(lr, main = paste("Feature class", j, sep = " - "))
         }
         LM <- SDMTools::ClassStat(lr, cellsize = raster::res(cr)[1], bkgd = bkgd, latlon = latlon)[metrics]
         if (class(LM) == "NULL") {

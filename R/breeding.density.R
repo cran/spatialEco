@@ -7,7 +7,7 @@
 #' @param bw       Bandwidth distance 
 #' @param b        Buffer distance (eg., p < 0.75 b=6400m, p >= 0.75 b=8500m)   
 #' @param self     Should source observations be included in neighbour count (TRUE/FALSE)
-#' @export
+#'
 #' @return A list object with:
 #' @return   pop.pts     sp point object with points identified within the specified p
 #' @return   pop.area    sp polygon object of buffered points specified by parameter b
@@ -41,6 +41,7 @@
 #'        plot(pop, pch=20, col='black', add=TRUE)
 #'          plot(bd75$pop.pts, pch=20, col='red', add=TRUE)
 #' 
+#' @export
 breeding.density <- function(x, pop, p = 0.75, bw = 1000, b = 6400, self = TRUE) {
     if (!inherits(x, "SpatialPointsDataFrame")) 
         stop("must be a SpatialPointsDataFrame object")
@@ -55,34 +56,34 @@ breeding.density <- function(x, pop, p = 0.75, bw = 1000, b = 6400, self = TRUE)
         }
         den <- vector()
         for (i in 1:nrow(d)) {
-            di <- na.omit(d[i, ])
-            den <- append(den, length(di[di <= bw]))
+          di <- stats::na.omit(d[i, ])
+          den <- append(den, length(di[di <= bw]))
         }
-        den
+      den
     }
     pn <- (1:length(names(x@data)))[names(x@data) == pop]
     pop.n <- sum(x@data[, pn]) * p
     d <- (point.density(x, bw = bw, self = self)) * x@data[, pn]
     pop.den <- data.frame(sp::coordinates(x), x@data[, pn], d)
-    names(pop.den) <- c("x", "y", "pop", "pden")
+      names(pop.den) <- c("x", "y", "pop", "pden")
     pop.den <- pop.den[order(-pop.den$pden), ]
-    i <- 0
-    j <- 0
+      i <- 0
+      j <- 0
     pts <- as.data.frame(array(0, dim = c(0, 4)))
-    while (i <= pop.n) {
-        j <- j + 1
-        i <- i + pop.den[, "pop"][j]
-        pts <- rbind(pts, pop.den[j, ])
-    }
+      while (i <= pop.n) {
+          j <- j + 1
+          i <- i + pop.den[, "pop"][j]
+          pts <- rbind(pts, pop.den[j, ])
+      }
     sp::coordinates(pts) <- ~x + y
     pop.buff <- rgeos::gBuffer(pts, byid = FALSE, id = NULL, width = b, joinStyle = "ROUND", quadsegs = 10)
     polys <- pop.buff@polygons[[1]]@Polygons
     pl <- vector("list", length(polys))
-    for (i in 1:length(polys)) {
-        pl[i] <- sp::Polygons(list(polys[[i]]), i)
-    }
+      for (i in 1:length(polys)) {
+          pl[i] <- sp::Polygons(list(polys[[i]]), i)
+      }
     pop.buff <- sp::SpatialPolygons(pl)
-    row.ids <- sapply(slot(pop.buff, "polygons"), function(i) slot(i, "ID"))
+    row.ids <- sapply(methods::slot(pop.buff, "polygons"), function(i) methods::slot(i, "ID"))
     pop.buff <- sp::SpatialPolygonsDataFrame(pop.buff, data.frame(FID = as.numeric(row.ids)))
-    list(pop.pts = pts, pop.area = pop.buff, bandwidth = bw, buffer = b, p = p)
+      list(pop.pts = pts, pop.area = pop.buff, bandwidth = bw, buffer = b, p = p)
 } 

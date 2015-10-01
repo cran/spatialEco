@@ -7,7 +7,6 @@
 #'
 #' @return Downloaded Hansen forest loss tif files 
 #'      
-#' @export
 #' @note Project website with 10x10 degree granule index: http://earthenginepartners.appspot.com/science-2013-global-forest/download_v1.1.html
 #' @note Avaliable products: treecover2000, loss, gain, lossyear, datamask, first, or last
 #' @note 'treecover2000' (Tree canopy cover for year 2000) - Tree cover in the year 2000, defined as canopy closure for all vegetation taller than 5m in height. Encoded as a percentage per output grid cell, in the range 0-100.
@@ -34,6 +33,8 @@
 #'     download.hansen(tile=tiles[[j]], data.type=c('loss'))  
 #'  }
 #' }
+#'
+#' @export
 download.hansen <- function(tile, data.type = c("loss"), download.folder = getwd()) {
     hurl <- "http://commondatastorage.googleapis.com/earthenginepartners-hansen/GFC2014/Hansen_GFC2014"
     if (missing(tile)) 
@@ -42,6 +43,6 @@ download.hansen <- function(tile, data.type = c("loss"), download.folder = getwd
         d <- paste(paste(hurl, paste(data.type[i], tile[1], tile[2], sep = "_"), sep = "_"), "tif", sep = ".")
         out <- paste(paste(download.folder, paste(data.type[i], tile[1], tile[2], sep = "_"), sep = "/"), "tif", 
             sep = ".")
-        try(download.file(d, out, mode = "w"))
+        try(utils::download.file(d, out, mode = "w"))
     }
 } 

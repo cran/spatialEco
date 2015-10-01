@@ -10,7 +10,6 @@
 #' @return 
 #' Vector, length of nrow(x), of function results
 #'
-#' @export
 #' @note
 #' This function iterates through a polygon object, masks the raster to each subset polygon and then coerces the subset raster to a vector object. The resulting vector is then passed to the specified statistic/function. This is much slower than zonal functions available in GIS software but has the notable advantage of being able to accept any custom function, passed to the 'stat' argument, appropriate for a vector object (see example).    
 #'
@@ -34,8 +33,8 @@
 #' }
 #' 
 #' # create some example data
-#' require(raster)
-#' require(sp)   
+#' library(raster)
+#' library(sp)   
 #' p <- raster(nrow=10, ncol=10)
 #'   p[] <- runif(ncell(p)) * 10
 #'     p <- rasterToPolygons(p, fun=function(x){x > 9})
@@ -49,7 +48,8 @@
 #' z.pct <- zonal.stats(x=p, y=r, stat=pct, trace=TRUE, plot=TRUE)
 #'   ( z <- data.frame(ID=as.numeric(as.character(row.names(p@@data))), 
 #'                     SKEW=z.skew, PCT=z.pct) )  
-
+#'
+#' @export
 zonal.stats <- function(x, y, stat, trace = TRUE, plot = TRUE) {
     if (class(y) != "RasterLayer") 
         stop("y must be a raster object")
@@ -66,10 +66,10 @@ zonal.stats <- function(x, y, stat, trace = TRUE, plot = TRUE) {
         fr <- raster::rasterize(lsub, cr)
         r <- raster::mask(x = cr, mask = fr)
         if (plot == TRUE) {
-            plot(r, main = paste("Polygon: ", j, sep = " "))
+          plot(r, main = paste("Polygon: ", j, sep = " "))
         }
         r <- raster::values(r)
-        r <- na.omit(r)
+        r <- stats::na.omit(r)
         if (length(r) < 1) {
             results <- append(results, NA)
         } else {

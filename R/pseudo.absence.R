@@ -13,8 +13,6 @@
 #' @param p Minimum value for probability distribution (must be >  0)
 #' @param edge Apply Diggle edge correction (TRUE/FALSE)
 #' 
-#'
-#' @export
 #' @return A list class object with the following components: 
 #'   @return sample SpatialPointsDataFrame containing random samples
 #'   @return kde sp RasterLayer class of KDE estimates (IF KDE = TRUE)
@@ -79,7 +77,8 @@
 #'       plot(trees.abs$sample, col='red', pch=20, cex=1, add=TRUE)
 #'         legend('top', legend=c('Presence', 'Pseudo-absence'), 
 #'                pch=c(20,20),col=c('black','red'))
-#'          
+#'     
+#' @export     
 pseudo.absence <- function(x, n, window = "hull", Mask = NULL, s = NULL, sigma = "Scott", wts = NULL, KDE = FALSE, 
     gradient = 1, p = NULL, edge = FALSE) {
     if (!class(x) == "SpatialPointsDataFrame" & !class(x) == "SpatialPoints") 
@@ -93,7 +92,7 @@ pseudo.absence <- function(x, n, window = "hull", Mask = NULL, s = NULL, sigma =
     a <- 10000
     options(warn = -1)
     raster.as.im <- function(im) {
-        spatstat::as.im(as.matrix(im)[nrow(im):1, ], xrange = sp::bbox(im)[1, ], yrange = sp::bbox(im)[2, ])
+      spatstat::as.im(as.matrix(im)[nrow(im):1, ], xrange = sp::bbox(im)[1, ], yrange = sp::bbox(im)[2, ])
     }
 	if (is.null(Mask)) {
       if (window == "hull") {
@@ -114,8 +113,8 @@ pseudo.absence <- function(x, n, window = "hull", Mask = NULL, s = NULL, sigma =
     bw.Scott <- function(X) {
         stopifnot(spatstat::is.ppp(X))
         n <- spatstat::npoints(X)
-        sdx <- sqrt(var(X$x))
-        sdy <- sqrt(var(X$y))
+        sdx <- sqrt(stats::var(X$x))
+        sdy <- sqrt(stats::var(X$y))
         return(c(sdx, sdy) * n^(-1/6))
     }
     bw.Stoyan <- function(X, co = 0.15) {
@@ -145,8 +144,8 @@ pseudo.absence <- function(x, n, window = "hull", Mask = NULL, s = NULL, sigma =
         cv <- numeric(ns)
         for (i in 1:ns) {
             si <- sigma[i]
-            lamx <- density(X, sigma = si, at = "points", leaveoneout = TRUE)
-            lam <- density(X, sigma = si)
+            lamx <- spatstat::density.ppp(X, sigma = si, at = "points", leaveoneout = TRUE)
+            lam <- spatstat::density.ppp(X, sigma = si)
             cv[i] <- sum(log(lamx)) - spatstat::integral.im(lam)
         }
         result <- spatstat::bw.optim(cv, sigma, iopt = which.max(cv), criterion = "Likelihood Cross-Validation")
@@ -154,26 +153,26 @@ pseudo.absence <- function(x, n, window = "hull", Mask = NULL, s = NULL, sigma =
     }
     if (sigma == "Diggle") {
         bw <- spatstat::bw.diggle(x.ppp)
-        den <- density(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge)
+        den <- spatstat::density.ppp(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge)
     } else {
         if (sigma == "Scott") {
             bw <- bw.Scott(x.ppp)
-            den <- density(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge)
+            den <- spatstat::density.ppp(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge)
         } else {
             if (sigma == "Stoyan") {
                 bw <- bw.Stoyan(x.ppp)
-                den <- density(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge)
+                den <- spatstat::density.ppp(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge)
             } else {
                 if (sigma == "geometry") {
                   bw <- bw.geometry(x.ppp)
-                  den <- density(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge)
+                  den <- spatstat::density.ppp(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge)
                 } else {
                   if (sigma == "likelihood") {
                     bw <- bw.likelihood(x.ppp)
-                    den <- density(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge)
+                    den <- spatstat::density.ppp(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge)
                   } else {
                     if (is.numeric(sigma)) {
-                      den <- density(x.ppp, weights = wts, sigma = sigma, adjust = gradient, diggle = edge)
+                      den <- spatstat::density.ppp(x.ppp, weights = wts, sigma = sigma, adjust = gradient, diggle = edge)
                     }
                   }
                 }

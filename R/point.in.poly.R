@@ -6,7 +6,6 @@
 #'
 #' @return A SpatialPointsDataFrame with intersected polygon attributes
 #'
-#' @export
 #' @note Depends: sp
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
@@ -37,13 +36,14 @@
 #' # Point counts for each polygon
 #' tapply(pts.poly@@data$lead, pts.poly@@data$PIDS, FUN=length)  
 #'
+#' @export
 point.in.poly <- function(pts, polys) {
     if (!inherits(polys, "SpatialPolygonsDataFrame")) 
         stop("MUST BE SP SpatialPolygonsDataFrame OBJECT")
     if ((inherits(pts, "SpatialPointsDataFrame") | inherits(pts, "SpatialPoints")) == FALSE) 
         stop("Must be sp SpatialPointsDataFrame object")
     z <- pts[!is.na(sp::over(pts, sp::geometry(polys))),]
-    z@data <- data.frame(z@data, na.omit(sp::over(pts,polys)) )
+    z@data <- data.frame(z@data, stats::na.omit(sp::over(pts,polys)) )
     z@proj4string <- pts@proj4string
     z
 } 

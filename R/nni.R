@@ -6,7 +6,6 @@
 #'
 #' @return NNI value
 #'
-#' @export
 #' @note
 #' The nearest neighbour index is expressed as the ratio of the observed distance divided by the expected distance. The expected distance is the average distance between neighbours in a hypothetical random distribution. If the index is less than 1, the pattern exhibits clustering; if the index is greater than 1, the trend is toward dispersion or competition.
 #' The Nearest Neighbour Index is calculated as:
@@ -28,6 +27,7 @@
 #'   coordinates(meuse) <- ~x+y
 #'     nni(meuse)
 #'
+#' @export
 nni <- function(x, win = "hull") {
     if (!class(x) == "SpatialPointsDataFrame" & !class(x) == "SpatialPoints") 
         stop(deparse(substitute(x)), " MUST BE A sp POINTS OBJECT")

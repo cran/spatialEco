@@ -1,7 +1,6 @@
 #' @title Logistic and Auto-logistic regression
 #' @description Performs a logistic (binomial) or auto-logistic (spatially lagged binomial) regression using maximum likelihood or penalized maximum likelihood estimation. 
 #'
-#' @export
 #' @param ldata data.frame object containing variables
 #' @param y Dependent variable (y) in ldata
 #' @param x Independent variable(s) (x) in ldata  
@@ -72,12 +71,13 @@
 #' 
 #' #### Plot fit and probabilities
 #' resid(lmodel$model, "partial", pl="loess") 
-#' resid(lmodel$model, "partial", pl=TRUE)                 # plot residuals    
-#' resid(lmodel$model, "gof")                              # global test of goodness of fit
-#' lp1 <- resid(lmodel$model, "lp1")                       # Approx. leave-out linear predictors 
+#' resid(lmodel$model, "partial", pl=TRUE)                  # plot residuals    
+#' resid(lmodel$model, "gof")                               # global test of goodness of fit
+#' lp1 <- resid(lmodel$model, "lp1")                        # Approx. leave-out linear predictors 
 #' -2 * sum(meuse@@data$DepVar * lp1 + log(1-plogis(lp1)))  # Approx leave-out-1 deviance
-#' spplot(meuse, c('Probs'))                               # plot estimated probabilities at points
+#' spplot(meuse, c('Probs'))                                # plot estimated probabilities at points
 #'
+#' @export
 logistic.regression <- function(ldata, y, x, penalty = TRUE, autologistic = FALSE, coords = NULL, bw = NULL, type = "inverse", 
                                 style = "W", longlat = FALSE, ...) {
     if (is.na(match(y, names(ldata)))) 
@@ -98,7 +98,7 @@ logistic.regression <- function(ldata, y, x, penalty = TRUE, autologistic = FALS
         ldata$AutoCov <- spdep::autocov_dist(ldata[,y], xy = coords, nbs = bw, style = style, type = type)
         x <- append(x, "AutoCov")
     }
-    form <- as.formula(paste(y, paste(x, collapse = "+"), sep = "~"))
+    form <- stats::as.formula(paste(y, paste(x, collapse = "+"), sep = "~"))
     fit <- rms::lrm(form, data = ldata, x = TRUE, y = TRUE, ...)
     bf <- rms::pentrace(fit, seq(0.2, 1, by = 0.05))
     if (penalty) {
@@ -115,10 +115,10 @@ logistic.regression <- function(ldata, y, x, penalty = TRUE, autologistic = FALS
         }
     }
     if (penalty) {
-        fit <- update(fit, penalty = bf$penalty)
+        fit <- stats::update(fit, penalty = bf$penalty)
     }
-    res <- residuals(fit)
-    resSTD <- (res - mean(res))/sqrt(var(res))
+    res <- stats::residuals(fit)
+    resSTD <- (res - mean(res))/sqrt(stats::var(res))
     allIndVars <- c("Intercept")
     allIndVars <- append(allIndVars, x)
     k <- length(allIndVars)
@@ -126,7 +126,7 @@ logistic.regression <- function(ldata, y, x, penalty = TRUE, autologistic = FALS
     d[, 1] <- fit$coefficients
     d[, 2] <- sqrt(diag(fit$var))
     d[, 3] <- d[, 1]/d[, 2]
-    d[, 4] <- pnorm(abs(d[, 3]), lower.tail = FALSE) * 2
+    d[, 4] <- stats::pnorm(abs(d[, 3]), lower.tail = FALSE) * 2
     coefList <- list(Variable = allIndVars, Coef = d[, 1], StdError = d[, 2], Wald = d[, 3], Prob = d[, 4])
     coefFrame <- data.frame(coefList)
     diagFrame <- data.frame(Names = c(names(fit$stats), "PEN", "AIC"), Value = c(as.vector(fit$stats), pen, aic))

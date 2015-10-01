@@ -8,8 +8,6 @@
 #' @param clara Use clara model for large data
 #' @param ... Additional arguments passed to clara
 #'
-#' @export
-#' @export
 #' @note Depends: cluster
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
@@ -32,7 +30,8 @@
 #'
 #' # join clusters to data
 #'   x <- data.frame(x, k=clust$clustering) 
-#'   
+#'
+#' @export  
 optimal.k <- function(x, nk = 10, plot = TRUE, cluster = TRUE, clara = FALSE, ...) {
     asw <- numeric(nk)
     for (k in 2:nk) {
@@ -45,9 +44,9 @@ optimal.k <- function(x, nk = 10, plot = TRUE, cluster = TRUE, clara = FALSE, ..
     }
     print(paste("Optimal-K", k.best, sep = ": "))
     if (plot == TRUE) {
-        plot(1:nk, asw, type = "s", main = "Clustering Optimization using K-Mediods", xlab = "K (number of clusters)", 
+        graphics::plot(1:nk, asw, type = "s", main = "Clustering Optimization using K-Mediods", xlab = "K (number of clusters)", 
             ylab = "mean silhouette width")
-        axis(1, k.best, paste("best", k.best, sep = "\n"), col = "red", col.axis = "red")
+        graphics::axis(1, k.best, paste("best", k.best, sep = "\n"), col = "red", col.axis = "red")
     }
     if (cluster == TRUE) {
         if (clara == TRUE) {

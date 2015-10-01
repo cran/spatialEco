@@ -8,8 +8,7 @@
 #' @return SpatialPolygonsDataFrame OBJECT
 #'
 #' @note depends: sp 
-#'       
-#' @export                                                                
+#'                                                                  
 #' @examples 
 #' require(sp)
 #'   data(meuse)
@@ -21,7 +20,9 @@
 #' 
 #' # Points intersecting hexagons  
 #' hex.pts <- na.omit(over(meuse,hex.polys))
-#' (hex.pts <- data.frame(PTID=rownames(hex.pts), hex.pts))  
+#' (hex.pts <- data.frame(PTID=rownames(hex.pts), hex.pts)) 
+#'
+#' @export      
 hexagons <- function(x, res = 100, ...) {
     if (!inherits(x, "SpatialPointsDataFrame") & !inherits(x, "SpatialPolygonsDataFrame")) 
         stop("x MUST BE AN sp SpatialDataFrame OBJECT")

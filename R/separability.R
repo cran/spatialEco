@@ -15,7 +15,6 @@
 #' @return   D  Divergence index
 #' @return   TD  Transformed Divergence index
 #'
-#' @export
 #' @note
 #' M-Statistic (Kaufman & Remer 1994) - This is a measure of the difference of the distributional peaks. A large M-statistic indicates good separation between the two classes as within-class variance is 
 #' minimized and between-class variance maximized (M <1 poor, M >1 good).
@@ -51,7 +50,8 @@
 #'    s1 <- c (1362,1411,1457,1735,1621,1621,1791,1863,1863,1838)
 #'    s2 <- c (1362,1411,1457,10030,1621,1621,1791,1863,1863,1838)
 #'      separability(s1, s2, plot=TRUE) 
-#'                                   
+#'       
+#' @export                            
 separability <- function(x, y, plot = FALSE, cols = c("red", "blue"), clabs = c("Class1", "Class2"), ...) {
     if (length(cols) > 2) 
         stop("TOO MANY COLORS")
@@ -63,27 +63,27 @@ separability <- function(x, y, plot = FALSE, cols = c("red", "blue"), clabs = c(
     x <- as.matrix(x)
     y <- as.matrix(y)
     mdif <- mean(x) - mean(y)
-    p <- (cov(x) + cov(y))/2
-    bh.distance <- 0.125 * t(mdif) * p^(-1) * mdif + 0.5 * log(det(p)/sqrt(det(cov(x)) * det(cov(y))))
-    m <- (abs(mean(x) - mean(y)))/(sd(x) + sd(y))
+    p <- (stats::cov(x) + stats::cov(y))/2
+    bh.distance <- 0.125 * t(mdif) * p^(-1) * mdif + 0.5 * log(det(p)/sqrt(det(stats::cov(x)) * det(stats::cov(y))))
+    m <- (abs(mean(x) - mean(y)))/(stats::sd(x) + stats::sd(y))
     jm.distance <- 2 * (1 - exp(-bh.distance))
-    dt1 <- 1/2 * trace.of.matrix((cov(x) - cov(y)) * (cov(y)^(-1) - cov(x)^(-1)))
-    dt2 <- 1/2 * trace.of.matrix((cov(x)^(-1) + cov(y)^(-1)) * (mean(x) - mean(y)) * t(mean(x) - mean(y)))
+    dt1 <- 1/2 * trace.of.matrix((stats::cov(x) - stats::cov(y)) * (stats::cov(y)^(-1) - stats::cov(x)^(-1)))
+    dt2 <- 1/2 * trace.of.matrix((stats::cov(x)^(-1) + stats::cov(y)^(-1)) * (mean(x) - mean(y)) * t(mean(x) - mean(y)))
     divergence <- dt1 + dt2
     transformed.divergence <- 2 * (1 - exp(-(divergence/8)))
     if (plot == TRUE) {
-        color1 <- as.vector(col2rgb(cols[1])/255)
-        color2 <- as.vector(col2rgb(cols[2])/255)
-        d1 <- density(x)
-        d2 <- density(y)
-        plot(d1, type = "n", ylim = c(min(c(d1$y, d2$y)), max(c(d1$y, d2$y))), xlim = c(min(c(d1$x, d2$x)), max(c(d1$x, 
+        color1 <- as.vector(grDevices::col2rgb(cols[1])/255)
+        color2 <- as.vector(grDevices::col2rgb(cols[2])/255)
+        d1 <- stats::density(x)
+        d2 <- stats::density(y)
+        graphics::plot(d1, type = "n", ylim = c(min(c(d1$y, d2$y)), max(c(d1$y, d2$y))), xlim = c(min(c(d1$x, d2$x)), max(c(d1$x, 
             d2$x))), ...)
-        polygon(d1, col = rgb(color1[1], color1[2], color1[3], 1/4))
-        polygon(d2, col = rgb(color2[1], color2[2], color2[3], 1/4))
-        abline(v = mean(x), lty = 1, col = "black")
-        abline(v = mean(y), lty = 2, col = "black")
-        legend("topright", legend = clabs, fill = c(rgb(color1[1], color1[2], color1[3], 1/4), rgb(color2[1], color2[2], 
-            color2[3], 1/4)))
+        graphics::polygon(d1, col = grDevices::rgb(color1[1], color1[2], color1[3], 1/4))
+        graphics::polygon(d2, col = grDevices::rgb(color2[1], color2[2], color2[3], 1/4))
+        graphics::abline(v = mean(x), lty = 1, col = "black")
+        graphics::abline(v = mean(y), lty = 2, col = "black")
+        graphics::legend("topright", legend = clabs, fill = c(grDevices::rgb(color1[1], color1[2], color1[3], 1/4), 
+		                 grDevices::rgb(color2[1], color2[2], color2[3], 1/4)))
     }
     return(data.frame(B = bh.distance, JM = jm.distance, M = m, mdif = abs(mdif), D = divergence, TD = transformed.divergence))
 } 

@@ -7,7 +7,6 @@
 #' @param download.folder local download directory, defaults to current working directory
 #' @param http option to change URL
 #'
-#' @export
 #' @return DAYMET netCDF format climate metrics 
 #' 
 #' @note Available products
@@ -41,6 +40,8 @@
 #'  my.years <- c(seq(2009,2010,1))
 #'  download.daymet(years=my.years, tile=laramie.plains, data.type=c('tmin','tmax')) 
 #' }
+#'
+#' @export
 download.daymet <- function(years, tile, data.type = "all", download.folder = getwd(), http = "http://daymet.ornl.gov/thredds/fileServer/ornldaac/1219/tiles") {
     if (!length(years %in% seq(1980, 2012, 1)) == length(years)) 
         stop("INVALID YEAR DEFINED")
@@ -53,7 +54,7 @@ download.daymet <- function(years, tile, data.type = "all", download.folder = ge
     TilesYears <- paste(tile, years, sep = "_")
     for (y in TilesYears) {
         for (i in data.type) {
-            try(download.file(paste(http, unlist(strsplit(y, "_"))[2], y, i, sep = "/"), paste(paste(unlist(strsplit(i, 
+            try(utils::download.file(paste(http, unlist(strsplit(y, "_"))[2], y, i, sep = "/"), paste(paste(unlist(strsplit(i, 
                 "[.]"))[1], y, sep = "_"), "nc", sep = "."), mode = "wb"))
         }
     }

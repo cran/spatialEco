@@ -11,7 +11,6 @@
 #'
 #' @return sp class SpatialPointsDataFrame containing random subsamples
 #'
-#' @export
 #' @note
 #' The window type creates a convex hull by default or, optionally, uses the maximum extent (envelope). 
 #' 
@@ -57,14 +56,16 @@
 #'              title('10% subsample')
 #'           legend('bottomright', legend=c('Original sample', 'Subsample'), 
 #'                  col=c('black','red'),pch=c(19,19))   
+#'
+#' @export
 pp.subsample <- function(x, n, window = "hull", sigma = "Scott", wts = NULL, gradient = 1, edge = FALSE) {
     if (is.null(window)) 
         stop("Please specify a valid window type hull | extent")
     bw.Scott <- function(X) {
         stopifnot(spatstat::is.ppp(X))
         n <- spatstat::npoints(X)
-        sdx <- sqrt(var(X$x))
-        sdy <- sqrt(var(X$y))
+        sdx <- sqrt(stats::var(X$x))
+        sdy <- sqrt(stats::var(X$y))
         return(c(sdx, sdy) * n^(-1/6))
     }
     bw.Stoyan <- function(X, co = 0.15) {
@@ -94,8 +95,8 @@ pp.subsample <- function(x, n, window = "hull", sigma = "Scott", wts = NULL, gra
         cv <- numeric(ns)
         for (i in 1:ns) {
             si <- sigma[i]
-            lamx <- density(X, sigma = si, at = "points", leaveoneout = TRUE)
-            lam <- density(X, sigma = si)
+            lamx <- spatstat::density.ppp(X, sigma = si, at = "points", leaveoneout = TRUE)
+            lam <- spatstat::density.ppp(X, sigma = si)
             cv[i] <- sum(log(lamx)) - spatstat::integral.im(lam)
         }
         result <- spatstat::bw.optim(cv, sigma, iopt = which.max(cv), criterion = "Likelihood Cross-Validation")
@@ -133,7 +134,7 @@ pp.subsample <- function(x, n, window = "hull", sigma = "Scott", wts = NULL, gra
             }
         }
     }
-    den <- density(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge, at = "points")
+    den <- spatstat::density.ppp(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge, at = "points")
     point.den <- data.frame(X = x.ppp$x, Y = x.ppp$y, KDE = as.vector(den * 10000))
     point.den$KDE <- point.den$KDE/max(point.den$KDE)
     point.den <- point.den[order(point.den[["KDE"]]), ]

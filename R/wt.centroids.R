@@ -7,7 +7,6 @@
 #' 
 #' @return A vector or an sp class SpatialPoints object of the weighted coordinate centroid      
 #'
-#' @export
 #' @note
 #' THe weighted centroid is calculated as:
 #' [Xw]=[X]*[p], [Yw]=[Y]*[p], [sXw]=SUM[Xw], [sYw]=SUM[Yw], [sP]=SUM[p]
@@ -27,7 +26,9 @@
 #'          points(wt.zinc, pch=19, col='blue', cex=1.5)
 #'         box() 
 #' legend('topleft', legend=c('all','copper', 'zinc'), 
-#'        pch=c(20,19,19),col=c('black','red','blue'))                                                                                   
+#'        pch=c(20,19,19),col=c('black','red','blue'))
+#'
+#' @export                                                                                   
 wt.centroid <- function(x, p, sp = TRUE) {
     if (!inherits(x, "SpatialPointsDataFrame")) 
         stop(deparse(substitute(x)), " MUST BE A SpatialPointsDataFrame OBJECT")

@@ -28,7 +28,7 @@
 #' coordinates(meuse) = ~x+y
 #' zinc.cg <- correlogram(x = meuse, v = meuse@@data[,'zinc'], dist = 250, ns = 9)
 #' 
-#' @export correlogram    
+#' @export  
 correlogram <- function(x, v, dist = 5000, dmatrix = FALSE, ns = 99, latlong = FALSE, ...) {
     if ((inherits(x, "SpatialPointsDataFrame")) == FALSE) 
         stop("x MUST BE SP SpatialPointsDataFrame OBJECT")
@@ -48,7 +48,7 @@ correlogram <- function(x, v, dist = 5000, dmatrix = FALSE, ns = 99, latlong = F
             }
         }
         lag <- w2 %*% v
-        cors <- c(cors, cor(v, lag, ...))
+        cors <- c(cors, stats::cor(v, lag, ...))
     }
     if (length(which(is.na(cors))) > 0) {
       print(paste(length(which(is.na(cors))), "Spatial lag empty and dropped", sep = " "))
@@ -69,20 +69,20 @@ correlogram <- function(x, v, dist = 5000, dmatrix = FALSE, ns = 99, latlong = F
                 }
             }
             lag <- w2 %*% x@data$rand
-            rcors <- c(rcors, cor(x@data$rand, lag))
+            rcors <- c(rcors, stats::cor(x@data$rand, lag))
         }
         mc[s, ] <- rcors
     }
     bw <- bw[-1]
     cg <- data.frame(cbind(cors, bw))
-    cg <- cbind(cg, t(apply(mc, 2, quantile, probs = c(0.025, 0.975))))
+    cg <- cbind(cg, t(apply(mc, 2, stats::quantile, probs = c(0.025, 0.975))))
     names(cg) <- c("autocorrelation", "dist", "lci", "uci")
-    plot(cg$dist, cg$autocorrelation, type = "n", ylim = c(-1, 1), main = "Correlogram", xlab = "distance", ylab = "autocorrelation")
-      polygon(c(rev(cg$dist), cg$dist), c(cg$uci, rev(cg$lci)), col = "blue")
-        lines(cg$dist, cg$autocorrelation, type = "b", pch = 20)
+    graphics::plot(cg$dist, cg$autocorrelation, type = "n", ylim = c(-1, 1), main = "Correlogram", xlab = "distance", ylab = "autocorrelation")
+      graphics::polygon(c(rev(cg$dist), cg$dist), c(cg$uci, rev(cg$lci)), col = "blue")
+        graphics::lines(cg$dist, cg$autocorrelation, type = "b", pch = 20)
     if (dmatrix == TRUE) {
-        return(list(autocorrelation = cg, CorrPlot = recordPlot(), dmatrix = w))
+        return(list(autocorrelation = cg, CorrPlot = grDevices::recordPlot(), dmatrix = w))
     } else {
-        return(list(autocorrelation = cg, CorrPlot = recordPlot()))
+        return(list(autocorrelation = cg, CorrPlot = grDevices::recordPlot()))
     }
 } 

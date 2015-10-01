@@ -10,7 +10,6 @@
 #' @param ly Position of legend (y coordinate)
 #' @param ... Additional agruments passed to plot
 #'
-#' @export
 #' @author Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
 #'
 #' @references
@@ -22,6 +21,7 @@
 #' group.pdf(x=as.factor(x), y=y, main='Probability Density of y by group(x)', 
 #' ylab='PDF', xlab='Y', lty=c(1,2,3))
 #'
+#' @export
 group.pdf <- function(x, y, col = NULL, lty = NULL, lwd = NULL, lx = "topleft", ly = NULL, ...) {
     if (!is.numeric(y)) 
         stop("y MUST BE NUMERIC")
@@ -36,14 +36,14 @@ group.pdf <- function(x, y, col = NULL, lty = NULL, lwd = NULL, lx = "topleft", 
     if (is.null(lwd)) 
         lwd <- 1.5
     ydat <- split(y, x)
-    cden <- lapply(ydat, density)
+    cden <- lapply(ydat, stats::density)
     xlim <- range(cden[[1]]$x, cden[[2]]$x)
     ylim <- range(cden[[1]]$y, cden[[2]]$y)
-    plot(cden[[1]], type = "n", xlim = xlim, ylim = ylim, ...)
+    graphics::plot(cden[[1]], type = "n", xlim = xlim, ylim = ylim, ...)
     for (i in 1:nlevels(x)) {
-        lines(cden[[i]], col = col[i], lty = (if (length(lty) > 1) 
+        graphics::lines(cden[[i]], col = col[i], lty = (if (length(lty) > 1) 
             lty[i] else lty), lwd = (if (length(lwd) > 1) 
             lwd[i] else lwd))
     }
-    legend(lx, ly, names(cden), col = col, lty = lty, lwd = lwd)
+    graphics::legend(lx, ly, names(cden), col = col, lty = lty, lwd = lwd)
 } 

@@ -9,7 +9,6 @@
 #' @param stype Sampling type ('random', 'regular', 'nonaligned', 'hexagonal')
 #' @param ... Additional arguments passed to spsample
 #'
-#' @export
 #' @note
 #' This function results in an adaptive sample based on the area of each polygon
 #'
@@ -33,12 +32,14 @@
 #' ars <- parea.sample(srdf, pct=0.20, stype='random') 
 #'   plot(srdf)
 #'     plot(ars, pch=20, add=TRUE)
+#'
+#' @export
 parea.sample <- function(x, pct = 0.1, join = FALSE, msamp = 1, sf = 4046.86, stype = "hexagonal", ...) {
     if (!inherits(x, "SpatialPolygonsDataFrame")) 
         stop("Must be a SpatialPolygonsDataFrame object")
     pids <- rownames(x@data)
     psub <- x[rownames(x@data) == pids[1], ]
-    ac <- sapply(slot(psub, "polygons"), function(i) slot(i, "area"))/sf
+    ac <- sapply(methods::slot(psub, "polygons"), function(i) methods::slot(i, "area"))/sf
     ns <- round((ac * pct), digits = 0)
     if (ns < msamp) {
         ns <- msamp
@@ -48,7 +49,7 @@ parea.sample <- function(x, pct = 0.1, join = FALSE, msamp = 1, sf = 4046.86, st
     if (length(pids) > 1) {
         for (i in 2:length(pids)) {
             psub <- x[rownames(x@data) == pids[i], ]
-            ac <- sapply(slot(psub, "polygons"), function(i) slot(i, "area"))/sf
+            ac <- sapply(methods::slot(psub, "polygons"), function(i) methods::slot(i, "area"))/sf
             ns <- round((ac * pct), digits = 0)
             if (ns < msamp) {
                 ns <- msamp

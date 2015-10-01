@@ -5,9 +5,7 @@
 #' @param d Size of matrix (window)
 #' @param filename Raster file written to disk
 #' @param ... Optional arguments passed to writeRaster or dataType              
-# 
 #'  
-#' @export
 #' @return raster class object or specified format raster written to disk                
 #'
 #' @note
@@ -35,7 +33,9 @@
 #'     par(mfcol=c(2,1))
 #'       plot(r)
 #'         plot(rEnt)
-#'   par(opar)   
+#'   par(opar)
+#'
+#' @export  
 raster.entropy <- function(x, d = 5, filename = FALSE, ...) {
     if (!inherits(x, "RasterLayer")) 
         stop("MUST BE RasterLayer OBJECT")

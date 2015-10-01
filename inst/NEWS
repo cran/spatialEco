@@ -6,4 +6,14 @@ spatialEco_0.1-1
 * Added function "csi" for cosine similarity index and angular similarity index
 * Added function "local.min.max" for finding local minimum and maximum values in a numeric vector
 * Added function "outliers" for identifying outliers using modified z-score
+
+spatialEco_0.1-2
+=================
+* Added function "kl.divergence" for the Kullback-Leibler divergence (relative entropy) metric
+* Added function "loess.boot" for bootstraping a loess regression, with associated print and plot functions
+* Added function "loess.ci" for calculating a confidence intervel for a loess regression, with associated print and plot functions
+* Added function "raster.vol" for generating percent volume from a raster
+* Added function "tpi" for calculating the topographic position index 
+* Added function "concordance" that performs a concordance/disconcordance (C-statistic) test on binomial models.
+* Added argument in "o.ring" for inhomogeneous (TRUE/FALSE) to account for different point processes
     

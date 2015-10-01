@@ -9,7 +9,6 @@
 #' @param unzip.file Unzip file on download (TRUE/FALSE)  
 #' @param ftp.site PRISM ftp address to use, default: \url{ftp://prism.oregonstate.edu}
 #'
-#' @export
 #' @return Compressed or uncompressed PRISM monthly gridded data(bil raster format)
 #' 
 #' @note Monthly data 1895-1980 is available in a single zip file on the ftp site
@@ -38,6 +37,8 @@
 #'    my.dates <- c('2000/1/1', '2000/2/10')
 #'    download.prism('ppt', date.range=my.dates, time.step='daily', by.year=TRUE)                                 
 #'}
+#'
+#' @export
 download.prism <- function(data.type, date.range, time.step = "monthly", download.folder = getwd(), by.year = FALSE, 
     unzip.file = TRUE, ftp.site = "ftp://prism.oregonstate.edu") {
     if (!(data.type == "ppt" | data.type == "tmin" | data.type == "tmax" | data.type == "tmean")) 
@@ -103,9 +104,9 @@ download.prism <- function(data.type, date.range, time.step = "monthly", downloa
         }
         for (f in 1:length(dl.list[[i]])) {
             file.name <- dl.list[[i]][f]
-            try(download.file(file.name, destfile = paste(getwd(), unlist(strsplit(file.name, "/"))[7], sep = "/")))
+            try(utils::download.file(file.name, destfile = paste(getwd(), unlist(strsplit(file.name, "/"))[7], sep = "/")))
             if (unzip.file == TRUE) 
-                unzip(unlist(strsplit(file.name, "/"))[7])
+                utils::unzip(unlist(strsplit(file.name, "/"))[7])
         }
         setwd(download.folder)
     }

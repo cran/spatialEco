@@ -1,12 +1,12 @@
 #' @title Inhomogeneous O-ring 
 #' @description Calculates the inhomogeneous O-ring point pattern statistic (Wiegand & Maloney 2004) 
 #'    
-#' @param x     spatstat ppp object
-#' @param ...   additional arguments passed to pcfinhom 
+#' @param x              spatstat ppp object
+#' @param inhomogeneous  (boolean) Run homogeneous (pcf) or inhomogeneous (pcfinhom)  
+#' @param ...            additional arguments passed to pcf or pcfinhom 
 #'
 #' @return plot of o-ring and data.frame with plot labels and descriptions  
 #' 
-#' @export
 #' @note 
 #' The function K(r) is the expected number of points in a circle of radius r centred at an arbitrary point (which is not counted), divided by the intensity l of the pattern. The alternative pair correlation function g(r), which arises if the circles of Ripley's K-function are replaced by rings, gives the expected number of points at distance r from an arbitrary point, divided by the intensity of the pattern. Of special interest is to determine whether a pattern is random, clumped, or regular. 
 #'
@@ -20,14 +20,19 @@
 #' Wiegand T., and K. A. Moloney (2004) Rings, circles and null-models for point pattern analysis in ecology. Oikos 104:209-229
 #'
 #' @examples
-#' require(spatstat) 
-#'   data(lansing)
+#' library(spatstat) 
+#' data(lansing)
 #'     x  <- spatstat::unmark(split(lansing)$maple)
-#'       o.ring(x)
-o.ring <- function(x, ...) {
-    g.inhom <- spatstat::pcfinhom(x, ...)
+#'     o.ring(x)
+#'
+#' @export
+o.ring <- function(x, inhomogeneous = FALSE, ...) {
+  if( inhomogeneous ) { 
+    g <- spatstat::pcfinhom(x, ...)
+    } else {
+	g <- spatstat::pcf(x, ...)
+	}
     lambda <- summary(x)$intensity
-    K.inhom <- spatstat::Kinhom(x)
-    O.inhom <- spatstat::eval.fv(lambda * g.inhom)
-    plot(O.inhom, ylab = "Oring(r)", main = "O-ring")
+    O <- spatstat::eval.fv(lambda * g)
+    graphics::plot(O, ylab = "O-ring(r)", main = "O-ring")
 } 

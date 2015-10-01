@@ -1,6 +1,6 @@
 #' @title Outliers 
 #' @description Identify outliers using modified Z-score
-#' @export
+#'
 #' @param x A numeric vector
 #' @return value for the modified Z-score
 #'
@@ -22,10 +22,11 @@
 #'  
 #'  # Remove extreme outliers 
 #'      x <- x[-which(Z > 9.9)]
-#'  
+#'
+#' @export  
 outliers <- function(x) {
  e <- (length(x) - 1) / sqrt(length(x)) 
- mad <- function (x, center=median(x), constant=1.4826,
+ mad <- function (x, center=stats::median(x), constant=1.4826,
                   low=FALSE, high=FALSE) {
   n <- length(x)
   constant * if ((low || high) && n%%2 == 0) {
@@ -34,9 +35,9 @@ outliers <- function(x) {
       n2 <- n%/%2 + as.integer(high)
       sort(abs(x - center), partial = n2)[n2]
     }
-   else median(abs(x - center))
+   else stats::median(abs(x - center))
   }                         
-    z <- ( (0.6745 * (x - median(x))) / mad(x) )
+    z <- ( (0.6745 * (x - stats::median(x))) / mad(x) )
   if ( (max(z) > (length(x) - 1) / sqrt(length(x))) == TRUE ) { 
      print(paste( "outliers found - ", "expected-Z: ", round(e,digits=2) , 
                   " Observed-Z: ", round(max(z), digits=2), sep="" ))    

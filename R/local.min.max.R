@@ -6,7 +6,7 @@
 #' @param plot plot the minimum and maximum values with the distribution (TRUE/FALSE)
 #' @param add.points Should all points of x be added to plot (TRUE/FALSE)
 #' @param ... Arguments passed to plot
-#' @export
+#' 
 #' @return A list object with:  
 #' @return minima minimum local values of x
 #' @return maxima maximum local values of x
@@ -23,22 +23,21 @@
 #'
 #' # return only local minimum values
 #'    local.min.max(x)$minima 
-#'                                                            
+#'                                            
+#' @export
 local.min.max <- function(x, dev=mean, plot=TRUE, add.points=FALSE,  ...) {
-  x <- na.omit(x)
+  x <- stats::na.omit(x)
     r <- rle(x) 
-  minima <- which(rep(x=diff(sign(diff(c(-Inf, r$values, -Inf)))) == 2, 
-                  times=r$lengths))
-  maxima <- which(rep(x=diff(sign(diff(c(-Inf, r$values, -Inf)))) == -2, 
-                  times=r$lengths)) 
+  minima <- which(rep(x=diff(sign(diff(c(-Inf, r$values, -Inf)))) == 2, times=r$lengths))
+  maxima <- which(rep(x=diff(sign(diff(c(-Inf, r$values, -Inf)))) == -2, times=r$lengths)) 
     if (plot == TRUE) {				 
       plot(x,type="l", ...)
-        points(x[minima]~minima,pch=19,col="blue") 
-          points(x[maxima]~maxima,pch=19,col="red")
-		    abline(h=dev(x, na.rm=TRUE), col="grey")
-		if (add.points == TRUE) points(x, col="grey")
-	  legend("topleft", legend=c("Minima","Maxima"), pch=c(19,19), 
-	        col=c("blue","red"), bg="white")
+        graphics::points(x[minima]~minima,pch=19,col="blue") 
+          graphics::points(x[maxima]~maxima,pch=19,col="red")
+		    graphics::abline(h=dev(x, na.rm=TRUE), col="grey")
+		if (add.points == TRUE) graphics::points(x, col="grey")
+	  graphics::legend("topleft", legend=c("Minima","Maxima"), pch=c(19,19), 
+	                   col=c("blue","red"), bg="white")
     }
 	return( list(minima=x[minima], maxima=x[maxima],
 				 devmin=abs(dev(x) - x[minima]), 

@@ -7,7 +7,6 @@
 #' @param reps Number of replicates per strata
 #' @param replace Sampling with replacement (TRUE|FALSE)
 #'
-#' @export
 #' @return sp SpatialDataFrame object (same as input feature) containing random samples
 #'
 #' @note
@@ -57,6 +56,8 @@
 #' # Plot random samples colored by replacement
 #' ssample@@data$REP <- factor(ssample@@data$REP)
 #'   spplot(ssample, 'REP', col.regions=c('red','blue'))
+#'
+#' @export
 stratified.random <- function(x, strata, n = 10, reps = 1, replace = TRUE) {
     if (!attributes(x@class) == "sp" & !attributes(x@data)$class == "data.frame") 
         stop(deparse(substitute(x)), " MUST BE A sp spatialDataFrame OBJECT")

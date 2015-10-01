@@ -4,7 +4,6 @@
 #' @param x Object of class SpatialPointsDataFrame OR SpatialPolygonsDataFrame 
 #' @param margin Margin (1,2) of data.frame 1 for rows or 2 for columns
 #'
-#' @export
 #' @note Depends: sp
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
@@ -30,6 +29,8 @@
 #'    meuse2 <- sp.na.omit(meuse, margin=2) 
 #'      head(meuse@@data)
 #'        head(meuse2@@data)
+#'
+#' @export
 sp.na.omit <- function(x, margin = 1) {
     if (!inherits(x, "SpatialPointsDataFrame") & !inherits(x, "SpatialPolygonsDataFrame")) 
         stop("MUST BE sp SpatialPointsDataFrame OR SpatialPolygonsDataFrame CLASS OBJECT")

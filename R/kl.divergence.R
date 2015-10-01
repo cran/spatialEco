@@ -8,7 +8,6 @@
 #'
 #' @return pairwise Kullback-Leibler divergence index (matrix)   
 #'
-#' @export
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'
 #' @references Kullback S., and R. A. Leibler (1951) On information and sufficiency. The Annals of Mathematical Statistics 22(1):79-86
@@ -21,7 +20,8 @@
 #'    
 #' # extract value for last column
 #'   kl.divergence(y[,1:2])[3:3]
-#'  
+#'
+#' @export  
 kl.divergence <- function(object, eps = 10^-4, overlap = TRUE) {
     if (!is.numeric(object)) 
         stop("object must be a numeric matrix\n")

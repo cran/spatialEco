@@ -3,7 +3,7 @@
 #' 
 #' @param x A vector or matrix object 
 #' @param y If x is a vector, then a vector object 
-#' @export
+#'
 #' @return If x is a matrix, a list object with: similarity and angular.similarity matrices 
 #' @return If x and y are vectors, a vector of similarity and angular.similarity   
 #'
@@ -30,7 +30,8 @@
 #' y <- matrix(round(runif(500),3),nrow=100,ncol=5)
 #' x=runif(100) 
 #' csi(as.vector(scale(x)),scale(y))
-#'   
+#'
+#' @export   
 csi <- function (x, y = NULL) {
     if (is.matrix(x) && is.null(y)) {
       s = array(0, c(ncol(x), ncol(x)))
@@ -49,7 +50,7 @@ csi <- function (x, y = NULL) {
       cs <- crossprod(x, y) / sqrt(crossprod(x) * crossprod(y))
 	  acs <- 1 - (cos(cs)^ -1 / pi)
 	  s <- c(cs,acs)
-	  names(s) <-c("similarity", "angular.similarity")
+	  names(s) <- c("similarity", "angular.similarity")
 	  return(s)
     }
     else if (is.vector(x) && is.matrix(y)) {
