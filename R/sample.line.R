@@ -24,9 +24,9 @@
 #'                           Lines(list(Line(cbind(c(1,2,3),c(1,1.5,1)))), ID="2")))
 #'  sp.lines <- SpatialLinesDataFrame( sp.lines, data.frame(ID=1:2, row.names=c(1,2)) )
 #' 
-#' par(mfrow=c(2,2)) 						 						 
+#' par(mfrow=c(2,2))
 #'  # Create systematic sample at 20 km spacing 
-#'  reg.sample <- sample.line(sp.lines, d = 20, type = "regular", longlat = TRUE)  
+#'  reg.sample <- sample.line(sp.lines, d = 20, type = "regular", longlat = TRUE)
 #'    plot(sp.lines)
 #'      plot(reg.sample, pch = 20, add = TRUE)
 #'	  box()
@@ -56,8 +56,10 @@
 #' @export
 sample.line <- function(x, d = 100, p = NULL, n = NULL, type = "regular", 
                         longlat = FALSE, min.samp = 1, ...) {
-  if (!inherits(x, "SpatialLinesDataFrame")) stop("x is not a SpatialLinesDataFrame object")
-  if( (!is.null(p) == TRUE) && (!is.null(n) == TRUE) ) stop( "Cannot have both a fixed and proportional sample") 
+  if (!inherits(x, "SpatialLinesDataFrame")) 
+    stop("x is not a SpatialLinesDataFrame object")
+  if( (!is.null(p) == TRUE) && (!is.null(n) == TRUE) ) 
+    stop( "Cannot have both a fixed and proportional sample") 
     lids <- rownames(x@data)   
       samp.size <- function(l, p.s = p, n.s = n, d.s = d, longlat.s = longlat,  
 	                        min.samp.s = min.samp) {
@@ -76,7 +78,8 @@ sample.line <- function(x, d = 100, p = NULL, n = NULL, type = "regular",
     ns <- samp.size( lsub )
     # print(paste("sample size: ", ns, sep=""))	
 	lsamp <- sp::spsample(lsub, n = ns, type = type, ...)
-    results <- sp::SpatialPointsDataFrame(lsamp, data=data.frame(LID=rep(as.numeric(lids[1]), ns))) 
+    results <- sp::SpatialPointsDataFrame(lsamp, 
+	  data=data.frame(LID=rep(as.numeric(lids[1]), ns))) 
       if( length(lids) > 1) { 
 	    for (i in 2:length(x) ) 
           {    
@@ -84,7 +87,8 @@ sample.line <- function(x, d = 100, p = NULL, n = NULL, type = "regular",
            ns <- samp.size( lsub )
              # print(paste("sample size: ", ns, sep="")) 		   
 	       lsamp <- sp::spsample(lsub, n = ns, type = type, ...)	 
-           lsamp <- sp::SpatialPointsDataFrame(lsamp, data=data.frame(LID=rep(as.numeric(lids[i]), ns)))
+           lsamp <- sp::SpatialPointsDataFrame(lsamp, 
+		      data=data.frame(LID=rep(as.numeric(lids[i]), ns)))
            results <- rbind(results, lsamp)     
          }
 	  }

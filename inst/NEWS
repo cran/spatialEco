@@ -16,4 +16,17 @@ spatialEco_0.1-2
 * Added function "tpi" for calculating the topographic position index 
 * Added function "concordance" that performs a concordance/disconcordance (C-statistic) test on binomial models.
 * Added argument in "o.ring" for inhomogeneous (TRUE/FALSE) to account for different point processes
-    
+
+spatialEco_0.1-3
+=================
+* Added function "gaussian.kernel" Creates a Gaussian Kernel of specified size and sigma   
+* Added function "tri" Implementation of the Riley et al (1999) Terrain Ruggedness Index
+* Added function "sample.poly" for creating samples for each polygon in a SpatialPolygons class object
+* Added function "similarity" impementing row imputation to identify "k" ecological similar observations 
+* Added function "dispersion" for calculating the dispersion ("rarity") of targets associated with planning units 
+* Added function "shannons" for calculating the Shannon's diversity index 
+* Added function "insert.values" for inserting new values into a vector at specified positions
+* Bug fix in "land.metrics" that addressed error when more than one class was present
+* Bug fix in "land.metrics" that addressed trace error
+* Enhancment to "land.metrics" function now accepts multiple classes
+     

@@ -31,16 +31,16 @@
 #' \dontrun{
 # Download monthly precipitation data Jan 1st 2000 to Dec 30th 2001 (n=24)
 #'    my.dates <- c('2000/1/1', '2001/12/30')
-#'      download.prism('ppt', date.range=my.dates, time.step='monthly', by.year=TRUE)
+#'    download.prism('ppt', date.range=my.dates, time.step='monthly', by.year=TRUE)
 #' 
-#' # Download monthly precipitation data Jan 1st 2000 to Feb 10th 2000 (n=41) 
+#' # Download monthly precipitation data Jan 1st 2000 to Feb 10th 2000 (n=41)
 #'    my.dates <- c('2000/1/1', '2000/2/10')
-#'    download.prism('ppt', date.range=my.dates, time.step='daily', by.year=TRUE)                                 
+#'    download.prism('ppt', date.range=my.dates, time.step='daily', by.year=TRUE)
 #'}
 #'
 #' @export
-download.prism <- function(data.type, date.range, time.step = "monthly", download.folder = getwd(), by.year = FALSE, 
-    unzip.file = TRUE, ftp.site = "ftp://prism.oregonstate.edu") {
+download.prism <- function(data.type, date.range, time.step = "monthly", download.folder = getwd(), 
+                    by.year = FALSE, unzip.file = TRUE, ftp.site = "ftp://prism.oregonstate.edu") {
     if (!(data.type == "ppt" | data.type == "tmin" | data.type == "tmax" | data.type == "tmean")) 
         stop("Not a valid dataset")
     avl.years <- seq(1895, 2014, by = 1)
@@ -52,9 +52,11 @@ download.prism <- function(data.type, date.range, time.step = "monthly", downloa
         stop("End year is not avaliable")
     getContent <- function(dirs) {
         urls <- paste(dirs, "/", sep = "")
-        fls <- strsplit(RCurl::getURL(urls, dirlistonly = TRUE, userpwd = "anonymous:anonymous"), "\r*\n")
+        fls <- strsplit(RCurl::getURL(urls, dirlistonly = TRUE, 
+		               userpwd = "anonymous:anonymous"), "\r*\n")
         ok <- sapply(fls, length) > 0
-        unlist(mapply(paste, urls[ok], fls[ok], sep = "", SIMPLIFY = FALSE), use.names = FALSE)
+        unlist(mapply(paste, urls[ok], fls[ok], sep = "", SIMPLIFY = FALSE), 
+		       use.names = FALSE)
     }
     ftp.site <- paste(ftp.site, time.step, data.type, sep = "/")
     setwd(download.folder)
@@ -75,7 +77,8 @@ download.prism <- function(data.type, date.range, time.step = "monthly", downloa
     date.format <- dates
     dates <- as.character(dates)
     for (i in 1:length(dates)) {
-        dates[i] <- paste(unlist(strsplit(as.character(dates[i]), "-")), sep = "", collapse = "")
+        dates[i] <- paste(unlist(strsplit(as.character(dates[i]), "-")), 
+		                  sep = "", collapse = "")
     }
     if (time.step == "monthly") 
         for (i in 1:length(dates)) {
@@ -104,7 +107,8 @@ download.prism <- function(data.type, date.range, time.step = "monthly", downloa
         }
         for (f in 1:length(dl.list[[i]])) {
             file.name <- dl.list[[i]][f]
-            try(utils::download.file(file.name, destfile = paste(getwd(), unlist(strsplit(file.name, "/"))[7], sep = "/")))
+            try(utils::download.file(file.name, destfile = paste(getwd(), 
+			    unlist(strsplit(file.name, "/"))[7], sep = "/")))
             if (unzip.file == TRUE) 
                 utils::unzip(unlist(strsplit(file.name, "/"))[7])
         }
