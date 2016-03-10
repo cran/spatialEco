@@ -24,7 +24,7 @@
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'  
 #' @references Riley, S.J., S.D. DeGloria and R. Elliot (1999) A terrain ruggedness index that quantifies topographic heterogeneity, Intermountain Journal of Sciences 5(1-4):23-27.
-#
+#'
 #' @examples 
 #'  library(raster)
 #'  r <- raster(nrows=180, ncols=360, xmn=571823.6, xmx=616763.6, ymn=4423540, 

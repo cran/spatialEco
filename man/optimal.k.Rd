@@ -21,11 +21,9 @@ optimal.k(x, nk = 10, plot = TRUE, cluster = TRUE, clara = FALSE, ...)
 }
 \description{
 Find optimal k of k-Medoid partitions using silhouette widths
-
 }
 \note{
 Depends: cluster
-
 }
 \examples{
 require(cluster)
@@ -46,11 +44,8 @@ require(cluster)
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
-
 }
 \references{
-
-   Theodoridis, S. & K. Koutroumbas(2006) Pattern Recognition 3rd ed.   
-
+Theodoridis, S. & K. Koutroumbas(2006) Pattern Recognition 3rd ed.
 }
 

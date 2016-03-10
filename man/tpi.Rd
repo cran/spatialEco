@@ -16,12 +16,10 @@ tpi(x, scale = 3, win = "rectangle", normalize = FALSE)
 \item{normalize}{Apply deviation correction that normalizes to local surface roughness}
 }
 \value{
-raster class object of tpi 
-
+raster class object of tpi
 }
 \description{
 Calculates topographic position using mean deviations
-
 }
 \examples{
  library(raster)
@@ -40,11 +38,8 @@ Calculates topographic position using mean deviations
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 \references{
-
 De Reu, J., J. Bourgeois, M. Bats, A. Zwertvaegher, V. Gelorini, et al., (2014) Application of the topographic position index to heterogeneous landscapes. Geomorphology, 186:39-49.
-
 }
 

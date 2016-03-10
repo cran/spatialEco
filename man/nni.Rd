@@ -13,14 +13,11 @@ nni(x, win = "hull")
 }
 \value{
 NNI value
-
 }
 \description{
-Calculates the NNI as a measure of clustering or dispersal 
-
+Calculates the NNI as a measure of clustering or dispersal
 }
 \note{
-
 The nearest neighbour index is expressed as the ratio of the observed distance divided by the expected distance. The expected distance is the average distance between neighbours in a hypothetical random distribution. If the index is less than 1, the pattern exhibits clustering; if the index is greater than 1, the trend is toward dispersion or competition.
 The Nearest Neighbour Index is calculated as:
   Nearest Neighbour Distance (observed) D(nn) = sum(min(Dij)/N) 
@@ -28,9 +25,7 @@ The Nearest Neighbour Index is calculated as:
   Nearest Neighbour Index NNI = D(nn)/D(e)
       Where; D=neighbour distance, A=Area
 
-
 Depends: sp, spatstat
-
 }
 \examples{
 require(sp)
@@ -41,12 +36,10 @@ data(meuse)
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 \references{
 Clark, P.J., and F.C. Evans (1954) Distance to nearest neighbour as a measure of spatial relationships in populations. Ecology 35:445-453
 
 Cressie, N (1991) Statistics for spatial data. Wiley & Sons, New York.
-
 }
 

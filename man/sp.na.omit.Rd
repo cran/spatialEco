@@ -4,46 +4,45 @@
 \alias{sp.na.omit}
 \title{sp na.omit}
 \usage{
-sp.na.omit(x, margin = 1)
+sp.na.omit(x, col.name = NULL, margin = 1)
 }
 \arguments{
 \item{x}{Object of class SpatialPointsDataFrame OR SpatialPolygonsDataFrame}
+
+\item{col.name}{The name of a specific column to remove NA's from}
 
 \item{margin}{Margin (1,2) of data.frame 1 for rows or 2 for columns}
 }
 \description{
 Removes row or column NA's in sp object
-
 }
 \note{
-Depends: sp
-
+This function will remove all NA's in the object or NA's associated with a specific column.
 }
 \examples{
-require(sp)
-  data(meuse)
-    coordinates(meuse) <- ~x+y
+ library(sp)
+ data(meuse)
+ coordinates(meuse) <- ~x+y
    
-   # Display rows with NA  
-   meuse@data[!complete.cases(meuse@data),] 
+ # Display rows with NA  
+ meuse@data[!complete.cases(meuse@data),] 
 
-   # Remove NA's in rows (and associated points)
-   meuse2 <- sp.na.omit(meuse) 
-     dim(meuse)
-       dim(meuse2)
+ # Remove all NA's in rows (and associated points)
+ meuse2 <- sp.na.omit(meuse) 
+   dim(meuse)
+   dim(meuse2)
    
-   # Plot deleted points in red
-   plot(meuse, col='red', pch=20)
-     plot(meuse2, col='black', pch=20, add=TRUE)
+ # Plot deleted points in red
+ plot(meuse, col='red', pch=20)
+ plot(meuse2, col='black', pch=20, add=TRUE)
 
-   # Remove columns with NA's 
-   meuse2 <- sp.na.omit(meuse, margin=2) 
-     head(meuse@data)
-       head(meuse2@data)
+ # Remove NA's associated with specific column 
+ meuse2 <- sp.na.omit(meuse, col.name = "om") 
+   head(meuse@data)
+   head(meuse2@data)
 
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
-                                                                      
 }
 

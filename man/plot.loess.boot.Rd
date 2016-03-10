@@ -12,8 +12,7 @@
 \item{...}{Additional arguments passed to plot}
 }
 \description{
-Plot function for loess.boot object 
-
+Plot function for loess.boot object
 }
 \examples{
  n=1000
@@ -25,20 +24,14 @@ Plot function for loess.boot object
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 \references{
-
 Cleveland, WS, (1979) Robust Locally Weighted Regression and Smoothing Plots Journal of the American Statistical Association 74:829-836
-
 
 Efron, B., and R. Tibshirani (1993) An Introduction to the Bootstrap Chapman and Hall, New York
 
-
 Hardle, W., (1989) Applied Nonparametric Regression Cambridge University Press, NY.
 
-
 Tibshirani, R. (1988) Variance stabilization and the bootstrap. Biometrika 75(3):433-44.
-
 }
 

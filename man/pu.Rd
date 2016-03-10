@@ -57,12 +57,9 @@
 \url{http://maps.tnc.org/gis_data.html}
 }
 \description{
-Subset of biodiversity planning units for Haiti ecoregional spatial reserve plan 
-
+Subset of biodiversity planning units for Haiti ecoregional spatial reserve plan
 }
 \references{
-
 Evans, J.S., S.R. Schill, G.T. Raber (2015) A Systematic Framework for Spatial Conservation Planning and Ecological Priority Design in St. Lucia, Eastern Caribbean. Chapter 26 in Central American Biodiversity : Conservation, Ecology and a Sustainable Future. F. Huettman (eds). Springer, NY.
-
 }
 

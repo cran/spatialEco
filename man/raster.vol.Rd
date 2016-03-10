@@ -19,15 +19,12 @@ raster.vol(x, p = 0.95, sample = FALSE, spct = 0.05)
 if sample (FALSE) binary raster object with 1 representing designated percent volume
 
 if sample (TRUE) n sp SpatialPointsDataFrame object with points that represent the percent volume of the sub-sample
-
 }
 \description{
 Calculates a percent volume on a raster or based on a systematic sample
-
 }
 \note{
-Since this model needs to operate on all of the raster values, it is not memory safe 
-
+Since this model needs to operate on all of the raster values, it is not memory safe
 }
 \examples{
 require(raster)
@@ -57,6 +54,5 @@ require(raster)
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 

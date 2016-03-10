@@ -22,27 +22,21 @@ breeding.density(x, pop, p = 0.75, bw = 1000, b = 6400, self = TRUE)
 \value{
 A list object with:
 
-  pop.pts     sp point object with points identified within the specified p
+pop.pts     sp point object with points identified within the specified p
 
-  pop.area    sp polygon object of buffered points specified by parameter b
+pop.area    sp polygon object of buffered points specified by parameter b
 
-  bandwidth   Specified distance bandwidth used in identifying neighbour counts 
+bandwidth   Specified distance bandwidth used in identifying neighbour counts
 
-  buffer      Specified buffer distance used in buffering points for pop.area  
+buffer      Specified buffer distance used in buffering points for pop.area
 
-  p           Specified population percent
-
+p           Specified population percent
 }
 \description{
 Calculates breeding density areas base on population counts/density and spatial point density.
-
 }
 \note{
-
-The breeding density areas model identifies the Nth-percent population exhibiting the highest spatial density and counts/frequency. It then buffers these points by a specified distance to produce breeding area polygons.  
-
-depends: sp, rgeos 
-
+The breeding density areas model identifies the Nth-percent population exhibiting the highest spatial density and counts/frequency. It then buffers these points by a specified distance to produce breeding area polygons.
 }
 \examples{
 require(sp)
@@ -63,11 +57,8 @@ bb <- rbind(c(-1281299,-761876.5),c(1915337,2566433.5))
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-   
 }
 \references{
-
 Doherty, K.E., J.D. Tack, J.S. Evans, D.E. Naugle (2010) Mapping breeding densities of greater sage-grouse: A tool for range-wide conservation planning. Bureau of Land Management. Report Number L10PG00911
-                                                             
 }
 

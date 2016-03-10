@@ -14,16 +14,13 @@ shannons(x, counts = TRUE, margin = "row")
 \item{margin}{Calculate diversity for rows or columns. c("row", "col")}
 }
 \value{
-data.frame with columns "H" (Shannon's diversity) and "evenness" (Shannon's evenness where H / max( sum(x) ) ) 
-
+data.frame with columns "H" (Shannon's diversity) and "evenness" (Shannon's evenness where H / max( sum(x) ) )
 }
 \description{
 Calculates Shannon's Diversity Index and Shannon's Evenness Index
-
 }
 \note{
-The sdist argument will produce an evenly spaced sample, whereas n produces a fixed sized sample. The p (proportional) argument calculates the percent of the line-length. 
-
+The sdist argument will produce an evenly spaced sample, whereas n produces a fixed sized sample. The p (proportional) argument calculates the percent of the line-length.
 }
 \examples{
 # Using Costa Rican ant diversity data from Roth et al. (1994)
@@ -40,13 +37,10 @@ ant.div <- shannons(ants[,2:ncol(ants)], counts = FALSE, margin = "row")
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 \references{
-
 Shannon, C. E. and W. Weaver (1948) A mathematical theory of communication. The Bell System Technical Journal, 27:379-423.
 Simpson, E. H. (1949) Measurement of diversity. Nature 163:688
 Roth, D. S., I. Perfecto, and B. Rathcke (1994) The effects of management systems on ground-foraging ant diversity in Costa Rica. Ecological Applications 4(3):423-436.
-
 }
 

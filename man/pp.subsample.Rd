@@ -24,14 +24,11 @@ pp.subsample(x, n, window = "hull", sigma = "Scott", wts = NULL,
 }
 \value{
 sp class SpatialPointsDataFrame containing random subsamples
-
 }
 \description{
 Generates random subsample based on density estimate of observations
-
 }
 \note{
-
 The window type creates a convex hull by default or, optionally, uses the maximum extent (envelope). 
 
 Available bandwidth selection methods are:
@@ -43,9 +40,7 @@ Available bandwidth selection methods are:
 
 Note; resulting bandwidth can vary widly by method. the 'diggle' method is intended for selecting bandwidth representing 2nd order spatial variation whereas the 'scott' method will represent 1st order trend. the 'geometry' approach will also represent 1st order trend. for large datasets, caution should be used with the 2nd order 'likelihood' approach, as it is slow and computationaly expensive. finally, the 'stoyan' method will produce very strong 2nd order results. '
 
-
 Depends: sp, spatstat
-
 }
 \examples{
  
@@ -65,30 +60,21 @@ data(bei)
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 \references{
-
 Berman, M. and Diggle, P. (1989) Estimating weighted integrals of the second-order intensity of a spatial point process. Journal of the Royal Statistical Society, series B 51, 81-92. 
-Berman, M. and Diggle, P. (1989) Estimating weighted integrals of the second-order intensity of a spatial point process. Journal of the Royal Statistical Society, series B 51, 81-92. 
-
+Berman, M. and Diggle, P. (1989) Estimating weighted integrals of the second-order intensity of a spatial point process. Journal of the Royal Statistical Society, series B 51, 81-92.
 
 Fithian, W & T. Hastie (2013) Finite-sample equivalence in statistical models for presence-only data. Annals of Applied Statistics 7(4): 1917-1939
 
+Hengl, T., H. Sierdsema, A. Radovic, and A. Dilo (2009) Spatial prediction of species distributions from occurrence-only records: combining point pattern analysis, ENFA and regression-kriging. Ecological Modelling, 220(24):3499-3511
 
-Hengl, T., H. Sierdsema, A. Radovic, and A. Dilo (2009) Spatial prediction of species distributions from occurrence-only records: combining point pattern analysis, ENFA and regression-kriging. Ecological Modelling, 220(24):3499-3511  
+Loader, C. (1999) Local Regression and Likelihood. Springer, New York.
 
+Scott, D.W. (1992) Multivariate Density Estimation. Theory, Practice and Visualization. New York, Wiley.
 
-Loader, C. (1999) Local Regression and Likelihood. Springer, New York. 
-
-
-Scott, D.W. (1992) Multivariate Density Estimation. Theory, Practice and Visualization. New York, Wiley. 
-
-
-Stoyan, D. and Stoyan, H. (1995) Fractals, random shapes and point fields: methods of geometrical statistics. John Wiley and Sons. 
-
+Stoyan, D. and Stoyan, H. (1995) Fractals, random shapes and point fields: methods of geometrical statistics. John Wiley and Sons.
 
 Warton, D.i., and L.C. Shepherd (2010) Poisson Point Process Models Solve the Pseudo-Absence Problem for Presence-only Data in Ecology. The Annals of Applied Statistics, 4(3):1383-1402
-
 }
 

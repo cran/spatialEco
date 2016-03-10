@@ -15,15 +15,12 @@ hexagons(x, res = 100, ...)
 }
 \value{
 SpatialPolygonsDataFrame OBJECT
-
 }
 \description{
 Create hexagon polygons
-                                                                                                                                                                             
 }
 \note{
-depends: sp 
-                                                                 
+depends: sp
 }
 \examples{
 require(sp)

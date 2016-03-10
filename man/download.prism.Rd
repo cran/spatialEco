@@ -25,36 +25,28 @@ download.prism(data.type, date.range, time.step = "monthly",
 }
 \value{
 Compressed or uncompressed PRISM monthly gridded data(bil raster format)
-
 }
 \description{
-Batch download of monthly gridded PRISM climate data 
-
+Batch download of monthly gridded PRISM climate data
 }
 \note{
 Monthly data 1895-1980 is available in a single zip file on the ftp site
-
 
 PRISM URL: \url{http://prism.nacse.org/}
 
 FTP download sites for 400m gridded daily/monthly climate data
 
-    \url{ftp://prism.oregonstate.edu/daily}
+\url{ftp://prism.oregonstate.edu/daily}
 
-    \url{ftp://prism.oregonstate.edu/monthly}
-   
+\url{ftp://prism.oregonstate.edu/monthly}
 
 Naming convention: PRISM_<var>_<stability>_<scale&version>_<date>_bil.zip
 
-    i.e., 'PRISM_ppt_stable_4kmD1_20100208_bil.zip' 
+i.e., 'PRISM_ppt_stable_4kmD1_20100208_bil.zip'
 
-Data description: 
+Data description:
 
-  \url{http://prism.nacse.org/documents/PRISM_datasets_aug2013.pdf}   
-
-
-depends: RCurl
-
+\url{http://prism.nacse.org/documents/PRISM_datasets_aug2013.pdf}
 }
 \examples{
 \dontrun{
@@ -69,6 +61,8 @@ depends: RCurl
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
+}
+\seealso{
+\code{\link{download.daymet}}, \code{\link{download.hansen}}
 }
 

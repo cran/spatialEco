@@ -14,42 +14,40 @@ moments(x, plot = FALSE)
 \value{
 A vector with the following values
 
-    min Minimum           
+min Minimum
 
-    25th  25th percentile     
+25th  25th percentile
 
-    mean  Arithmetic mean 
+mean  Arithmetic mean
 
-    gmean  Geometric mean
+gmean  Geometric mean
 
-    hmean  Harmonic mean
+hmean  Harmonic mean
 
-    median  50th percentile      
+median  50th percentile
 
-    7th5  75th percentile      
+7th5  75th percentile
 
-    max  Maximum          
+max  Maximum
 
-    stdv  Standard deviation         
+stdv  Standard deviation
 
-    var  Variance     
+var  Variance
 
-    cv  Coefficient of variation (percent)         
+cv  Coefficient of variation (percent)
 
-    mad  Median absolute deviation         
+mad  Median absolute deviation
 
-    skew  Skewness    
+skew  Skewness
 
-    kurt  Kurtosis     
+kurt  Kurtosis
 
-    nmodes  Number of modes   
+nmodes  Number of modes
 
-    mode  Mode (dominate)
-
+mode  Mode (dominate)
 }
 \description{
 Calculate statistical moments of a distribution
-
 }
 \examples{
     x <- runif(1000,0,100)
@@ -59,6 +57,5 @@ Calculate statistical moments of a distribution
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
-
 }
 

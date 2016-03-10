@@ -13,24 +13,25 @@
 #' @param p Minimum value for probability distribution (must be >  0)
 #' @param edge Apply Diggle edge correction (TRUE/FALSE)
 #' 
-#' @return A list class object with the following components: 
-#'   @return sample SpatialPointsDataFrame containing random samples
-#'   @return kde sp RasterLayer class of KDE estimates (IF KDE = TRUE)
-#'   @return sigma Selected bandwidth of KDE 
+#' @return A list class object with the following components:
+#' \itemize{ 
+#' \item   sample SpatialPointsDataFrame containing random samples
+#' \item   kde sp RasterLayer class of KDE estimates (IF KDE = TRUE)
+#' \item   sigma Selected bandwidth of KDE 
+#'  }
 #'
-#' @note
-#' The window type creates a convex hull by default or, optionally, uses the maximum extent (envelope). if a mask is provided the kde will represent areas defined by the mask. this defines the area that pseudo absence data will be generated.'
-#' 
+#' @details
+#' The window type creates a convex hull by default or, optionally, uses the maximum extent (envelope). If a mask is provided the kde will represent areas defined by the mask and defines the area that pseudo absence data will be generated.
 #' Available bandwidth selection methods are:
-#'   Scott (Scott 1992), Scott's Rule for Bandwidth Selection (1st order)
-#'   Diggle (Berman & Diggle 1989), Minimise the mean-square error via cross validation (2nd order)  
-#'   likelihood (Loader 1999), Maximum likelihood cross validation (2nd order)
-#'   geometry, Bandwidth is based on simple window geometry (1st order)
-#'   Stoyan (Stoyan & Stoyan 1995), Based on pair-correlation function (strong 2nd order)
+#' \itemize{
+#' \item   Scott (Scott 1992), Scott's Rule for Bandwidth Selection (1st order)
+#' \item   Diggle (Berman & Diggle 1989), Minimize the mean-square error via cross validation (2nd order)  
+#' \item   likelihood (Loader 1999), Maximum likelihood cross validation (2nd order)
+#' \item   geometry, Bandwidth is based on simple window geometry (1st order)
+#' \item   Stoyan (Stoyan & Stoyan 1995), Based on pair-correlation function (strong 2nd order)
+#'  }
 #'
 #' Note; resulting bandwidth can vary widely by method. the 'diggle' method is intended for selecting bandwidth representing 2nd order spatial variation whereas the 'scott' method will represent 1st order trend. the 'geometry' approach will also represent 1st order trend. for large datasets, caution should be used with the 2nd order 'likelihood' approach, as it is slow and computationally expensive. finally, the 'stoyan' method will produce very strong 2nd order results.
-#'
-#' @note Depends: sp, spatstat, raster
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #' 

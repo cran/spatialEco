@@ -29,7 +29,7 @@ plot.loess.boot <- function(x, ...) {
   dots[["x"]] <- x$data$x
   dots[["y"]] <- x$data$y
 	if (is.null(dots[["pch"]]) & "pch" %in% names(dots) == FALSE) dots[["pch"]] <-  20
-	if (is.null(dots[["cex"]]) & "csx" %in% names(dots) == FALSE) dots[["cex"]] <-  0.55
+	if (is.null(dots[["cex"]]) & "cex" %in% names(dots) == FALSE) dots[["cex"]] <-  0.55
 	if (is.null(dots[["xlab"]]) & "xlab" %in% names(dots) == FALSE) dots[["xlab"]] <-  "x"
 	if (is.null(dots[["ylab"]]) & "ylab" %in% names(dots) == FALSE) dots[["ylab"]] <-  "loess fit"
 	if (is.null(dots[["main"]]) & "main" %in% names(dots) == FALSE) dots[["main"]] <-  paste0("Loess bootstrap n = ", x$nreps)   

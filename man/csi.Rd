@@ -12,28 +12,25 @@ csi(x, y = NULL)
 \item{y}{If x is a vector, then a vector object}
 }
 \value{
-If x is a matrix, a list object with: similarity and angular.similarity matrices 
+If x is a matrix, a list object with: similarity and angular.similarity matrices
 
-If x and y are vectors, a vector of similarity and angular.similarity   
-
+If x and y are vectors, a vector of similarity and angular.similarity
 }
 \description{
 Calculates the cosine similarity and angular similarity on two vectors or a matrix
-
 }
 \note{
-The cosine similarity index is a measure of similarity between two vectors of an inner product space. This index is bested suited for high-dimensional positive variable space. One useful application of the index is to measure separability of clusters derived from algorithmic approaches (e.g., k-means). It is a good common practice to centre the data before calculating the index. It should be noted that the cosine similarity index is mathematically, and often numerically, equivalent to the Pearson's correlation coefficient   
+The cosine similarity index is a measure of similarity between two vectors of an inner product space. This index is bested suited for high-dimensional positive variable space. One useful application of the index is to measure separability of clusters derived from algorithmic approaches (e.g., k-means). It is a good common practice to centre the data before calculating the index. It should be noted that the cosine similarity index is mathematically, and often numerically, equivalent to the Pearson's correlation coefficient
 
-cosine similarity index is derived: 
+cosine similarity index is derived:
 
 s(xy) = x * y / ||x|| * ||y||
 
-expected 1.0 (perfect similarity) to -1.0 (perfect dissimilarity) 
+expected 1.0 (perfect similarity) to -1.0 (perfect dissimilarity)
 
 A normalised angle between the vectors can be used as a bounded similarity function within [0,1]
 
 angular similarity  = 1 - (cos(s)^-1/pi)
-
 }
 \examples{
 # Compare two vectors (centred using scale)
@@ -53,6 +50,5 @@ csi(as.vector(scale(x)),scale(y))
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 

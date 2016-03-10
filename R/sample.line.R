@@ -76,7 +76,6 @@ sample.line <- function(x, d = 100, p = NULL, n = NULL, type = "regular",
       }  
     lsub <- x[rownames(x@data) == lids[1] ,]
     ns <- samp.size( lsub )
-    # print(paste("sample size: ", ns, sep=""))	
 	lsamp <- sp::spsample(lsub, n = ns, type = type, ...)
     results <- sp::SpatialPointsDataFrame(lsamp, 
 	  data=data.frame(LID=rep(as.numeric(lids[1]), ns))) 
@@ -84,8 +83,7 @@ sample.line <- function(x, d = 100, p = NULL, n = NULL, type = "regular",
 	    for (i in 2:length(x) ) 
           {    
 		   lsub <- x[rownames(x@data) == lids[i] ,]
-           ns <- samp.size( lsub )
-             # print(paste("sample size: ", ns, sep="")) 		   
+           ns <- samp.size( lsub ) 		   
 	       lsamp <- sp::spsample(lsub, n = ns, type = type, ...)	 
            lsamp <- sp::SpatialPointsDataFrame(lsamp, 
 		      data=data.frame(LID=rep(as.numeric(lids[i]), ns)))

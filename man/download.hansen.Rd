@@ -14,15 +14,13 @@ download.hansen(tile, data.type = c("loss"), download.folder = getwd())
 \item{download.folder}{Destination folder}
 }
 \value{
-Downloaded Hansen forest loss tif files 
-     
+Downloaded Hansen forest loss tif files
 }
 \description{
 Download of Hansen Global Forest Change 2000-2013
-
 }
 \note{
-Project website with 10x10 degree granule index: http://earthenginepartners.appspot.com/science-2013-global-forest/download_v1.1.html
+Project website with 10x10 degree granule index: \url{ http://earthenginepartners.appspot.com/science-2013-global-forest/download_v1.1.html }
 
 Avaliable products: treecover2000, loss, gain, lossyear, datamask, first, or last
 
@@ -34,12 +32,11 @@ Avaliable products: treecover2000, loss, gain, lossyear, datamask, first, or las
 
 'lossyear' (Year of gross forest cover loss event) - A disaggregation of total forest loss to annual time scales. Encoded as either 0 (no loss) or else a value in the range 1-13, representing loss detected primarily in the year 2001-2013.
 
-'datamask' (Data mask) - Three values representing areas of no data (0), mapped land surface (1), and permanent water bodies (2). 
+'datamask' (Data mask) - Three values representing areas of no data (0), mapped land surface (1), and permanent water bodies (2).
 
-'first' (Circa year 2000 Landsat 7 cloud-free image composite) - Reference multispectral imagery from the first available year, typically 2000. If no cloud-free observations were available for year 2000, imagery was taken from the closest year with cloud-free data, within the range 1999-2012. 
+'first' (Circa year 2000 Landsat 7 cloud-free image composite) - Reference multispectral imagery from the first available year, typically 2000. If no cloud-free observations were available for year 2000, imagery was taken from the closest year with cloud-free data, within the range 1999-2012.
 
 'last' (Circa year 2013 Landsat cloud-free image composite) - Reference multispectral imagery from the last available year, typically 2013. If no cloud-free observations were available for year 2013, imagery was taken from the closest year with cloud-free data, within the range 2010-2012.
-
 }
 \examples{
 \dontrun{
@@ -57,10 +54,8 @@ tiles <- list(c('00N', '140E'), c('00N', '130E'))
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-                                                                          
 }
 \references{
-Hansen, M. C., P. V. Potapov, R. Moore, M. Hancher, S. A. Turubanova, A. Tyukavina, D. Thau, S. V. Stehman, S. J. Goetz, T. R. Loveland, A. Kommareddy, A. Egorov, L. Chini, C. O. Justice, and J. R. G. Townshend. (2013) High-Resolution Global Maps of 21st-Century Forest Cover Change. Science 342:850-53. 
-
+Hansen, M. C., P. V. Potapov, R. Moore, M. Hancher, S. A. Turubanova, A. Tyukavina, D. Thau, S. V. Stehman, S. J. Goetz, T. R. Loveland, A. Kommareddy, A. Egorov, L. Chini, C. O. Justice, and J. R. G. Townshend. (2013) High-Resolution Global Maps of 21st-Century Forest Cover Change. Science 342:850-53.
 }
 

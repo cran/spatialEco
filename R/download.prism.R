@@ -23,9 +23,10 @@
 #' @note Data description: 
 #' @note   \url{http://prism.nacse.org/documents/PRISM_datasets_aug2013.pdf}   
 #'
-#' @note depends: RCurl
-#'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#'
+#' @seealso
+#' \code{\link{download.daymet}}, \code{\link{download.hansen}}
 #'
 #' @examples 
 #' \dontrun{

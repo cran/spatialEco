@@ -18,43 +18,39 @@ loess.boot(x, y, nreps = 100, confidence = 0.95, ...)
 \item{...}{Additional arguments passed to loess function}
 }
 \value{
- nreps             Number of bootstrap replicates 
+nreps             Number of bootstrap replicates
 
- confidence        Confidence interval (region)
+confidence        Confidence interval (region)
 
- span              alpha (span) parameter used loess fit
+span              alpha (span) parameter used loess fit
 
- degree            polynomial degree used in loess fit
+degree            polynomial degree used in loess fit
 
- normalize         Normalized data (TRUE/FALSE)
+normalize         Normalized data (TRUE/FALSE)
 
- family            Family of statistic used in fit
+family            Family of statistic used in fit
 
- parametric        Parametric approximation (TRUE/FALSE) 
+parametric        Parametric approximation (TRUE/FALSE)
 
- surface           Surface fit, see loess.control
+surface           Surface fit, see loess.control
 
- data              data.frame of x,y used in model
+data              data.frame of x,y used in model
 
- fit               data.frame including:
+fit               data.frame including:
                              x         Equally-spaced x index (see NOTES)         
                              y.fit     loess fit
                              up.lim    Upper confidence interval 
                              low.lim   Lower confidence interval 
                              stddev    Standard deviation of loess fit at each x value
-
 }
 \description{
-Bootstrap of a Local Polynomial Regression (loess) 
-
+Bootstrap of a Local Polynomial Regression (loess)
 }
 \note{
-
 The function fits a loess curve and then calculates a symmetric nonparametric bootstrap with a confidence region.  
 Fitted curves are evaluated at a fixed number of equally-spaced x values, regardless of the number of x values in the data. Some replicates do not include 
 the values at the lower and upper end of the range of x values.  If the number of such replicates is too large, it becomes impossible to construct a confidence 
 region that includes a fraction "confidence" of the bootstrap replicates. In such cases, the left and/or right portion of the confidence region is truncated.
-
 }
 \examples{
  n=1000
@@ -66,20 +62,14 @@ region that includes a fraction "confidence" of the bootstrap replicates. In suc
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 \references{
-
 Cleveland, WS, (1979) Robust Locally Weighted Regression and Smoothing Plots Journal of the American Statistical Association 74:829-836
-
 
 Efron, B., and R. Tibshirani (1993) An Introduction to the Bootstrap Chapman and Hall, New York
 
-
 Hardle, W., (1989) Applied Nonparametric Regression Cambridge University Press, NY.
 
-
 Tibshirani, R. (1988) Variance stabilization and the bootstrap. Biometrika 75(3):433-44.
-
 }
 

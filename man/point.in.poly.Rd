@@ -13,15 +13,12 @@ point.in.poly(pts, polys)
 }
 \value{
 A SpatialPointsDataFrame with intersected polygon attributes
-
 }
 \description{
 Intersects point and polygon feature classes and adds polygon attributes to points
-
 }
 \note{
 Depends: sp
-
 }
 \examples{
 require(sp)
@@ -52,6 +49,5 @@ tapply(pts.poly@data$lead, pts.poly@data$PIDS, FUN=length)
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 

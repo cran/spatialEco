@@ -21,25 +21,22 @@ separability(x, y, plot = FALSE, cols = c("red", "blue"),
 \item{...}{additional arguments passes to plot}
 }
 \value{
-A data.frame with the following separability metrics: 
+A data.frame with the following separability metrics:
 
-  B  Bhattacharryya distance statistic 
+B  Bhattacharryya distance statistic
 
- JM  Jeffries-Matusita distance statistic
+JM  Jeffries-Matusita distance statistic
 
-  M  M-Statistic
+M  M-Statistic
 
-  D  Divergence index
+D  Divergence index
 
-  TD  Transformed Divergence index
-
+TD  Transformed Divergence index
 }
 \description{
 Calculates variety of univariate or multivariate separability metrics for two class samples
-          
 }
 \note{
-
 M-Statistic (Kaufman & Remer 1994) - This is a measure of the difference of the distributional peaks. A large M-statistic indicates good separation between the two classes as within-class variance is 
 minimized and between-class variance maximized (M <1 poor, M >1 good).
    
@@ -50,7 +47,6 @@ probability of how good a resultant classification will be. The J-M distance is 
    
 Divergence and transformed Divergence (Du et al., 2004) - Maximum likelihood approach. Transformed divergence gives an exponentially 
 decreasing weight to increasing distances between the classes.
-
 }
 \examples{
    norm1 <- dnorm(seq(-20,20,length=5000),mean=0,sd=1) 
@@ -64,26 +60,18 @@ decreasing weight to increasing distances between the classes.
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
-
 }
 \references{
+Anderson, M. J., & Clements, A. (2000) Resolving environmental disputes: a statistical method for choosing among competing cluster models. Ecological Applications 10(5):1341-1355
 
-   Anderson, M. J., & Clements, A. (2000) Resolving environmental disputes: a statistical method for choosing among competing cluster models. Ecological Applications 10(5):1341-1355
+Bhattacharyya, A. (1943) On a measure of divergence between two statistical populations defined by their probability distributions'. Bulletin of the Calcutta Mathematical Society 35:99-109
 
+Bruzzone, L., F. Roli, S.B. Serpico (1995) An extenstion to multiclass cases of the Jefferys-Matusita distance. IEEE Transactions on Pattern Analysis and Machine Intelligence 33:1318-1321
 
-   Bhattacharyya, A. (1943) On a measure of divergence between two statistical populations defined by their probability distributions'. Bulletin of the Calcutta Mathematical Society 35:99-109
+Du, H., C.I. Chang, H. Ren, F.M. D'Amico, J. O. Jensen, J., (2004) New Hyperspectral Discrimination Measure for Spectral Characterization. Optical Engineering 43(8):1777-1786.
 
+Kailath, T., (1967) The Divergence and Bhattacharyya measures in signal selection. IEEE Transactions on Communication Theory 15:52-60
 
-   Bruzzone, L., F. Roli, S.B. Serpico (1995) An extenstion to multiclass cases of the Jefferys-Matusita distance. IEEE Transactions on Pattern Analysis and Machine Intelligence 33:1318-1321
-
-
-   Du, H., C.I. Chang, H. Ren, F.M. D'Amico, J. O. Jensen, J., (2004) New Hyperspectral Discrimination Measure for Spectral Characterization. Optical Engineering 43(8):1777-1786.
-
-
-   Kailath, T., (1967) The Divergence and Bhattacharyya measures in signal selection. IEEE Transactions on Communication Theory 15:52-60  
-
-
-   Kaufman Y., and L. Remer (1994) Detection of forests using mid-IR reflectance: An application for aerosol studies. IEEE T. Geosci.Remote. 32(3):672-683.
-
+Kaufman Y., and L. Remer (1994) Detection of forests using mid-IR reflectance: An application for aerosol studies. IEEE T. Geosci.Remote. 32(3):672-683.
 }
 

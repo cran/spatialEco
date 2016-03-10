@@ -24,14 +24,12 @@ mean         If stat = "mean", mean value of distribution
 
 mean         Value of the mean or median
 
-conf.level   Confidence level used for confidence interval  
+conf.level   Confidence level used for confidence interval
 
 std.error    If std.error = TRUE standard error of distribution
-  
 }
 \description{
 Calculates confidence interval for the mean or median of a distribution with unknown population variance
-
 }
 \examples{
  x <- runif(100)
@@ -51,6 +49,5 @@ Calculates confidence interval for the mean or median of a distribution with unk
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 

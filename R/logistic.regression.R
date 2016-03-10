@@ -26,7 +26,7 @@
 #' @note Spatially lagged y defined as:  
 #' @note   W(y)ij=sumj_(Wij yj)/ sumj_(Wij)
 #' @note     where; Wij=1/Euclidean[i,j]
-#'
+#' @note  If the object passed to the function is an sp class there is no need to call the data slot directly via "object@data", just pass the object name.
 #' @note depends: rms, spdep
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
@@ -49,13 +49,19 @@
 #'     meuse@@data <- data.frame(DepVar=rbinom(dim(meuse)[1], 1, 0.5), meuse@@data)
 #'
 #' #### Logistic model
-#' lmodel <- logistic.regression(meuse@@data, y='DepVar', x=c('dist','cadmium','copper')) 
+#' lmodel <- logistic.regression(meuse, y='DepVar', x=c('dist','cadmium','copper')) 
+#'   lmodel$model
+#'     lmodel$diagTable
+#'       lmodel$coefTable
+#'
+#' #### Logistic model with factorial varialbe
+#' lmodel <- logistic.regression(meuse, y='DepVar', x=c('dist','cadmium','copper', 'soil')) 
 #'   lmodel$model
 #'     lmodel$diagTable
 #'       lmodel$coefTable
 #' 
 #' ### Auto-logistic model using 'autocov_dist' in 'spdep' package
-#' lmodel <- logistic.regression(meuse@@data, y='DepVar', x=c('dist','cadmium','copper'),
+#' lmodel <- logistic.regression(meuse, y='DepVar', x=c('dist','cadmium','copper'),
 #'                               autologistic=TRUE, coords=coordinates(meuse), bw=5000) 
 #'   lmodel$model
 #'     lmodel$diagTable
@@ -78,9 +84,10 @@
 #' spplot(meuse, c('Probs'))                                # plot estimated probabilities at points
 #'
 #' @export
-logistic.regression <- function(ldata, y, x, penalty = TRUE, autologistic = FALSE, coords = NULL, bw = NULL, type = "inverse", 
-                                style = "W", longlat = FALSE, ...) {
-    if (is.na(match(y, names(ldata)))) 
+logistic.regression <- function(ldata, y, x, penalty = TRUE, autologistic = FALSE, coords = NULL, bw = NULL, 
+                                type = "inverse", style = "W", longlat = FALSE, ...) {
+	if(  substr(class(ldata),1,7)  == "Spatial"  ) { ldata <- ldata@data }
+      if (is.na(match(y, names(ldata)))) 
         stop("Dependent variable not present in data")
     xNames <- intersect(x, names(ldata))
     if (length(xNames) < length(x)) 
@@ -95,10 +102,11 @@ logistic.regression <- function(ldata, y, x, penalty = TRUE, autologistic = FALS
 		  k.nn <- spdep::knn2nb(spdep::knearneigh(coords))
           bw <- max(unlist(spdep::nbdists(k.nn, coords)))	
 		}	
-        ldata$AutoCov <- spdep::autocov_dist(ldata[,y], xy = coords, nbs = bw, style = style, type = type)
+        ldata$AutoCov <- spdep::autocov_dist(ldata[,y], xy = coords, nbs = bw, 
+		                                     style = style, type = type)
         x <- append(x, "AutoCov")
     }
-    form <- stats::as.formula(paste(y, paste(x, collapse = "+"), sep = "~"))
+	form <- stats::as.formula(paste(y, paste(x, collapse = "+"), sep = "~"))
     fit <- rms::lrm(form, data = ldata, x = TRUE, y = TRUE, ...)
     bf <- rms::pentrace(fit, seq(0.2, 1, by = 0.05))
     if (penalty) {
@@ -121,13 +129,14 @@ logistic.regression <- function(ldata, y, x, penalty = TRUE, autologistic = FALS
     resSTD <- (res - mean(res))/sqrt(stats::var(res))
     allIndVars <- c("Intercept")
     allIndVars <- append(allIndVars, x)
-    k <- length(allIndVars)
-    d <- matrix(0, k, 4)
-    d[, 1] <- fit$coefficients
+    k <- length(fit$coefficients)
+	d <- matrix(0, k, 4)
+	d[, 1] <- fit$coefficients
     d[, 2] <- sqrt(diag(fit$var))
     d[, 3] <- d[, 1]/d[, 2]
     d[, 4] <- stats::pnorm(abs(d[, 3]), lower.tail = FALSE) * 2
     coefList <- list(Variable = allIndVars, Coef = d[, 1], StdError = d[, 2], Wald = d[, 3], Prob = d[, 4])
+	coefList$Variable <- names(fit$coefficients)
     coefFrame <- data.frame(coefList)
     diagFrame <- data.frame(Names = c(names(fit$stats), "PEN", "AIC"), Value = c(as.vector(fit$stats), pen, aic))
     if (autologistic == TRUE) {

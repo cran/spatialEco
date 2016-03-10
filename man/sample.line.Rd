@@ -25,20 +25,17 @@ sample.line(x, d = 100, p = NULL, n = NULL, type = "regular",
 \item{...}{Additional argument passed to spsample}
 }
 \value{
-sp SpatialPointsDataFrame object. 
-
+sp SpatialPointsDataFrame object.
 }
 \description{
 Creates a systematic or random point sample of an sp SpatialLinesDataFrame object based on distance spacing, fixed size or proportional size
-
 }
 \note{
-The sdist argument will produce an evenly spaced sample, whereas n produces a fixed sized sample. The p (proportional) argument calculates the percent of the line-length. 
+The sdist argument will produce an evenly spaced sample, whereas n produces a fixed sized sample. The p (proportional) argument calculates the percent of the line-length.
 
-The LID column in the @data slot corresponds to the row.names of the SpatialLinesDataFrame object. 
+The LID column in the @data slot corresponds to the row.names of the SpatialLinesDataFrame object.
 
 Depends: sp
-
 }
 \examples{
  require(sp)
@@ -78,6 +75,5 @@ par(mfrow=c(2,2))
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 

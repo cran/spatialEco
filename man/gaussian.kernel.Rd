@@ -13,11 +13,9 @@ gaussian.kernel(sigma = 2, n = 5)
 }
 \value{
 matrix of gaussian distribution
-
 }
 \description{
 Creates a Gaussian Kernel of specified size and sigma
-
 }
 \examples{
   par(mfrow=c(2,2))
@@ -33,7 +31,6 @@ Creates a Gaussian Kernel of specified size and sigma
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
- 
 }
 \references{
 Riley, S.J., S.D. DeGloria and R. Elliot (1999) A terrain ruggedness index that quantifies topographic heterogeneity, Intermountain Journal of Sciences 5(1-4):23-27.

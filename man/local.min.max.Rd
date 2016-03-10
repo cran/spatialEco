@@ -18,24 +18,21 @@ local.min.max(x, dev = mean, plot = TRUE, add.points = FALSE, ...)
 \item{...}{Arguments passed to plot}
 }
 \value{
-A list object with:  
+A list object with:
 
 minima minimum local values of x
 
 maxima maximum local values of x
 
-mindev Absolute deviation of minimum from specified deviation statistic (dev argument) 
+mindev Absolute deviation of minimum from specified deviation statistic (dev argument)
 
-maxdev Absolute deviation of maximum from specified deviation statistic (dev argument) 
-
+maxdev Absolute deviation of maximum from specified deviation statistic (dev argument)
 }
 \description{
-Calculates the local minimums and maximums in a numeric vector, indicating inflection points in the distribution.  
-
+Calculates the local minimums and maximums in a numeric vector, indicating inflection points in the distribution.
 }
 \note{
 Useful function for identifying inflection or enveloping points in a distribution
-
 }
 \examples{
                                                  
@@ -48,6 +45,5 @@ x <- rnorm(100,mean=1500,sd=800)
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 

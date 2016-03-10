@@ -16,15 +16,12 @@ raster.entropy(x, d = 5, filename = FALSE, ...)
 \item{...}{Optional arguments passed to writeRaster or dataType}
 }
 \value{
-raster class object or specified format raster written to disk                
-
+raster class object or specified format raster written to disk
 }
 \description{
-Calculates entropy on integer raster (i.e., 8 bit 0-255)  
-                                                                      
+Calculates entropy on integer raster (i.e., 8 bit 0-255)
 }
 \note{
-
 Entropy calculated as: H = -sum(Pi*ln(Pi))
   where; Pi, Proportion of one value to total values Pi=n(p)/m and m, Number of unique values
   Expected range: 0 to log(m)
@@ -34,9 +31,7 @@ Entropy calculated as: H = -sum(Pi*ln(Pi))
 Maximum entropy is reached when all values are different, same as log(m)
   max.ent <- function(x) { log( length( unique(x) ) ) }
 
-
 Depends: raster
-
 }
 \examples{
 require(raster)
@@ -52,8 +47,6 @@ rEnt <- raster.entropy(r, d=5)
 
 }
 \references{
-
 Fuchs M., Hoffmann R., Schwonke F. (2008) Change Detection with GRASS GIS - Comparison of images taken by different sensor. On line at: http://geoinformatics.fsv.cvut.cz/gwiki/Change_Detection_with_GRASS_GIS_-_Comparison_of_images_taken_by_different_sensors
-
 }
 

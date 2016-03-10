@@ -18,21 +18,15 @@ zonal.stats(x, y, stat, trace = TRUE, plot = TRUE)
 \item{plot}{Should subset polygons/rasters be plotted (TRUE/FALSE)}
 }
 \value{
-
 Vector, length of nrow(x), of function results
-
 }
 \description{
-Polygon zonal statistics of a raster 
-
+Polygon zonal statistics of a raster
 }
 \note{
-
-This function iterates through a polygon object, masks the raster to each subset polygon and then coerces the subset raster to a vector object. The resulting vector is then passed to the specified statistic/function. This is much slower than zonal functions available in GIS software but has the notable advantage of being able to accept any custom function, passed to the 'stat' argument, appropriate for a vector object (see example).    
-
+This function iterates through a polygon object, masks the raster to each subset polygon and then coerces the subset raster to a vector object. The resulting vector is then passed to the specified statistic/function. This is much slower than zonal functions available in GIS software but has the notable advantage of being able to accept any custom function, passed to the 'stat' argument, appropriate for a vector object (see example).
 
 Depends: sp, raster
-
 }
 \examples{
                                                                       
@@ -70,6 +64,5 @@ z.pct <- zonal.stats(x=p, y=r, stat=pct, trace=TRUE, plot=TRUE)
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 

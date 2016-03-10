@@ -19,11 +19,9 @@ bearing.distance(x, y, distance, azimuth, EastOfNorth = TRUE)
 }
 \description{
 Calculates a new point [X,Y] based on defined bearing and distance
-
 }
 \note{
-East of north is a surveying convention and defaults to true. 
-
+East of north is a surveying convention and defaults to true.
 }
 \examples{
  pt <- cbind( x=480933, y=4479433)
@@ -31,7 +29,6 @@ East of north is a surveying convention and defaults to true.
 
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org> 
-
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
 

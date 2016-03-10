@@ -24,19 +24,14 @@ parea.sample(x, pct = 0.1, join = FALSE, msamp = 1, sf = 4046.86,
 }
 \value{
 A SpatialPointsDataFrame with polygon samples
-
 }
 \description{
 Creates a point sample of polygons where n is based on percent area
-
 }
 \note{
-
 This function results in an adaptive sample based on the area of each polygon
 
-
-Depends: sp,  
-
+Depends: sp,
 }
 \examples{
 require(sp)
@@ -56,6 +51,5 @@ ars <- parea.sample(srdf, pct=0.20, stype='random')
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 

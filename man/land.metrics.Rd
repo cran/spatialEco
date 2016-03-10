@@ -23,16 +23,13 @@ land.metrics(x, y, bkgd = NA, metrics = c(4, 14, 33, 34, 35, 37, 38),
 \item{trace}{Plot raster subsets and echo object ID at each iteration (TRUE | FALSE)}
 }
 \value{
-If multiple classes are evaluated a list object with a data.frame for each class contaning specified metrics in columns. The data.frame is ordered and shares the same row.names as the input feature class and can be directly joined to the @data slot. For single class problems a data.frame object is returned.   
-
+If multiple classes are evaluated a list object with a data.frame for each class contaning specified metrics in columns. The data.frame is ordered and shares the same row.names as the input feature class and can be directly joined to the @data slot. For single class problems a data.frame object is returned.
 }
 \description{
-Calculates a variety of landscape metrics, on binary rasters, for polygons or points with a buffer distance 
-
+Calculates a variety of landscape metrics, on binary rasters, for polygons or points with a buffer distance
 }
 \note{
-
- [2]n.patches, [3]total.area, [4]prop.landscape          
+[2]n.patches, [3]total.area, [4]prop.landscape          
  [5]patch.density, [6]total.edge, [7]edge.density, [8]landscape.shape.index   
  [9]largest.patch.index, [10]mean.patch.area, [11]sd.patch.area, [12]min.patch.area          
  [13]max.patch.area, [14]perimeter.area.frac.dim, [15]mean.perim.area.ratio, [16]sd.perim.area.ratio     
@@ -41,13 +38,11 @@ Calculates a variety of landscape metrics, on binary rasters, for polygons or po
  [25]min.frac.dim.index, [26]max.frac.dim.index, [27]total.core.area, [28]prop.landscape.core     
  [29]mean.patch.core.area, [30]sd.patch.core.area, [31]min.patch.core.area, [32]max.patch.core.area     
  [33]prop.like.adjacencies, [34]aggregation.index, [35]lanscape.division.index, [36]splitting.index         
- [37]effective.mesh.size, [38]patch.cohesion.index 
+ [37]effective.mesh.size, [38]patch.cohesion.index
 
+Modifications to the function incorporate multi-class metrics by fetching the unique values of the raster and creating a list object contaning a data.frame for each class. Unfortunately, retrieving unique values is a very slow function.
 
-Modifications to the function incorporate multi-class metrics by fetching the unique values of the raster and creating a list object contaning a data.frame for each class. Unfortunately, retrieving unique values is a very slow function.    
-
-depends: sp, raster, rgeos, SDMTools 
-
+depends: sp, raster, rgeos, SDMTools
 }
 \examples{
  library(raster)
@@ -70,6 +65,5 @@ depends: sp, raster, rgeos, SDMTools
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 

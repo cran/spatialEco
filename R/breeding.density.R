@@ -18,10 +18,9 @@
 #' @note 
 #' The breeding density areas model identifies the Nth-percent population exhibiting the highest spatial density and counts/frequency. It then buffers these points by a specified distance to produce breeding area polygons.  
 #' 
-#' depends: sp, rgeos 
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
-#'    
+#'
 #' @references
 #' Doherty, K.E., J.D. Tack, J.S. Evans, D.E. Naugle (2010) Mapping breeding densities of greater sage-grouse: A tool for range-wide conservation planning. Bureau of Land Management. Report Number L10PG00911
 #'                                                              

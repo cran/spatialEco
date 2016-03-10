@@ -22,11 +22,9 @@ A list class object with the following components:
 for type = 'linear'  x is slope and y is intercept
 for type = 'exponential', 'logarithmic', or 'polynomial'
   x is original x variable and y is vector of fit regression line
-
 }
 \description{
 Calculated specified trend line of x,y
-
 }
 \examples{
 x <- 1:10
@@ -42,6 +40,5 @@ y <- jitter(x^2)
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 

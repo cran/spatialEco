@@ -23,30 +23,27 @@ correlogram(x, v, dist = 5000, dmatrix = FALSE, ns = 99,
 \item{...}{Arguments passed to cor ('pearson', 'kendall' or 'spearman')}
 }
 \value{
-A list object containing: 
+A list object containing:
 
-     autocorrelation is a data.frame object with the following components
+autocorrelation is a data.frame object with the following components
 
-     autocorrelation - Autocorrelation value for each distance lag 
+autocorrelation - Autocorrelation value for each distance lag
 
-     dist - Value of distance lag
+dist - Value of distance lag
 
-     lci - Lower confidence interval (p=0.025)                
+lci - Lower confidence interval (p=0.025)
 
-     uci - Upper confidence interval (p=0.975)
+uci - Upper confidence interval (p=0.975)
 
-     CorrPlot recordedplot object to recall plot
+CorrPlot recordedplot object to recall plot
 
-     dmatrix Distance matrix (if dmatrix=TRUE)
-
+dmatrix Distance matrix (if dmatrix=TRUE)
 }
 \description{
 Calculates and plots a correlogram
-
 }
 \note{
 depends: sp
-
 }
 \examples{
 library(sp)
@@ -57,6 +54,5 @@ zinc.cg <- correlogram(x = meuse, v = meuse@data[,'zinc'], dist = 250, ns = 9)
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-                                                                  
 }
 

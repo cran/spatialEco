@@ -19,14 +19,12 @@ tri(r, s = 3, exact = TRUE, file.name = NULL, ...)
 }
 \value{
 raster class object or raster written to disk
-
 }
 \description{
 Implementation of the Riley et al (1999) Terrain Ruggedness Index
-
 }
 \note{
-The algebraic approximation is considerably faster. However, because inclusion of the center cell, the larger the scale the larger the divergence of the minimum value 
+The algebraic approximation is considerably faster. However, because inclusion of the center cell, the larger the scale the larger the divergence of the minimum value
 
 Recommended ranges for classifying Topographic Ruggedness Index
 
@@ -42,11 +40,9 @@ Recommended ranges for classifying Topographic Ruggedness Index
 
 498-958 (6) highly rugged surface.
 
->959 (7) extremely rugged surface. 
-
+>959 (7) extremely rugged surface.
 
 Depends: raster
-
 }
 \examples{
  library(raster)
@@ -63,7 +59,6 @@ Depends: raster
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
- 
 }
 \references{
 Riley, S.J., S.D. DeGloria and R. Elliot (1999) A terrain ruggedness index that quantifies topographic heterogeneity, Intermountain Journal of Sciences 5(1-4):23-27.

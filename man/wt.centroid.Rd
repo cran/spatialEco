@@ -14,23 +14,18 @@ wt.centroid(x, p, sp = TRUE)
 \item{sp}{Output sp SpatailPoints class object (TRUE | FALSE)}
 }
 \value{
-A vector or an sp class SpatialPoints object of the weighted coordinate centroid      
-
+A vector or an sp class SpatialPoints object of the weighted coordinate centroid
 }
 \description{
-Creates centroid of [x,y] coordinates based on a weights field 
-
+Creates centroid of [x,y] coordinates based on a weights field
 }
 \note{
-
 THe weighted centroid is calculated as:
 [Xw]=[X]*[p], [Yw]=[Y]*[p], [sXw]=SUM[Xw], [sYw]=SUM[Yw], [sP]=SUM[p]
    wX=[sXw]/[sP], wY=[sYw]/[sP]    
-   where; X=X COORDINATE(S), Y=Y COORDINATE(S), p=WEIGHT 
-   
+   where; X=X COORDINATE(S), Y=Y COORDINATE(S), p=WEIGHT
 
 Depends: sp
-                                                                 
 }
 \examples{
 require(sp)

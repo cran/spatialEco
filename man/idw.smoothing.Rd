@@ -16,22 +16,17 @@ idw.smoothing(x, y, d, k)
 \item{k}{Maximum number of k-nearest neighbours within d}
 }
 \value{
-A vector, same length as nrow(x), of adjusted y values 
-
+A vector, same length as nrow(x), of adjusted y values
 }
 \description{
 Distance weighted smoothing of a variable in a spatial point object
-
 }
 \note{
-
 Smoothing is conducted with a weighted-mean where; weights represent inverse standardized distance lags
 Distance-based or neighbour-based smoothing can be specified by setting the desired neighbour smoothing method to a specified value then the other parameter to the potential maximum. 
-For example; a constraint distance, including all neighbours within 1000 (d=1000) would require k to equal all of the potential neighbours (n-1 or k=nrow(x)-1).  
-   
+For example; a constraint distance, including all neighbours within 1000 (d=1000) would require k to equal all of the potential neighbours (n-1 or k=nrow(x)-1).
 
-Depends: sp, RANN 
-                                                                    
+Depends: sp, RANN
 }
 \examples{
  library(sp)

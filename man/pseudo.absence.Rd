@@ -32,32 +32,28 @@ pseudo.absence(x, n, window = "hull", Mask = NULL, s = NULL,
 \item{edge}{Apply Diggle edge correction (TRUE/FALSE)}
 }
 \value{
-A list class object with the following components: 
-  @return sample SpatialPointsDataFrame containing random samples
-  @return kde sp RasterLayer class of KDE estimates (IF KDE = TRUE)
-  @return sigma Selected bandwidth of KDE 
-
+A list class object with the following components:
+\itemize{ 
+\item   sample SpatialPointsDataFrame containing random samples
+\item   kde sp RasterLayer class of KDE estimates (IF KDE = TRUE)
+\item   sigma Selected bandwidth of KDE 
+ }
 }
 \description{
-Generates pseudo-absence samples based on density estimate of known locations 
-
+Generates pseudo-absence samples based on density estimate of known locations
 }
-\note{
-
-The window type creates a convex hull by default or, optionally, uses the maximum extent (envelope). if a mask is provided the kde will represent areas defined by the mask. this defines the area that pseudo absence data will be generated.'
-
+\details{
+The window type creates a convex hull by default or, optionally, uses the maximum extent (envelope). If a mask is provided the kde will represent areas defined by the mask and defines the area that pseudo absence data will be generated.
 Available bandwidth selection methods are:
-  Scott (Scott 1992), Scott's Rule for Bandwidth Selection (1st order)
-  Diggle (Berman & Diggle 1989), Minimise the mean-square error via cross validation (2nd order)  
-  likelihood (Loader 1999), Maximum likelihood cross validation (2nd order)
-  geometry, Bandwidth is based on simple window geometry (1st order)
-  Stoyan (Stoyan & Stoyan 1995), Based on pair-correlation function (strong 2nd order)
+\itemize{
+\item   Scott (Scott 1992), Scott's Rule for Bandwidth Selection (1st order)
+\item   Diggle (Berman & Diggle 1989), Minimize the mean-square error via cross validation (2nd order)  
+\item   likelihood (Loader 1999), Maximum likelihood cross validation (2nd order)
+\item   geometry, Bandwidth is based on simple window geometry (1st order)
+\item   Stoyan (Stoyan & Stoyan 1995), Based on pair-correlation function (strong 2nd order)
+ }
 
 Note; resulting bandwidth can vary widely by method. the 'diggle' method is intended for selecting bandwidth representing 2nd order spatial variation whereas the 'scott' method will represent 1st order trend. the 'geometry' approach will also represent 1st order trend. for large datasets, caution should be used with the 2nd order 'likelihood' approach, as it is slow and computationally expensive. finally, the 'stoyan' method will produce very strong 2nd order results.
-
-
-Depends: sp, spatstat, raster
-
 }
 \examples{
 library(sp)
@@ -91,29 +87,20 @@ col.br <- colorRampPalette(c('blue','yellow'))
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 \references{
-
-Berman, M. and Diggle, P. (1989) Estimating weighted integrals of the second-order intensity of a spatial point process. Journal of the Royal Statistical Society, series B 51, 81-92. 
-
+Berman, M. and Diggle, P. (1989) Estimating weighted integrals of the second-order intensity of a spatial point process. Journal of the Royal Statistical Society, series B 51, 81-92.
 
 Fithian, W & T. Hastie (2013) Finite-sample equivalence in statistical models for presence-only data. Annals of Applied Statistics 7(4): 1917-1939
 
+Hengl, T., H. Sierdsema, A. Radovic, and A. Dilo (2009) Spatial prediction of species distributions from occurrence-only records: combining point pattern analysis, ENFA and regression-kriging. Ecological Modelling, 220(24):3499-3511
 
-Hengl, T., H. Sierdsema, A. Radovic, and A. Dilo (2009) Spatial prediction of species distributions from occurrence-only records: combining point pattern analysis, ENFA and regression-kriging. Ecological Modelling, 220(24):3499-3511  
+Loader, C. (1999) Local Regression and Likelihood. Springer, New York.
 
+Scott, D.W. (1992) Multivariate Density Estimation. Theory, Practice and Visualization. New York, Wiley.
 
-Loader, C. (1999) Local Regression and Likelihood. Springer, New York. 
-
-
-Scott, D.W. (1992) Multivariate Density Estimation. Theory, Practice and Visualization. New York, Wiley. 
-
-
-Stoyan, D. and Stoyan, H. (1995) Fractals, random shapes and point fields: methods of geometrical statistics. John Wiley and Sons. 
-
+Stoyan, D. and Stoyan, H. (1995) Fractals, random shapes and point fields: methods of geometrical statistics. John Wiley and Sons.
 
 Warton, D.i., and L.C. Shepherd (2010) Poisson Point Process Models Solve the Pseudo-Absence Problem for Presence-only Data in Ecology. The Annals of Applied Statistics, 4(3):1383-1402
-
 }
 

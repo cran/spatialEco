@@ -14,12 +14,10 @@ kl.divergence(object, eps = 10^-4, overlap = TRUE)
 \item{overlap}{Logical, do not determine the KL divergence for those pairs where for each point at least one of the densities has a value smaller than eps.}
 }
 \value{
-pairwise Kullback-Leibler divergence index (matrix)   
-
+pairwise Kullback-Leibler divergence index (matrix)
 }
 \description{
-Calculates the Kullback-Leibler divergence (relative entropy) between unweighted theoretical component distributions. Divergence is calculated as: int [f(x) (log f(x) - log g(x)) dx]  for distributions with densities f() and g(). 
-
+Calculates the Kullback-Leibler divergence (relative entropy) between unweighted theoretical component distributions. Divergence is calculated as: int [f(x) (log f(x) - log g(x)) dx]  for distributions with densities f() and g().
 }
 \examples{
 x <- seq(-3, 3, length=200)
@@ -33,10 +31,8 @@ y <- cbind(n=dnorm(x), t=dt(x, df=10))
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 \references{
 Kullback S., and R. A. Leibler (1951) On information and sufficiency. The Annals of Mathematical Statistics 22(1):79-86
-       
 }
 

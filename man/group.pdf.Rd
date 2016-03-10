@@ -25,8 +25,7 @@ group.pdf(x, y, col = NULL, lty = NULL, lwd = NULL, lx = "topleft",
 \item{...}{Additional agruments passed to plot}
 }
 \description{
-Creates a probability density plot of y for each group of x 
-
+Creates a probability density plot of y for each group of x
 }
 \examples{
 y=dnorm(runif(100))
@@ -37,11 +36,8 @@ ylab='PDF', xlab='Y', lty=c(1,2,3))
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
-
 }
 \references{
-
- Simonoff, J. S. (1996). Smoothing Methods in Statistics. Springer-Verlag, New York.
-
+Simonoff, J. S. (1996). Smoothing Methods in Statistics. Springer-Verlag, New York.
 }
 

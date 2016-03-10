@@ -12,30 +12,24 @@ concordance(y, p)
 \item{p}{estimated probabilities from fit binomial model}
 }
 \value{
-A list class object with the following components: 
+A list class object with the following components:
 
- concordance  percent of positives that are greater than probabilities of nulls
+concordance  percent of positives that are greater than probabilities of nulls
 
- isconcordance inverse of concordance representing null class
+isconcordance inverse of concordance representing null class
 
- tied number of tied probabilities
+tied number of tied probabilities
 
- pairs number of pairs compared
-
+pairs number of pairs compared
 }
 \description{
-Performs a concordance/disconcordance (C-statistic) test on binomial models.  
-
+Performs a concordance/disconcordance (C-statistic) test on binomial models.
 }
 \note{
-
 The C-statistic has been show to be comparable to the area under an ROC.
-
-
 
 Test of binomial regression for the hypothesis that probabilities of all positives [1], are greater than the probabilities of the nulls [0]. 
 The concordance would be 100% for a perfect model where, disconcordance is the inverse of concordance, representing the null
-
 }
 \examples{
 data(mtcars)
@@ -46,13 +40,10 @@ concordance(dat$vs, predict(glm.reg, type = "response"))
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 \references{
-
 Austin, P.C. & E.W. Steyerberg (2012) Interpreting the concordance statistic of a logistic regression model: relation to the variance and odds ratio of a continuous explanatory variable. BMC Medical Research Methodology, 12:82 
 Harrell, F.E. (2001) Regression modelling strategies. Springer, New York, NY. 
 Royston, P. & D.G. Altman (2010) Visualizing and assessing discrimination in the logistic regression model. Statistics in Medicine 29(24):2508-2520
-
 }
 

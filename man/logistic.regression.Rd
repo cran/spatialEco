@@ -32,39 +32,37 @@ logistic.regression(ldata, y, x, penalty = TRUE, autologistic = FALSE,
 \item{...}{Additional arguments passed to lrm}
 }
 \value{
-A list class object with the following components: 
+A list class object with the following components:
 
-    model lrm model object (rms class)
+model lrm model object (rms class)
 
-    bandwidth If AutoCov = TRUE returns the distance bandwidth used for the auto-covariance function
+bandwidth If AutoCov = TRUE returns the distance bandwidth used for the auto-covariance function
 
-    diagTable data.frame of regression diagnostics
+diagTable data.frame of regression diagnostics
 
-    coefTable data.frame of regression coefficients
+coefTable data.frame of regression coefficients
 
-    Residuals data.frame of residuals and standardized residuals
+Residuals data.frame of residuals and standardized residuals
 
-    AutoCov If an auto-logistic model, AutoCov represents lagged auto-covariance term
-
+AutoCov If an auto-logistic model, AutoCov represents lagged auto-covariance term
 }
 \description{
-Performs a logistic (binomial) or auto-logistic (spatially lagged binomial) regression using maximum likelihood or penalized maximum likelihood estimation. 
-
+Performs a logistic (binomial) or auto-logistic (spatially lagged binomial) regression using maximum likelihood or penalized maximum likelihood estimation.
 }
 \note{
-It should be noted that the auto-logistic model (Besag 1972) is intended for exploratory analysis of spatial effects. Auto-logistic are know to underestimate the effect of environmental variables and tend to be unreliable (Dormann 2007).     
+It should be noted that the auto-logistic model (Besag 1972) is intended for exploratory analysis of spatial effects. Auto-logistic are know to underestimate the effect of environmental variables and tend to be unreliable (Dormann 2007).
 
-Wij matrix options under style argument - B is the basic binary coding, W is row standardised (sums over all links to n), C is globally standardised (sums over all links to n), U is equal to C divided by the number of neighbours (sums over all links to unity) and S is variance-stabilizing. 
+Wij matrix options under style argument - B is the basic binary coding, W is row standardised (sums over all links to n), C is globally standardised (sums over all links to n), U is equal to C divided by the number of neighbours (sums over all links to unity) and S is variance-stabilizing.
 
-Spatially lagged y defined as:  
+Spatially lagged y defined as:
 
-  W(y)ij=sumj_(Wij yj)/ sumj_(Wij)
+W(y)ij=sumj_(Wij yj)/ sumj_(Wij)
 
-    where; Wij=1/Euclidean[i,j]
+where; Wij=1/Euclidean[i,j]
 
+If the object passed to the function is an sp class there is no need to call the data slot directly via "object@data", just pass the object name.
 
 depends: rms, spdep
-
 }
 \examples{
 require(sp)
@@ -75,13 +73,19 @@ data(meuse)
     meuse@data <- data.frame(DepVar=rbinom(dim(meuse)[1], 1, 0.5), meuse@data)
 
 #### Logistic model
-lmodel <- logistic.regression(meuse@data, y='DepVar', x=c('dist','cadmium','copper')) 
+lmodel <- logistic.regression(meuse, y='DepVar', x=c('dist','cadmium','copper')) 
+  lmodel$model
+    lmodel$diagTable
+      lmodel$coefTable
+
+#### Logistic model with factorial varialbe
+lmodel <- logistic.regression(meuse, y='DepVar', x=c('dist','cadmium','copper', 'soil')) 
   lmodel$model
     lmodel$diagTable
       lmodel$coefTable
 
 ### Auto-logistic model using 'autocov_dist' in 'spdep' package
-lmodel <- logistic.regression(meuse@data, y='DepVar', x=c('dist','cadmium','copper'),
+lmodel <- logistic.regression(meuse, y='DepVar', x=c('dist','cadmium','copper'),
                               autologistic=TRUE, coords=coordinates(meuse), bw=5000) 
   lmodel$model
     lmodel$diagTable
@@ -106,20 +110,14 @@ spplot(meuse, c('Probs'))                                # plot estimated probab
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 \references{
-
 Besag, J.E., (1972) Nearest-neighbour systems and the auto-logistic model for binary data. Journal of the Royal Statistical Society, Series B Methodological 34:75-83
 
-
-Dormann, C.F., (2007) Assessing the validity of autologistic regression. Ecological Modelling 207:234-242   
-
+Dormann, C.F., (2007) Assessing the validity of autologistic regression. Ecological Modelling 207:234-242
 
 Le Cessie, S., Van Houwelingen, J.C., (1992) Ridge estimators in logistic regression. Applied Statistics 41:191-201
 
-
 Shao, J., (1993) Linear model selection by cross-validation. JASA 88:486-494
-
 }
 

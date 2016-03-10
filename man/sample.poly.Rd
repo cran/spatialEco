@@ -16,16 +16,13 @@ sample.poly(x, n = 10, type = "random", ...)
 \item{...}{Additional arguments passed to spsample}
 }
 \value{
-sp SpatialPointsDataFrame object 
-
+sp SpatialPointsDataFrame object
 }
 \description{
 Creates an equal sample of n for each polygon in an sp Polygon class object
-
 }
 \note{
 Depends: sp
-
 }
 \examples{
  library(raster)
@@ -42,6 +39,5 @@ Depends: sp
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-
 }
 
