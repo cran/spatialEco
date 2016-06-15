@@ -12,7 +12,7 @@ nni(x, win = "hull")
 \item{win}{Type of window 'hull' or 'extent'}
 }
 \value{
-NNI value
+list object contanint NNI = nearest neighbor index, z.score = Z Score value, p = p value, expected.mean.distance = Expected meand distance, observed.mean.distance = Observed meand distance.
 }
 \description{
 Calculates the NNI as a measure of clustering or dispersal
@@ -20,7 +20,7 @@ Calculates the NNI as a measure of clustering or dispersal
 \note{
 The nearest neighbour index is expressed as the ratio of the observed distance divided by the expected distance. The expected distance is the average distance between neighbours in a hypothetical random distribution. If the index is less than 1, the pattern exhibits clustering; if the index is greater than 1, the trend is toward dispersion or competition.
 The Nearest Neighbour Index is calculated as:
-  Nearest Neighbour Distance (observed) D(nn) = sum(min(Dij)/N) 
+  Mean Nearest Neighbour Distance (observed) D(nn) = sum(min(Dij)/N) 
   Mean Random Distance (expected) D(e) = 0.5 SQRT(A/N)
   Nearest Neighbour Index NNI = D(nn)/D(e)
       Where; D=neighbour distance, A=Area

@@ -36,4 +36,11 @@ spatialEco_0.0.1-4
 * Added function for point download of DAYMET climate data
 * Added function for distance lagged sampling
 * Enhancement to sp.an.omit that allows for removal of columns with NA's
+
+spatialEco_0.1-5
+=================
+* Added function "rasterCorrelation" for calculating "pearson" or "spearman" correlations or "covariance" between two rasters within a specified moving window.
+* Added function "mwCorr" for calculating Dutilleul's modified t-test between two rasters within a specified moving window.  
+* Added function "polyPerimeter" for calculating polygon perimeters 
+* Bug fix in "stratired.random" function.
  

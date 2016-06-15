@@ -59,45 +59,44 @@
 #'
 #' @export
 stratified.random <- function(x, strata, n = 10, reps = 1, replace = TRUE) {
-    if (!attributes(x@class) == "sp" & !attributes(x@data)$class == "data.frame") 
-        stop(deparse(substitute(x)), " MUST BE A sp spatialDataFrame OBJECT")
-    if (!inherits(x@data[, strata], "factor")) 
-        stop("STRATA MUST BE A FACTOR")
-    if ((nlevels(x@data[, strata]) < 2) == TRUE) 
-        stop("NOT ENOUGH LEVELS TO STRATIFY")
+    if (!methods::is(x, "Spatial")) 
+      stop(deparse(substitute(x)), " Must be an sp class spatial object")
     spx <- x
+    if(!inherits(spx@data[,strata], "factor")) spx@data[,strata] <- factor(spx@data[,strata]) 
+    if (nlevels(spx@data[,strata]) < 2) 
+        stop("NOT ENOUGH LEVELS TO STRATIFY BY")
     spx@data <- cbind(spx@data, REP = 0)
     results <- spx[1, ]
     for (i in 1:reps) {
-        spx@data[, strata] <- factor(spx@data[, strata])
-        for (j in 1:nlevels(spx@data[, strata])) {
-            f <- levels(spx@data[, strata])[j]
-            if (is.na(match(f, levels(spx@data[, strata]))) == FALSE) {
-                if ((dim(spx[spx@data[, strata] == f, ])[1] > 0) == TRUE) {
-                  ssub <- spx[spx@data[, strata] == f, ]
-                  if ((dim(ssub)[1] >= n) == TRUE) {
-                    s <- ssub[sample(dim(ssub)[1], size = n), ]
-                    s@data$REP <- i
-                    results <- rbind(results, s)
-                    if (replace == FALSE) {
-                      rinx <- which(rownames(spx@data) %in% rownames(s@data))
-                      if (length(rinx) > 0) 
-                        spx <- spx[-rinx, ]
-                    }
-                  } else {
-                    s <- ssub
-                    s@data$REP <- i
-                    results <- rbind(results, s)
-                    if (replace == FALSE) {
-                      rinx <- which(rownames(spx@data) %in% rownames(s@data))
-                      if (length(rinx) > 0) 
-                        spx <- spx[-rinx, ]
-                    }
-                  }
+      spx@data[, strata] <- factor(spx@data[, strata])
+      for (j in 1:nlevels(spx@data[, strata])) {
+          f <- levels(spx@data[, strata])[j]
+          if (is.na(match(f, levels(spx@data[, strata]))) == FALSE) {
+            if ((dim(spx[spx@data[, strata] == f, ])[1] > 0) == TRUE) {
+              ssub <- spx[spx@data[, strata] == f, ]
+              if ((dim(ssub)[1] >= n) == TRUE) {
+                s <- ssub[sample(dim(ssub)[1], size = n), ]
+                s@data$REP <- i
+                results <- rbind(results, s)
+                if (replace == FALSE) {
+                  rinx <- which(rownames(spx@data) %in% rownames(s@data))
+                  if (length(rinx) > 0) 
+                    spx <- spx[-rinx, ]
                 }
+              } else {
+                s <- ssub
+                s@data$REP <- i
+                results <- rbind(results, s)
+                if (replace == FALSE) {
+                  rinx <- which(rownames(spx@data) %in% rownames(s@data))
+                  if (length(rinx) > 0) 
+                    spx <- spx[-rinx, ]
+                }
+              }
             }
+          }
         }
-    }
+      }
     results <- results[-1, ]
-    return(results)
+  return(results)
 } 

@@ -1,13 +1,14 @@
 #' @title Shannon's Diversity (Entropy) Index
 #' @description Calculates Shannon's Diversity Index and Shannon's Evenness Index
 #'
-#' @param x        data.frame object containing species counts
+#' @param x        data.frame object containing counts or proportions 
 #' @param counts   Are data counts (TRUE) or relative proportions (FALSE) 
+#' @param ens      Calculate effective number of species (TRUE/FALSE)
 #' @param margin   Calculate diversity for rows or columns. c("row", "col")    
 #'
-#' @return data.frame with columns "H" (Shannon's diversity) and "evenness" (Shannon's evenness where H / max( sum(x) ) ) 
+#' @return data.frame with "H" (Shannon's diversity) and "evenness" (Shannon's evenness where H / max( sum(x) ) ) and ESN 
 #'
-#' @note The sdist argument will produce an evenly spaced sample, whereas n produces a fixed sized sample. The p (proportional) argument calculates the percent of the line-length. 
+#' @note The expected for H is 0-3+ where a value of 2 has been suggested as medium-high diversity, for eveness is 0-1 with 0 signifying no evenness and 1, complete evenness. 
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'
@@ -21,24 +22,27 @@
 #' data(ants)
 #'   
 #' # Calculate diversity for each covertype ("col") 
-#' shannons(ants[,2:ncol(ants)], counts = FALSE, margin = "col")
+#' shannons(ants[,2:ncol(ants)], ens = TRUE, counts = FALSE, margin = "col")
 #'
 #' # Calculate diversity for each species ("row") 
-#' ant.div <- shannons(ants[,2:ncol(ants)], counts = FALSE, margin = "row")
-#'   names(ant.div) <- ants[,1]
+#' ant.div <- shannons(ants[,2:ncol(ants)], ens = TRUE, counts = FALSE, margin = "row")
+#'   row.names(ant.div) <- ants[,1]
 #'   ant.div
 #'	
 #' @export
-shannons <- function(x, counts = TRUE, margin = "row") {
+shannons <- function(x, counts = TRUE, ens = FALSE, margin = "row") {
   if( margin == "row") { m = 1 } else { m = 2 }
-  s <- function(x) { -1 * sum( x[!is.na(x) > 0] * log(x[!is.na(x) > 0]) ) } 
-  x.sum <- apply(x, MARGIN = m, sum, na.rm=TRUE)
-  if( counts ) { x <- sweep(x, MARGIN = m, x.sum, "/") }
-  H <- apply(x, MARGIN = m, FUN = s)
-    if(counts) {
-      EH <- H / log(max(x.sum))
-      return( data.frame(H=H, evenness=EH) )
-	  } else {
-	  return( H )  
-    }	
+    s <- function(x) { -1 * sum( x[!is.na(x) > 0] * log(x[!is.na(x) > 0]) ) } 
+    e <- function(x) { -1 * sum( (1 / x[!is.na(x) > 0]) * log((1 / x[!is.na(x) > 0])) ) } 
+  if( counts ) {
+    x.sum <- apply(x, MARGIN = m, sum, na.rm=TRUE)  
+    x <- sweep(x, MARGIN = m, x.sum, "/")
+  }   
+    H <- apply(x, MARGIN = m, FUN = s)
+	n.spp <- apply(x, MARGIN = m, FUN = function(x) {length(x[x > 0])} )
+    H <- data.frame(H=H, evenness = ( H / log(n.spp) ) )
+  if( ens ) {
+    H <- data.frame(H, ENS = round(exp ( H[,1] ),0) ) 
+  }
+  return ( H ) 	
 }

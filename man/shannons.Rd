@@ -4,34 +4,36 @@
 \alias{shannons}
 \title{Shannon's Diversity (Entropy) Index}
 \usage{
-shannons(x, counts = TRUE, margin = "row")
+shannons(x, counts = TRUE, ens = FALSE, margin = "row")
 }
 \arguments{
-\item{x}{data.frame object containing species counts}
+\item{x}{data.frame object containing counts or proportions}
 
 \item{counts}{Are data counts (TRUE) or relative proportions (FALSE)}
+
+\item{ens}{Calculate effective number of species (TRUE/FALSE)}
 
 \item{margin}{Calculate diversity for rows or columns. c("row", "col")}
 }
 \value{
-data.frame with columns "H" (Shannon's diversity) and "evenness" (Shannon's evenness where H / max( sum(x) ) )
+data.frame with "H" (Shannon's diversity) and "evenness" (Shannon's evenness where H / max( sum(x) ) ) and ESN
 }
 \description{
 Calculates Shannon's Diversity Index and Shannon's Evenness Index
 }
 \note{
-The sdist argument will produce an evenly spaced sample, whereas n produces a fixed sized sample. The p (proportional) argument calculates the percent of the line-length.
+The expected for H is 0-3+ where a value of 2 has been suggested as medium-high diversity, for eveness is 0-1 with 0 signifying no evenness and 1, complete evenness.
 }
 \examples{
 # Using Costa Rican ant diversity data from Roth et al. (1994)
 data(ants)
   
 # Calculate diversity for each covertype ("col") 
-shannons(ants[,2:ncol(ants)], counts = FALSE, margin = "col")
+shannons(ants[,2:ncol(ants)], ens = TRUE, counts = FALSE, margin = "col")
 
 # Calculate diversity for each species ("row") 
-ant.div <- shannons(ants[,2:ncol(ants)], counts = FALSE, margin = "row")
-  names(ant.div) <- ants[,1]
+ant.div <- shannons(ants[,2:ncol(ants)], ens = TRUE, counts = FALSE, margin = "row")
+  row.names(ant.div) <- ants[,1]
   ant.div
 
 }

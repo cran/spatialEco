@@ -2,9 +2,9 @@
 % Please edit documentation in R/breeding.density.R
 \name{breeding.density}
 \alias{breeding.density}
-\title{Breeding density areas}
+\title{Breeding density areas (aka, core habitat areas)}
 \usage{
-breeding.density(x, pop, p = 0.75, bw = 1000, b = 6400, self = TRUE)
+breeding.density(x, pop, p = 0.75, bw = 6400, b = 8500, self = TRUE)
 }
 \arguments{
 \item{x}{sp SpatialPointsDataFrame object}
@@ -13,11 +13,11 @@ breeding.density(x, pop, p = 0.75, bw = 1000, b = 6400, self = TRUE)
 
 \item{p}{Target percent of population}
 
-\item{bw}{Bandwidth distance}
+\item{bw}{Bandwidth distance for the kernel estimate (default 8500)}
 
-\item{b}{Buffer distance (eg., p < 0.75 b=6400m, p >= 0.75 b=8500m)}
+\item{b}{Buffer distance (default 8500)}
 
-\item{self}{Should source observations be included in neighbour count (TRUE/FALSE)}
+\item{self}{(TRUE/FALSE) Should source observations be included in density (default TRUE)}
 }
 \value{
 A list object with:
@@ -33,10 +33,12 @@ buffer      Specified buffer distance used in buffering points for pop.area
 p           Specified population percent
 }
 \description{
-Calculates breeding density areas base on population counts/density and spatial point density.
+Calculates breeding density areas base on population counts and spatial point density.
 }
 \note{
 The breeding density areas model identifies the Nth-percent population exhibiting the highest spatial density and counts/frequency. It then buffers these points by a specified distance to produce breeding area polygons.
+
+If you want to recreate the results in Doherty et al., (2010), then define bw = 6400m and b[if p < 0.75 b = 6400m, | p >= 0.75 b = 8500m]
 }
 \examples{
 require(sp)
@@ -49,7 +51,7 @@ bb <- rbind(c(-1281299,-761876.5),c(1915337,2566433.5))
         pop <- SpatialPointsDataFrame(s, data.frame(ID=1:length(s), 
                                  counts=runif(length(s), 1,250)))
 
-    bd75 <- breeding.density(pop, pop='counts', p=0.75, b=6400, bw=4000)
+    bd75 <- breeding.density(pop, pop='counts', p=0.75, b=8500, bw=6400)
      plot(bd75$pop.area, main='75\% breeding density areas')
        plot(pop, pch=20, col='black', add=TRUE)
          plot(bd75$pop.pts, pch=20, col='red', add=TRUE)

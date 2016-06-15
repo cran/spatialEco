@@ -4,12 +4,12 @@
 #' @param x An sp point object
 #' @param win Type of window 'hull' or 'extent'
 #'
-#' @return NNI value
+#' @return list object contanint NNI = nearest neighbor index, z.score = Z Score value, p = p value, expected.mean.distance = Expected meand distance, observed.mean.distance = Observed meand distance.
 #'
 #' @note
 #' The nearest neighbour index is expressed as the ratio of the observed distance divided by the expected distance. The expected distance is the average distance between neighbours in a hypothetical random distribution. If the index is less than 1, the pattern exhibits clustering; if the index is greater than 1, the trend is toward dispersion or competition.
 #' The Nearest Neighbour Index is calculated as:
-#'   Nearest Neighbour Distance (observed) D(nn) = sum(min(Dij)/N) 
+#'   Mean Nearest Neighbour Distance (observed) D(nn) = sum(min(Dij)/N) 
 #'   Mean Random Distance (expected) D(e) = 0.5 SQRT(A/N)
 #'   Nearest Neighbour Index NNI = D(nn)/D(e)
 #'       Where; D=neighbour distance, A=Area
@@ -40,9 +40,12 @@ nni <- function(x, win = "hull") {
     }
     x <- spatstat::as.ppp(sp::coordinates(x), w)
     A <- spatstat::area.owin(w)
-    Dnn <- sum(spatstat::nndist(x))/x$n
-    De <- 0.5/sqrt(x$n/A)
-    nni <- Dnn/De
-    names(nni) <- "Nearest Neighbor Index"
-    return(nni)
+      obsMeanDist <- sum(spatstat::nndist(x))/x$n
+      expMeanDist <- 0.5 * sqrt(A / x$n)
+      se <- 0.26136 / ((x$n**2.0 / A)**0.5)
+      nni <- obsMeanDist / expMeanDist
+      z <- (obsMeanDist - expMeanDist) / se
+    return(list(NNI = nni, z.score = z, p = 2*stats::pnorm(-abs(z)),  
+	       expected.mean.distance = expMeanDist,
+		   observed.mean.distance = obsMeanDist))
 } 

@@ -1,12 +1,12 @@
-#' @title Breeding density areas
-#' @description Calculates breeding density areas base on population counts/density and spatial point density.
+#' @title Breeding density areas (aka, core habitat areas)
+#' @description Calculates breeding density areas base on population counts and spatial point density.
 #' 
 #' @param x        sp SpatialPointsDataFrame object
 #' @param pop      Population count/density column in x@@data 
 #' @param p        Target percent of population 
-#' @param bw       Bandwidth distance 
-#' @param b        Buffer distance (eg., p < 0.75 b=6400m, p >= 0.75 b=8500m)   
-#' @param self     Should source observations be included in neighbour count (TRUE/FALSE)
+#' @param bw       Bandwidth distance for the kernel estimate (default 8500) 
+#' @param b        Buffer distance (default 8500)     
+#' @param self     (TRUE/FALSE) Should source observations be included in density (default TRUE)
 #'
 #' @return A list object with:
 #' @return   pop.pts     sp point object with points identified within the specified p
@@ -16,8 +16,9 @@
 #' @return   p           Specified population percent
 #'
 #' @note 
-#' The breeding density areas model identifies the Nth-percent population exhibiting the highest spatial density and counts/frequency. It then buffers these points by a specified distance to produce breeding area polygons.  
-#' 
+#' The breeding density areas model identifies the Nth-percent population exhibiting the highest spatial density and counts/frequency. It then buffers these points by a specified distance to produce breeding area polygons. 
+#' @note
+#' If you want to recreate the results in Doherty et al., (2010), then define bw = 6400m and b[if p < 0.75 b = 6400m, | p >= 0.75 b = 8500m]  
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'
@@ -35,13 +36,13 @@
 #'         pop <- SpatialPointsDataFrame(s, data.frame(ID=1:length(s), 
 #'                                  counts=runif(length(s), 1,250)))
 #'
-#'     bd75 <- breeding.density(pop, pop='counts', p=0.75, b=6400, bw=4000)
+#'     bd75 <- breeding.density(pop, pop='counts', p=0.75, b=8500, bw=6400)
 #'      plot(bd75$pop.area, main='75% breeding density areas')
 #'        plot(pop, pch=20, col='black', add=TRUE)
 #'          plot(bd75$pop.pts, pch=20, col='red', add=TRUE)
 #' 
 #' @export
-breeding.density <- function(x, pop, p = 0.75, bw = 1000, b = 6400, self = TRUE) {
+breeding.density <- function(x, pop, p = 0.75, bw = 6400, b = 8500, self = TRUE) {
     if (!inherits(x, "SpatialPointsDataFrame")) 
         stop("must be a SpatialPointsDataFrame object")
     if (is.na(match(pop, names(x@data)))) 
