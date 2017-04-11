@@ -48,4 +48,3 @@ plot(rs200, pch=20, col="red")
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

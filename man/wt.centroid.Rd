@@ -41,4 +41,3 @@ legend('topleft', legend=c('all','copper', 'zinc'),
        pch=c(20,19,19),col=c('black','red','blue'))
 
 }
-

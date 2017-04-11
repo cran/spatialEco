@@ -55,4 +55,3 @@ zinc.cg <- correlogram(x = meuse, v = meuse@data[,'zinc'], dist = 250, ns = 9)
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

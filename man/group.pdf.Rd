@@ -34,10 +34,9 @@ group.pdf(x=as.factor(x), y=y, main='Probability Density of y by group(x)',
 ylab='PDF', xlab='Y', lty=c(1,2,3))
 
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
-}
 \references{
 Simonoff, J. S. (1996). Smoothing Methods in Statistics. Springer-Verlag, New York.
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
+}

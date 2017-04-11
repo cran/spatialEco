@@ -43,4 +43,25 @@ spatialEco_0.1-5
 * Added function "mwCorr" for calculating Dutilleul's modified t-test between two rasters within a specified moving window.  
 * Added function "polyPerimeter" for calculating polygon perimeters 
 * Bug fix in "stratired.random" function.
- 
+
+spatialEco_0.1-6
+================= 
+* Added function "raster.mds" for calculating a focal multidimensional scaling 
+* Added function  "rasterZscore" for calculating cell-level modified z-scores (not memory safe)
+* Added function  "sobel" for calculating the Sobel-Feldman isotropic image gradient operator (intensity and direction)
+* Enhancement to "raster.entropy" for recognizing continuous verses nominal data in deriving entropy. Also allows for global or local definition of entropy constant. 
+
+spatialEco_0.1-7
+================= 
+* Bug fix in "download.daymet" function to account for change in HTML structure on the ORNL website
+* Added function "hli" for calculating the Heat Load Index 
+* Added function "sar" for calculating Surface Area Ratio 
+* Added function "curvature" for calculating Surface Curvature 
+* Added function "srr" for calculating Surface Relief Ratio
+* Added function "dissection" for calculating the Dissection coefficent 
+* Added function "raster.gaussian.smooth" for applying a Gaussian smoothing kernel to a raster 
+* Added function "raster.transformation" for applying statistical transformations to a raster 
+* Added function "raster.invert" for inverting the values in a raster 
+* Added function "raster.moments" for calculating a variety of focal statistical moments on a raster 
+* Added function "trasp" for calculating the Solar-radiation Aspect Index 
+* Modified function "trig.trans" and changed to "sa.trans" for calculating slope, aspect transformations and interactions 

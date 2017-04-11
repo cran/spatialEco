@@ -4,17 +4,17 @@
 \alias{insert.values}
 \title{Insert Values}
 \usage{
-insert.values(x, y, l)
+insert.values(x, value, index)
 }
 \arguments{
 \item{x}{A vector to insert values}
 
-\item{y}{Values to insert into x}
+\item{value}{Values to insert into x}
 
-\item{l}{Index position(s) to insert y values into x}
+\item{index}{Index position(s) to insert y values into x}
 }
 \value{
-A vector with values of y inserted into x
+A vector with values of y inserted into x and the position(s) defined by the index
 }
 \description{
 Inserts new values into a vector at specified positions
@@ -38,4 +38,3 @@ This function inserts new values at specified positions in a vector. It does not
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

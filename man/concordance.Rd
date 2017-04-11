@@ -38,12 +38,11 @@ glm.reg <- glm(vs ~ mpg, data = dat, family = binomial)
 concordance(dat$vs, predict(glm.reg, type = "response")) 
 
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-}
 \references{
 Austin, P.C. & E.W. Steyerberg (2012) Interpreting the concordance statistic of a logistic regression model: relation to the variance and odds ratio of a continuous explanatory variable. BMC Medical Research Methodology, 12:82 
 Harrell, F.E. (2001) Regression modelling strategies. Springer, New York, NY. 
 Royston, P. & D.G. Altman (2010) Visualizing and assessing discrimination in the logistic regression model. Statistics in Medicine 29(24):2508-2520
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

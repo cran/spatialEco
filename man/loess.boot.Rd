@@ -60,9 +60,6 @@ region that includes a fraction "confidence" of the bootstrap replicates. In suc
  plot(sb)
 
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-}
 \references{
 Cleveland, WS, (1979) Robust Locally Weighted Regression and Smoothing Plots Journal of the American Statistical Association 74:829-836
 
@@ -72,4 +69,6 @@ Hardle, W., (1989) Applied Nonparametric Regression Cambridge University Press, 
 
 Tibshirani, R. (1988) Variance stabilization and the bootstrap. Biometrika 75(3):433-44.
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

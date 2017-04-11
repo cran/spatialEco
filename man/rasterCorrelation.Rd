@@ -40,4 +40,3 @@ Depends: raster
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

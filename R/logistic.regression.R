@@ -83,6 +83,10 @@
 #' -2 * sum(meuse@@data$DepVar * lp1 + log(1-plogis(lp1)))  # Approx leave-out-1 deviance
 #' spplot(meuse, c('Probs'))                                # plot estimated probabilities at points
 #'
+#'
+#' @seealso \code{\link[rms]{lrm}}
+#' @seealso \code{\link[spdep]{autocov_dist}}
+#'
 #' @export
 logistic.regression <- function(ldata, y, x, penalty = TRUE, autologistic = FALSE, coords = NULL, bw = NULL, 
                                 type = "inverse", style = "W", longlat = FALSE, ...) {

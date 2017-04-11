@@ -29,10 +29,9 @@ y <- cbind(n=dnorm(x), t=dt(x, df=10))
   kl.divergence(y[,1:2])[3:3]
 
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-}
 \references{
 Kullback S., and R. A. Leibler (1951) On information and sufficiency. The Annals of Mathematical Statistics 22(1):79-86
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

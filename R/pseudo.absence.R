@@ -135,9 +135,17 @@ pseudo.absence <- function(x, n, window = "hull", Mask = NULL, s = NULL, sigma =
         return(r[iopt])
     }
     bw.likelihood <- function(X, srange = NULL, ns = 16) {
+	  check.range <- function (x, fatal = TRUE) {
+        xname <- deparse(substitute(x))
+        if (is.numeric(x) && identical(x, range(x, na.rm = TRUE))) 
+          return(TRUE)
+        if (fatal) 
+          stop(paste(xname, "should be a vector of length 2 giving (min, max)"))
+        return(FALSE)
+      }
         stopifnot(spatstat::is.ppp(X))
         if (!is.null(srange)) 
-            spatstat::check.range(srange) else {
+            check.range(srange) else {
             nnd <- spatstat::nndist(X)
             srange <- c(min(nnd[nnd > 0]), spatstat::diameter(spatstat::as.owin(X))/2)
         }

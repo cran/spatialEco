@@ -7,11 +7,11 @@
 tpi(x, scale = 3, win = "rectangle", normalize = FALSE)
 }
 \arguments{
-\item{x}{raster class object}
+\item{x}{A raster class object}
 
-\item{scale}{scale (window size)}
+\item{scale}{The focal window size}
 
-\item{win}{window type. Options are "rectangle" and "circle"}
+\item{win}{Window type. Options are "rectangle" and "circle"}
 
 \item{normalize}{Apply deviation correction that normalizes to local surface roughness}
 }
@@ -23,23 +23,18 @@ Calculates topographic position using mean deviations
 }
 \examples{
  library(raster)
- r <- raster(nrows=500, ncols=500, xmn=571823, xmx=616763, 
-             ymn=4423540, ymx=4453690)
- proj4string(r) <- crs("+proj=utm +zone=12 +datum=NAD83 +units=m +no_defs")
- r[] <- runif(ncell(r), 1000, 2500)
- r <- focal(r, focalWeight(r, 150, "Gauss") )
+ data(elev)
 
 # calculate tpi and plot 
-  tpi9 <- tpi(r, scale=9)     
+  tpi9 <- tpi(elev, scale=9)     
     par(mfrow=c(1,2))
-      plot(r, main="original raster")
+      plot(elev, main="original raster")
       plot(tpi9, main="tpi 9x9")
 
-}
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
 \references{
 De Reu, J., J. Bourgeois, M. Bats, A. Zwertvaegher, V. Gelorini, et al., (2014) Application of the topographic position index to heterogeneous landscapes. Geomorphology, 186:39-49.
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

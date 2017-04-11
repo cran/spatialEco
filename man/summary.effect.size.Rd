@@ -14,4 +14,3 @@
 \description{
 Summary method for class "effect.size".
 }
-

@@ -107,9 +107,7 @@ lp1 <- resid(lmodel$model, "lp1")                        # Approx. leave-out lin
 -2 * sum(meuse@data$DepVar * lp1 + log(1-plogis(lp1)))  # Approx leave-out-1 deviance
 spplot(meuse, c('Probs'))                                # plot estimated probabilities at points
 
-}
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+
 }
 \references{
 Besag, J.E., (1972) Nearest-neighbour systems and the auto-logistic model for binary data. Journal of the Royal Statistical Society, Series B Methodological 34:75-83
@@ -120,4 +118,11 @@ Le Cessie, S., Van Houwelingen, J.C., (1992) Ridge estimators in logistic regres
 
 Shao, J., (1993) Linear model selection by cross-validation. JASA 88:486-494
 }
+\seealso{
+\code{\link[rms]{lrm}}
 
+\code{\link[spdep]{autocov_dist}}
+}
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

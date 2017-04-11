@@ -12,4 +12,3 @@ se.news(...)
 \description{
 Displays release notes
 }
-

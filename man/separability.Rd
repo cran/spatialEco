@@ -58,9 +58,6 @@ decreasing weight to increasing distances between the classes.
      separability(s1, s2, plot=TRUE) 
       
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
-}
 \references{
 Anderson, M. J., & Clements, A. (2000) Resolving environmental disputes: a statistical method for choosing among competing cluster models. Ecological Applications 10(5):1341-1355
 
@@ -74,4 +71,6 @@ Kailath, T., (1967) The Divergence and Bhattacharyya measures in signal selectio
 
 Kaufman Y., and L. Remer (1994) Detection of forests using mid-IR reflectance: An application for aerosol studies. IEEE T. Geosci.Remote. 32(3):672-683.
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
+}

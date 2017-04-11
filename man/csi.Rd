@@ -51,4 +51,3 @@ csi(as.vector(scale(x)),scale(y))
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

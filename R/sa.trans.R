@@ -1,5 +1,5 @@
-#' @title Calculates the trigonomic slope and aspect transformation
-#' @description The trigonomic Stage (1978) slope * cos(aspect) or slope * sin(aspect) 
+#' @title Trigonomic transformation of a slope and aspect interaction 
+#' @description The trigonomic Stage (1978) [slope * cos(aspect)] or [slope * sin(aspect)] 
 #'
 #' @param slope       slope values in degrees, radians or percent 
 #' @param aspect      aspect values in degrees or radians
@@ -32,15 +32,15 @@
 #' @references Stage, A. R. 1976. An Expression of the Effects of Aspect, Slope, and Habitat Type on Tree Growth. Forest Science Vol 22, No 3, 457-460.
 #'  
 #' @examples 
-#'  trig.trans(slope = 48.146, aspect = 360.000)
+#'  sa.trans(slope = 48.146, aspect = 360.000)
 #'
 #'  library(raster)
-#'  elev <- getData('alt', country='CHE')
-#'  sa <- terrain(elev, opt=c("slope", "aspect"), unit="degrees")
-#'  scosa <- overlay(sa[[1]], sa[[2]], fun = trig.trans)
+#'  data(elev)
+#'  sa <- raster::terrain(elev, opt=c("slope", "aspect"), unit="degrees")
+#'  scosa <- raster::overlay(sa[[1]], sa[[2]], fun = sa.trans)
 #'
 #' @export
-trig.trans <- function(slope, aspect, type = "cos", slp.units = "degrees", 
+sa.trans <- function(slope, aspect, type = "cos", slp.units = "degrees", 
                        asp.units = "degrees") {			  
   if(slp.units == "degrees") { slope <- ( slope / 0.572957795786 ) * 0.01 }
   if(slp.units == "radians") { slope <- ( (slope * (180 / pi)) / 0.572957795786 ) * 0.01 } 
@@ -48,7 +48,6 @@ trig.trans <- function(slope, aspect, type = "cos", slp.units = "degrees",
   if(asp.units == "degrees") aspect * (pi / 180)
     slope[slope > 1] <- 1.001
     slope[slope <= 0] <- NA
-    trans <- as.vector(t(apply(data.frame(slope, aspect), 1, 
-	         function (x){ return ( x[1] * cos(x[2]) ) } )))
+    trans <- as.vector(t(apply(data.frame(slope, aspect), 1, function (x){ return ( x[1] * cos(x[2]) ) } )))
     return(trans)
   }

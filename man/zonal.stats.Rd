@@ -65,4 +65,3 @@ z.pct <- zonal.stats(x=p, y=r, stat=pct, trace=TRUE, plot=TRUE)
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

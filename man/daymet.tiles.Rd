@@ -62,4 +62,3 @@ tiles <- daymet.tiles(x = e, tiles = DAYMET_tiles, ids = "Id", sp = TRUE)
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

@@ -43,4 +43,3 @@ Depends: sp, RANN
   par <- opar
 
 }
-

@@ -59,10 +59,9 @@ Data description:
 }
 
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-}
 \seealso{
 \code{\link{download.daymet}}, \code{\link{download.hansen}}
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

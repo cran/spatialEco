@@ -4,12 +4,17 @@
 \alias{raster.entropy}
 \title{Raster Entropy}
 \usage{
-raster.entropy(x, d = 5, filename = FALSE, ...)
+raster.entropy(x, d = 5, categorical = FALSE, global = FALSE,
+  filename = FALSE, ...)
 }
 \arguments{
-\item{x}{object of class raster (requires integer raster)}
+\item{x}{Object of class raster (requires integer raster)}
 
 \item{d}{Size of matrix (window)}
+
+\item{categorical}{Is the data categorical or continuous (FALSE/TRUE)}
+
+\item{global}{Should the model use a global or local n to calculate entropy (FALSE/TRUE)}
 
 \item{filename}{Raster file written to disk}
 
@@ -38,7 +43,7 @@ require(raster)
   r <- raster(ncols=100, nrows=100)
     r[] <- round(runif(ncell(r), 1,8), digits=0)
 
-rEnt <- raster.entropy(r, d=5)
+rEnt <- raster.entropy(r, d=5, categorical = TRUE, global = TRUE)
   opar <- par  
     par(mfcol=c(2,1))
       plot(r)
@@ -47,6 +52,5 @@ rEnt <- raster.entropy(r, d=5)
 
 }
 \references{
-Fuchs M., Hoffmann R., Schwonke F. (2008) Change Detection with GRASS GIS - Comparison of images taken by different sensor. On line at: http://geoinformatics.fsv.cvut.cz/gwiki/Change_Detection_with_GRASS_GIS_-_Comparison_of_images_taken_by_different_sensors
+Fuchs M., R. Hoffmann, F. Schwonke (2008) Change Detection with GRASS GIS - Comparison of images taken by different sensor. On line at: http://geoinformatics.fsv.cvut.cz/gwiki/Change_Detection_with_GRASS_GIS_-_Comparison_of_images_taken_by_different_sensors
 }
-

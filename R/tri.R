@@ -27,14 +27,9 @@
 #'
 #' @examples 
 #'  library(raster)
-#'  r <- raster(nrows=180, ncols=360, xmn=571823.6, xmx=616763.6, ymn=4423540, 
-#'              ymx=4453690, resolution=270, crs = CRS("+proj=utm +zone=12 +datum=NAD83 
-#'              +units=m +no_defs +ellps=GRS80 +towgs84=0,0,0"))
-#'    r[] <- runif(ncell(r), 1000, 5000) 
-#'    r <- focal(r, w=matrix(1/121,nrow=11,ncol=11)) 
-#'     
-#'   ( tri.ext <- tri(r) )
-#'   ( tri.app <- tri(r, exact = FALSE) )
+#'  data(elev)
+#'   ( tri.ext <- tri(elev) )
+#'   ( tri.app <- tri(elev, exact = FALSE) )
 #'   plot(stack(tri.ext, tri.app))
 #'
 #' @export

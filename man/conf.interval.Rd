@@ -50,4 +50,3 @@ Calculates confidence interval for the mean or median of a distribution with unk
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

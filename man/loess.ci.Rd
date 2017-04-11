@@ -49,10 +49,9 @@ Calculates a local polynomial regression fit with associated confidence interval
  lci <- loess.ci(y, x, plot=TRUE, span=0.80)
 
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-}
 \references{
 W. S. Cleveland, E. Grosse and W. M. Shyu (1992) Local regression models. Chapter 8 of Statistical Models in S eds J.M. Chambers and T.J. Hastie, Wadsworth & Brooks/Cole.
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

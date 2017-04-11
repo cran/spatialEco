@@ -46,6 +46,10 @@
 #'  # Pull metrics associated with class "0"
 #'  all.class[["0"]]
 #'
+#' @seealso \code{\link[SDMTools]{ConnCompLabel}}
+#' @seealso \code{\link[SDMTools]{PatchStat}} 
+#' @seealso \code{\link[SDMTools]{ClassStat}}
+#'
 #' @export 
 land.metrics <- function(x, y, bkgd = NA, metrics = c(4, 14, 33, 34, 35, 37, 38), bw = 1000, latlon = FALSE, trace = TRUE) {
     if (!inherits(x, "SpatialPointsDataFrame") & !inherits(x, "SpatialPolygonsDataFrame")) 

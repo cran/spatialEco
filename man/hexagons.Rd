@@ -36,4 +36,3 @@ hex.pts <- na.omit(over(meuse,hex.polys))
 (hex.pts <- data.frame(PTID=rownames(hex.pts), hex.pts)) 
 
 }
-

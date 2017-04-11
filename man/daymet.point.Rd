@@ -45,4 +45,3 @@ data is avaliable for Long -131.0 W and -53.0 W; lat 52.0 N and 14.5 N
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

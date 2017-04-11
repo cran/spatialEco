@@ -85,9 +85,6 @@ col.br <- colorRampPalette(c('blue','yellow'))
                pch=c(20,20),col=c('black','red'))
     
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-}
 \references{
 Berman, M. and Diggle, P. (1989) Estimating weighted integrals of the second-order intensity of a spatial point process. Journal of the Royal Statistical Society, series B 51, 81-92.
 
@@ -103,4 +100,6 @@ Stoyan, D. and Stoyan, H. (1995) Fractals, random shapes and point fields: metho
 
 Warton, D.i., and L.C. Shepherd (2010) Poisson Point Process Models Solve the Pseudo-Absence Problem for Presence-only Data in Ecology. The Annals of Applied Statistics, 4(3):1383-1402
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

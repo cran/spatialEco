@@ -45,4 +45,3 @@ This function will remove all NA's in the object or NA's associated with a speci
 \author{
 Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
 }
-

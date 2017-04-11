@@ -41,4 +41,3 @@ y <- jitter(x^2)
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

@@ -26,16 +26,15 @@ This funtion measures terrain ruggedness by calculating the vector ruggedness me
 }
 \examples{
  library(raster)
- elev <- getData('alt', country='CHE')
+ data(elev)
    vrm3 <- vrm(elev) 
    vrm5 <- vrm(elev, s=5)
    plot(stack(vrm3, vrm5))
 
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-}
 \references{
 Sappington, J.M., K.M. Longshore, D.B. Thomson (2007). Quantifiying Landscape Ruggedness for Animal Habitat Anaysis: A case Study Using Bighorn Sheep inthe Mojave Desert. Journal of Wildlife Management. 71(5):1419-1426
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

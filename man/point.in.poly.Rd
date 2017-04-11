@@ -50,4 +50,3 @@ tapply(pts.poly@data$lead, pts.poly@data$PIDS, FUN=length)
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

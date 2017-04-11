@@ -57,10 +57,9 @@ bb <- rbind(c(-1281299,-761876.5),c(1915337,2566433.5))
          plot(bd75$pop.pts, pch=20, col='red', add=TRUE)
 
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-}
 \references{
 Doherty, K.E., J.D. Tack, J.S. Evans, D.E. Naugle (2010) Mapping breeding densities of greater sage-grouse: A tool for range-wide conservation planning. Bureau of Land Management. Report Number L10PG00911
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

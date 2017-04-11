@@ -52,4 +52,3 @@ ars <- parea.sample(srdf, pct=0.20, stype='random')
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

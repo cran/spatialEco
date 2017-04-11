@@ -33,12 +33,11 @@ pooled standard deviation is derived; sqrt(  ( (Ne - 1) * sigma(e)^2 + (Nc - 1) 
    plot(es)
 
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-}
 \references{
 Cohen, J., (1988) Statistical Power Analysis for the Behavioral Sciences (second ed.). Lawrence Erlbaum Associates.
 
 Cohen, J (1992) A power primer. Psychological Bulletin 112(1):155-159
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

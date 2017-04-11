@@ -63,7 +63,13 @@ depends: sp, raster, rgeos, SDMTools
  all.class[["0"]]
 
 }
+\seealso{
+\code{\link[SDMTools]{ConnCompLabel}}
+
+\code{\link[SDMTools]{PatchStat}}
+
+\code{\link[SDMTools]{ClassStat}}
+}
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

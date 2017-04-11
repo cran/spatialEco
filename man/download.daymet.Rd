@@ -4,13 +4,13 @@
 \alias{download.daymet}
 \title{Download DAYMET}
 \usage{
-download.daymet(years, tile, data.type = "all", download.folder = getwd(),
-  http = "http://daymet.ornl.gov/thredds/fileServer/ornldaac/1219/tiles")
+download.daymet(years, tiles, data.type = "all", download.folder = getwd(),
+  http = "https://thredds.daac.ornl.gov/thredds/fileServer/ornldaac/1328/tiles")
 }
 \arguments{
-\item{years}{Years to download (valid years 1980-2012)}
+\item{years}{Years to download (valid years 1980-2015)}
 
-\item{tile}{Tile index value (see url for tile index grid in notes section)}
+\item{tiles}{Tile index value (see url for tile index grid in notes section)}
 
 \item{data.type}{Type of climate metric: 'all', 'vp', 'tmin', 'tmax', 'swe', 'srad', 'prcp', 'dayl'.}
 
@@ -45,7 +45,7 @@ DAYMET main website: \url{http://daymet.ornl.gov}
 
 Tile index information \url{http://daymet.ornl.gov/datasupport.html}
 
-Data respotory url: http://daymet.ornl.gov/thredds/fileServer/ornldaac/1219/tiles
+Data respotory url: https://thredds.daac.ornl.gov/thredds/fileServer/ornldaac/1328/tiles
 
 Path structure: /year/tile_year/file.nc
 }
@@ -54,12 +54,9 @@ Path structure: /year/tile_year/file.nc
 # Download 2009-2010 min and max temp for tiles 11737 and 11738  
  laramie.plains <- c(11737, 11738)
  my.years <- c(seq(2009,2010,1))
- download.daymet(years=my.years, tile=laramie.plains, data.type=c('tmin','tmax')) 
+ download.daymet(years=my.years, tiles=laramie.plains, data.type=c('tmin','tmax')) 
 }
 
-}
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
 \references{
 Thornton P.E., S.W. Running and M.A. White (1997) Generating surfaces of daily meteorological variables over large regions of complex terrain. Journal of Hydrology 190: 214-251.
@@ -68,4 +65,6 @@ Thornton, P.E. and S.W. Running (1999) An improved algorithm for estimating inci
 
 Thornton, P.E., H. Hasenauer and M.A. White (2000) Simultaneous estimation of daily solar radiation and humidity from observed temperature and precipitation: An application over complex terrain in Austria. Agricultural and Forest Meteorology 104:255-271.
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

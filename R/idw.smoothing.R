@@ -39,7 +39,7 @@ idw.smoothing <- function(x, y, d, k) {
         stop(deparse(substitute(y)), "does not exists")
     if (!class(x@data[, y]) == "numeric") 
         stop("y must be numeric")
-    ddata <- data.frame(ID = row.names(x), X = sp::coordinates(x)[, 1], Y = sp::coordinates(x)[, 1])
+    ddata <- data.frame(ID = row.names(x), X = sp::coordinates(x)[, 1], Y = sp::coordinates(x)[, 2])
     nearest <- RANN::nn2(ddata, query = ddata, k = k, treetype = c("bd"), searchtype = c("radius"), radius = d)
     knn.id <- as.data.frame(nearest$nn.idx)
     names(knn.id) <- paste("NN", seq(1, ncol(knn.id), 1), sep = "")

@@ -58,4 +58,3 @@ Calculate statistical moments of a distribution
 \author{
 Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
 }
-

@@ -16,7 +16,7 @@
 #'
 #' @examples 
 #'  library(raster)
-#'  elev <- getData('alt', country='CHE')
+#'  data(elev)
 #'    vrm3 <- vrm(elev) 
 #'    vrm5 <- vrm(elev, s=5)
 #'    plot(stack(vrm3, vrm5))

@@ -14,4 +14,3 @@
 \description{
 print method for class "loess.boot"
 }
-

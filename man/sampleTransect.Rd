@@ -38,4 +38,3 @@ transects <- sampleTransect(meuse, min.length=200, max.length=500, min.samp = 3)
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>
 }
-

@@ -31,7 +31,7 @@ daymet.point <- function (lat, long, start.year, end.year, site=NULL,
 	if(missing(start.year)) stop("Please define start year") 
     if(missing(end.year)) stop("Please define end year") 
     if (start.year < 1980) stop("Data not avaliable prior to 1980")
-	if (start.year > 2014) stop("Data not avaliable after 2014")
+	if (start.year > 2015) stop("Data not avaliable after 2015")
     year.range = paste(seq(start.year, end.year, by = 1), collapse = ",")
     download.url = sprintf("https://daymet.ornl.gov/data/send/saveData?lat=%s&lon=%s&measuredParams=tmax,tmin,dayl,prcp,srad,swe,vp&year=%s", 
                            lat, long, year.range)

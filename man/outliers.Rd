@@ -4,10 +4,12 @@
 \alias{outliers}
 \title{Outliers}
 \usage{
-outliers(x)
+outliers(x, s = 1.4826)
 }
 \arguments{
 \item{x}{A numeric vector}
+
+\item{s}{Scaling factor for mad statistic}
 }
 \value{
 value for the modified Z-score
@@ -30,10 +32,9 @@ Identify outliers using modified Z-score
      x <- x[-which(Z > 9.9)]
 
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-}
 \references{
 Iglewicz, B. & D.C. Hoaglin (1993) How to Detect and Handle Outliers, American Society for Quality Control, Milwaukee, WI.
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

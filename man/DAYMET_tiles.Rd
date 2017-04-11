@@ -19,4 +19,3 @@
 \description{
 Polygon tile index for DAYMET climate data
 }
-

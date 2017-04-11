@@ -1,7 +1,9 @@
 #' @title Outliers 
 #' @description Identify outliers using modified Z-score
 #'
-#' @param x A numeric vector
+#' @param x          A numeric vector
+#' @param s          Scaling factor for mad statistic 
+#'
 #' @return value for the modified Z-score
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
@@ -24,9 +26,9 @@
 #'      x <- x[-which(Z > 9.9)]
 #'
 #' @export  
-outliers <- function(x) {
+outliers <- function(x, s = 1.4826) {
  e <- (length(x) - 1) / sqrt(length(x)) 
- mad <- function (x, center=stats::median(x), constant=1.4826,
+ mad <- function (x, center=stats::median(x), constant=s,
                   low=FALSE, high=FALSE) {
   n <- length(x)
   constant * if ((low || high) && n%%2 == 0) {
@@ -37,13 +39,5 @@ outliers <- function(x) {
     }
    else stats::median(abs(x - center))
   }                         
-    z <- ( (0.6745 * (x - stats::median(x))) / mad(x) )
-  if ( (max(z) > (length(x) - 1) / sqrt(length(x))) == TRUE ) { 
-     print(paste( "outliers found - ", "expected-Z: ", round(e,digits=2) , 
-                  " Observed-Z: ", round(max(z), digits=2), sep="" ))    
-    } else {  
-     print(paste( "no outliers found - ", "expected-Z: ", round(e,digits=2) , 
-                  " Observed-Z: ", round(max(z), digits=2), sep="" ))
-    }
-  ( z )
+   return( ( (0.6745 * (x - stats::median(x))) / mad(x) ) )
 }

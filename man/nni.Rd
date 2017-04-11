@@ -34,12 +34,11 @@ data(meuse)
     nni(meuse)
 
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
-}
 \references{
 Clark, P.J., and F.C. Evans (1954) Distance to nearest neighbour as a measure of spatial relationships in populations. Ecology 35:445-453
 
 Cressie, N (1991) Statistics for spatial data. Wiley & Sons, New York.
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+}

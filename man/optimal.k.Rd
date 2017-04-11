@@ -42,10 +42,9 @@ require(cluster)
   x <- data.frame(x, k=clust$clustering) 
 
 }
-\author{
-Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
-}
 \references{
 Theodoridis, S. & K. Koutroumbas(2006) Pattern Recognition 3rd ed.
 }
-
+\author{
+Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>
+}

@@ -1,10 +1,10 @@
 #' @title Topographic Position Index (tpi)
 #' @description Calculates topographic position using mean deviations
 #' 
-#' @param x raster class object
-#' @param scale scale (window size) 
-#' @param win window type. Options are "rectangle" and "circle" 
-#' @param normalize Apply deviation correction that normalizes to local surface roughness  
+#' @param x              A raster class object
+#' @param scale          The focal window size 
+#' @param win            Window type. Options are "rectangle" and "circle" 
+#' @param normalize      Apply deviation correction that normalizes to local surface roughness  
 #' 
 #' @return raster class object of tpi 
 #'
@@ -15,20 +15,17 @@
 #' 
 #' @examples 
 #'  library(raster)
-#'  r <- raster(nrows=500, ncols=500, xmn=571823, xmx=616763, 
-#'              ymn=4423540, ymx=4453690)
-#'  proj4string(r) <- crs("+proj=utm +zone=12 +datum=NAD83 +units=m +no_defs")
-#'  r[] <- runif(ncell(r), 1000, 2500)
-#'  r <- focal(r, focalWeight(r, 150, "Gauss") )
+#'  data(elev)
 #'
 #' # calculate tpi and plot 
-#'   tpi9 <- tpi(r, scale=9)     
+#'   tpi9 <- tpi(elev, scale=9)     
 #'     par(mfrow=c(1,2))
-#'       plot(r, main="original raster")
+#'       plot(elev, main="original raster")
 #'       plot(tpi9, main="tpi 9x9")
 #'
 #' @export
-tpi <- function(x, scale = 3, win = "rectangle", normalize = FALSE) { 
+tpi <- function(x, scale = 3, win = "rectangle", normalize = FALSE) {
+    if (!inherits(x, "RasterLayer")) stop("MUST BE RasterLayer OBJECT")   
     if( win == "circle") {
       if( scale < raster::res(x)[1] * 2) 
         stop( "Scale is too small for a circular window")
