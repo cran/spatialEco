@@ -1,5 +1,5 @@
 #' @title Statistical transformation for rasters
-#' @description Transforms raster to a specified stastical transformation 
+#' @description Transforms raster to a specified statistical transformation 
 #' 
 #' @param x       raster class object
 #' @param trans   Transformation method: "norm", "rstd", "std", "stretch", "nl", "slog", "sr" (please see notes)

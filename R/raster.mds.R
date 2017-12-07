@@ -17,6 +17,7 @@
 #' Quinn, G.P., & M.J. Keough (2002) Experimental design and data analysis for biologists. Cambridge University Press. Ch. 18. Multidimensional scaling and cluster analysis.
 #' 
 #' @examples 
+#' \dontrun{ 
 #'  library(raster)
 #'  r <- raster(system.file("external/rlogo.grd", package="raster")) 
 #'    r <- r / cellStats(r, "max")
@@ -32,6 +33,7 @@
 #'        title("MDS")
 #'      plot(diss.med)
 #'        title("Median MDS")
+#' }
 #'
 #' @export raster.mds  
 raster.mds <- function(r, s = 5, window.median = FALSE, ...) {
@@ -64,7 +66,7 @@ raster.mds <- function(r, s = 5, window.median = FALSE, ...) {
 	   }
      }	
     return(cmd)
-  }
+  }  
   diss <- raster::focal(r, w = matrix(1, nrow=s[1], ncol=s[2]), 
 	                    fun = cmd.diss, ...)
 } 

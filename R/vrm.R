@@ -12,7 +12,7 @@
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'  
-#' @references Sappington, J.M., K.M. Longshore, D.B. Thomson (2007). Quantifiying Landscape Ruggedness for Animal Habitat Anaysis: A case Study Using Bighorn Sheep inthe Mojave Desert. Journal of Wildlife Management. 71(5):1419-1426
+#' @references Sappington, J.M., K.M. Longshore, D.B. Thomson (2007). Quantifying Landscape Ruggedness for Animal Habitat Analysis: A case Study Using Bighorn Sheep inthe Mojave Desert. Journal of Wildlife Management. 71(5):1419-1426
 #'
 #' @examples 
 #'  library(raster)

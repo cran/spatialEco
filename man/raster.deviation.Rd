@@ -25,7 +25,7 @@ Calculates the local deviation from the raster, a specified global statistic or 
 }
 \note{
 The deviation from the trend is derived as [y-hat - y] where; y-hat is the Nth-order polynomial.  Whereas the deviation from a global statistic is [y - y-hat] where; y-hat is the local (focal) statistic. 
- The global = TRUE argument allows one to evalute the local deviation from the global statistic [stat(x) - y-hat] where; stat(x) is the global value of the specified staistic and y-hat is the specified focal statistic.
+ The global = TRUE argument allows one to evaluate the local deviation from the global statistic [stat(x) - y-hat] where; stat(x) is the global value of the specified statistic and y-hat is the specified focal statistic.
 }
 \examples{
   library(raster)

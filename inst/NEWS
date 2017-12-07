@@ -65,3 +65,18 @@ spatialEco_0.1-7
 * Added function "raster.moments" for calculating a variety of focal statistical moments on a raster 
 * Added function "trasp" for calculating the Solar-radiation Aspect Index 
 * Modified function "trig.trans" and changed to "sa.trans" for calculating slope, aspect transformations and interactions 
+
+spatialEco_1.0-0
+=================
+* Added function "convexHull" Creates a convex hull using the Pateiro-Lopez alpha hull method 
+* Added function "class.comparison" Compairs two nominal rasters
+* Added function "erase.points" Erases points inside or outside a polygon feature class  
+* Added function "focal.lmetrics" Landscape metrics using a focal window 
+* Added function "oli.aws" Download Landsat 8 - OLI from AWS.   
+* Added function "raster.downscale" Downscale raster to a higher resoultion raster using robust regression 
+* Added function "raster.modified.ttest" Bivariate moving window correlation using Dutilleul's modified t-test 
+* Added function "sp.kde" A weighted or un-weighted kernel density estimate
+* Deprecated function "kde2D" and replaced with "sp.kde" which accepts weights
+* Deprecated function "mwCorr" and replaced with "raster.modified.ttest"
+* Changed the "point.in.poly" function so that it retains columns contaning all NA's
+* Added added optional poly.id argument to "point.in.poly" function so a specific column can be define from the SpatialPolygonsDataFrame object  

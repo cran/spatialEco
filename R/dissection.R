@@ -1,5 +1,5 @@
 #' @title Dissection
-#' @description Caculates the Evans (1972) Martonne's modified dissection 
+#' @description Calculates the Evans (1972) Martonne's modified dissection 
 #' 
 #' @param x    raster object
 #' @param s    Focal window size

@@ -22,7 +22,7 @@ Download of Hansen Global Forest Change 2000-2013
 \note{
 Project website with 10x10 degree granule index: \url{ http://earthenginepartners.appspot.com/science-2013-global-forest/download_v1.1.html }
 
-Avaliable products: treecover2000, loss, gain, lossyear, datamask, first, or last
+Available products: treecover2000, loss, gain, lossyear, datamask, first, or last
 
 'treecover2000' (Tree canopy cover for year 2000) - Tree cover in the year 2000, defined as canopy closure for all vegetation taller than 5m in height. Encoded as a percentage per output grid cell, in the range 0-100.
 

@@ -13,7 +13,7 @@
 #'
 #' @note Function uses the Single Pixel Extraction tool and returns year, yday, dayl(s), prcp (mm/day), srad (W/m^2), swe (kg/m^2), tmax (deg c), tmin (deg c), vp (Pa)
 #' @note Metadata for DAYMET single pixel extraction: \url{ https://daymet.ornl.gov/files/UserGuides/current/readme_singlepointextraction.pdf }
-#' @note data is avaliable for Long -131.0 W and -53.0 W; lat 52.0 N and 14.5 N
+#' @note data is available for Long -131.0 W and -53.0 W; lat 52.0 N and 14.5 N
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'         
@@ -30,8 +30,8 @@ daymet.point <- function (lat, long, start.year, end.year, site=NULL,
     if(missing(long)) stop("Please define long") 
 	if(missing(start.year)) stop("Please define start year") 
     if(missing(end.year)) stop("Please define end year") 
-    if (start.year < 1980) stop("Data not avaliable prior to 1980")
-	if (start.year > 2015) stop("Data not avaliable after 2015")
+    if (start.year < 1980) stop("Data not available prior to 1980")
+	if (start.year > 2015) stop("Data not available after 2015")
     year.range = paste(seq(start.year, end.year, by = 1), collapse = ",")
     download.url = sprintf("https://daymet.ornl.gov/data/send/saveData?lat=%s&lon=%s&measuredParams=tmax,tmin,dayl,prcp,srad,swe,vp&year=%s", 
                            lat, long, year.range)

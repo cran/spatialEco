@@ -16,7 +16,7 @@ raster.Zscore(x, p.value = FALSE, file.name = NULL, ...)
 \item{...}{Additional arguments passed to writeRaster}
 }
 \value{
-raster class object or raster writtent to disk
+raster class object or raster written to disk
 }
 \description{
 Calculates the modified z-score for all cells in a raster

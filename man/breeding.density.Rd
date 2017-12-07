@@ -21,16 +21,13 @@ breeding.density(x, pop, p = 0.75, bw = 6400, b = 8500, self = TRUE)
 }
 \value{
 A list object with:
-
-pop.pts     sp point object with points identified within the specified p
-
-pop.area    sp polygon object of buffered points specified by parameter b
-
-bandwidth   Specified distance bandwidth used in identifying neighbour counts
-
-buffer      Specified buffer distance used in buffering points for pop.area
-
-p           Specified population percent
+\itemize{ 
+\item     pop.pts     sp point object with points identified within the specified p
+\item     pop.area    sp polygon object of buffered points specified by parameter b
+\item     bandwidth   Specified distance bandwidth used in identifying neighbour counts 
+\item     buffer      Specified buffer distance used in buffering points for pop.area  
+\item     p           Specified population percent
+}
 }
 \description{
 Calculates breeding density areas base on population counts and spatial point density.

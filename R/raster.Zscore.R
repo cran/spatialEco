@@ -6,7 +6,7 @@
 #' @param file.name        Name of raster written to disk
 #' @param ...              Additional arguments passed to writeRaster
 #'
-#' @return raster class object or raster writtent to disk
+#' @return raster class object or raster written to disk
 #'
 #' @note Since this functions needs to operate on all of the raster values, it is not memory safe 
 #'

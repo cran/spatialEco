@@ -16,7 +16,7 @@ A list class object with the following components:
 
 concordance  percent of positives that are greater than probabilities of nulls
 
-isconcordance inverse of concordance representing null class
+is concordance inverse of concordance representing null class
 
 tied number of tied probabilities
 

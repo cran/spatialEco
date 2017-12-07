@@ -33,7 +33,7 @@ Function uses the Single Pixel Extraction tool and returns year, yday, dayl(s), 
 
 Metadata for DAYMET single pixel extraction: \url{ https://daymet.ornl.gov/files/UserGuides/current/readme_singlepointextraction.pdf }
 
-data is avaliable for Long -131.0 W and -53.0 W; lat 52.0 N and 14.5 N
+data is available for Long -131.0 W and -53.0 W; lat 52.0 N and 14.5 N
 }
 \examples{
 \dontrun{

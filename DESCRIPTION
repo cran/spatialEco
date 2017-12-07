@@ -1,8 +1,8 @@
 Package: spatialEco
 Type: Package
 Title: Spatial Analysis and Modelling
-Version: 0.1-7
-Date: 2017-04-10
+Version: 1.0-0
+Date: 2017-12-07
 Authors@R: c(person(family="Evans", given="Jeffrey S.", email = "jeffrey_evans@tnc.org", 
              role = c("aut", "cre")), person(family="Ram", given="Karthik", role = "ctb") )
 Description: Utilities to support spatial data manipulation, query, sampling
@@ -12,11 +12,9 @@ Description: Utilities to support spatial data manipulation, query, sampling
     absences and sub-sampling, polygon and point-distance landscape metrics,
     auto-logistic model, sampling models, cluster optimization and statistical
     exploratory tools.
-Depends: R (>= 3.2.1)
-Imports: sp (>= 1.1-1), raster (>= 2.4-15), spatstat (>= 1.47-0),
-        cluster (>= 2.0.2), spdep (>= 0.5-88), SDMTools (>= 1.1-221),
-        RCurl (>= 1.95-4.7), rgeos (>= 0.3-11), RANN (>= 2.5), rms (>=
-        4.3-1), yaImpute (>= 1.0-26), SpatialPack, MASS, rgdal, methods
+Depends: R (>= 3.4.0)
+Imports: sp, raster, spatstat, cluster, spdep, SDMTools, readr, RCurl,
+        rgeos, RANN, rms, yaImpute, SpatialPack, MASS, rgdal, methods
 Maintainer: Jeffrey S. Evans <jeffrey_evans@tnc.org>
 License: GPL-3
 URL: https://cran.r-project.org/package=spatialEco
@@ -24,7 +22,7 @@ NeedsCompilation: no
 Repository: CRAN
 LazyData: true
 RoxygenNote: 6.0.1
-Packaged: 2017-04-10 22:01:39 UTC; jeffrey_evans
+Packaged: 2017-12-07 17:41:17 UTC; jeffrey_evans
 Author: Jeffrey S. Evans [aut, cre],
   Karthik Ram [ctb]
-Date/Publication: 2017-04-11 13:00:13 UTC
+Date/Publication: 2017-12-08 00:09:12 UTC

@@ -9,10 +9,7 @@
 #' @param stype Sampling type ('random', 'regular', 'nonaligned', 'hexagonal')
 #' @param ... Additional arguments passed to spsample
 #'
-#' @note
-#' This function results in an adaptive sample based on the area of each polygon
-#'
-#' @note Depends: sp,  
+#' @note This function results in an adaptive sample based on the area of each polygon
 #'
 #' @return A SpatialPointsDataFrame with polygon samples
 #'
@@ -34,37 +31,34 @@
 #'     plot(ars, pch=20, add=TRUE)
 #'
 #' @export
-parea.sample <- function(x, pct = 0.1, join = FALSE, msamp = 1, sf = 4046.86, stype = "hexagonal", ...) {
+parea.sample <- function(x, pct = 0.1, join = FALSE, msamp = 1, sf = 4046.86, 
+                         stype = "hexagonal", ...) {
+  # if(class(x) == "sf") { x <- as(x, "Spatial") }
     if (!inherits(x, "SpatialPolygonsDataFrame")) 
         stop("Must be a SpatialPolygonsDataFrame object")
-    pids <- rownames(x@data)
-    psub <- x[rownames(x@data) == pids[1], ]
-    ac <- sapply(methods::slot(psub, "polygons"), function(i) methods::slot(i, "area"))/sf
-    ns <- round((ac * pct), digits = 0)
-    if (ns < msamp) {
-        ns <- msamp
-    }
-    psamp <- sp::spsample(psub, n = ns, type = stype, ...)
-    results <- sp::SpatialPointsDataFrame(psamp, data = data.frame(ID = rep(as.numeric(pids[1]), dim(sp::coordinates(psamp))[1])))
-    if (length(pids) > 1) {
-        for (i in 2:length(pids)) {
-            psub <- x[rownames(x@data) == pids[i], ]
-            ac <- sapply(methods::slot(psub, "polygons"), function(i) methods::slot(i, "area"))/sf
-            ns <- round((ac * pct), digits = 0)
-            if (ns < msamp) {
-                ns <- msamp
-            }
-            psamp <- sp::spsample(psub, n = ns, type = stype, ...)
-            psamp <- sp::SpatialPointsDataFrame(psamp, data = data.frame(ID = rep(as.numeric(pids[i]), dim(sp::coordinates(psamp))[1])))
-            results <- rbind(results, psamp)
-        }
-    }
-    if (join == TRUE) {
-        x@data <- cbind(xxID = as.numeric(as.character(rownames(x@data))), x@data)
-        results@data <- data.frame(results@data, x@data[match(results@data$ID, x@data$xxID), ])
-        x@data <- x@data[, -1]
+	options(warn=-1)
+    pids <- rownames(x@data)	
+	samp.list <- list()	
+      for (i in 1:nrow(x)) {
+        psub <- x[rownames(x@data) == pids[i],]
+	    ns <- round( (rgeos::gArea(psub) / sf) * pct, 0)
+        if (ns < msamp) { ns <- msamp }
+          psamp <- try( sp::spsample(psub, n = ns, type = stype, iter = 10, ...) )
+		  if(class(psamp) != "try-error") {
+            samp.list[[i]] <- sp::SpatialPointsDataFrame(psamp, data = data.frame(ID = rep(as.numeric(pids[i]), 
+	  	                                        dim(sp::coordinates(psamp))[1])))
+		  } else {
+		    samp.list[[i]] <- NULL
+          }			
+      }
+    samp.list[sapply(samp.list, is.null)] <- NULL  
+      results <- do.call("rbind", samp.list)
+	if (join == TRUE) {
+      x@data <- cbind(xxID = as.numeric(as.character(rownames(x@data))), x@data)
+      results@data <- data.frame(results@data, x@data[match(results@data$ID, x@data$xxID),])
+	    results@data <- results@data[,-which(names(results) == "xxID")]
         return(results)
     } else {
-        return(results)
+      return(results)
     }
 } 

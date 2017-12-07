@@ -17,7 +17,7 @@ dissection(x, s = 5, ...)
 raster class object of Martonne's modified dissection
 }
 \description{
-Caculates the Evans (1972) Martonne's modified dissection
+Calculates the Evans (1972) Martonne's modified dissection
 }
 \note{
 Dissection is calculated as: ( z(s) - min(z(s)) ) / ( max(z(s)) - min(z(s)) )

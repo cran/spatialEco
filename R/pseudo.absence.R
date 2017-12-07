@@ -82,6 +82,7 @@
 #' @export     
 pseudo.absence <- function(x, n, window = "hull", Mask = NULL, s = NULL, sigma = "Scott", wts = NULL, KDE = FALSE, 
     gradient = 1, p = NULL, edge = FALSE) {
+    # if(class(x) == "sf") { x <- as(x, "Spatial") }
     if (!class(x) == "SpatialPointsDataFrame" & !class(x) == "SpatialPoints") 
         stop(deparse(substitute(x)), " MUST BE A sp POINTS OBJECT")
     if (!is.null(Mask)) {

@@ -6,7 +6,7 @@
 #'
 #' @return A list class object with the following components: 
 #' @return  concordance  percent of positives that are greater than probabilities of nulls
-#' @return  isconcordance inverse of concordance representing null class
+#' @return  is concordance inverse of concordance representing null class
 #' @return  tied number of tied probabilities
 #' @return  pairs number of pairs compared
 #'

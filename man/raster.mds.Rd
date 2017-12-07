@@ -25,6 +25,7 @@ Multidimensional scaling of raster values within an N x N focal window
 An MDS focal function
 }
 \examples{
+\dontrun{ 
  library(raster)
  r <- raster(system.file("external/rlogo.grd", package="raster")) 
    r <- r / cellStats(r, "max")
@@ -40,6 +41,7 @@ An MDS focal function
        title("MDS")
      plot(diss.med)
        title("Median MDS")
+}
 
 }
 \references{

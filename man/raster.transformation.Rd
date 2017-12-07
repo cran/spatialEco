@@ -19,7 +19,7 @@ raster.transformation(x, trans = "norm", smin = 0, smax = 255)
 raster class object of transformation
 }
 \description{
-Transforms raster to a specified stastical transformation
+Transforms raster to a specified statistical transformation
 }
 \note{
 ("norm") Normalization [0-1]: if min(x) < 0 ( x - min(x) ) / ( max(x) - min(x) )

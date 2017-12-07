@@ -30,6 +30,7 @@
 #' 
 #' @export  
 correlogram <- function(x, v, dist = 5000, dmatrix = FALSE, ns = 99, latlong = FALSE, ...) {
+    # if(class(x) == "sf") { x <- as(x, "Spatial") }
     if ((inherits(x, "SpatialPointsDataFrame")) == FALSE) 
         stop("x MUST BE SP SpatialPointsDataFrame OBJECT")
     options(warn = -1)
