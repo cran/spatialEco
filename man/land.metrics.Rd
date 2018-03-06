@@ -5,7 +5,7 @@
 \title{Landscape metrics for points and polygons}
 \usage{
 land.metrics(x, y, bkgd = NA, metrics = c("prop.landscape"), bw = 1000,
-  latlon = FALSE, trace = TRUE)
+  latlon = FALSE, echo = TRUE)
 }
 \arguments{
 \item{x}{SpatalPointsDataFrame or SpatalPolgonsDataFrame class object}
@@ -14,13 +14,13 @@ land.metrics(x, y, bkgd = NA, metrics = c("prop.landscape"), bw = 1000,
 
 \item{bkgd}{Background value (will be ignored)}
 
-\item{metrics}{Numeric index of desired metric (see available metrics)}
+\item{metrics}{Numeric index or name(s) of desired metric (see available metrics)}
 
 \item{bw}{Buffer distance (ignored if x is SpatalPolgonsDataFrame)}
 
-\item{latlon}{Is raster data in lat-long (TRUE/FALSE)}
+\item{latlon}{(FALSE/TRUE) Is raster data in lat-long}
 
-\item{trace}{Plot raster subsets and echo object ID at each iteration (TRUE | FALSE)}
+\item{echo}{(FALSE/TRUE) Print object ID at each iteration}
 }
 \value{
 If multiple classes are evaluated a list object with a data.frame for each class containing specified metrics in columns. The data.frame is ordered and shares the same row.names as the input feature class and can be directly joined to the @data slot. For single class problems a data.frame object is returned.
@@ -31,7 +31,7 @@ Calculates a variety of landscape metrics, on binary rasters, for polygons or po
 \details{
 The following metrics are available: 
  \itemize{ 
-  \item  class - a particular patch type from the original input matrix (mat).
+  \item  class - (always included) particular patch type from the original input matrix.
   \item  n.patches - the number of patches of a particular patch type or in a class.
   \item  total.area - the sum of the areas (m2) of all patches of the corresponding patch type.
   \item  prop.landscape - the proportion of the total landscape represented by this class

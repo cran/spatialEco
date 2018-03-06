@@ -8,7 +8,7 @@
 #'
 #' @return raster class object or raster written to disk
 #' 
-#' @note This funtion measures terrain ruggedness by calculating the vector ruggedness measure
+#' @note This function measures terrain ruggedness by calculating the vector ruggedness measure
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'  
@@ -29,11 +29,11 @@ vrm <- function(x, s = 3, file.name = NULL, ...) {
       if(length(s) == 1) s = rep(s,2)
   scale.factor <- round(s[1] * s[2], 0)
   sa <- raster::terrain(x, opt=c("slope", "aspect"), unit="radians", 
-                        neighbors=8) 												
-  sin.slp <- raster::calc(sa[["slope"]], fun=cos)               # xyRaster 
-  cos.slp <- raster::calc(sa[["slope"]], fun=sin)               # zRaster 
-  sin.asp <- raster::calc(sa[["aspect"]], fun=cos) * sin.slp    # yRaster
-  cos.asp <- raster::calc(sa[["aspect"]], fun=sin) * sin.slp    # xRaster  
+                        neighbors=8) 					
+  sin.slp <- raster::calc(sa[["slope"]], fun=sin)                 # xyRaster 
+  cos.slp <- raster::calc(sa[["slope"]], fun=cos)                 # zRaster 
+  sin.asp <- raster::calc(sa[["aspect"]], fun=sin) * sin.slp      # yRaster
+  cos.asp <- raster::calc(sa[["aspect"]], fun=cos) * sin.slp      # xRaster  
   f = matrix(1,s[1],s[2]) 
   x.sum <- raster::focal(sin.asp, w = f, fun=sum) 
   y.sum <- raster::focal(cos.asp, w = f, fun=sum) 

@@ -14,7 +14,7 @@ separability(x, y, plot = FALSE, cols = c("red", "blue"),
 
 \item{plot}{plot separability (TRUE/FALSE)}
 
-\item{cols}{colours for plot (must be equal to number of classes)}
+\item{cols}{colors for plot (must be equal to number of classes)}
 
 \item{clabs}{labels for two classes}
 
@@ -23,18 +23,18 @@ separability(x, y, plot = FALSE, cols = c("red", "blue"),
 \value{
 A data.frame with the following separability metrics:
 
-B  Bhattacharryya distance statistic
+B    Bhattacharryya distance statistic
 
-JM  Jeffries-Matusita distance statistic
+JM    Jeffries-Matusita distance statistic
 
-M  M-Statistic
+M    M-Statistic
 
-D  Divergence index
+D    Divergence index
 
-TD  Transformed Divergence index
+TD   Transformed Divergence index
 }
 \description{
-Calculates variety of univariate or multivariate separability metrics for two class samples
+Calculates variety of two-class sample separability metrics
 }
 \note{
 M-Statistic (Kaufman & Remer 1994) - This is a measure of the difference of the distributional peaks. A large M-statistic indicates good separation between the two classes as within-class variance is 

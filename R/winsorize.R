@@ -22,9 +22,10 @@
 #' x[1] <- x[1] * 10  
 #' winsorize(x)       
 #' 
-#' plot(x, type="l")
+#' plot(x, type="l", main="Winsorization transformation")
 #'   lines(winsorize(x), col="red", lwd=2)
-#' 
+#'     legend("bottomright", legend=c("Original distribution","With outliers removed"),
+#'	        lty=c(1,1), col=c("black","red"))
 #' # Behavior with NA value(s)
 #' x[4] <- NA
 #' winsorize(x)             # returns x with original NA's 

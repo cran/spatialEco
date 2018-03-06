@@ -22,7 +22,7 @@ raster class object or raster written to disk
 Implementation of the Sappington et al., (2007) vector ruggedness measure
 }
 \note{
-This funtion measures terrain ruggedness by calculating the vector ruggedness measure
+This function measures terrain ruggedness by calculating the vector ruggedness measure
 }
 \examples{
  library(raster)
