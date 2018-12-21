@@ -18,14 +18,17 @@
 #' }
 #'
 #' @note 
-#' The breeding density areas model identifies the Nth-percent population exhibiting the highest spatial density and counts/frequency. It then buffers these points by a specified distance to produce breeding area polygons. 
-#' @note
-#' If you want to recreate the results in Doherty et al., (2010), then define bw = 6400m and b[if p < 0.75 b = 6400m, | p >= 0.75 b = 8500m]  
+#' The breeding density areas model identifies the Nth-percent population exhibiting the highest
+#' spatial density and counts/frequency. It then buffers these points by a specified distance to 
+#' produce breeding area polygons. If you would like to recreate the results in Doherty et al., (2010), 
+#' then define bw = 6400m and b[if p < 0.75 b = 6400m, | p >= 0.75 b = 8500m]  
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'
 #' @references
-#' Doherty, K.E., J.D. Tack, J.S. Evans, D.E. Naugle (2010) Mapping breeding densities of greater sage-grouse: A tool for range-wide conservation planning. Bureau of Land Management. Report Number L10PG00911
+#' Doherty, K.E., J.D. Tack, J.S. Evans, D.E. Naugle (2010) Mapping breeding densities of greater 
+#'   sage-grouse: A tool for range-wide conservation planning. Bureau of Land Management. 
+#'   Number L10PG00911
 #'                                                              
 #' @examples 
 #' require(sp)

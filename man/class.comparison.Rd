@@ -4,8 +4,9 @@
 \alias{class.comparison}
 \title{Class comparison between two nominal rasters}
 \usage{
-class.comparison(x, y, x.idx = 1, y.idx = 1, d = "AUTO", stat = "kappa",
-  sub.sample = FALSE, type = "hexagon", p = 0.1, size = NULL)
+class.comparison(x, y, x.idx = 1, y.idx = 1, d = "AUTO",
+  stat = "kappa", sub.sample = FALSE, type = "hexagon", p = 0.1,
+  size = NULL)
 }
 \arguments{
 \item{x}{First raster for comparison, SpatialPixelsDataFrame or SpatialGridDataFrame object}
@@ -42,7 +43,10 @@ A SpatialPixelsDataFrame or SpatialPointsDataFrame with the following attributes
 Compares two categorical rasters using Cohen's Kappa (d) or paired t-test statistic(s)
 }
 \note{
-This function provides a Cohen's Kappa or paired t-test to compair two classified maps. Point based subsampling is provided for computation tractability.  The hexagon sampling is recommended as it it good at capturing spatial process that includes nonstationarity and anisotropy.
+This function provides a Cohen's Kappa or paired t-test to compair two classified maps. 
+      Point based subsampling is provided for computation tractability.  The hexagon sampling 
+      is recommended as it it good at capturing spatial process that includes nonstationarity 
+      and anisotropy.
 }
 \examples{
 \dontrun{
@@ -77,7 +81,8 @@ r2@data$class2 <- round(runif(nrow(r2), 1,5),0)
 
 }
 \references{
-Cohen, J. (1960). A coefficient of agreement for nominal scales. Educational and Psychological Measurement, 20:37-46
+Cohen, J. (1960). A coefficient of agreement for nominal scales. Educational and Psychological 
+  Measurement, 20:37-46
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>

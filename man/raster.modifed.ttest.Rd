@@ -18,7 +18,7 @@ raster.modifed.ttest(x, y, x.idx = 1, y.idx = 1, d = "AUTO",
 
 \item{d}{Distance for finding neighbors}
 
-\item{sub.sample}{Should a subsampling approach be employed (TRUE/FALSE)}
+\item{sub.sample}{Should a sub-sampling approach be employed (TRUE/FALSE)}
 
 \item{type}{If sub.sample = TRUE, what type of sample (random  or hexagon)}
 
@@ -30,17 +30,20 @@ raster.modifed.ttest(x, y, x.idx = 1, y.idx = 1, d = "AUTO",
 A SpatialPixelsDataFrame or SpatialPointsDataFrame with the following attributes:
 \itemize{ 
 \item   corr        Correlation 
-\item   Fstat       The F-statistic
+\item   Fstat       The F-statistic calculated as [degrees of freedom * unscaled F-statistic]
 \item   p.value     p-value for the test
 \item   moran.x     Moran's-I for x 
 \item   moran.y     Moran's-I for y  
  }
 }
 \description{
-A bivarate raster corrlation using Dutilleul's modified t-test
+A bivarate raster correlation using Dutilleul's modified t-test
 }
 \note{
-This function provides a bivariate moving window correlation using the modified t-test to account for spatial autocorrelation. Point based subsampling is provided for computation tractability.  The hexagon sampling is recommended as it it good at capturing spatial process that includes nonstationarity and anistropy.
+This function provides a bivariate moving window correlation using the modified t-test to account for 
+        spatial autocorrelation. Point based subsampling is provided for computation tractability.  
+        The hexagon sampling is recommended as it it good at capturing spatial process that includes 
+        nonstationarity and anistropy.
 }
 \examples{
 \dontrun{
@@ -67,19 +70,21 @@ gridded(G2) <- TRUE
 G2@data <- as.data.frame(G2@data[,-2])
 G2@data[,1] <- G2@data[,1]
 
-corr <- raster.modifed.ttest(G1, G2)	  
-corr.hex <- raster.modifed.ttest(G1, G2, sub.sample = TRUE)	
-corr.rand <- raster.modifed.ttest(G1, G2, sub.sample = TRUE, type = "random")	
-
+corr <- raster.modifed.ttest(G1, G2)
+  plot(raster::raster(corr,1))
+  
+corr.rand <- raster.modifed.ttest(G1, G2, sub.sample = TRUE, type = "random")	 
 corr.hex <- raster.modifed.ttest(G1, G2, sub.sample = TRUE, d = 500, size = 1000)	
   head(corr.hex@data)
-  bubble(corr.hex, "corr")
+    bubble(corr.hex, "corr") 
 }
 
 }
 \references{
-Clifford, P., S. Richardson, D. Hemon (1989), Assessing the significance of the correlation between two spatial processes. Biometrics 45:123-134.
-Dutilleul, P. (1993), Modifying the t test for assessing the correlation between two spatial processes. Biometrics 49:305-314.
+Clifford, P., S. Richardson, D. Hemon (1989), Assessing the significance of the correlation between two 
+  spatial processes. Biometrics 45:123-134.
+Dutilleul, P. (1993), Modifying the t test for assessing the correlation between two spatial processes. 
+  Biometrics 49:305-314.
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>

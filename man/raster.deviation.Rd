@@ -4,7 +4,8 @@
 \alias{raster.deviation}
 \title{Raster local deviation from the global trend}
 \usage{
-raster.deviation(x, type = "trend", s = 3, degree = 1, global = FALSE)
+raster.deviation(x, type = "trend", s = 3, degree = 1,
+  global = FALSE)
 }
 \arguments{
 \item{x}{raster object}

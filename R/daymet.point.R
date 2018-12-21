@@ -1,5 +1,5 @@
 #' @title DAYMET point values
-#' @description Downloads DAYMET climate variables for specified point and timeperiod 
+#' @description Downloads DAYMET climate variables for specified point and time-period 
 #' 
 #' @param lat          latitude of point (decimal degrees WGS84)
 #' @param long         longitude pf point (decimal degrees WGS84)
@@ -11,7 +11,9 @@
 #'
 #' @return A data.frame with climate results 
 #'
-#' @note Function uses the Single Pixel Extraction tool and returns year, yday, dayl(s), prcp (mm/day), srad (W/m^2), swe (kg/m^2), tmax (deg c), tmin (deg c), vp (Pa)
+#' @note Function uses the Single Pixel Extraction tool and returns year, yday, 
+#'       dayl(s), prcp (mm/day), srad (W/m^2), swe (kg/m^2), tmax (deg c), 
+#'       tmin (deg c), vp (Pa)
 #' @note Metadata for DAYMET single pixel extraction: \url{ https://daymet.ornl.gov/files/UserGuides/current/readme_singlepointextraction.pdf }
 #' @note data is available for Long -131.0 W and -53.0 W; lat 52.0 N and 14.5 N
 #'

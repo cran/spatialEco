@@ -1,8 +1,8 @@
 Package: spatialEco
 Type: Package
 Title: Spatial Analysis and Modelling Utilities
-Version: 1.1-0
-Date: 2018-03-05
+Version: 1.1-1
+Date: 2018-11-17
 Authors@R: c(person(family="Evans", given="Jeffrey S.", email = "jeffrey_evans@tnc.org", 
              role = c("aut", "cre")), person(family="Ram", given="Karthik", role = "ctb") )
 Description: Utilities to support spatial data manipulation, query, sampling
@@ -12,18 +12,19 @@ Description: Utilities to support spatial data manipulation, query, sampling
     absences and sub-sampling, polygon and point-distance landscape metrics,
     auto-logistic model, sampling models, cluster optimization, statistical
     exploratory tools and raster-based metrics.
-Depends: R (>= 3.3.0)
+Depends: R (>= 3.4.0)
 Imports: sp, sf, raster, spatstat, cluster, spdep, SDMTools, readr,
-        RCurl, rgeos, RANN, rms, yaImpute, SpatialPack, MASS, EnvStats,
-        maptools, methods
+        RCurl, rgeos, RANN, rms, yaImpute, SpatialPack (>= 0.3), MASS,
+        EnvStats, maptools, methods
 Maintainer: Jeffrey S. Evans <jeffrey_evans@tnc.org>
 License: GPL-3
 URL: https://cran.r-project.org/package=spatialEco
 NeedsCompilation: no
 Repository: CRAN
 LazyData: true
-RoxygenNote: 6.0.1
-Packaged: 2018-03-06 16:23:31 UTC; jeffrey_evans
+Encoding: UTF-8
+RoxygenNote: 6.1.1
+Packaged: 2018-12-17 23:37:34 UTC; jeffrey_evans
 Author: Jeffrey S. Evans [aut, cre],
   Karthik Ram [ctb]
-Date/Publication: 2018-03-06 17:44:08 UTC
+Date/Publication: 2018-12-21 14:30:03 UTC

@@ -21,12 +21,16 @@
 #' \item   p.value  p-value of the paired t.test statistic (if stat = "t.test" or "both")
 #'  } 
 #'
-#' @note This function provides a Cohen's Kappa or paired t-test to compair two classified maps. Point based subsampling is provided for computation tractability.  The hexagon sampling is recommended as it it good at capturing spatial process that includes nonstationarity and anisotropy.    
+#' @note This function provides a Cohen's Kappa or paired t-test to compair two classified maps. 
+#'       Point based subsampling is provided for computation tractability.  The hexagon sampling 
+#'       is recommended as it it good at capturing spatial process that includes nonstationarity 
+#'       and anisotropy.    
 #' 
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'                                                                           
 #' @references
-#' Cohen, J. (1960). A coefficient of agreement for nominal scales. Educational and Psychological Measurement, 20:37-46 
+#' Cohen, J. (1960). A coefficient of agreement for nominal scales. Educational and Psychological 
+#'   Measurement, 20:37-46 
 #' 
 #' @examples
 #' \dontrun{

@@ -4,7 +4,8 @@
 \alias{rasterCorrelation}
 \title{Raster correlation}
 \usage{
-rasterCorrelation(x, y, s = 3, type = "pearson", file.name = NULL, ...)
+rasterCorrelation(x, y, s = 3, type = "pearson", file.name = NULL,
+  ...)
 }
 \arguments{
 \item{x}{raster class object for x}

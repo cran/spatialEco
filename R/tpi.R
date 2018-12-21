@@ -25,16 +25,16 @@
 #'
 #' @export
 tpi <- function(x, scale = 3, win = "rectangle", normalize = FALSE) {
-    if (!inherits(x, "RasterLayer")) stop("MUST BE RasterLayer OBJECT")   
+    if (!inherits(x, "RasterLayer")) stop("MUST BE RasterLayer OBJECT")
     if( win == "circle") {
       if( scale < raster::res(x)[1] * 2) 
         stop( "Scale is too small for a circular window")
           m <- raster::focalWeight(x, scale, type=c('circle'))
-          m[m > 0] <- 1
+            m[m > 0] <- 1
         } else { 	  
           m <- matrix(1, nrow=scale, ncol=scale)
     }
-      tp <- x - raster::focal(x, w=m, fun=mean)
+      tp <- x - raster::focal(x, w = m, fun = mean)
     if(normalize == TRUE) {  
 	  tp.sd <- raster::focal(x, w=m, fun=stats::sd)
 	    tp <- tp / tp.sd 
