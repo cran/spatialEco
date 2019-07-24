@@ -67,8 +67,8 @@
 #'     bubble(corr.hex, "corr") 
 #' }
 #' 
-#' @export
-raster.modifed.ttest <- function(x, y, x.idx = 1, y.idx = 1, d = "AUTO", sub.sample = FALSE, 
+#' @export raster.modified.ttest
+raster.modified.ttest <- function(x, y, x.idx = 1, y.idx = 1, d = "AUTO", sub.sample = FALSE, 
                                  type = "hexagon", p = 0.10, size = NULL) {
 	if (!sp::gridded(x))
 	  stop(deparse(substitute(x)), " Must be an sp raster object")

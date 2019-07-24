@@ -30,13 +30,15 @@ Performs a simple moving window correlation between two rasters
 Depends: raster
 }
 \examples{
+\dontrun{
  library(raster)                                                                    
  b <- brick(system.file("external/rlogo.grd", package="raster"))
  x <- b[[1]]
  y <- b[[3]]
  r.cor <- rasterCorrelation(x, y, s = 5, type = "spearman")
  plot(r.cor)
-
+}
+rasterCorrelation
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>

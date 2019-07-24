@@ -1,9 +1,9 @@
 Package: spatialEco
 Type: Package
 Title: Spatial Analysis and Modelling Utilities
-Version: 1.1-1
-Date: 2018-11-17
-Authors@R: c(person(family="Evans", given="Jeffrey S.", email = "jeffrey_evans@tnc.org", 
+Version: 1.2-0
+Date: 2019-07-23
+Authors@R: c(person(family="Evans", given="Jeffrey S.", email = "jeffrey_evans@tnc.org",
              role = c("aut", "cre")), person(family="Ram", given="Karthik", role = "ctb") )
 Description: Utilities to support spatial data manipulation, query, sampling
     and modelling. Functions include models for species population density, download
@@ -18,13 +18,13 @@ Imports: sp, sf, raster, spatstat, cluster, spdep, SDMTools, readr,
         EnvStats, maptools, methods
 Maintainer: Jeffrey S. Evans <jeffrey_evans@tnc.org>
 License: GPL-3
-URL: https://cran.r-project.org/package=spatialEco
+URL: https://github.com/jeffreyevans/spatialEco
 NeedsCompilation: no
 Repository: CRAN
 LazyData: true
 Encoding: UTF-8
 RoxygenNote: 6.1.1
-Packaged: 2018-12-17 23:37:34 UTC; jeffrey_evans
+Packaged: 2019-07-23 23:09:27 UTC; jeffrey_evans
 Author: Jeffrey S. Evans [aut, cre],
   Karthik Ram [ctb]
-Date/Publication: 2018-12-21 14:30:03 UTC
+Date/Publication: 2019-07-24 05:20:02 UTC

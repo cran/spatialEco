@@ -43,7 +43,7 @@ A SpatialPixelsDataFrame or SpatialPointsDataFrame with the following attributes
 Compares two categorical rasters using Cohen's Kappa (d) or paired t-test statistic(s)
 }
 \note{
-This function provides a Cohen's Kappa or paired t-test to compair two classified maps. 
+This function provides a Cohen's Kappa or paired t-test to compare two classified maps. 
       Point based subsampling is provided for computation tractability.  The hexagon sampling 
       is recommended as it it good at capturing spatial process that includes nonstationarity 
       and anisotropy.

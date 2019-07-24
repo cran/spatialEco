@@ -20,6 +20,7 @@
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #' 
 #' @examples 
+#' \dontrun{
 #'   library(raster)
 #'   r <- raster(nrows=100, ncols=100, xmn=571823, xmx=616763, 
 #'               ymn=4423540, ymx=4453690)
@@ -35,8 +36,9 @@
 #'    for( i in c("norm", "rstd", "std", "stretch", "nl", "slog", "sr")) {
 #'	  try( print( raster.transformation(r, trans = i) ) ) 
 #'    }
+#' }
 #'
-#' @export
+#' @export raster.transformation
 raster.transformation <- function(x, trans = "norm", smin=0, smax=255) {
   slog <- function(x) { ifelse(abs(x) <= 1, 0, sign(x)*log10(abs(x)))}
     rmin <- raster::cellStats(x, stat = "min", na.rm = TRUE)

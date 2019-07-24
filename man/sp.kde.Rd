@@ -4,7 +4,8 @@
 \alias{sp.kde}
 \title{Spatial kernel density estimate}
 \usage{
-sp.kde(x, y, bw, newdata, n, standardize = FALSE, scale.factor)
+sp.kde(x, y, bw, newdata, n, standardize = FALSE, scale.factor,
+  mask = TRUE)
 }
 \arguments{
 \item{x}{sp SpatialPointsDataFrame object}
@@ -20,6 +21,8 @@ sp.kde(x, y, bw, newdata, n, standardize = FALSE, scale.factor)
 \item{standardize}{Standardize results to 0-1 (FALSE/TRUE)}
 
 \item{scale.factor}{Optional numeric scaling factor for the KDE (eg., 10000), to account for small estimate values}
+
+\item{mask}{(TRUE/FALSE) mask resulting raster if newdata is provided}
 }
 \value{
 Raster class object containing kernel density estimate
@@ -57,7 +60,7 @@ A weighted or unweighted Gaussian Kernel Density estimate for spatial data
  meuse.grid <- raster(meuse.grid)
  
  cadmium.kde <- sp.kde(x = meuse, y = meuse$cadmium, newdata = meuse.grid, bw = 1000, 
-                       standardize = TRUE, scale.factor = 10000  )
+                       standardize = TRUE, scale.factor = 10000)
    plot(cadmium.kde, main="weighted kde")
      points(meuse, pch=20, cex=0.5, col="red")
 }

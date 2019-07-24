@@ -36,13 +36,13 @@ kl.divergence <- function(object, eps = 10^-4, overlap = TRUE) {
         object[w] <- eps
     object <- sweep(object, 2, colSums(object), "/")
     for (k in seq_len(ncol(object) - 1)) {
-        for (l in 2:ncol(object)) {
-            ok <- (object[, k] > eps) & (object[, l] > eps)
-            if (!overlap | any(ok)) {
-                z[k, l] <- sum(object[, k] * (log(object[, k]) - log(object[, l])))
-                z[l, k] <- sum(object[, l] * (log(object[, l]) - log(object[, k])))
-            }
-        }
+      for (l in 2:ncol(object)) {
+        ok <- (object[, k] > eps) & (object[, l] > eps)
+          if (!overlap | any(ok)) {
+              z[k, l] <- sum(object[, k] * (log(object[, k]) - log(object[, l])))
+              z[l, k] <- sum(object[, l] * (log(object[, l]) - log(object[, k])))
+          }
+      }
     }
     diag(z) <- 0
     return(z)

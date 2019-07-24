@@ -12,13 +12,15 @@
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #' 
-#' @examples 
+#' @examples
+#' \dontrun{ 
 #'   library(raster)
 #'   data(elev)
-#'   d <- dissection(elev, s=5)
+#'   d <- dissection(elev, s=3)
 #'     plot(d, main="dissection") 
-#'     
-#' @export
+#' }     
+#'
+#' @export dissection
 dissection <- function(x, s=5, ...) {  
   if (!inherits(x, "RasterLayer")) stop("MUST BE RasterLayer OBJECT")
     if( length(s) == 1) s = c(s[1],s[1])

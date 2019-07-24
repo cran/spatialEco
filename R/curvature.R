@@ -2,7 +2,6 @@
 #' @description Calculates Zevenbergen & Thorne, McNab's or Bolstad's curvature 
 #' 
 #' @param x      rasterLayer object
-#' @param s      Focal window size
 #' @param type   Method used c("planform", "profile", "total", "mcnab", "bolstad")
 #' @param ...    Additional arguments passed to writeRaster
 #' 
@@ -18,7 +17,8 @@
 #' Positive values in the planform curvature indicate an that the surface is 
 #' laterally convex whereas, negative values indicate that the surface is 
 #' laterally concave.
-#'  Total curvature is the sigma of the profile and planform curvatures. A value of 
+#'
+#' Total curvature is the sigma of the profile and planform curvatures. A value of 
 #' 0 in profile, planform or total curvature, indicates the surface is flat. 
 #' The planform, profile and total curvatures are derived using 
 #' Zevenbergen & Thorne (1987) via a quadratic equation fit to eight neighbors 
@@ -26,8 +26,8 @@
 #'
 #' @note
 #' McNab's and Bolstad's variants of the surface curvature (concavity/convexity) 
-#' index (McNab 1993; Bolstad & Lillesand 1992; McNab 1989). 
-#' The index is based on features that confine the view from the center of a 
+#' index (McNab 1993; Bolstad & Lillesand 1992; McNab 1989). The index is based 
+#' on features that confine the view from the center of a 
 #' 3x3 window. In the Bolstad equation, edge correction is addressed 
 #' by dividing by the radius distance to the outermost cell (36.2m). 
 #' 
@@ -54,7 +54,7 @@
 #'   data(elev)
 #'   elev <- projectRaster(elev, crs="+proj=robin +datum=WGS84", 
 #'                         res=1000, method='bilinear')
-#'
+#' curvature(elev, type="planform")
 #'   mcnab.crv <- curvature(elev, type="mcnab")
 #'       plot(mcnab.crv, main="McNab's curvature") 
 #' }
@@ -62,9 +62,12 @@
 #' @seealso \code{\link[raster]{writeRaster}} For additional ... arguments passed to writeRaster
 #'
 #' @export curvature
-curvature <- function(x, s = 3, type=c("planform", "profile", "total", "mcnab", "bolstad"), ...) { 
+curvature <- function(x, type=c("planform", "profile", "total", "mcnab", "bolstad"), ...) { 
   if (!inherits(x, "RasterLayer")) stop("MUST BE RasterLayer OBJECT")
-    type=type[1] 
+    m <- matrix(1, nrow=3, ncol=3)
+      type = type[1] 
+	if(!any(c("planform", "profile", "total", "mcnab", "bolstad") %in% type)  )
+      stop("Not a valid curvature option")	
     zt.crv <- function(m, method = type, res = raster::res(x)[1], ...) {
         p=(m[6]-m[4])/(2*res)
           q=(m[2]-m[8])/(2*res)
@@ -78,21 +81,15 @@ curvature <- function(x, s = 3, type=c("planform", "profile", "total", "mcnab", 
       } else if(type == "total") {
         return( round( -(q^2*r-2*p*q*s+p^2*tx)/((p^2+q^2)*sqrt(1+p^2+q^2)),6) + 
 		        round( -(p^2*r+2*p*q*s+q^2*tx)/((p^2+q^2)*sqrt(1+p^2+q^2)^3),6 ) ) 
-	   } else {
-	     stop("Not a valid option")
-       }
-    }	   
-    if( type == "mcnab" | type == "bolstad") {    
-        if( length(s) == 1) s = c(s[1],s[1])
-           m <- matrix(1, nrow=s, ncol=s)
+	  }
+	}  
     if(type == "bolstad") {
-        return( 10000 * ((x - raster::focal(x, w=m, fun=mean)) / 1000 / 36.2) )  
-      } else {
-        mcnab <- function(x, ...) (((x[5] - x) + (x[5] - x)) / 4) / 36.2
-        return( raster::focal(x, w=m, fun=mcnab, ...) )
-      }  
+      return( 10000 * ((x - raster::focal(x, w=m, fun=mean)) / 1000 / 36.2) )  
+    } else if(type == "mcnab") {
+      mcnab <- function(x, ...) (((x[5] - x) + (x[5] - x)) / 4) 
+      return( raster::focal(x, w=m, fun=mcnab, ...) ) 
     } else {  
-      return( raster::focal(x, w=matrix(1,nrow=3,ncol=3), fun = zt.crv, 
-	                        pad = TRUE, padValue = 0, ...) )
+      return( raster::focal(x, w=m, fun = function(x) { zt.crv(m=x, type = type) }, pad = TRUE,  
+	                        padValue = 0, ...) )
     }
 }	

@@ -24,7 +24,7 @@ An effect.size class object with x, y and a data.frame with columns for effect s
 Cohen's-d effect size with pooled sd for a control and experimental group
 }
 \note{
-This implementation will iterate tourhg each class in y and treating a given class as the 
+This implementation will iterate through each class in y and treating a given class as the 
       experimental group and all other classes as a control case. Each class had d and the 
       confidence interval derived. A negative d indicate directionality with same magnitude. 
       The expected range for d is 0 - 3

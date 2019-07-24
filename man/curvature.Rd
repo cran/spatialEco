@@ -4,13 +4,11 @@
 \alias{curvature}
 \title{Surface curvature}
 \usage{
-curvature(x, s = 3, type = c("planform", "profile", "total", "mcnab",
+curvature(x, type = c("planform", "profile", "total", "mcnab",
   "bolstad"), ...)
 }
 \arguments{
 \item{x}{rasterLayer object}
-
-\item{s}{Focal window size}
 
 \item{type}{Method used c("planform", "profile", "total", "mcnab", "bolstad")}
 
@@ -32,15 +30,16 @@ convex whereas, positive values indicate that the surface is upwardly concave.
 Positive values in the planform curvature indicate an that the surface is 
 laterally convex whereas, negative values indicate that the surface is 
 laterally concave.
- Total curvature is the sigma of the profile and planform curvatures. A value of 
+
+Total curvature is the sigma of the profile and planform curvatures. A value of 
 0 in profile, planform or total curvature, indicates the surface is flat. 
 The planform, profile and total curvatures are derived using 
 Zevenbergen & Thorne (1987) via a quadratic equation fit to eight neighbors 
 as such, the s (focal window size) argument is ignored.
 
 McNab's and Bolstad's variants of the surface curvature (concavity/convexity) 
-index (McNab 1993; Bolstad & Lillesand 1992; McNab 1989). 
-The index is based on features that confine the view from the center of a 
+index (McNab 1993; Bolstad & Lillesand 1992; McNab 1989). The index is based 
+on features that confine the view from the center of a 
 3x3 window. In the Bolstad equation, edge correction is addressed 
 by dividing by the radius distance to the outermost cell (36.2m).
 }
@@ -51,7 +50,7 @@ by dividing by the radius distance to the outermost cell (36.2m).
   data(elev)
   elev <- projectRaster(elev, crs="+proj=robin +datum=WGS84", 
                         res=1000, method='bilinear')
-
+curvature(elev, type="planform")
   mcnab.crv <- curvature(elev, type="mcnab")
       plot(mcnab.crv, main="McNab's curvature") 
 }

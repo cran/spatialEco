@@ -23,11 +23,13 @@ Calculates the Evans (1972) Martonne's modified dissection
 Dissection is calculated as: ( z(s) - min(z(s)) ) / ( max(z(s)) - min(z(s)) )
 }
 \examples{
+\dontrun{ 
   library(raster)
   data(elev)
-  d <- dissection(elev, s=5)
+  d <- dissection(elev, s=3)
     plot(d, main="dissection") 
-    
+}     
+
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>

@@ -10,7 +10,7 @@
 #'         confidence interval, lower confidence interval. The row names of the data frame represent
 #'         the levels in y
 #'
-#' @note This implementation will iterate tourhg each class in y and treating a given class as the 
+#' @note This implementation will iterate through each class in y and treating a given class as the 
 #'       experimental group and all other classes as a control case. Each class had d and the 
 #'       confidence interval derived. A negative d indicate directionality with same magnitude. 
 #'       The expected range for d is 0 - 3 
@@ -31,9 +31,11 @@
 #' @exportClass effect.size 
 #' @export
 effect.size <- function(y, x, pooled = TRUE, conf.level = 0.95) {
-  effect.size <- vector()
+  effectsize <- vector()
   low.ci <- vector()
   up.ci <- vector()
+  if(class(y) != "factor") y <- as.factor(y)
+  
     for(i in levels(y)){
       y.i <- ifelse( y == i, i, "control")
 	    g.means <- tapply(x, y.i, mean)
@@ -41,13 +43,13 @@ effect.size <- function(y, x, pooled = TRUE, conf.level = 0.95) {
       n <- table(y)
 	  if(pooled) {
         sd.pooled <- sqrt( ((n[1] - 1) * g.sd[1]^2 + (n[2] - 1) * g.sd[2]^2) / 
-	                   (n[1] + n[2] - 2) )
-	    } else {
-          sd.pooled <- stats::sd(x)
+	                     (n[1] + n[2] - 2) )
+	  } else {
+        sd.pooled <- stats::sd(x)
       }
       delta.m <- g.means[i] - g.means["control"]  	
 	    es <- delta.m / sd.pooled
-		effect.size <- append(effect.size, es)
+		effectsize <- append(effectsize, es)
         deg.f = n[1] + n[2] - 2
           Sd <- sqrt(((n[1] + n[2])/(n[1] * n[2]) + 0.5 * es ^ 2 / deg.f) * 
 		            ((n[1] + n[2]) / deg.f))
@@ -56,10 +58,11 @@ effect.size <- function(y, x, pooled = TRUE, conf.level = 0.95) {
         low.ci <- append(low.ci, conf.int[1])
       up.ci <- append(up.ci, conf.int[2])	
 	}
-    effect.size <- list( effect.size = data.frame(row.names=unique(y), 
-	                     effect.size = effect.size, lower.ci = low.ci,   
-	                     upper.ci = up.ci), y = y, x = x, CI = conf.level)
-	  						  
-      class(effect.size) <- c("effect.size", "data.frame")
-  return( effect.size )
+    effectsize <- list( effect.size = 
+	                      data.frame(row.names=unique(y), 
+	                      effect.size = abs(effectsize), lower.ci = low.ci,   
+	                      upper.ci = up.ci), 
+						  y = y, x = x, CI = conf.level)
+      class(effectsize) <- c("effect.size", "data.frame")
+  return( effectsize )
 }

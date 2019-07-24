@@ -97,7 +97,6 @@ spatialEco_1.1-1
 * Modified "crossCorrelation" function to be consistent with Chen (2015) GSCI metric 
 * Modified function "raster.kendall" to return Z-value raster
 * Added function "classBreaks" for finding class breaks in a distribution
-* Added function "terrain.attributes" for calculating slope, aspect, planform and profile curvature(s) with optional methods. 
 * Added function "smooth.time.series" for imputing NA or smoothing time-series raster data. 
 * Added function "hybrid.kmeans" for clustering using hierarchical clustering to define cluster-centers in k-means 
 * Added function "morans.plot" for  Autocorrelation plot (Anselin 1996), following Chen (2015), aka, Moran's-I plot (univariate or bivariate) 
@@ -107,3 +106,17 @@ spatialEco_1.1-1
 * Added function "poly.regression" for smoothing data in time-series and imputing missing (NA) values using polynomial regression
 * Added function "sg.smooth" for smoothing time-series data using a Savitzky-Golay filter 
 * Added function "subsample.distance" - Minimum, and optional maximum, distance constrained sub-sampling 
+
+spatialEco_1.2-0
+=================
+* Modified function "curvature" to clarify output
+* Fixed bug in "sp.kde" so that coordinates are parsed correctly
+* Fixed introduced bug in "stratified.random" 
+* Fixed bug in "bearing.distance"
+* Added function "kendall" and modified raster.kendall to call it 
+* Added function "raster.change" for change detection between two rasters
+* Added function "topo.distance" for evaluating topographically correct distance
+* Added function "focal.lmetrics" for calculating moving window landscape metrics
+* Added function "sample.distance" for distance lagged sampling
+* Added function "wt.centroids" Creates centroid of [x,y] coordinates based on a weights field
+* Added function "subsample.distance" Minimum, and optional maximum, distance constrained sub-sampling
