@@ -1,8 +1,8 @@
 Package: spatialEco
 Type: Package
 Title: Spatial Analysis and Modelling Utilities
-Version: 1.2-0
-Date: 2019-07-23
+Version: 1.2-1
+Date: 2019-09-30
 Authors@R: c(person(family="Evans", given="Jeffrey S.", email = "jeffrey_evans@tnc.org",
              role = c("aut", "cre")), person(family="Ram", given="Karthik", role = "ctb") )
 Description: Utilities to support spatial data manipulation, query, sampling
@@ -12,10 +12,10 @@ Description: Utilities to support spatial data manipulation, query, sampling
     absences and sub-sampling, polygon and point-distance landscape metrics,
     auto-logistic model, sampling models, cluster optimization, statistical
     exploratory tools and raster-based metrics.
-Depends: R (>= 3.4.0)
-Imports: sp, sf, raster, spatstat, cluster, spdep, SDMTools, readr,
-        RCurl, rgeos, RANN, rms, yaImpute, SpatialPack (>= 0.3), MASS,
-        EnvStats, maptools, methods
+Depends: R (>= 3.5.0)
+Imports: dplyr, fasterize, sp, sf, raster, spatstat, cluster, spdep,
+        SDMTools, readr, RCurl, rgeos, RANN, rms, yaImpute, SpatialPack
+        (>= 0.3), MASS, EnvStats, maptools, methods
 Maintainer: Jeffrey S. Evans <jeffrey_evans@tnc.org>
 License: GPL-3
 URL: https://github.com/jeffreyevans/spatialEco
@@ -24,7 +24,7 @@ Repository: CRAN
 LazyData: true
 Encoding: UTF-8
 RoxygenNote: 6.1.1
-Packaged: 2019-07-23 23:09:27 UTC; jeffrey_evans
+Packaged: 2019-10-02 23:52:10 UTC; jeffrey_evans
 Author: Jeffrey S. Evans [aut, cre],
   Karthik Ram [ctb]
-Date/Publication: 2019-07-24 05:20:02 UTC
+Date/Publication: 2019-10-03 05:10:06 UTC
