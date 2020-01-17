@@ -48,6 +48,7 @@
 #'             PLoS One 10(5):e0126158. doi:10.1371/journal.pone.0126158
 #'
 #' @examples
+#' \dontrun{
 #'   library(sp)
 #'   library(spdep)
 #'    
@@ -73,9 +74,7 @@
 #'     meuse$lisa.clust <- as.factor(I$cluster)
 #'       spplot(meuse, "lisa")
 #'       spplot(meuse, "lisa.clust")	  
-#'	
-#' @examples    	    	
-#' \dontrun{
+#'
 #'   #### Simulate spatially autocorrelated random normal variables 
 #'   ####   using eigen-decomposition, requires ncf package
 #'   library(sp)
@@ -87,7 +86,7 @@
 #'                     z2=ncf::rmvn.spa(x=x, y=y, p=2, method="exp"))  
 #'   coordinates(sdat) <- ~x+y
 #'   ( I <- crossCorrelation(sdat$z1, sdat$z2, coords=coordinates(sdat), 
-#'                           k=9999, clust = TRUE) )
+#'                           k=99, clust = TRUE) )
 #'     sdat$lisa <- I$SCI[,"lsci.xy"]
 #'     sdat$lisa.clust <- as.factor(I$cluster)
 #'       spplot(sdat, "lisa")
@@ -100,14 +99,14 @@
 #'   library(UScensus2000tract)
 #'   
 #'   data(oregon.tract)
-#'   nb <- nb2listw(poly2nb(oregon.tract), style = "B", zero.policy = TRUE
+#'   nb <- spdep::nb2listw(poly2nb(oregon.tract), style = "B", zero.policy = TRUE)
 #'     Wij <- as.matrix( as(nb, "symmetricMatrix") )
 #'   
 #'   X = oregon.tract$white
 #'   Y = oregon.tract$black  
 #'     
 #'   # Simulated bivariate lisa
-#'   I <- crossCorrelation(X, Y, w=Wij, k=999)
+#'   I <- crossCorrelation(X, Y, w=Wij, k=99)
 #'   oregon.tract$lisa <-I$SCI[,"lsci.xy"]
 #'   oregon.tract$lisa.clust <- as.factor(I$cluster)
 #'     spplot(oregon.tract, "lisa")
@@ -118,7 +117,7 @@
 #' @export
 crossCorrelation <- function(x, y = NULL, coords = NULL, w = NULL, type = c("LSCI", "GSCI"), k = 1000, 
                              dist.function = "inv.power", scale.xy = TRUE, scale.partial = FALSE, 
-							 scale.matrix = FALSE, alpha = 0.05, clust = FALSE, return.sims = FALSE) {
+							 scale.matrix = FALSE, alpha = 0.05, clust = TRUE, return.sims = FALSE) {
 	if(missing(x)) stop("x must be specified")
     if(is.null(y)) y = x						 
       if(length(y) != length(x)) stop("[X,Y] are not equal")
@@ -150,7 +149,7 @@ crossCorrelation <- function(x, y = NULL, coords = NULL, w = NULL, type = c("LSC
       stop("Not a valid matrix option")
     }
   } else {
-    if(!class(w) == "matrix") stop("Spatial weights must be in matrix form")					   
+    if(!class(w)[1] == "matrix") stop("Spatial weights must be in matrix form")					   
       if(ncol(w) != length(x) | nrow(w) != length(x)) stop("Spatial weights matrix must be symmetrical and match x")		   
         w[which(is.na(w))] <- 0
           if(scale.matrix) {
