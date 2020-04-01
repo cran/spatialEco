@@ -1,32 +1,41 @@
 #' @title Terrain Ruggedness Index
 #' @description Implementation of the Riley et al (1999) Terrain Ruggedness Index
 #'
-#' @param r              raster class object
-#' @param s              Scale of window. Must be odd number, can represent 2 dimensions (eg., s=c(3,5) would represent a 3 x 5 window)
-#' @param exact          Calculate (TRUE/FALSE) the exact TRI or an algebraic approximation. 
+#' @param r              RasterLayer class object
+#' @param s              Scale of window. Must be odd number, can represent 2 
+#'                       dimensions (eg., s=c(3,5) would represent a 3 x 5 window)
+#' @param exact          Calculate (TRUE/FALSE) the exact TRI or an algebraic 
+#'                       approximation. 
 #' @param file.name      Name of output raster (optional)
 #' @param ...            Additional arguments passed to writeRaster
 #'
 #' @return raster class object or raster written to disk
 #'
-#' @note The algebraic approximation is considerably faster. However, because inclusion of the center cell, the larger the scale the larger the divergence of the minimum value 
-#' @note Recommended ranges for classifying Topographic Ruggedness Index
-#' @note 0-80 (1) level terrain surface.
-#' @note 81-116 (2) nearly level surface.
-#' @note 117-161 (3) slightly rugged surface.
-#' @note 162-239 (4) intermediately rugged surface.
-#' @note 240-497 (5) oderately rugged surface.
-#' @note 498-958 (6) highly rugged surface.
-#' @note >959 (7) extremely rugged surface. 
+#' @description
+#' The algebraic approximation is considerably faster. However, because 
+#' inclusion of the center cell, the larger the scale the larger the divergence 
+#' of the minimum value.
 #' 
-#' @note Depends: raster
+#' @description
+#' Recommended ranges for classifying Topographic Ruggedness Index:
+#' * 0-80 - level terrain surface.
+#' * 81-116 - nearly level surface.
+#' * 117-161 - slightly rugged surface.
+#' * 162-239 - intermediately rugged surface.
+#' * 240-497 - moderately rugged surface.
+#' * 498-958 - highly rugged surface.
+#' * gt 959 - extremely rugged surface. 
+#' @md 
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'  
-#' @references Riley, S.J., S.D. DeGloria and R. Elliot (1999) A terrain ruggedness index that quantifies topographic heterogeneity, Intermountain Journal of Sciences 5(1-4):23-27.
+#' @references 
+#' Riley, S.J., S.D. DeGloria and R. Elliot (1999) A terrain 
+#'   ruggedness index that quantifies topographic heterogeneity, 
+#'   Intermountain Journal of Sciences 5(1-4):23-27.
 #'
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #'  library(raster)
 #'  data(elev)
 #'   ( tri.ext <- tri(elev) )
@@ -47,8 +56,8 @@ tri <- function(r, s = 3, exact = TRUE, file.name = NULL, ...) {
     }
   }	
   tri.calc <- function(x) {
-    xc <- x[(length(x)+1) / 2]
-    x <- x[-(length(x)+1) / 2]
+    xc <- x[ceiling(length(x)/2)]
+    x <- x[-ceiling(length(x)/2)]
     x <- x[!is.na(x)]
       if(!is.na(xc) & length(x) > 0) {
         x.dev <- vector()

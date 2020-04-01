@@ -147,3 +147,7 @@ spatialEco_1.3-0
 	  - asc.from.raster
 	  - spheroid.distance
 	  - grid.info
+
+spatialEco_1.3-1
+=================
+* Due to depreciation, changed velox dependency to exactextractr for raster extraction
