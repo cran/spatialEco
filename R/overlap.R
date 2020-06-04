@@ -17,10 +17,10 @@
 #' predictions to create a single value representing the similarity of the two
 #' distributions. The I similarity statistic ranges from a value of 0, where
 #' two distributions have no overlap, to 1 where two distributions are
-#' identical (Warren et al., 2008). The function is based on code from 
-#' Jeremy VanDerWal
+#' identical (Warren et al., 2008). The function is based on code  
+#' from Jeremy VanDerWal
 #'
-#' @author Jeffrey Evans <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey Evans <jeffrey_evans@@tnc.org> and Jeremy VanDerWal  
 #'
 #' @references 
 #' Warren, D. L., R. E. Glor, M. Turelli, and D. Funk. (2008).
@@ -38,17 +38,17 @@
 #' ( I <- overlap(p1,p2) ) 
 #' 
 #' @import raster
-#' @export 
+#' @export overlap 
 overlap <- function(x, y){
   classes = c("SpatialGridDataFrame", "SpatialPixelsDataFrame","RasterLayer", "matrix") 
-  if(!any(class(x) %in% classes))
+  if(!any(class(x)[1] %in% classes))
     stop("x must be sp raster, rasterLayer or matrix object")
-  if(!any(class(y) %in% classes))
+  if(!any(class(y)[1] %in% classes))
     stop("y must be sp raster, rasterLayer or matrix object")	
-  if (any(class(x) %in% "RasterLayer")) x <- as.matrix(x)
-    if (any(class(y) %in% "RasterLayer")) y <- as.matrix(y) 
-      if (any(class(x) %in% classes[1:2])) x <- as.matrix(raster::raster(x))
-    if (any(class(y) %in% classes[1:2])) y <- as.matrix(raster::raster(y)) 
+  if (any(class(x)[1] %in% "RasterLayer")) x <- as.matrix(x)
+    if (any(class(y)[1] %in% "RasterLayer")) y <- as.matrix(y) 
+      if (any(class(x)[1] %in% classes[1:2])) x <- as.matrix(raster::raster(x))
+    if (any(class(y)[1] %in% classes[1:2])) y <- as.matrix(raster::raster(y)) 
   if(length(which(dim(x) == dim(y))) != 2) 
     stop('matrix / raster objects must be of the same extent')
   if (min(c(x, y), na.rm = TRUE) < 0) 

@@ -20,7 +20,6 @@
 #' Maximum entropy is reached when all values are different, same as log(m)
 #'   max.ent <- function(x) { log( length( unique(x) ) ) }
 #'
-
 #' @references
 #' Fuchs M., R. Hoffmann, F. Schwonke (2008) Change Detection with GRASS 
 #'   GIS - Comparison of images taken by different sensor. 
@@ -31,13 +30,13 @@
 #'     r[] <- round(runif(ncell(r), 1,8), digits=0)
 #'
 #' rEnt <- raster.entropy(r, d=5, categorical = TRUE, global = TRUE)
-#'   opar <- par  
+#'   opar <- par(no.readonly=TRUE)
 #'     par(mfcol=c(2,1))
 #'       plot(r)
 #'         plot(rEnt)
 #'   par(opar)
 #'
-#' @export  
+#' @export raster.entropy  
 raster.entropy <- function(x, d = 5, categorical = FALSE, global = FALSE,  
                            filename = FALSE, ...) {
     if (!inherits(x, "RasterLayer")) stop("MUST BE RasterLayer OBJECT")
@@ -61,7 +60,6 @@ raster.entropy <- function(x, d = 5, categorical = FALSE, global = FALSE,
         if (length(unique(x)) <= 1) { return(0) }
         return(-sum(prop.table(x) * log(prop.table(x))))
       }
-	  
     } else {
 	  entropy <- function(x, n = NULL) {  
         x <- x[!is.na(x)]
@@ -83,7 +81,7 @@ raster.entropy <- function(x, d = 5, categorical = FALSE, global = FALSE,
         raster::focal(x, w = d, fun = function(x) { entropy(x) }, filename = filename, ...)
           message(paste("Raster written to", filename, sep = ": "))	
 	  } else {  
-		return(raster::focal(x, w = d, fun = function(x) { entropy(x) }))  
+		return(raster::focal(x, w = d, fun = function(x) { entropy(x) }))
       }
   }	
 } 

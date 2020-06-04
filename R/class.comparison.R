@@ -2,25 +2,26 @@
 #' @description Compares two categorical rasters using Cohen's Kappa (d) 
 #'              or paired t-test statistic(s)
 #'       
-#' @param x               First raster for comparison, SpatialPixelsDataFrame or 
-#'                        SpatialGridDataFrame object    
-#' @param y               Second raster for comparison, SpatialPixelsDataFrame or 
-#'                        SpatialGridDataFrame object 
-#' @param x.idx           Index for the column in the x raster object  
-#' @param y.idx           Index for the column in the y raster object  
-#' @param d               Distance for finding neighbors, the default "AUTO" will derive 
-#'                        a distance
-#' @param stat            Statistic to use in comparison ("kappa", "t.test", "both")
-#' @param sub.sample      Should a subsampling approach be employed (FALSE/TRUE)  
-#' @param type            If sub.sample = TRUE, what type of sample ("random"  
-#'                        or "hexagon")
-#' @param p               If sub.sample = TRUE, what proportion of population 
-#'                        should be sampled
-#' @param size            If sub.sample = TRUE, alternate to proportion of population (p), 
-#'                        using fixed sample size               
+#' @param x          First raster for comparison, SpatialPixelsDataFrame or 
+#'                   SpatialGridDataFrame object    
+#' @param y          Second raster for comparison, SpatialPixelsDataFrame or 
+#'                   SpatialGridDataFrame object 
+#' @param x.idx      Index for the column in the x raster object  
+#' @param y.idx      Index for the column in the y raster object  
+#' @param d          Distance for finding neighbors, the default "AUTO" will derive 
+#'                   a distance
+#' @param stat       Statistic to use in comparison ("kappa", "t.test", "both")
+#' @param sub.sample Should a subsampling approach be employed (FALSE/TRUE)  
+#' @param type       If sub.sample = TRUE, what type of sample ("random"  
+#'                   or "hexagon")
+#' @param p          If sub.sample = TRUE, what proportion of population 
+#'                   should be sampled
+#' @param size       If sub.sample = TRUE, alternate to proportion of population (p), 
+#'                   using fixed sample size               
 #'
-#' @return A SpatialPixelsDataFrame or SpatialPointsDataFrame with the 
-#'         following attributes:
+#' @return 
+#' A SpatialPixelsDataFrame or SpatialPointsDataFrame with the 
+#' following attributes:
 #' \itemize{ 
 #' \item   x        x variable used to derive Kappa (d)
 #' \item   y        y variable used to derive Kappa (d)
@@ -40,13 +41,13 @@
 #'                                                                           
 #' @references
 #' Cohen, J. (1960). A coefficient of agreement for nominal scales. Educational 
-#'   and Psychological Measurement, 20:37-46 
+#' and Psychological Measurement, 20:37-46 
 #' 
 #' @examples
 #' \donttest{
 #'  library(sp)                                            
 #'  library(raster)
-#'                                                                                                
+#'            
 #'  data(meuse.grid)
 #'  r1 <- sp::SpatialPixelsDataFrame(points = meuse.grid[c("x", "y")], 
 #'                                   data = meuse.grid)
@@ -56,23 +57,18 @@
 #'	r2@data$class2 <- round(runif(nrow(r2), 1,5),0)
 #'
 #'  d <- class.comparison(r1, r2, x.idx = 8, y.idx = 8, stat="both")
+#'  opar <- par(no.readonly=TRUE)
 #'    par(mfrow=c(2,2))
 #'      plot(raster(d, layer=3), main="Kappa")
-#'	  plot(raster(d, layer=4), main="t.test")
-#'	  plot(raster(d, layer=5), main="t.test p-value")
-#'
+#'	    plot(raster(d, layer=4), main="t.test")
+#'	    plot(raster(d, layer=5), main="t.test p-value")
+#'  par(opar)
 #'  # Hexagonal sampling	  
 #'  d.hex <- class.comparison(r1, r2, x.idx = 8, y.idx = 8, stat = "both",
 #'                            sub.sample = TRUE, d = 500, size = 1000)
 #'    sp::bubble(d.hex, "kappa")
 #'	    d.hex <- sp.na.omit(d.hex, col.name = "t.test")
 #'	  sp::bubble(d.hex, "t.test")
-#'
-#'  # Random sampling		
-#'  d.rand <- class.comparison(r1, r2, x.idx = 8, y.idx = 8, stat = "both", 
-#'                             sub.sample = TRUE, type = "random")	
-#'    sp::bubble(d.rand, "kappa")
-#' 
 #' }
 #' 
 #' @export
@@ -124,9 +120,7 @@ class.comparison <- function(x, y, x.idx = 1, y.idx = 1, d = "AUTO", stat = "kap
        } else if(stat == "t.test") { results <- list("t.test" = vector(), p.value=vector())
          } else if(stat == "kappa") { results <- list("kappa" = vector()) 
            } else { stop("Not a valid option") }	  	 
-	
 
-  
   if(sub.sample == FALSE) { 
     nb <- spdep::dnearneigh(sp::coordinates(x),0, d)  
       k <- vector()
@@ -177,21 +171,20 @@ class.comparison <- function(x, y, x.idx = 1, y.idx = 1, d = "AUTO", stat = "kap
 	#   nb indexes are too slow
 	
     if(!is.null(size)) { n = size } else { n = round(nrow(x) * p, 0) } 
-    if(type == "random") {
-	
+    
+	if(type == "random") {
 	  rs <- sample(1:length(nb), n)		  
 	  for(i in 1:length(rs)) {
         if( ncol(x) > 1) {
            x.var <- x@data[nb[[rs[i]]],][x.idx][,1]
 	     } else {
 	       x.var <- x@data[nb[[rs[i]]],]   
-	    }
+	     }
       if( ncol(y) > 1) {
          y.var <- y@data[nb[[rs[i]]],][x.idx][,1]
 	   } else {
 	     y.var <- y@data[nb[[rs[i]]],]   
 	    }
-	 
 	    if(stat == "kappa") {   
           results[["kappa"]] <- append(results[["kappa"]], round(cohen.d(x.var, y.var),4))
         } else if( stat == "t.test") {
@@ -222,7 +215,7 @@ class.comparison <- function(x, y, x.idx = 1, y.idx = 1, d = "AUTO", stat = "kap
 	  s <- x[rs,]
       s@data <- data.frame(x=x@data[rs,][x.idx], y=y@data[rs,][y.idx],
       	                   as.data.frame(do.call("cbind", results)))
-    } else {	
+    } else if(type == "hexagon") {	
       e <- as(raster::extent(x), "SpatialPolygons")  
 	  s <- sp::spsample(e, n = n,  type = "hexagonal")
 	    s <- sp::SpatialPointsDataFrame(s, data.frame(ID=1:length(s)))

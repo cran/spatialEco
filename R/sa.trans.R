@@ -23,12 +23,12 @@
 #' For slopes from 0% - 100%, The functions are linearized and
 #' bounded from -1 to 1. Greater than 100% slopes are treated
 #' out of the -1 to 1 range.
+#' 
 #' @description
 #' An alternative for slopes with values approaching infinity is
 #' to take the square root of slope/100 to reduce the range of
 #' values.By default this model test all values greater than 100%
 #' to 101% and flat areas (-1) to nodata.
-#'
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'

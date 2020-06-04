@@ -79,6 +79,7 @@
 #'  ( r.ce <- raster.change(r1, r2, d = s, stat = "cross-entropy", mask = TRUE) )
 #'  ( r.kl <- raster.change(r1, r2, d = s, stat = "divergence", mask = TRUE) )	
 #'      
+#'  opar <- par(no.readonly=TRUE)
 #'  par(mfrow=c(3,2))
 #'    plot(r.kappa, main="Kappa")
 #'    plot(r.ttest[[1]], main="Paired t-test")
@@ -86,6 +87,7 @@
 #'    plot(r.cor, main="Rank Correlation")
 #'    plot(r.kl, main="Kullback-Leibler")
 #'    plot(r.ce, main="cross-entropy")
+#'  par(opar)
 #'
 #' }
 #' 
@@ -95,9 +97,9 @@ raster.change <- function(x, y, d = c(3,3), stat = c("kappa", "wkappa", "t.test"
                           out.raster = NULL, mask = FALSE, force.memory = FALSE) {
 	stat = stat[1]
     if(stat == "wkappa") stop("Sorry, weighted kappa is not yet implemented")
-	if (class(x) != "RasterLayer")
+	if (class(x)[1] != "RasterLayer")
 	  stop(deparse(substitute(x)), " Must be a raster object")
-	if (class(y) != "RasterLayer") 
+	if (class(y)[1] != "RasterLayer") 
       stop(deparse(substitute(y)), " Must be a raster object")
     if( any( (dim(x)[1:2] == dim(y)[1:2]) == FALSE) ) 
 	  stop("Rasters dimensions do not match") 
@@ -148,7 +150,7 @@ raster.change <- function(x, y, d = c(3,3), stat = c("kappa", "wkappa", "t.test"
     #  }	
 	   
   r <- raster::stack(x,y)
-  if (!raster::canProcessInMemory(x) | !is.null(out.raster)) {
+  if (!raster::canProcessInMemory(r, n=d[1]^2) | !is.null(out.raster)) {
     if(force.memory) { pm = TRUE } else { pm = FALSE }
 	if(is.null(out.raster)) out.raster = "xxxx01.tif"
 	  if(stat == "t.test") {
@@ -227,6 +229,8 @@ raster.change <- function(x, y, d = c(3,3), stat = c("kappa", "wkappa", "t.test"
           if(stat == "t.test") mp <- rep(NA,nrow(v[[1]])) 
           for(i in 1:nrow(v[[1]]) ) {
   		    xy <- stats::na.omit( data.frame(x=v[[1]][i,],y=v[[2]][i,]))
+			  x.val = xy[,1] 
+			  y.val = xy[,2]  
           if(length(x.val) > 2) {
 		    if(stat == "kappa") {
 		      k <- cohens(x.val, y.val)

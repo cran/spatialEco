@@ -46,7 +46,7 @@
 #'   of 21st-Century Forest Cover Change. Science 342:850-53. 
 #'
 #' @examples 
-#' \donttest{
+#' \dontrun{
 #' # Download single tile
 #'  download.hansen(tile=c('00N', '130E'), data.type=c('loss', 'lossyear'), 
 #'                  download.folder=getwd())
@@ -55,15 +55,16 @@
 #' tiles <- list(c('00N', '140E'), c('00N', '130E'))
 #'   for( j in 1:length(tiles)){
 #'     download.hansen(tile=tiles[[j]], data.type=c('loss'))  
-#'  }
+#'   }
+#'
 #' }
 #'
 #' @export
 download.hansen <- function(tile, data.type = c("loss"), 
-                            download.folder = c("current", "temp")) {
+                     download.folder = c("current", "temp")) {
     owd <- getwd()
       on.exit(setwd(owd))								
-	if(download.folder == "current") {
+	if(download.folder[1] == "current") {
 	  download.folder = getwd()
     } else if(download.folder == "temp") {
 	  download.folder = tempdir()

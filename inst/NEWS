@@ -150,4 +150,38 @@ spatialEco_1.3-0
 
 spatialEco_1.3-1
 =================
-* Due to depreciation, changed velox dependency to exactextractr for raster extraction
+* Due to package depreciation, changed velox dependency to exactextractr for raster 
+  extraction
+
+* Depreciated two functions "land.metrics" and "focal.lmetrics" as there are now 
+  better alternatives in the landscapemetrics package. This removed the need for a 
+  C++ compile and also removed the associated SDMTools functions
+
+* Depreciated "download.daymet" function due to the THREDDS server moving 
+  to a NetCDF Markup Language (NcML) format
+
+spatialEco_1.3-2
+=================
+* Feature Enhancement "hli" added support for southern hemisphere
+  
+* Bug fix "raster.change" was not correctly evaluating raster in memory 
+
+* Feature Enhancement "erase.points" changed the function to account for single 
+  and multi geometry
+
+* Feature Enhancement "hli" added support for southern hemisphere
+
+* Added function "background" for generating background point samples often used in SDM's 
+
+* Added function "cross.tab" cross tabulation of two nominal rasters
+
+* Added function "extract.vertices" for extracting (x,y) vertices coordinates from
+  polygons and lines 
+
+* Added function "geo.buffer" that buffers data in geographic projection 
+  
+* Added function "insert" that inserts a row or column into a data.frame
+
+* Added function "is.empty" method that evaluates if a vector is empty
+
+* Added function "is.whole" method that evaluates if a numeric vector is whole or float

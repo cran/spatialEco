@@ -11,24 +11,27 @@
 #'
 #' @return A data.frame with climate results 
 #'
-#' @note Function uses the Single Pixel Extraction tool and returns year, yday, 
+#' @note 
+#' data is available for Long -131.0 W and -53.0 W; lat 52.0 N and 14.5 N
+#' Function uses the Single Pixel Extraction tool and returns year, yday, 
 #'       dayl(s), prcp (mm/day), srad (W/m^2), swe (kg/m^2), tmax (deg c), 
 #'       tmin (deg c), vp (Pa)
-#' @note Metadata for DAYMET single pixel extraction: 
+#' Metadata for DAYMET single pixel extraction: 
 #' \url{ https://daymet.ornl.gov/files/UserGuides/current/readme_singlepointextraction.pdf }
-#' @note data is available for Long -131.0 W and -53.0 W; lat 52.0 N and 14.5 N
-#'
+#' 
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'         
 #' @examples
 #' \donttest{
-#' ( d <- daymet.point(lat = 36.0133, long = -84.2625, start.year = 2013, end.year=2014, 
-#'                     site = "1", files = FALSE, echo = FALSE) )
+#' ( d <- daymet.point(lat = 36.0133, long = -84.2625, start.year = 2013, 
+#'                     end.year=2014, site = "1", files = FALSE, echo = FALSE) )
 #' }
 #'
 #' @export
 daymet.point <- function (lat, long, start.year, end.year, site=NULL, 
                           files = FALSE, echo = FALSE) {
+    if(!any(which(utils::installed.packages()[,1] %in% "RCurl")))
+      stop("please install RCurl package before running this function")
     if(missing(lat)) stop("Please define lat") 
     if(missing(long)) stop("Please define long") 
 	if(missing(start.year)) stop("Please define start year") 

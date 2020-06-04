@@ -19,12 +19,17 @@
 #'  polys <- SpatialPolygons(list(Polygons(list(Sr1), "s1"),
 #'                  Polygons(list(Sr2), "s2"),
 #'                  Polygons(list(Sr3, Sr4), "s3/4")), 1:3)
+#'
+#' opar <- par(no.readonly=TRUE)
 #'    par(mfrow=c(1,2))
 #'      plot(polys, col = 1:3, main="with hole")
 #'      plot(remove.holes(polys), col = 1:3, main="with hole removed")
+#' par(opar)
 #'
-#' @export
+#' @export remove.holes
 remove.holes <- function(x) {
+  if(!any(which(utils::installed.packages()[,1] %in% "maptools")))
+    stop("please install maptools package before running this function")
   xp <- slot(x, "polygons")
     holes <- lapply(xp, function(x) sapply(methods::slot(x, "Polygons"), methods::slot, "hole"))
     res <- lapply(1:length(xp), function(i) methods::slot(xp[[i]], "Polygons")[!holes[[i]]])

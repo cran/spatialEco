@@ -11,15 +11,14 @@
 #' @param ...       Arguments passed to cor ('pearson', 'kendall' or 'spearman')
 #' 
 #' @return A list object containing: 
-#' @return      autocorrelation is a data.frame object with the following components
-#' @return      autocorrelation - Autocorrelation value for each distance lag 
-#' @return      dist - Value of distance lag
-#' @return      lci - Lower confidence interval (p=0.025)                
-#' @return      uci - Upper confidence interval (p=0.975)
-#' @return      CorrPlot recordedplot object to recall plot
-#' @return      dmatrix Distance matrix (if dmatrix=TRUE)
-#'
-#' @note depends: sp
+#' * autocorrelation is a data.frame object with the following components
+#' * autocorrelation - Autocorrelation value for each distance lag 
+#' * dist - Value of distance lag
+#' * lci - Lower confidence interval (p=0.025)                
+#' * uci - Upper confidence interval (p=0.975)
+#' * CorrPlot recordedplot object to recall plot
+#' * dmatrix Distance matrix (if dmatrix=TRUE)
+#' @md
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'                                                                   
@@ -29,13 +28,14 @@
 #' coordinates(meuse) = ~x+y
 #' zinc.cg <- correlogram(x = meuse, v = meuse@@data[,'zinc'], dist = 250, ns = 9)
 #' 
-#' @export  
+#' @export correlogram  
 correlogram <- function(x, v, dist = 5000, dmatrix = FALSE, ns = 99, latlong = FALSE, ...) {
-    # if(class(x) == "sf") { x <- as(x, "Spatial") }
+    # if(class(x)[1] == "sf") { x <- as(x, "Spatial") }
     if ((inherits(x, "SpatialPointsDataFrame")) == FALSE) 
         stop("x MUST BE SP SpatialPointsDataFrame OBJECT")
-    options(warn = -1)
-    options(scipen = 999)
+	oops <- options() 
+      on.exit(options(oops)) 
+        options(scipen = 999)		
     w <- sp::spDists(x, x, longlat = latlong)
     aa <- ceiling(max(w)/dist)
     bw <- seq(0, aa * dist, dist)
@@ -53,7 +53,7 @@ correlogram <- function(x, v, dist = 5000, dmatrix = FALSE, ns = 99, latlong = F
         cors <- c(cors, stats::cor(v, lag, ...))
     }
     if (length(which(is.na(cors))) > 0) {
-      message(paste(length(which(is.na(cors))), "Spatial lag empty and dropped", sep = " "))
+      warning(paste(length(which(is.na(cors))), "Spatial lag empty and dropped", sep = " "))
       bw <- bw[-which(is.na(cors))]
      cors <- cors[-which(is.na(cors))]
     }
@@ -79,7 +79,9 @@ correlogram <- function(x, v, dist = 5000, dmatrix = FALSE, ns = 99, latlong = F
     cg <- data.frame(cbind(cors, bw))
     cg <- cbind(cg, t(apply(mc, 2, stats::quantile, probs = c(0.025, 0.975))))
     names(cg) <- c("autocorrelation", "dist", "lci", "uci")
-    graphics::plot(cg$dist, cg$autocorrelation, type = "n", ylim = c(-1, 1), main = "Correlogram", xlab = "distance", ylab = "autocorrelation")
+    graphics::plot(cg$dist, cg$autocorrelation, type = "n", ylim = c(-1, 1), 
+	               main = "Correlogram", xlab = "distance", 
+				   ylab = "autocorrelation")
       graphics::polygon(c(rev(cg$dist), cg$dist), c(cg$uci, rev(cg$lci)), col = "blue")
         graphics::lines(cg$dist, cg$autocorrelation, type = "b", pch = 20)
     if (dmatrix == TRUE) {

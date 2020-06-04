@@ -11,7 +11,7 @@
 #'
 #' @return data.frame containing:
 #' \itemize{
-#'   \item {correlation} {correlation coefficent}
+#'   \item {correlation} {correlation coefficient}
 #'   \item {p.value} {p-value of correlation}
 #'   \item {test.statistic} {test statistic}
 #'   \item {n} {sample size}
@@ -63,7 +63,7 @@ partial.cor <- function (x, y, z, method = c("partial", "semipartial"),
                          statistic = c("kendall", "pearson", "spearman")) {
   method <- match.arg(method)
   statistic <- match.arg(statistic)  
-  if(any(class(x) == c("data.frame", "matrix")) ) {
+  if(any(class(x)[1] == c("data.frame", "matrix")) ) {
     if(!missing(y))
 	  stop("if x, y and z are defined, x must be a vector")
     if(dim(x)[2] > 3)

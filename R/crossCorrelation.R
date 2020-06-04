@@ -48,8 +48,9 @@
 #'   \item {clusters} {If "clust" argument TRUE, vector representing lisa clusters}
 #' }
 #'
-#' @references Chen., Y. (2015) A New Methodology of Spatial Cross-Correlation Analysis. 
-#'               PLoS One 10(5):e0126158. doi:10.1371/journal.pone.0126158
+#' @references 
+#' Chen., Y. (2015) A New Methodology of Spatial Cross-Correlation Analysis. 
+#'   PLoS One 10(5):e0126158. doi:10.1371/journal.pone.0126158
 #'
 #' @examples
 #' \donttest{
@@ -118,8 +119,7 @@
 #'     spplot(oregon.tract, "lisa.clust")   
 #' } 
 #' 
-#' @exportClass cross.cor
-#' @export
+#' @export crossCorrelation
 crossCorrelation <- function(x, y = NULL, coords = NULL, w = NULL, type = c("LSCI", "GSCI"), k = 1000, 
                              dist.function = "inv.power", scale.xy = TRUE, scale.partial = FALSE, 
 							 scale.matrix = FALSE, alpha = 0.05, clust = TRUE, return.sims = FALSE) {

@@ -56,7 +56,7 @@ Project website with 10x10 degree granule index:
 \url{ http://earthenginepartners.appspot.com/science-2013-global-forest/download_v1.1.html }
 }
 \examples{
-\donttest{
+\dontrun{
 # Download single tile
  download.hansen(tile=c('00N', '130E'), data.type=c('loss', 'lossyear'), 
                  download.folder=getwd())
@@ -65,7 +65,8 @@ Project website with 10x10 degree granule index:
 tiles <- list(c('00N', '140E'), c('00N', '130E'))
   for( j in 1:length(tiles)){
     download.hansen(tile=tiles[[j]], data.type=c('loss'))  
- }
+  }
+
 }
 
 }

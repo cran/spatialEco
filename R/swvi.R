@@ -75,7 +75,7 @@
 #' data(lsat)
 #' lsat <- radCor(lsat, metaData = readMeta(system.file(
 #'                  "external/landsat/LT52240631988227CUB02_MTL.txt", 
-#'                package="RStoolbox")), method = "apref")
+#'                   package="RStoolbox")), method = "apref")
 #' 
 #' # Using Modified Soil-adjusted Vegetation Index (MSAVI)
 #' ( wmsavi <- swvi(red = lsat[[3]], nir = lsat[[4]], swir = lsat[[5]]) )
@@ -89,7 +89,7 @@
 #'     plot(wmtvi, legend=FALSE, col=rev(terrain.colors(100, alpha=0.35)), add=TRUE )
 #' }
 #' 
-#' @export
+#' @export swvi
 swvi <- function(red, nir, swir, green = NULL, mtvi = FALSE, 
                  senescence = 0, threshold = NULL, 
                  weight.factor = NULL, ...) {
@@ -98,9 +98,9 @@ swvi <- function(red, nir, swir, green = NULL, mtvi = FALSE,
          missing(swir))
     stop("Must specify red, nir and swir1 bands")
   if(mtvi) { if(is.null(green)) stop("Must specify green band") } 	
-  if(class(red) != "RasterLayer" & 
-       class(nir) != "RasterLayer" & 
-         class(swir) != "RasterLayer")
+  if(class(red)[1] != "RasterLayer" & 
+       class(nir)[1] != "RasterLayer" & 
+         class(swir)[1] != "RasterLayer")
     stop("Data must be raster class objects")
   f.msavi <- function(nir, red) {
     return( (2 * nir + 1 - sqrt( (2 * nir + 1)^2 - 8 * (nir - red) )) / 2 )

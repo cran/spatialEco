@@ -14,7 +14,7 @@
 #' \itemize{ 
 #' \item pop.pts   sp point object with points identified within the specified p
 #' \item pop.area  sp polygon object of buffered points specified by parameter b
-#' \item bandwidth Specified distance bandwidth used in identifying neighbour counts 
+#' \item bandwidth Specified distance bandwidth used in identifying neighbor counts 
 #' \item buffer    Specified buffer distance used in buffering points for pop.area  
 #' \item p         Specified population percent
 #' }
@@ -51,7 +51,7 @@
 #' 
 #' @export
 breeding.density <- function(x, pop, p = 0.75, bw = 6400, b = 8500, self = TRUE) {
-    #if(class(x) == "sf") { x <- as(x, "Spatial") }
+    if(class(x)[1] == "sf") { x <- as(x, "Spatial") }
     if (!inherits(x, "SpatialPointsDataFrame")) 
         stop("must be a SpatialPointsDataFrame object")
     if (is.na(match(pop, names(x@data)))) 

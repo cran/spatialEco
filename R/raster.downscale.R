@@ -12,30 +12,33 @@
 #'
 #' @return A list object containing:
 #' \itemize{ 
-#' \item  downscale    downscaled raster (omitted if filename is defined)
-#' \item  model        rlm model object 
-#' \item  MSE          Mean Square Error
-#' \item  AIC          Akaike information criterion
+#' \item  downscale downscaled raster (omitted if filename is defined)
+#' \item  model     rlm model object 
+#' \item  MSE       Mean Square Error
+#' \item  AIC       Akaike information criterion
 #' }
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'
 #' @examples 
-#' \donttest{
+#' \dontrun{
 #'  library(raster)
 #'  elev <- raster::getData('alt', country='SWZ', mask=TRUE)
 #'  tmax <- raster::getData('worldclim', var='tmax', res=10, 
 #'                          lon=8.25, lat=46.8)
-#'    tmax <- crop(tmax[[1]], extent(elev))
+#'  tmax <- crop(tmax[[1]], extent(elev))
 #'  
+#'  # Downscale temperature
 #'  tmax.ds <- raster.downscale(elev, tmax, scatter=TRUE)
-#'    par(mfrow=c(2,2))
-#'    plot(tmax, main="Temp max")
-#'    plot(elev, main="elevation")
-#'      plot(tmax.ds$downscale, main="Downscaled Temp max")
+#'    opar <- par(no.readonly=TRUE)
+#'      par(mfrow=c(2,2))
+#'      plot(tmax, main="Temp max")
+#'      plot(elev, main="elevation")
+#'        plot(tmax.ds$downscale, main="Downscaled Temp max")
+#'    par(opar)
 #' }
 #' 
-#' @export
+#' @export raster.downscale
 raster.downscale <- function(x, y, p = NULL, n = NULL, filename = FALSE, 
                              scatter = FALSE, ...) {
 	if(!class(y) == "RasterLayer") stop( "y is not a raster object")

@@ -46,7 +46,7 @@ using fixed sample size}
 }
 \value{
 A SpatialPixelsDataFrame or SpatialPointsDataFrame with the 
-        following attributes:
+following attributes:
 \itemize{ 
 \item   x        x variable used to derive Kappa (d)
 \item   y        y variable used to derive Kappa (d)
@@ -70,7 +70,7 @@ capturing spatial process that includes nonstationarity and anisotropy.
 \donttest{
  library(sp)                                            
  library(raster)
-                                                                                               
+           
  data(meuse.grid)
  r1 <- sp::SpatialPixelsDataFrame(points = meuse.grid[c("x", "y")], 
                                   data = meuse.grid)
@@ -80,29 +80,24 @@ capturing spatial process that includes nonstationarity and anisotropy.
 r2@data$class2 <- round(runif(nrow(r2), 1,5),0)
 
  d <- class.comparison(r1, r2, x.idx = 8, y.idx = 8, stat="both")
+ opar <- par(no.readonly=TRUE)
    par(mfrow=c(2,2))
      plot(raster(d, layer=3), main="Kappa")
-  plot(raster(d, layer=4), main="t.test")
-  plot(raster(d, layer=5), main="t.test p-value")
-
+    plot(raster(d, layer=4), main="t.test")
+    plot(raster(d, layer=5), main="t.test p-value")
+ par(opar)
  # Hexagonal sampling	  
  d.hex <- class.comparison(r1, r2, x.idx = 8, y.idx = 8, stat = "both",
                            sub.sample = TRUE, d = 500, size = 1000)
    sp::bubble(d.hex, "kappa")
     d.hex <- sp.na.omit(d.hex, col.name = "t.test")
   sp::bubble(d.hex, "t.test")
-
- # Random sampling		
- d.rand <- class.comparison(r1, r2, x.idx = 8, y.idx = 8, stat = "both", 
-                            sub.sample = TRUE, type = "random")	
-   sp::bubble(d.rand, "kappa")
-
 }
 
 }
 \references{
 Cohen, J. (1960). A coefficient of agreement for nominal scales. Educational 
-  and Psychological Measurement, 20:37-46
+and Psychological Measurement, 20:37-46
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>

@@ -29,31 +29,30 @@
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'
 #' @examples 
-#' \donttest{
-# Download monthly precipitation data Jan 1st 2000 to Dec 30th 2001 (n=24)
-#'    my.dates <- c('2000/1/1', '2001/12/30')
-#'    download.prism('ppt', date.range=my.dates, time.step='monthly', by.year=TRUE)
-#' 
-#' # Download monthly precipitation data Jan 1st 2000 to Feb 10th 2000 (n=41)
-#'    my.dates <- c('2000/1/1', '2000/2/10')
-#'    download.prism('ppt', date.range=my.dates, time.step='daily', by.year=TRUE)
+#' \dontrun{
+#' # Download monthly precipitation data Jan 1st 2000 to Dec 30th 2001 (n=24)
+#'     my.dates <- c('2000/1/1', '2001/12/30')
+#'     download.prism('ppt', date.range=my.dates, time.step='monthly', by.year=TRUE)
+#'  
+#'  # Download monthly precipitation data Jan 1st 2000 to Feb 10th 2000 (n=41)
+#'     my.dates <- c('2000/1/1', '2000/2/10')
+#'     download.prism('ppt', date.range=my.dates, time.step='daily', by.year=TRUE)
 #'}
-#'
-#' @seealso
-#' \code{\link{download.daymet}}, \code{\link{download.hansen}}
 #'
 #' @export
 download.prism <- function(data.type, date.range, time.step = "monthly", 
                            download.folder = c("current", "temp"), 
 						   by.year = FALSE, unzip.file = TRUE, 
 						   ftp.site = "ftp://prism.oregonstate.edu") {
+    if(!any(which(utils::installed.packages()[,1] %in% "RCurl")))
+      stop("please install RCurl package before running this function")						   
     if (!any(data.type == c("ppt", "tmin", "tmax", "tmean"))) 
       stop("Not a valid dataset")
     owd <- getwd()
       on.exit(setwd(owd))			
-	if(download.folder == "current") {
+	if(download.folder[1] == "current") {
 	  download.folder = getwd()
-    } else if(download.folder == "temp") {
+    } else if(download.folder[1] == "temp") {
 	  download.folder = tempdir()
     } 
 	if(!dir.exists(download.folder))

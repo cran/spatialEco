@@ -50,18 +50,16 @@ Data description:
 \url{http://prism.nacse.org/documents/PRISM_datasets_aug2013.pdf}
 }
 \examples{
-\donttest{
-   my.dates <- c('2000/1/1', '2001/12/30')
-   download.prism('ppt', date.range=my.dates, time.step='monthly', by.year=TRUE)
-
-# Download monthly precipitation data Jan 1st 2000 to Feb 10th 2000 (n=41)
-   my.dates <- c('2000/1/1', '2000/2/10')
-   download.prism('ppt', date.range=my.dates, time.step='daily', by.year=TRUE)
+\dontrun{
+# Download monthly precipitation data Jan 1st 2000 to Dec 30th 2001 (n=24)
+    my.dates <- c('2000/1/1', '2001/12/30')
+    download.prism('ppt', date.range=my.dates, time.step='monthly', by.year=TRUE)
+ 
+ # Download monthly precipitation data Jan 1st 2000 to Feb 10th 2000 (n=41)
+    my.dates <- c('2000/1/1', '2000/2/10')
+    download.prism('ppt', date.range=my.dates, time.step='daily', by.year=TRUE)
 }
 
-}
-\seealso{
-\code{\link{download.daymet}}, \code{\link{download.hansen}}
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>

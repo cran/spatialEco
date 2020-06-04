@@ -43,9 +43,10 @@
 #'  
 #' @export smooth.time.series
 smooth.time.series <- function(x, f = 0.80, smooth.data = FALSE, ...) { 
-  if(any(class(x) != c("RasterStack","RasterBrick", "SpatialPixelsDataFrame", 
-                       "SpatialGridDataFrame")))
-    stop("x must be a raster stack, brick of sp raster class object")	
+  if(!any(class(x)[1] %in% c("RasterStack", "RasterBrick",  
+                             "SpatialPixelsDataFrame", 
+						     "SpatialGridDataFrame")))
+    stop("x must be a raster stack, brick of sp raster class object")
   impute.loess <- function(y, x.length = NULL, s = 0.2, 
                            sdata = FALSE, na.rm, ...) {		 
          if (is.null(x.length)) {
@@ -56,8 +57,8 @@ smooth.time.series <- function(x, f = 0.80, smooth.data = FALSE, ...) {
   		   y <- rep(NA, x.length)
   	   } else {			   
            x <- 1:x.length
-             p <- stats::loess(y ~ x, span = s, 
-  		             data.frame(x = x, y = y))
+             p <- suppressWarnings( stats::loess(y ~ x, span = s, 
+  		                            data.frame(x = x, y = y)) )
          if (sdata == TRUE) {
              y <- stats::predict(p, x)
          } else {
@@ -69,13 +70,12 @@ smooth.time.series <- function(x, f = 0.80, smooth.data = FALSE, ...) {
   	   }
      return(y)
    }
-  if(any(class(x) == c("RasterStack", "RasterBrick"))) { 
+  if(any(class(x)[1] == c("RasterStack", "RasterBrick"))) { 
     if(raster::nlayers(x) < 8)
       warning("function is intended for imputing missing values 
 	           in multi-temporal data\n      < 8 observations is questionable\n")
-    #return( raster::calc(x, fun=impute.loess, ...) )
 	return( raster::overlay(x, fun = impute.loess, unstack = TRUE, forcefun = FALSE, ...) )
-  } else if(any(class(x) == c("SpatialPixelsDataFrame","SpatialGridDataFrame"))) {
+  } else if(any(class(x)[1] == c("SpatialPixelsDataFrame","SpatialGridDataFrame"))) {
       if(raster::ncol(x) < 8)
         warning("function is intended for imputing missing values 
 	             in multi-temporal data\n      < 8 observations is questionable\n")
