@@ -26,7 +26,6 @@ Projects (Latitude/Longitude) data in decimal-degree geographic projection
 using an on-the-fly azimuthal equidistant projection in meters centered on
 }
 \examples{
-\donttest{ 
 library(sp)
 library(raster)
 
@@ -37,7 +36,6 @@ s <- spsample(as(extent(61.87125, 76.64458, 23.90153, 37.27042),
 b <- geo.buffer(x=s, r=1000, quadsegs=100)
   plot(b[1,])
     points(s[1,], pch=20,cex=2)
-}
 	
 }
 \seealso{

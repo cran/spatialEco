@@ -8,7 +8,8 @@ parea.sample(
   x,
   pct = 0.1,
   join = FALSE,
-  msamp = 1,
+  min.samp = 1,
+  max.samp = NULL,
   sf = 4046.86,
   stype = "hexagonal",
   ...
@@ -21,7 +22,9 @@ parea.sample(
 
 \item{join}{Join polygon attributed to point sample}
 
-\item{msamp}{Minimum samples}
+\item{min.samp}{Minimum number of samples}
+
+\item{max.samp}{Maximum number of samples}
 
 \item{sf}{Scaling factor (default is meters to acres conversion factor)}
 

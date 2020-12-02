@@ -185,3 +185,25 @@ spatialEco_1.3-2
 * Added function "is.empty" method that evaluates if a vector is empty
 
 * Added function "is.whole" method that evaluates if a numeric vector is whole or float
+
+spatialEco_1.3-3
+=================
+* Added function "built.index" remote sensing built-up index
+
+* Added function "chae" Canine-Human Age Equivalent (for fun)
+
+* Added function "dahi" Diurnal Anisotropic Heat Index
+
+* Added function "impute.loess" for imputing NA's or smoothing data
+
+* Added function "max_extent" returns polygon representing maximum extent 
+                  of defined rasters
+
+* Added function "quadrats" for quadrat sampling or analysis
+
+* Added function "rotate.polygon" rotates a polygon by specified angle 
+                 (also used by quadrats function)
+
+* Bug fix "smooth.time.series" was not accepting smoothing parameter 
+          (thanks to Eileen Perry)
+

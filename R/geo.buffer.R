@@ -16,7 +16,6 @@
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'
 #' @examples
-#' \donttest{ 
 #' library(sp)
 #' library(raster)
 #' 
@@ -27,7 +26,6 @@
 #' b <- geo.buffer(x=s, r=1000, quadsegs=100)
 #'   plot(b[1,])
 #'     points(s[1,], pch=20,cex=2)
-#' }
 #' 	
 #' @seealso \code{\link[rgeos]{gBuffer}} for gBuffer ... arguments
 #'
