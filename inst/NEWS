@@ -207,3 +207,12 @@ spatialEco_1.3-3
 * Bug fix "smooth.time.series" was not accepting smoothing parameter 
           (thanks to Eileen Perry)
 
+spatialEco_1.3-4
+=================
+* Added function "rasterDistance" for calculating fast point to raster distances
+
+* Bug fix in print method for crossCorrelation function 
+
+spatialEco_1.3-5
+=================
+* Fixed bug in crossCorrelation print method

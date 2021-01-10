@@ -1,5 +1,5 @@
-aa8523f611c3a29fc02823f6dab8b2dd *DESCRIPTION
-1f281b0a6542f3b62d35f0d32431a43d *NAMESPACE
+1121f7181825bb8466e346128dbc72c8 *DESCRIPTION
+76adc56b93e3faf175daec6f56501eb4 *NAMESPACE
 6b463320cdd318a0217e5608ffa72560 *R/DAYMET_tiles-data.R
 2868e8a3a8d43a645c8cb5ac82a7c45b *R/annulus.matrix.R
 85a4da3af1e9fff519db006c109195b2 *R/ants-data.R
@@ -18,7 +18,7 @@ c7676337bad299328cd5b35c73e75ebf *R/conf.interval.R
 88947800a34b8dcc328f0e5b07e54c94 *R/cor.data.R
 9631056987c0830f0a7f665f73919011 *R/correlogram.R
 b8885ac81c8e1a0bff24ef688a01cb2a *R/cross.tab.R
-4111b581260bd5245c4b5e4d321450d6 *R/crossCorrelation.R
+b451ce3eaa998f83329c746ed46025b2 *R/crossCorrelation.R
 7d96cd50bd739b6eba8149cb6023562f *R/csi.R
 7eba1e1fde88e1812d2f9216d48ac675 *R/curvature.R
 3d1b2c98eafc4f49837c669e7ac11434 *R/dahi.R
@@ -81,7 +81,7 @@ ad36b4ad7334437c27c1dcca630922c9 *R/point.in.poly.R
 4a4026cffe606477a125062a41c61068 *R/poly.regression.R
 fbed2350d56bde805b8a516ed92d89c6 *R/polyPerimeter.R
 b4671d453adeca44f6bd36e6a50d2cc8 *R/pp.subsample.R
-0817dbf90ed0d055d43db38802f22c9d *R/print.cross.cor.R
+4abee0c5fcf87d60d78cd3e2c0c57857 *R/print.cross.cor.R
 5cbca2b8f14ddd5bcdf93d624ce0cf64 *R/print.effect.size.R
 a1bd2b28fb0775585351970b3e1f6405 *R/print.loess.boot.R
 836e5105a1c1a9c696d712aec5c17620 *R/proximity.index.R
@@ -103,6 +103,7 @@ d4dee6986dcaf8bf868e57591d2f23c9 *R/raster.moments.R
 0f8dc73e5f6e3400286950bb3355b8c4 *R/raster.transformations.R
 3a83f1e11606099c4fa86ced8a9103f5 *R/raster.vol.R
 b7a1654d13e4cf55c53717b44be18651 *R/rasterCorrelation.R
+8177b5aa9fc5b1588c21e4abf2c84517 *R/rasterDistance.R
 3e46e942167996b797b96bbae1fba5d1 *R/remove.holes.R
 fda987de748e141ce1b2796d9729b720 *R/rm.ext.R
 7b1a0290fb39b83c402946c5f802b9a4 *R/rotate.polygon.R
@@ -148,8 +149,8 @@ bbeb08d61776b862b0ce4cfb5aac8eb8 *data/DAYMET_tiles.rda
 a7ea5cb01a6992fa67dcbf24f6411c50 *data/cor.data.rda
 64d0bd02f7ea7651e5a81bfed8a715ac *data/elev.rda
 a202bcdd56a247563c3a137678c4df31 *data/pu.rda
-ae38f21ddc9424b0c08db33364dc1a74 *inst/CITATION
-5b661e4806a805961d0171a50a3c7945 *inst/NEWS
+0ea0e21e59157c4fac0ac6c673216352 *inst/CITATION
+252140ea534b86948c9c2f6d3189abc7 *inst/NEWS
 58ed1e2a4559e3e6bd1d8e35ccff5f35 *man/DAYMET_tiles.Rd
 c75134ffb944b683bc2d74d4bc036229 *man/annulus.matrix.Rd
 1595edaf56051db81e159f51e67e3844 *man/ants.Rd
@@ -167,7 +168,7 @@ b11f37b58f6781c61365a85040abe63e *man/conf.interval.Rd
 b11b102d9a86e167f4fd90f6911f0674 *man/cor.data.Rd
 38df58304a480836d90b0871cf33717a *man/correlogram.Rd
 82d6aa3fa87b7d71ed40de3f3e9099ab *man/cross.tab.Rd
-5bb293128ae69c168890183a91ab3517 *man/crossCorrelation.Rd
+f4299c70913a3b2d9a9b51ded54a9607 *man/crossCorrelation.Rd
 df2e2e672a3093c562029ec3f8c39ed2 *man/csi.Rd
 04e88c481c68c66999218993825bf515 *man/curvature.Rd
 c26cdafbf8ce0f8a428242728b20131e *man/dahi.Rd
@@ -252,6 +253,7 @@ ebb74e3e9180846a3028411f54e1a86d *man/raster.entropy.Rd
 e706abe09751ca52af6882b8c0cf3a2d *man/raster.transformation.Rd
 2ef5b13b1295cabe978aa3ee5a832486 *man/raster.vol.Rd
 b7fa212e72f1dfc6b880ab58ecf38670 *man/rasterCorrelation.Rd
+b36ce73ba7184ec17f9df91ec19787f2 *man/rasterDistance.Rd
 22e6f90ae95b072c847102f108ab5951 *man/remove.holes.Rd
 8f0f966b97b0c6faa1a7c9e5e0a20367 *man/rm.ext.Rd
 ae6908b911c39bb2f74e8413da96644e *man/rotate.polygon.Rd
