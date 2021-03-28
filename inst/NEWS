@@ -216,3 +216,9 @@ spatialEco_1.3-4
 spatialEco_1.3-5
 =================
 * Fixed bug in crossCorrelation print method
+
+spatialEco_1.3-6
+=================
+* Addressed changes to spatstat package dependencies
+
+ 
