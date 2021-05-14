@@ -11,15 +11,15 @@
 #' @param max          Maximum value of raster
 #' @param mean         Mean of centered distribution 
 #' @param sd           Standard deviation of centered distribution
-#' @param p            p-value for binominal distribution 
+#' @param p            p-value for binomial distribution 
 #' @param s            sigma value for Gaussian distribution
 #' @param distribution Available distributions, c("random", "normal", "seq", 
-#'                     "binominal", "gaussian", "sample")
+#'                     "binomial", "gaussian", "sample")
 #'
 #' @return RasterLayer or RasterStack object with random rasters
 #'
 #' @details 
-#' Options for distributions are for random, normal, seq, binominal, 
+#' Options for distributions are for random, normal, seq, binomial, 
 #' gaussian and sample raster(s)
 #' 
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
@@ -27,16 +27,16 @@
 #' @examples
 #' library(raster)
 #' 
-#' # Using existing raster to create random binominal  
+#' # Using existing raster to create random binomial  
 #' r <- raster(system.file("external/rlogo.grd", package="raster")) 
-#' r <- random.raster(r, distribution="binominal")
+#' r <- random.raster(r, distribution="binomial")
 #' 
 #' # default; random, nrows=50, ncols=50, nlayers=1
 #' rr <- random.raster(n.layer=5)
 #' 
-#' # specified; binominal, nrows=20, ncols=20, nlayers=5
+#' # specified; binomial, nrows=20, ncols=20, nlayers=5
 #' rr <- random.raster(n.layer=5, n.col=20, n.row=20,  
-#'                     distribution="binominal")
+#'                     distribution="binomial")
 #' 
 #' # specified; gaussian, nrows=50, ncols=50, nlayers=1
 #' rr <- random.raster(n.col=50, n.row=50, s=8,  
@@ -50,7 +50,7 @@
 random.raster <- function(r=NULL, n.row = 50, n.col = 50, n.layers = 1, x = seq(1,10), 
                           min = 0, max = 1, mean = 0, sd = 1, p = 0.5, s = 1.5, 
 						  distribution = c("random", "normal", "seq", 
-						                   "binominal", "gaussian")){
+						                   "binomial", "gaussian")){
 d <- distribution[1]
   if(!is.null(r)) {											
     if( any(class(r) == c("RasterLayer", "RasterStack", "RasterBrick"))) {  
@@ -81,7 +81,7 @@ d <- distribution[1]
                         mean=.mean, sd=.sd)
     } else if(d == "random") {
       v <- stats::runif(.n, min=.min, max=.max)			 
-    } else if(d == "binominal") {
+    } else if(d == "binomial") {
       v <- stats::rbinom(.n, 1, .p)
     } else if(d == "sample") {
       v <- sample(x, .n, replace=TRUE)	  

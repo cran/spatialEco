@@ -36,7 +36,7 @@
 #' the effect of environmental variables and tend to be unreliable (Dormann 2007).     
 #' Wij matrix options under style argument - B is the basic binary coding, W is row 
 #' standardized (sums over all links to n), C is globally standardized (sums over
-#' all links to n), U is equal to C divided by the number of neighbours (sums over 
+#' all links to n), U is equal to C divided by the number of neighbors (sums over 
 #' all links to unity) and S is variance-stabilizing. Spatially lagged y defined as:  
 #' W(y)ij=sumj_(Wij yj)/ sumj_(Wij) where; Wij=1/Euclidean(i,j)
 #' If the object passed to the function is an sp class there is no need to call the data 

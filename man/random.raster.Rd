@@ -16,7 +16,7 @@ random.raster(
   sd = 1,
   p = 0.5,
   s = 1.5,
-  distribution = c("random", "normal", "seq", "binominal", "gaussian")
+  distribution = c("random", "normal", "seq", "binomial", "gaussian")
 )
 }
 \arguments{
@@ -38,12 +38,12 @@ random.raster(
 
 \item{sd}{Standard deviation of centered distribution}
 
-\item{p}{p-value for binominal distribution}
+\item{p}{p-value for binomial distribution}
 
 \item{s}{sigma value for Gaussian distribution}
 
 \item{distribution}{Available distributions, c("random", "normal", "seq", 
-"binominal", "gaussian", "sample")}
+"binomial", "gaussian", "sample")}
 }
 \value{
 RasterLayer or RasterStack object with random rasters
@@ -53,22 +53,22 @@ Create a random raster or raster stack using specified
              distribution
 }
 \details{
-Options for distributions are for random, normal, seq, binominal, 
+Options for distributions are for random, normal, seq, binomial, 
 gaussian and sample raster(s)
 }
 \examples{
 library(raster)
 
-# Using existing raster to create random binominal  
+# Using existing raster to create random binomial  
 r <- raster(system.file("external/rlogo.grd", package="raster")) 
-r <- random.raster(r, distribution="binominal")
+r <- random.raster(r, distribution="binomial")
 
 # default; random, nrows=50, ncols=50, nlayers=1
 rr <- random.raster(n.layer=5)
 
-# specified; binominal, nrows=20, ncols=20, nlayers=5
+# specified; binomial, nrows=20, ncols=20, nlayers=5
 rr <- random.raster(n.layer=5, n.col=20, n.row=20,  
-                    distribution="binominal")
+                    distribution="binomial")
 
 # specified; gaussian, nrows=50, ncols=50, nlayers=1
 rr <- random.raster(n.col=50, n.row=50, s=8,  

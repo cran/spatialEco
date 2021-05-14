@@ -36,7 +36,7 @@
 #'                                                                           
 #' @references
 #' Clifford, P., S. Richardson, D. Hemon (1989), Assessing the significance of the  
-#'   correlationbetween two spatial processes. Biometrics 45:123-134.
+#'   correlation between two spatial processes. Biometrics 45:123-134.
 #' @references
 #' Dutilleul, P. (1993), Modifying the t test for assessing the correlation between 
 #'   two spatial processes. Biometrics 49:305-314. 
