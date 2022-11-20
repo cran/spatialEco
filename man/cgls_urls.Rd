@@ -27,34 +27,35 @@ A vector of download URL's for the products
 Returns URL's of a product/version/resolution
 }
 \details{
-Provides a query of the ESA's Copernicus Global Land Service global 
+Provides a query of the ESA's Copernicus Global Land Service global
 The query is performed on the manifest files and return URL's
 however, to download data you will need login credentials which,
 can be acquired from: http://land.copernicus.eu
 
-If provided, dates need to be in a "YYYY-MM-DD" format. The dates 
-are an explicit search string and can contain dates that are not in 
+If provided, dates need to be in a "YYYY-MM-DD" format. The dates
+are an explicit search string and can contain dates that are not in
 the imagery. As such, the user should generate a daily date string
-representing the range of the desired download as not to have to 
+representing the range of the desired download as not to have to
 guess the available dates. Also note that multiple processing versions
 of a given image are retained in the manifest. This means that if you
 download a previous processing version, it could be an invalid image.
-It is highly recommended that you do not change the default  
+It is highly recommended that you do not change the default
 ver="newest" argument unless there is a specific reason to.
 
 Available products
 \itemize{
-  \item {fapar} {Fraction of photosynthetically active radiation  
-                 absorbed by the vegetation} 
-  \item {fcover} {Fraction of green vegetation cover} 
-  \item {lai} {Leaf Area index}
-  \item {ndvi} {Normalized Difference Vegetation Index}  
+\item fapar    Fraction of photosynthetically active radiation
+absorbed by the vegetation
+\item fcover   Fraction of green vegetation cover
+\item lai      Leaf Area index
+\item ndvi     Normalized Difference Vegetation Index
 }
 
 Not yet implemented; Soil Water Index, Surface Soil Moisture,
 Copernicus product details: http://land.copernicus.eu/global/products/
 }
 \examples{
+\donttest{
 # Create date string for query
 d <- seq(as.Date("2020/05/01"), as.Date("2020-09-01"), by="day")
 
@@ -65,10 +66,9 @@ all.urls <- cgls_urls(dates = d, resolution = 300,
 all.urls <- cgls_urls(dates = d, resolution = 1000, 
                         product = "lai")		
 
-# Return all 300m LAI 
-lai <- cgls_urls(resolution = 300, product = "lai")
-    head( basename(lai) )
-
+## Return all 300m LAI 
+# lai <- cgls_urls(resolution = 300, product = "lai")
+#   head( basename(lai) )
 
 ## Example of downloading URL's
 ## You need to define your login credentials to download data
@@ -82,8 +82,8 @@ lai <- cgls_urls(resolution = 300, product = "lai")
 #     download.file(file.url, file.path(getwd(), 
 # 	              basename(all.urls[i])), mode = 'wb') 
 #   }
-
+}
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
 }

@@ -4,44 +4,43 @@
 \alias{rasterCorrelation}
 \title{Raster correlation}
 \usage{
-rasterCorrelation(x, y, s = 3, type = "pearson", file.name = NULL, ...)
+rasterCorrelation(x, y, s = 3, type = "pearson")
 }
 \arguments{
-\item{x}{raster class object for x}
+\item{x}{A terra SpatRaster class object for x}
 
-\item{y}{raster class object for y}
+\item{y}{A terra SpatRasterclass object for y}
 
 \item{s}{Scale of window. Can be a single value, two 
 values for uneven window or a custom matrix. 
 Must be odd number (eg., s=3, for 3x3 window or 
 s=c(3,5) for 3 x 5 window)}
 
-\item{type}{Type of output, options are: "pearson", "spearman",}
-
-\item{file.name}{Name of output raster (optional)}
-
-\item{...}{Additional arguments passed to writeRaster}
+\item{type}{Type of output, options are: "pearson", "spearman", 
+"covariance"}
 }
 \value{
-raster class object or raster written to disk
+A terra SpatRaster class object
 }
 \description{
-Performs a simple moving window correlation 
-             between two rasters
+Performs a moving window correlation between 
+             two rasters
 }
 \note{
-Depends: raster
+The NA behavior is set to na.rm = TRUE to make default outputs
+      consistent between the terra and raster packages.
 }
 \examples{
 \donttest{
- library(raster)                                                                    
- b <- brick(system.file("external/rlogo.grd", package="raster"))
- x <- b[[1]]
- y <- b[[3]]
+library(terra)
+ 
+r <- rast(system.file("ex/logo.tif", package="terra"))  
+  x <- r[[1]]
+  y <- r[[3]]
+  
  r.cor <- rasterCorrelation(x, y, s = 5, type = "spearman")
- plot(r.cor)
+   plot(r.cor)
 }
-
 
 }
 \author{

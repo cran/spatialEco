@@ -7,9 +7,9 @@
 topo.distance(x, r, echo = FALSE)
 }
 \arguments{
-\item{x}{sp SpatialLinesDataFrame object}
+\item{x}{sf LINESTRING object}
 
-\item{r}{raster class elevation raster}
+\item{r}{terra or raster class elevation raster}
 
 \item{echo}{(FALSE/TRUE) print progress to screen}
 }
@@ -18,46 +18,37 @@ Vector of corrected topographic distances same length as nrow(x)
 }
 \description{
 Calculates topographic corrected distance for a 
-             SpatialLinesDataFrame object
+             LINESTRING object
 }
 \note{
 This function corrects straight-line (euclidean) distances for 
 topographic-slope effect.
 }
 \examples{
-\donttest{     
- library(sp)
- library(raster)
- library(GeNetIt)
+ library(sf)
+ library(terra)
  
  # create example data
- data(elev)
-   r <- projectRaster(elev, res=c(1000,1000), 
-                      crs="+proj=aea +lat_1=29.5 +lat_2=42.5")
-   e <- extent(616893.6,714697.3,5001027,5080542)
-     elev <- crop(r,e) 
-       names(elev) <- "elev"
- pts <- sampleRandom(elev, 10, sp=TRUE)
-   pts$ID <- LETTERS[seq( from = 1, to = nrow(pts) )]
-   
- graph <- GeNetIt::knn.graph(pts, row.names=pts@data[,"ID"])
-   proj4string(graph) <- proj4string(elev)
-   head(graph@data)
+ elev <- rast(system.file("extdata/elev.tif", package="spatialEco"))
+   names(elev) <- "elev"
+
+ lns <- lapply(1:5, function(i) {
+   p <- st_combine(st_as_sf(spatSample(elev, size=2, as.points=TRUE)))
+   st_as_sf(st_cast(p, "LINESTRING")) }) 
+ lns <- do.call(rbind, lns) 
   
- plot(elev)
-   plot(graph, cex=0.5, add=TRUE)
-   plot(pts,pch=19,col="red",add=TRUE)
- 
+  plot(elev)
+    plot(st_geometry(lns), add=TRUE)
+      
  # Calculate topographical distance  
- ( tdist <- topo.distance(graph, elev) )
+ ( tdist <- topo.distance(lns, elev) )
+ ( lgt <- as.numeric(st_length(lns)) ) 
  
  # Increase in corrected distance
- tdist - graph$length
+ tdist - lgt
  
  # Percent increase in corrected distance
- ((tdist - graph$length) / graph$length) * 100
-
-}
+ ((tdist - lgt) / lgt) * 100
 
 }
 \author{

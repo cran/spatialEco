@@ -45,7 +45,7 @@ insert <- function(x, MARGIN = 1, value = NULL, idx, name=NULL) {
     cat("Inserting row", "\n")
     if(is.null(value)) value = rep(NA, ncol(x))
 	  if(length(value) != ncol(x))
-	    stop("specified values not equal number of columns")	
+	    stop("specified values not equal number of columns")
       x[seq(idx+1, nrow(x)+1),] <- x[seq(idx, nrow(x)),]
         x[idx,] <- value
   } else if(MARGIN == 2) {

@@ -7,7 +7,7 @@
 curvature(x, type = c("planform", "profile", "total", "mcnab", "bolstad"), ...)
 }
 \arguments{
-\item{x}{rasterLayer object}
+\item{x}{A terra SpatRaster object}
 
 \item{type}{Method used c("planform", "profile", "total", "mcnab", "bolstad")}
 
@@ -44,16 +44,14 @@ by dividing by the radius distance to the outermost cell (36.2m).
 }
 \examples{
 \donttest{
-  library(raster)
-  library(spatialEco)
-  data(elev)
-  elev <- projectRaster(elev, crs="+proj=robin +datum=WGS84", 
-                        res=1000, method='bilinear')
-curvature(elev, type="planform")
+  library(terra)
+  elev <- rast(system.file("extdata/elev.tif", package="spatialEco"))
+
+  crv <- curvature(elev, type="planform")
   mcnab.crv <- curvature(elev, type="mcnab")
       plot(mcnab.crv, main="McNab's curvature") 
 }
-    
+
 }
 \references{
 Bolstad, P.V., and T.M. Lillesand (1992). Improved classification of forest 
@@ -72,9 +70,6 @@ McNab, H.W. (1993). A topographic index to quantify the effect of mesoscale
 
 Zevenbergen, L.W. & C.R. Thorne (1987). Quantitative Analysis of Land Surface 
   Topography. Earth Surface Processes and Landforms, 12:47-56.
-}
-\seealso{
-\code{\link[raster]{writeRaster}} For additional ... arguments passed to writeRaster
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans@tnc.org>

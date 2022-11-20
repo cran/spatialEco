@@ -14,7 +14,7 @@ hsp(
 )
 }
 \arguments{
-\item{x}{Object of class raster (requires integer raster)}
+\item{x}{A terra SpatRaster class object}
 
 \item{min.scale}{Minimum scale (window size)}
 
@@ -27,7 +27,7 @@ hsp(
 \item{normalize}{Normalize results to 0-1 scale (FALSE | TRUE)}
 }
 \value{
-raster class object
+terra SpatRaster class object of slope position
 }
 \description{
 Calculates a hierarchical scale decomposition of topographic 
@@ -39,8 +39,8 @@ are number of cells
 }
 \examples{
 \donttest{ 
-  library(raster)
-  data(elev)
+  library(terra)
+  elev <- rast(system.file("extdata/elev.tif", package="spatialEco"))
   hsp27 <- hsp(elev, 3, 27, 4, normalize = TRUE)
   plot(hsp27)
  }

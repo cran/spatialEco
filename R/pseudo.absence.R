@@ -2,31 +2,32 @@
 #' @description Generates pseudo-absence samples based on density estimate 
 #'              of known locations 
 #'
-#' @param x An sp class SpatialPointsDataFrame or SpatialPoints object
-#' @param n Number of random samples to generate
-#' @param window Type of window (hull OR extent), overridden if mask provided
-#' @param Mask Optional rasterLayer class mask raster. The resolution of the 
-#'             density estimate will match mask.        
-#' @param s Optional resolution passed to window argument. Caution should be 
-#'                   used due to long processing times associated with high 
-#'                   resolution. In contrast, coarse resolution can exclude 
-#'                   known points.            
-#' @param sigma Bandwidth selection method for KDE, default is 'Scott'. 
-#'              Options are 'Scott', 'Stoyan', 'Diggle', 'likelihood', 
-#'              and 'geometry'
-#' @param wts Optional vector of weights corresponding to point pattern
-#' @param KDE save KDE raster (TRUE/FALSE)
-#' @param gradient A scaling factor applied to the sigma parameter used to 
-#'                 adjust the gradient decent of the density estimate. The 
-#'                 default is 1, for no adjustment (downweight < 1 | upweight > 1)   
-#' @param p Minimum value for probability distribution (must be >  0)
-#' @param edge Apply Diggle edge correction (TRUE/FALSE)
+#' @param x         An sf POINT geometry object
+#' @param n         Number of random samples to generate
+#' @param window    Type of window (hull OR extent), overridden if mask provided
+#' @param ref       Optional terra SpatRaster class raster. The resolution of the 
+#'                  density estimate will match mask.        
+#' @param s         Optional resolution passed to window argument. Caution should be 
+#'                  used due to long processing times associated with high 
+#'                  resolution. In contrast, coarse resolution can exclude 
+#'                  known points.            
+#' @param sigma     Bandwidth selection method for KDE, default is 'Scott'. 
+#'                  Options are 'Scott', 'Stoyan', 'Diggle', 'likelihood', 
+#'                  and 'geometry'
+#' @param wts       Optional vector of weights corresponding to point pattern
+#' @param KDE       Return KDE raster (TRUE/FALSE)
+#' @param gradient  A scaling factor applied to the sigma parameter used to 
+#'                  adjust the gradient decent of the density estimate. The 
+#'                  default is 1, for no adjustment (downweight < 1 | upweight > 1)   
+#' @param p         Minimum value for probability distribution (must be >  0)
+#' @param edge      Apply Diggle edge correction (TRUE/FALSE)
 #' 
 #' @return A list class object with the following components:
 #' \itemize{ 
-#' \item   sample SpatialPointsDataFrame containing random samples
-#' \item   kde sp RasterLayer class of KDE estimates (IF KDE = TRUE)
-#' \item   sigma Selected bandwidth of KDE 
+#' \item   sample  A sf POINT geometry object containing random samples
+#' \item   kde     A terra SpatRaster class of inverted Isotropic KDE estimates 
+#'                 used as sample weights (IF KDE = TRUE)
+#' \item   sigma   Selected bandwidth of KDE 
 #'  }
 #'
 #' @details
@@ -82,81 +83,81 @@
 #'   Problem for Presence-only Data in Ecology. The Annals of Applied Statistics, 4(3):1383-1402
 #'
 #' @examples
-#'  library(raster) 
-#'  library(sp)
-#'  data(meuse)
-#'  data(meuse.grid)
-#'    coordinates(meuse) = ~x+y   
-#'    coordinates(meuse.grid) = ~x+y
-#'    proj4string(meuse.grid) <- CRS("+init=epsg:28992")
-#'    gridded(meuse.grid) = TRUE
-#'    r <- raster(meuse.grid)
-#'
-#'    # Using a raster mask   
-#'    pa <- pseudo.absence(meuse, n=100, window='hull', KDE=TRUE, Mask = r, 
-#'                         sigma='Diggle', s=50) 
-#'      col.br <- colorRampPalette(c('blue','yellow'))
-#'        plot(pa$kde, col=col.br(10))
-#'          plot(meuse, pch=20, cex=1, add=TRUE)
-#'            plot(pa$sample, col='red', pch=20, cex=1, add=TRUE)
-#'              legend('top', legend=c('Presence', 'Pseudo-absence'), 
-#'                     pch=c(20,20),col=c('black','red'))
-#'
-#'  # With clustered data
-#'  library(sp)
-#'  library(spatstat.core)
-#'  data(bei)
-#'    trees <- as(bei, 'SpatialPoints')
-#'      trees <- SpatialPointsDataFrame(coordinates(trees), 
-#'                          data.frame(ID=1:length(trees))) 
-#'        trees.abs <- pseudo.absence(trees, n=100, window='extent', KDE=TRUE)
-#'  
-#'  col.br <- colorRampPalette(c('blue','yellow'))
-#'    plot(trees.abs$kde, col=col.br(10))
-#'     plot(trees, pch=20, cex=0.50, add=TRUE)
-#'        plot(trees.abs$sample, col='red', pch=20, cex=1, add=TRUE)
-#'          legend('top', legend=c('Presence', 'Pseudo-absence'), 
-#'                 pch=c(20,20),col=c('black','red'))
-#'      
+#' library(sf) 
+#' library(terra) 
+#' library(spatstat.data)
+#'   
+#' data(meuse, package = "sp")
+#' meuse <- st_as_sf(meuse, coords = c("x", "y"), crs = 28992, 
+#'                   agr = "constant") 
+#' 
+#' # Using a raster mask   
+#' r <- rast(ext(meuse), resolution=40, crs=crs(meuse))
+#'   r[] <- rep(1,ncell(r))
+#'   
+#' pa <- pseudo.absence(meuse, n=100, window='hull', KDE=TRUE, ref = r, 
+#'                      sigma='Diggle', s=50) 
+#'   col.br <- colorRampPalette(c('blue','yellow'))
+#'     plot(pa$kde, col=col.br(10))
+#'       plot(st_geometry(meuse), pch=20, cex=1, add=TRUE)
+#'         plot(st_geometry(pa$sample), col='red', pch=20, cex=1, add=TRUE)
+#'           legend('top', legend=c('Presence', 'Pseudo-absence'), 
+#'                  pch=c(20,20),col=c('black','red'), bg="white")
+#' 
+#' # With clustered data
+#' data(bei, package = "spatstat.data")
+#'   trees <- st_as_sf(bei)
+#'     trees <- trees[-1,]
+#' 
+#' trees.abs <- pseudo.absence(trees, n=100, window='extent', KDE=TRUE)
+#'   col.br <- colorRampPalette(c('blue','yellow'))
+#'     plot(trees.abs$kde, col=col.br(10))
+#'      plot(st_geometry(trees), pch=20, cex=0.50, add=TRUE)
+#'         plot(st_geometry(trees.abs$sample), col='red', pch=20, cex=1, add=TRUE)
+#'           legend('top', legend=c('Presence', 'Pseudo-absence'), 
+#'                  pch=c(20,20),col=c('black','red'),bg="white")
+#'     
 #' @export     
-pseudo.absence <- function(x, n, window = "hull", Mask = NULL, s = NULL, sigma = "Scott", 
+pseudo.absence <- function(x, n, window = "hull", ref = NULL, s = NULL, sigma = "Scott", 
                            wts = NULL, KDE = FALSE, gradient = 1, p = NULL, edge = FALSE) {
-    if (!class(x)[1] == "SpatialPointsDataFrame" & !class(x) == "SpatialPoints") 
-        stop(deparse(substitute(x)), " MUST BE A sp POINTS OBJECT")
-    if (!is.null(Mask)) {
-        if (!class(Mask)[1] == "RasterLayer") 
-            stop(deparse(substitute(Mask)), " MUST BE A RasterLayer OBJECT")
-    }
-    if (is.null(p)) p <- 1e-09
-      a <- 10000
+
+  if(!inherits(x, c("sf", "sfc")))	
+    stop(deparse(substitute(x)), " must be a sf, or sfc object")
+  if(unique(as.character(sf::st_geometry_type(x))) != "POINT")
+      stop(deparse(substitute(x)), " must be single-part POINT geometry") 
+  if (!is.null(ref)) {
+    if(!inherits(ref, "SpatRaster")) 
+      stop(deparse(substitute(ref)), " must be a terra SpatRaster object")
+  }
+  if (is.null(p)) p <- 1e-09
+    a <- 10000    
     raster.as.im <- function(im) {
-	  r <- raster::res(im)
-      orig <- sp::bbox(im)[, 1] + 0.5 * r
+	  r <- terra::res(im)[1]
+      orig <- as.numeric(sf::st_bbox(im)) + 0.5 * r
       dm <- dim(im)[2:1]
         xx <- unname(orig[1] + cumsum(c(0, rep(r[1], dm[1] - 1))))
-        yy <- unname(orig[2] + cumsum(c(0, rep(r[2], dm[2] - 1))))
-      return(spatstat.geom::im(matrix(raster::values(im), ncol = dm[1], 
+        yy <- unname(orig[2] + cumsum(c(0, rep(r[1], dm[2] - 1))))
+      return(spatstat.geom::im(matrix(terra::values(im), ncol = dm[1], 
              nrow = dm[2], byrow = TRUE)[dm[2]:1, ], 
 		     xcol = xx, yrow = yy))
     }
-	  
-	if (is.null(Mask)) {
+	if (is.null(ref)) {
       if (window == "hull") {
         win <- spatstat.geom::convexhull.xy(sp::coordinates(x))
         win <- spatstat.geom::as.mask(win, eps = s)
         }
       if (window == "extent") {
-        e <- as.vector(sp::bbox(x))
+        e <- as.vector(sf::st_bbox(x))
         win <- spatstat.geom::as.owin(c(e[1], e[3], e[2], e[4]))
         win <- spatstat.geom::as.mask(win, eps = s)
         }
     } else {
-        win <- raster.as.im(Mask)
-        win <- spatstat.geom::as.mask(win, eps = raster::res(Mask)[1])
-    }
-	
-  x.ppp <- spatstat.geom::as.ppp(sp::coordinates(x), win)
-	
+        win <- raster.as.im(ref)
+        win <- spatstat.geom::as.mask(win, eps = terra::res(ref)[1])
+    }	
+    x.ppp <- suppressWarnings(
+      spatstat.geom::as.ppp(sf::st_coordinates(x)[,1:2], win))
+	  
     bw.Scott <- function(X) {
         stopifnot(spatstat.geom::is.ppp(X))
         n <- spatstat.geom::npoints(X)
@@ -174,7 +175,7 @@ pseudo.absence <- function(x, n, window = "hull", Mask = NULL, s = NULL, sigma =
     }
     bw.geometry <- function(X, f = 1/4) {
         X <- spatstat.geom::as.owin(X)
-        g <- spatstat.core::distcdf(X)
+        g <- spatstat.explore::distcdf(X)
         r <- with(g, .x)
         Fr <- with(g, .y)
         iopt <- min(which(Fr >= f))
@@ -199,17 +200,16 @@ pseudo.absence <- function(x, n, window = "hull", Mask = NULL, s = NULL, sigma =
         cv <- numeric(ns)
         for (i in 1:ns) {
             si <- sigma[i]
-            lamx <- spatstat.core::density.ppp(X, sigma = si, at = "points", leaveoneout = TRUE)
-            lam <- spatstat.core::density.ppp(X, sigma = si)
+            lamx <- spatstat.explore::density.ppp(X, sigma = si, at = "points", leaveoneout = TRUE)
+            lam <- spatstat.explore::density.ppp(X, sigma = si)
             cv[i] <- sum(log(lamx)) - spatstat.geom::integral.im(lam)
         }
-      result <- spatstat.core::bw.optim(cv, sigma, iopt = which.max(cv), 
+      result <- spatstat.explore::bw.optim(cv, sigma, iopt = which.max(cv), 
 	                    criterion = "Likelihood Cross-Validation")
     return(result)
     }
-	
     if (sigma == "Diggle") {
-        bw <- spatstat.core::bw.diggle(x.ppp)
+        bw <- spatstat.explore::bw.diggle(x.ppp)
       } else if(sigma == "Scott") { 
           bw <- bw.Scott(x.ppp)
         } else if(sigma == "Stoyan") {
@@ -222,15 +222,14 @@ pseudo.absence <- function(x, n, window = "hull", Mask = NULL, s = NULL, sigma =
                   bw = sigma
                 } else {
 	              stop("Not a valid bandwidth option")
-                }  		
-      den <- raster::raster(spatstat.core::density.ppp(x.ppp, weights = wts, sigma = bw, 
-                                   adjust = gradient, diggle = edge)) * a
-
-      den <- 1 - (den/raster::maxValue(den))
-      den[den <= p] <- p
-      den.sp <- raster::rasterToPoints(den, spatial=TRUE)
-        names(den.sp@data)[1] <- "KDE"
-      den.sp <- den.sp[sample(1:nrow(den.sp@data), size = n, prob = den.sp@data$KDE), ]
+                } 	
+    den <- terra::rast(spatstat.explore::density.ppp(x.ppp, weights = wts,  
+                       sigma = bw, adjust = gradient, diggle = edge)) * a
+        den <- 1 - (den/terra::global(den,"max",na.rm=TRUE)[,1])
+          den[den <= p] <- p
+    den.sp <- sf::st_as_sf(terra::as.points(den))
+      names(den.sp)[1] <- "KDE"
+        den.sp <- den.sp[sample(1:nrow(den.sp), size = n, prob = den.sp$KDE), ]
     if (KDE == TRUE) {
       return(list(sample = den.sp, kde = den, sigma = bw))
     } else {

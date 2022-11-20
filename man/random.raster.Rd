@@ -16,11 +16,12 @@ random.raster(
   sd = 1,
   p = 0.5,
   s = 1.5,
-  distribution = c("random", "normal", "seq", "binomial", "gaussian")
+  mask = TRUE,
+  distribution = c("random", "normal", "seq", "binominal", "gaussian")
 )
 }
 \arguments{
-\item{r}{Optional existing raster defining nrow/ncol}
+\item{r}{Optional existing terra raster defining nrow/ncol}
 
 \item{n.row}{Number of rows}
 
@@ -38,44 +39,49 @@ random.raster(
 
 \item{sd}{Standard deviation of centered distribution}
 
-\item{p}{p-value for binomial distribution}
+\item{p}{p-value for binominal distribution}
 
 \item{s}{sigma value for Gaussian distribution}
 
-\item{distribution}{Available distributions, c("random", "normal", "seq", 
-"binomial", "gaussian", "sample")}
+\item{mask}{(TRUE/FALSE) If r is provided, mask results to r}
+
+\item{distribution}{Available distributions, c("random", "normal", 
+"seq", "binominal", "gaussian", "sample")}
 }
 \value{
-RasterLayer or RasterStack object with random rasters
+terra SpatRaster object with random rasters
 }
 \description{
 Create a random raster or raster stack using specified 
              distribution
 }
 \details{
-Options for distributions are for random, normal, seq, binomial, 
+Options for distributions are for random, normal, seq, binominal, 
 gaussian and sample raster(s)
 }
 \examples{
-library(raster)
+library(terra)
 
-# Using existing raster to create random binomial  
-r <- raster(system.file("external/rlogo.grd", package="raster")) 
-r <- random.raster(r, distribution="binomial")
+# Using existing raster to create random binominal  
+r <- rast(system.file("ex/elev.tif", package="terra"))    
+( rr <- random.raster(r, n.layers = 3, distribution="binominal") )
+  plot(c(r,rr)) 
 
-# default; random, nrows=50, ncols=50, nlayers=1
-rr <- random.raster(n.layer=5)
+# default; random, nrows=50, ncols=50, n.layers=5
+( rr <- random.raster() )
 
-# specified; binomial, nrows=20, ncols=20, nlayers=5
-rr <- random.raster(n.layer=5, n.col=20, n.row=20,  
-                    distribution="binomial")
+# specified; binominal, nrows=20, ncols=20, nlayers=5
+( rr <- random.raster(n.layer=5, n.col=20, n.row=20,  
+                     distribution="binominal") )
 
 # specified; gaussian, nrows=50, ncols=50, nlayers=1
-rr <- random.raster(n.col=50, n.row=50, s=8,  
-                    distribution="gaussian")
-
+( rr <- random.raster(n.col=50, n.row=50, s=8,  
+                      distribution="gaussian") )
+   plot(rr)
+ 
 # specified; sample, nrows=50, ncols=50, nlayers=1
-rr <- random.raster(n.layer=1, x=c(2,6,10,15), distribution="sample" )
+( rr <- random.raster(n.layer=1, x=c(2,6,10,15), 
+                     distribution="sample" ) )
   freq(rr)
 
 }

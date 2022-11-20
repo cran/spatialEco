@@ -1,12 +1,13 @@
 #' @title Quadrats
 #' @description Creates quadrat polygons for sampling or analysis  
 #'
-#' @param x  A sp or sf polygon object defining extent      
-#' @param s  Radius defining single or range of sizes of quadrats    
-#' @param n  Number of quadrats    
-#' @param r  A rotation factor for random rotation, default is NULL
+#' @param x    A sp or sf polygon object defining extent      
+#' @param s    Radius defining single or range of sizes of quadrats    
+#' @param n    Number of quadrats    
+#' @param r    A rotation factor for random rotation, default is NULL
+#' @param sp   (FALSE | TRUE) Output sp class object
 #'               
-#' @return an sp or sf polygon object with rotated polygon
+#' @return an sf or sp polygon object with rotated polygon(s)
 #'
 #' @note 
 #' The radius (s) parameter can be a single value or a range of values, 
@@ -16,28 +17,36 @@
 #' using an explicit vector that will be sampled eg., seq(100,300,0.5)         
 #' 
 #' @examples
-#' library(sp)
-#' library(raster)
-#' library(rgeos)
-#' data(meuse)
-#'   coordinates(meuse) <- ~x+y
-#'   e <- gConvexHull(meuse)
+#' \donttest{
+#' library(sf)
+#' library(terra) 
 #' 
-#' # Fixed size 250 and no rotation 
-#' s <- quadrats(e, s = 250, n = 50)
-#'   spplot(s, "ID")
+#' # read meuse data and create convex hull 
+#'  data(meuse, package = "sp")
+#'    meuse <- st_as_sf(meuse, coords = c("x", "y"), 
+#'                      crs = 28992, agr = "constant") 
+#'      e <- st_convex_hull(st_union(meuse))
 #' 
-#' # Variable sizes 100-300 and rotation of 0-45 degrees
-#' s <- quadrats(e, s = c(100,300), n = 50, r = c(0,45))
-#'   spplot(s, "ID")
-#' 
-#' # Variable sizes 100-300 and no rotation 
-#' s <- quadrats(e, s = c(100,300), n = 50)
-#'   spplot(s, "ID")
-#' 
+#'  # Fixed size 250 and no rotation 
+#'  s <- quadrats(e, s = 250, n = 10)
+#'    plot(st_geometry(s))
+#'   
+#'  # Variable sizes 100-300 and rotation of 0-45 degrees
+#'  s <- quadrats(e, s = c(100,300), n = 10, r = c(0,45))
+#'    plot(st_geometry(s))
+#'  
+#'  # Variable sizes 100-300 and no rotation 
+#'  s <- quadrats(e, s = c(100,300), n = 10)
+#'   plot(st_geometry(s))
+#' }     
 #' @export quadrats
-quadrats <- function(x, s = 250, n = 100, r = NULL) { 
-  quadrat <- list()
+quadrats <- function(x, s = 250, n = 100, r = NULL, sp = FALSE) { 
+  	if(!is.null(r)){
+	  rrange = range(r)
+	    if(min(rrange) < 0 | max(rrange) > 360)
+	      stop("rotation parameter is out of 0-360 range")
+	}	  
+    quadrat <- list()
     for(i in 1:n) {
 	  if(length(s) == 1) {
 	    ss = s
@@ -47,27 +56,27 @@ quadrats <- function(x, s = 250, n = 100, r = NULL) {
         ss = sample(s,1)	    
 	  }
 	  if(!is.null(r)){
-	    rrange = range(r)
-	    if(min(rrange) < 0 | max(rrange) > 360)
-	      stop("rotation parameter is out of range")
 	    if(length(r) == 1) {
 	      rr = r
 	    } else if(length(r) == 2) {
-          rr = sample(s[1]:s[2],1)
+          rr = sample(r[1]:r[2],1)
 	    } else if(length(rr) > 2) {
           rr = sample(rr,1)	    
 	    }
-	  }  
-      p <- as(raster::extent(rgeos::gBuffer(sp::spsample(x, 1, "random"), 
-	          width = ss)), "SpatialPolygons")
-        p <- sp::SpatialPolygonsDataFrame(p, data.frame(ID = i))
-	  if(!is.null(r)) {	
-        quadrat[[i]] <- rotate.polygon(p, angle = rr, sp=TRUE)
+	  }	 
+       p <- sf::st_buffer(sf::st_sample(x, size=1, type="random"), ss)
+	     p <- sf::st_as_sf(sf::st_as_sfc(sf::st_bbox(p)))
+		     p$dist <- ss
+	  if(!is.null(r)) {
+        p <- rotate.polygon(p, angle = rr)
+          p$angle <- rr		
+            quadrat[[i]] <- p
       } else {
 	    quadrat[[i]] <- p
 	  }
     }
-      quadrat <- do.call("rbind", quadrat)
-    sp::proj4string(quadrat) <- sp::proj4string(x) 
+        quadrat <- do.call("rbind", quadrat)
+	  sf::st_crs(quadrat) <- sf::st_crs(x)
+	if(sp) p <- sf::as_Spatial(p)
   return(quadrat)   
 }

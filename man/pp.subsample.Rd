@@ -15,7 +15,7 @@ pp.subsample(
 )
 }
 \arguments{
-\item{x}{An sp class SpatialPointsDataFrame or SpatialPoints object}
+\item{x}{An sf POINT class}
 
 \item{n}{Number of random samples to generate}
 
@@ -34,7 +34,7 @@ default is 1, for no adjustment (downweight < 1 | upweight > 1)}
 \item{edge}{Apply Diggle edge correction (TRUE/FALSE)}
 }
 \value{
-sp class SpatialPointsDataFrame containing random subsamples
+sf class POINT geometry containing random subsamples
 }
 \description{
 Generates random subsample based on density estimate
@@ -62,17 +62,20 @@ validation (2nd order)
 }
 \examples{
  
-require(spatstat.core)
-require(sp) 
-data(bei)  
-  trees <- as(bei, 'SpatialPoints')
-    n=round(length(trees) * 0.10, digits=0)  
-      trees.wrs <- pp.subsample(trees, n=n, window='hull')   
-        plot(trees, pch=19, col='black')
-          plot(trees.wrs, pch=19, col='red', add=TRUE) 
-            box()
-             title('10\% subsample')
-          legend('bottomright', legend=c('Original sample', 'Subsample'), 
+library(sf) 
+library(spatstat.explore) 
+data(bei, package = "spatstat.data")
+
+trees <- st_as_sf(bei)
+  trees <- trees[-1,]
+
+n=round(nrow(trees) * 0.10, digits=0)       
+trees.wrs <- pp.subsample(trees, n=n, window='hull')
+  plot(st_geometry(trees), pch=19, col='black')
+    plot(st_geometry(trees.wrs), pch=19, col='red', add=TRUE) 
+      box()
+       title('10\% subsample')
+    legend('bottomright', legend=c('Original sample', 'Subsample'), 
                  col=c('black','red'),pch=c(19,19))   
 
 }

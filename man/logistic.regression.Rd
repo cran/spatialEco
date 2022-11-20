@@ -52,7 +52,7 @@ A list class object with the following components:
 \item bandwidth - If AutoCov = TRUE returns the distance bandwidth used for the
 auto-covariance function
 \item diagTable - data.frame of regression diagnostics
-\item coefTable - data.frame of regression coefficients
+\item coefTable - data.frame of regression coefficients (log-odds)
 \item Residuals - data.frame of residuals and standardized residuals
 \item AutoCov - If an auto-logistic model, AutoCov represents lagged
 auto-covariance term
@@ -68,69 +68,79 @@ exploratory analysis of spatial effects. Auto-logistic are know to underestimate
 the effect of environmental variables and tend to be unreliable (Dormann 2007).
 Wij matrix options under style argument - B is the basic binary coding, W is row
 standardized (sums over all links to n), C is globally standardized (sums over
-all links to n), U is equal to C divided by the number of neighbors (sums over
+all links to n), U is equal to C divided by the number of neighbours (sums over
 all links to unity) and S is variance-stabilizing. Spatially lagged y defined as:
 W(y)ij=sumj_(Wij yj)/ sumj_(Wij) where; Wij=1/Euclidean(i,j)
 If the object passed to the function is an sp class there is no need to call the data
 slot directly via "object@data", just pass the object name.
 }
 \examples{
-require(sp)
-require(spdep)
-require(rms)                                                                       
-data(meuse)
-  coordinates(meuse) <- ~x+y  
-    meuse@data <- data.frame(DepVar=rbinom(dim(meuse)[1], 1, 0.5), 
-                              meuse@data)
-
-#### Logistic model
-lmodel <- logistic.regression(meuse, y='DepVar', 
-                  x=c('dist','cadmium','copper')) 
-  lmodel$model
-    lmodel$diagTable
-      lmodel$coefTable
-
-#### Logistic model with factorial variable
-lmodel <- logistic.regression(meuse, y='DepVar', 
-            x=c('dist','cadmium','copper', 'soil')) 
-  lmodel$model
-    lmodel$diagTable
-      lmodel$coefTable
-
-### Auto-logistic model using 'autocov_dist' in 'spdep' package
-lmodel <- logistic.regression(meuse, y='DepVar', 
-            x=c('dist','cadmium','copper'), autologistic=TRUE, 
-            coords=coordinates(meuse), bw=5000) 
-  lmodel$model
-    lmodel$diagTable
-      lmodel$coefTable
-  est <- predict(lmodel$model, type='fitted.ind')
-
-#### Add residuals, standardized residuals and estimated probabilities
-VarNames <- rownames(lmodel$model$var)[-1]
-  meuse@data$AutoCov <- lmodel$AutoCov
-    meuse@data <- data.frame(meuse@data, Residual=lmodel$Residuals[,1], 
-                     StdResid=lmodel$Residuals[,2], Probs=predict(lmodel$model, 
-                     meuse@data[,VarNames],type='fitted') )  
-
-#### Plot fit and probabilities
-resid(lmodel$model, "partial", pl="loess") 
-# plot residuals
-resid(lmodel$model, "partial", pl=TRUE) 
-
-# global test of goodness of fit 
-resid(lmodel$model, "gof")
-
-# Approx. leave-out linear predictors
-lp1 <- resid(lmodel$model, "lp1")            
-
-# Approx leave-out-1 deviance            
--2 * sum(meuse@data$DepVar * lp1 + log(1-plogis(lp1)))
-
-# plot estimated probabilities at points
-spplot(meuse, c('Probs'))
-
-
+\donttest{
+ p = c("sf", "sp", "spdep", "rms")
+ if(any(!unlist(lapply(p, requireNamespace, quietly=TRUE)))) { 
+   m = which(!unlist(lapply(p, requireNamespace, quietly=TRUE)))
+   message("Can't run examples, please install ", paste(p[m], collapse = " "))
+ } else {
+   invisible(lapply(p, require, character.only=TRUE))
+ 
+ data(meuse, package = "sp")
+ meuse <- st_as_sf(meuse, coords = c("x", "y"), crs = 28992, 
+                   agr = "constant")
+   meuse$DepVar <- rbinom(nrow(meuse), 1, 0.5)
+ 
+ #### Logistic model
+ lmodel <- logistic.regression(meuse, y='DepVar', 
+                   x=c('dist','cadmium','copper')) 
+   lmodel$model
+     lmodel$diagTable
+       lmodel$coefTable
+ 
+ #### Logistic model with factorial variable
+ lmodel <- logistic.regression(meuse, y='DepVar', 
+             x=c('dist','cadmium','copper', 'soil')) 
+   lmodel$model
+     lmodel$diagTable
+       lmodel$coefTable
+ 
+  ### Auto-logistic model using 'autocov_dist' in 'spdep' package
+  lmodel <- logistic.regression(meuse, y='DepVar', 
+              x=c('dist','cadmium','copper'), autologistic=TRUE, 
+              coords=st_coordinates(meuse), bw=5000) 
+    lmodel$model
+      lmodel$diagTable
+        lmodel$coefTable
+    est <- predict(lmodel$model, type='fitted.ind')
+  
+  #### Add residuals, standardized residuals and estimated probabilities
+  VarNames <- rownames(lmodel$model$var)[-1]
+    meuse$AutoCov <- lmodel$AutoCov 
+    meuse$Residual <- lmodel$Residuals[,1]
+    meuse$StdResid <- lmodel$Residuals[,2]
+    meuse$Probs <- predict(lmodel$model, 
+                          sf::st_drop_geometry(meuse[,VarNames]),
+ 	                     type='fitted')  
+  
+ #### Plot fit and probabilities
+ 
+ resid(lmodel$model, "partial", pl="loess") 
+ 
+ # plot residuals
+ resid(lmodel$model, "partial", pl=TRUE) 
+  
+ # global test of goodness of fit 
+ resid(lmodel$model, "gof")
+  
+ # Approx. leave-out linear predictors
+ lp1 <- resid(lmodel$model, "lp1")            
+  
+ # Approx leave-out-1 deviance            
+ -2 * sum(meuse$DepVar * lp1 + log(1-plogis(lp1)))
+  
+ # plot estimated probabilities at points
+ plot(meuse['Probs'], pch=20)
+ 
+  }
+}
 }
 \references{
 Besag, J.E., (1972) Nearest-neighbour systems and the auto-logistic model for binary

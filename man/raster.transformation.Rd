@@ -7,7 +7,7 @@
 raster.transformation(x, trans = "norm", smin = 0, smax = 255)
 }
 \arguments{
-\item{x}{raster class object}
+\item{x}{A terra SpatRaster class object}
 
 \item{trans}{Transformation method: "norm", "rstd", "std", "stretch",
 "nl", "slog", "sr" (please see notes)}
@@ -17,7 +17,7 @@ raster.transformation(x, trans = "norm", smin = 0, smax = 255)
 \item{smax}{Maximum value for stretch}
 }
 \value{
-raster class object of transformation
+A terra SpatRaster class object of specified transformation
 }
 \description{
 Transforms raster to a specified statistical transformation
@@ -26,8 +26,10 @@ Transformation option details:
 \itemize{
 \item norm - (Normalization_ (0-1): if min(x) < 0 ( x - min(x) ) / ( max(x) - min(x) )
 \item rstd - (Row standardize) (0-1): if min(x) >= 0 x / max(x) This normalizes data
-\item \preformatted{   with negative distributions
-}
+\item 
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{   with negative distributions
+}\if{html}{\out{</div>}}
 \item std - (Standardize) (x - mean(x)) / sdv(x)
 \item stretch - (Stretch) ((x - min(x)) * max.stretch / (max(x) - min(x)) + min.stretch)
 This will stretch values to the specified minimum and maximum values
@@ -40,18 +42,19 @@ sign(x)*log10(abs(x)))
 }
 \examples{
 \donttest{
-  library(raster)
-  r <- raster(nrows=100, ncols=100, xmn=571823, xmx=616763, 
-              ymn=4423540, ymx=4453690)
-    r[] <- runif(ncell(r), 1000, 2500)
+library(terra)
+r <- rast(nrows=500, ncols=500, xmin=571823, xmax=616763, 
+            ymin=4423540, ymax=4453690)
+  crs(r) <- "epsg:9001"
+r[] <- runif(ncell(r), 1000, 2500)
 
- # Postive values so, can apply any transformation    
-for( i in c("norm", "rstd", "std", "stretch", "nl", "slog", "sr")) {
-  print( raster.transformation(r, trans = i) ) 
-   }
+ # Positive values so, can apply any transformation    
+ for( i in c("norm", "rstd", "std", "stretch", "nl", "slog", "sr")) {
+   print( raster.transformation(r, trans = i) ) 
+ }
 
  # Negative values so, can't transform using "nl", "slog" or "sr"
-r[] <- runif(ncell(r), -1, 1)
+ r[] <- runif(ncell(r), -1, 1)
    for( i in c("norm", "rstd", "std", "stretch", "nl", "slog", "sr")) {
   try( print( raster.transformation(r, trans = i) ) ) 
    }

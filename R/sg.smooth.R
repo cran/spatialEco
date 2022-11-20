@@ -43,31 +43,25 @@
 #'     lines(sg.smooth(y, l = 25),col="blue", lwd=2)
 #'     lines(sg.smooth(y, l = 10),col="green", lwd=2)
 #'   
-#'  #### function applied to a raster stack  and sp object
-#'  library(raster)
-#'  
-#'  random.raster <- function(r=50, c=50, l=10, min=0, max=1){ 
-#'    do.call(stack, replicate(l, raster(matrix(runif(r*c, min, max),r,c))))
-#'  }
-#'  r <- random.raster()
+#'  #### function applied to a multi-band raster 
+#'  library(terra)
+#'  ( r <- spatialEco::random.raster(n.layers=20) )
 #'  
 #'  # raster stack example
-#'  ( r.sg <- calc(r, sg.smooth) )  
+#'  ( r.sg <- app(r, sg.smooth) )  
 #'  
-#'  # sp SpatialPixelsDataFrame example
-#'  r.sp <- as(r, "SpatialPixelsDataFrame")
-#'  r.sp@data <- as.data.frame(t(apply(r.sp@@data, MARGIN=1, FUN=sg.smooth)))
-#'
 #' @export sg.smooth
 sg.smooth <- function(x, f = 4, l = 51, d = 1, na.rm, ...) {
   na.idx <- which(is.na(x))
     x <- stats::na.omit(x)
   fc <- (l-1)/2                       
-    X  <- outer(-fc:fc, 0:f, FUN="^") 
+    X  <- outer(-fc:fc, 0:f, FUN="^")
       s <- svd(X)
       Y  <- s$v %*% diag(1/s$d) %*% t(s$u)
     T2 <- stats::convolve(x, rev(Y[d,]), type="o")
     sg <- T2[(fc+1):(length(T2)-fc)]
-  if(length(na.idx) > 0) { sg <- spatialEco::insert.values(sg, NA, na.idx) }	
+      if(length(na.idx) > 0) { 
+	    sg <- spatialEco::insert.values(sg, NA, na.idx)
+	  }	
   return( sg ) 
 }

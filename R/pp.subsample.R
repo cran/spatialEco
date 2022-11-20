@@ -2,19 +2,19 @@
 #' @description Generates random subsample based on density estimate 
 #'              of observations
 #'
-#' @param x An sp class SpatialPointsDataFrame or SpatialPoints object
-#' @param n Number of random samples to generate
-#' @param window Type of window (hull or extent)
-#' @param sigma Bandwidth selection method for KDE, default is 'Scott'. 
-#'              Options are 'Scott', 'Stoyan', 'Diggle', 'likelihood', 
-#'              and 'geometry'
-#' @param wts Optional vector of weights corresponding to point pattern
-#' @param gradient A scaling factor applied to the sigma parameter used to 
-#'                 adjust the gradient decent of the density estimate. The 
-#'                 default is 1, for no adjustment (downweight < 1 | upweight > 1)   
-#' @param edge Apply Diggle edge correction (TRUE/FALSE)
+#' @param x         An sf POINT class 
+#' @param n         Number of random samples to generate
+#' @param window    Type of window (hull or extent)
+#' @param sigma     Bandwidth selection method for KDE, default is 'Scott'. 
+#'                  Options are 'Scott', 'Stoyan', 'Diggle', 'likelihood', 
+#'                  and 'geometry'
+#' @param wts       Optional vector of weights corresponding to point pattern
+#' @param gradient  A scaling factor applied to the sigma parameter used to 
+#'                  adjust the gradient decent of the density estimate. The 
+#'                  default is 1, for no adjustment (downweight < 1 | upweight > 1)   
+#' @param edge      Apply Diggle edge correction (TRUE/FALSE)
 #'
-#' @return sp class SpatialPointsDataFrame containing random subsamples
+#' @return sf class POINT geometry containing random subsamples 
 #'
 #' @description
 #' The window type creates a convex hull by default or, optionally, uses the maximum 
@@ -62,22 +62,25 @@
 #'   Problem for Presence-only Data in Ecology. The Annals of Applied Statistics, 4(3):1383-1402
 #'
 #' @examples  
-#' require(spatstat.core)
-#' require(sp) 
-#' data(bei)  
-#'   trees <- as(bei, 'SpatialPoints')
-#'     n=round(length(trees) * 0.10, digits=0)  
-#'       trees.wrs <- pp.subsample(trees, n=n, window='hull')   
-#'         plot(trees, pch=19, col='black')
-#'           plot(trees.wrs, pch=19, col='red', add=TRUE) 
-#'             box()
-#'              title('10% subsample')
-#'           legend('bottomright', legend=c('Original sample', 'Subsample'), 
+#' library(sf) 
+#' library(spatstat.explore) 
+#' data(bei, package = "spatstat.data")
+#' 
+#' trees <- st_as_sf(bei)
+#'   trees <- trees[-1,]
+#' 
+#' n=round(nrow(trees) * 0.10, digits=0)       
+#' trees.wrs <- pp.subsample(trees, n=n, window='hull')
+#'   plot(st_geometry(trees), pch=19, col='black')
+#'     plot(st_geometry(trees.wrs), pch=19, col='red', add=TRUE) 
+#'       box()
+#'        title('10% subsample')
+#'     legend('bottomright', legend=c('Original sample', 'Subsample'), 
 #'                  col=c('black','red'),pch=c(19,19))   
-#'
+#' 
 #' @export pp.subsample
 pp.subsample <- function(x, n, window = "hull", sigma = "Scott", wts = NULL, 
-                        gradient = 1, edge = FALSE) {
+                         gradient = 1, edge = FALSE) {
   # if(class(x) == "sf") { x <- as(x, "Spatial") }
     if (is.null(window)) 
         stop("Please specify a valid window type hull | extent")
@@ -98,7 +101,7 @@ pp.subsample <- function(x, n, window = "hull", sigma = "Scott", wts = NULL,
     }
     bw.geometry <- function(X, f = 1/4) {
         X <- spatstat.geom::as.owin(X)
-        g <- spatstat.core::distcdf(X)
+        g <- spatstat.explore::distcdf(X)
         r <- with(g, .x)
         Fr <- with(g, .y)
         iopt <- min(which(Fr >= f))
@@ -123,24 +126,24 @@ pp.subsample <- function(x, n, window = "hull", sigma = "Scott", wts = NULL,
         cv <- numeric(ns)
         for (i in 1:ns) {
             si <- sigma[i]
-            lamx <- spatstat.core::density.ppp(X, sigma = si, at = "points", leaveoneout = TRUE)
-            lam <- spatstat.core::density.ppp(X, sigma = si)
+            lamx <- spatstat.explore::density.ppp(X, sigma = si, at = "points", leaveoneout = TRUE)
+            lam <- spatstat.explore::density.ppp(X, sigma = si)
             cv[i] <- sum(log(lamx)) - spatstat.geom::integral.im(lam)
         }
-        result <- spatstat.core::bw.optim(cv, sigma, iopt = which.max(cv), criterion = "Likelihood Cross-Validation")
+        result <- spatstat.explore::bw.optim(cv, sigma, iopt = which.max(cv), criterion = "Likelihood Cross-Validation")
         return(result)
     }
     if (window == "hull") {
-        win <- spatstat.geom::convexhull.xy(sp::coordinates(x))
+        win <- spatstat.geom::convexhull.xy(sf::st_coordinates(x)[,1:2])
     } else {
-        if (window == "extent") {
-            e <- as.vector(sp::bbox(x))
-            win <- spatstat.geom::as.owin(c(e[1], e[3], e[2], e[4]))
-        }
+      if (window == "extent") {
+        e <- as.vector(sf::st_bbox(x))
+        win <- spatstat.geom::as.owin(c(e[1], e[3], e[2], e[4]))
+      }
     }
-    x.ppp <- spatstat.geom::as.ppp(sp::coordinates(x), win)
+    x.ppp <- spatstat.geom::as.ppp(sf::st_coordinates(x)[,1:2], win)
     if (sigma == "Diggle") {
-        bw <- spatstat.core::bw.diggle(x.ppp)
+        bw <- spatstat.explore::bw.diggle(x.ppp)
     } else {
         if (sigma == "Scott") {
             bw <- bw.Scott(x.ppp)
@@ -156,18 +159,18 @@ pp.subsample <- function(x, n, window = "hull", sigma = "Scott", wts = NULL,
                   } else {
                     if (is.numeric(sigma)) {
                       bw <- sigma
-                    }
                   }
-                }
-            }
-        }
+               }
+             }
+          }
+       }
     }
-  den <- spatstat.core::density.ppp(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge, at = "points")
+  den <- spatstat.explore::density.ppp(x.ppp, weights = wts, sigma = bw, adjust = gradient, diggle = edge, at = "points")
     point.den <- data.frame(X = x.ppp$x, Y = x.ppp$y, KDE = as.vector(den * 10000))
       point.den$KDE <- point.den$KDE/max(point.den$KDE)
         point.den <- point.den[order(point.den[["KDE"]]), ]
         point.den$KDE <- rev(point.den$KDE)
-      sp::coordinates(point.den) <- ~X + Y
-    point.rs <- point.den[sample(seq(1:nrow(point.den)), n, prob = point.den@data$KDE), ]
+      point.den <- sf::st_as_sf(point.den, coords = c("X", "Y"), agr = "constant")	  
+    point.rs <- point.den[sample(seq(1:nrow(point.den)), n, prob = point.den$KDE), ]
   return( point.rs )
 } 

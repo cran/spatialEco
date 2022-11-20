@@ -7,7 +7,7 @@
 tpi(x, scale = 3, win = "rectangle", normalize = FALSE, zero.correct = FALSE)
 }
 \arguments{
-\item{x}{A raster class object}
+\item{x}{A terra SpatRaster object}
 
 \item{scale}{focal window size (n-cell x n-cell for rectangle or 
 distance for circle)}
@@ -20,28 +20,28 @@ surface roughness}
 \item{zero.correct}{Apply correction for zero values in matrix weights}
 }
 \value{
-raster class object of tpi metric
+A terra SpatRaster object of tpi A terra SpatRaster object
 }
 \description{
 Calculates topographic position using mean deviations
 }
 \examples{
 \donttest{
- library(raster)
- data(elev)
+library(terra)
+elev <- rast(system.file("extdata/elev.tif", package="spatialEco"))
 
 # calculate tpi and plot 
   tpi7 <- tpi(elev, scale=7) 
-  tpi025 <- tpi(elev, win = "circle", scale=0.025)
-  tpi025.zc <- tpi(elev, win = "circle", scale=0.025, 
+  tpi025 <- tpi(elev, win = "circle", scale=2500)
+  tpi025.zc <- tpi(elev, win = "circle", scale=2500, 
                    zero.correct = TRUE)
 
 opar <- par(no.readonly=TRUE)
     par(mfrow=c(2,2))
       plot(elev, main="original raster")
       plot(tpi7, main="tpi 7x7")
-      plot(tpi025, main="tpi Circular window d=0.025")
-   plot(tpi025, main="tpi Circular window d=0.025, zero correct")
+      plot(tpi025, main="tpi Circular window d=2500m")
+   plot(tpi025, main="tpi Circular window d=2500m, zero correct")
 par(opar)
 }
 
