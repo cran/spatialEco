@@ -17,22 +17,21 @@
 #' Theodoridis, S. & K. Koutroumbas(2006) Pattern Recognition 3rd ed.   
 #'
 #' @examples 
-#' \dontrun{
 #' library(cluster)
-#' x <- rbind(cbind(rnorm(10,0,0.5), rnorm(10,0,0.5)),
-#'            cbind(rnorm(15,5,0.5), rnorm(15,5,0.5)))
-#' 
-#' clust <- optimal.k(x, 20, plot=TRUE, cluster=TRUE)
-#'   plot(silhouette(clust$model), col = c('red', 'green'))
-#'     plot(clust$model, which.plots=1, main='K-Medoid fit')
+#'   x <- rbind(cbind(rnorm(10,0,0.5), rnorm(10,0,0.5)),
+#'              cbind(rnorm(15,5,0.5), rnorm(15,5,0.5)))
+#'
+#'   clust <- optimal.k(x, 20, plot=TRUE, cluster=TRUE)
+#'     plot(silhouette(clust$model), col = c('red', 'green'))
+#'       plot(clust$model, which.plots=1, main='K-Medoid fit')
 #' 
 #' # Extract multivariate and univariate mediods (class centers)
-#' clust$model$medoids
-#'   pam(x[,1], 1)$medoids  
-#' 
+#'   clust$model$medoids
+#'     pam(x[,1], 1)$medoids  
+#'
 #' # join clusters to data
-#' x <- data.frame(x, k=clust$model$clustering) 
-#' }
+#'   x <- data.frame(x, k=clust$model$clustering) 
+#'
 #' @seealso \code{\link[cluster]{pam}} for details on Partitioning Around Medoids (PAM)  
 #' @seealso \code{\link[cluster]{clara}} for details on Clustering Large Applications (clara) 
 #'

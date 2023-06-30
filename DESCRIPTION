@@ -1,8 +1,8 @@
 Package: spatialEco
 Type: Package
 Title: Spatial Analysis and Modelling Utilities
-Version: 2.0-0
-Date: 2022-11-20
+Version: 2.0-1
+Date: 2023-06-26
 Authors@R: c(
     person(family="Evans", given="Jeffrey S.", email = "jeffrey_evans@tnc.org", 
          role = c("aut", "cre"), comment = c(ORCID = "0000-0002-5533-7044")),
@@ -14,12 +14,12 @@ Description: Utilities to support spatial data manipulation, query, sampling
 	model for creating pseudo- absences and sub-sampling, Quadrant-based sampling and 
 	analysis, auto-logistic modeling, sampling models, cluster optimization, statistical 
 	exploratory tools and raster-based metrics.
-Depends: R (>= 4.0)
-Imports: sf, terra, spatstat.geom (>= 3.0-3), spatstat.explore, spdep,
-        ks, cluster, readr, RCurl, RANN, rms, yaImpute, mgcv, EnvStats,
-        SpatialPack (>= 0.3), MASS
-Suggests: gstat, spatstat.data, methods, RStoolbox, units, sp, raster,
-        stringr
+Depends: R (>= 4.2)
+Imports: sf, terra
+Suggests: spatstat.geom (>= 3.0-3), spatstat.explore, spdep, ks,
+        cluster, readr, RCurl, RANN, rms, yaImpute, mgcv, zyp,
+        SpatialPack (>= 0.3), MASS, caret, dplyr, earth, Matrix, gstat,
+        spatstat.data, methods, units, sp, stringr
 Maintainer: Jeffrey S. Evans <jeffrey_evans@tnc.org>
 License: GPL-3
 URL: https://github.com/jeffreyevans/spatialEco,
@@ -29,9 +29,9 @@ NeedsCompilation: no
 Repository: CRAN
 LazyData: true
 Encoding: UTF-8
-RoxygenNote: 7.2.2
-Packaged: 2022-11-20 20:04:36 UTC; jeffrey_evans
+RoxygenNote: 7.2.3
+Packaged: 2023-06-26 22:47:28 UTC; jeffrey_evans
 Author: Jeffrey S. Evans [aut, cre] (<https://orcid.org/0000-0002-5533-7044>),
   Melanie A. Murphy [ctb],
   Karthik Ram [ctb]
-Date/Publication: 2022-11-20 20:30:02 UTC
+Date/Publication: 2023-06-30 08:40:02 UTC

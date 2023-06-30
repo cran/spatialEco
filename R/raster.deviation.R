@@ -34,7 +34,6 @@
 #'    Probability. Chapman and  Hall/CRC. ISBN 0-412-98321-4
 #' 
 #' @examples 
-#' \donttest{
 #' library(terra)
 #' elev <- rast(system.file("extdata/elev.tif", package="spatialEco"))
 #' 
@@ -50,7 +49,7 @@
 #'   plot(r.dev.mean, main="dev of mean from raw values")
 #'   plot(r.gdev.mean, main="local dev from global mean")
 #' par(opar)
-#' }
+#'
 #' @export raster.deviation
 raster.deviation <- function(x, type = c("trend", "min", "max", "mean", "median"), 
                              s = 3, degree = 1, global = FALSE) {  

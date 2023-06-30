@@ -41,7 +41,6 @@ where; stat(x) is the global value of the specified statistic and y-hat is the
 specified focal statistic.
 }
 \examples{
-\donttest{
 library(terra)
 elev <- rast(system.file("extdata/elev.tif", package="spatialEco"))
 
@@ -57,7 +56,7 @@ par(mfrow=c(2,2))
   plot(r.dev.mean, main="dev of mean from raw values")
   plot(r.gdev.mean, main="local dev from global mean")
 par(opar)
-}
+
 }
 \references{
 Magee, Lonnie (1998). Nonlocal Behavior in Polynomial Regressions. The American 

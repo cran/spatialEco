@@ -24,7 +24,7 @@
 #' 
 #' @examples 
 #' data(cor.data)
-#' 
+#'
 #' # Evaluate linear correlations on linear dataCollinearity between
 #' head( dat <- cor.data[[4]] ) 
 #' pairs(dat, pch=20)
@@ -32,13 +32,14 @@
 #' 
 #' # Remove identified variable(s)
 #' head( dat[,-which(names(dat) %in% cor.vars)] )
-#' 
-#'  \donttest{
+#'
+#' \donttest{
 #' # Evaluate linear correlations on nonlinear data
 #' #   using nonlinear correlation function
 #' plot(cor.data[[1]], pch=20) 
-#'   collinear(cor.data[[1]], p=0.80, nonlinear = TRUE ) 		       
-#' }
+#'   collinear(cor.data[[1]], p=0.80, nonlinear = TRUE ) 	
+#' }	       
+#'
 #' @export collinear
 collinear <- function (x, p = 0.85, nonlinear = FALSE, p.value = 0.001) {
   if(!class(x)[1] == "matrix" && !class(x)[1] == "data.frame")

@@ -24,20 +24,18 @@
 #' Fuchs M., R. Hoffmann, F. Schwonke (2008) Change Detection with GRASS 
 #'   GIS - Comparison of images taken by different sensor. 
 #'
-#' @examples
-#' \donttest{ 
+#' @examples 
 #' library(terra)
-#' 
-#' r <- rast(ncols=100, nrows=100)
-#'   r[] <- round(runif(ncell(r), 1,8), digits=0)
-#' 
-#' rEnt <- raster.entropy(r, d=3, categorical = TRUE, global = TRUE)
-#'  opar <- par(no.readonly=TRUE)
-#'    par(mfcol=c(2,1))
-#'      plot(r)
-#'      plot(rEnt)
-#'  par(opar)
-#' }
+#'   r <- rast(ncols=100, nrows=100)
+#'     r[] <- round(runif(ncell(r), 1,8), digits=0)
+#'
+#' rEnt <- raster.entropy(r, d=5, categorical = TRUE, global = TRUE)
+#'   opar <- par(no.readonly=TRUE)
+#'     par(mfcol=c(2,1))
+#'       plot(r)
+#'         plot(rEnt)
+#'   par(opar)
+#'
 #' @export raster.entropy  
 raster.entropy <- function(x, d = 5, categorical = FALSE, 
                            global = FALSE, ...) {

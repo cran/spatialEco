@@ -34,19 +34,17 @@ Maximum entropy is reached when all values are different, same as log(m)
   max.ent <- function(x) { log( length( unique(x) ) ) }
 }
 \examples{
-\donttest{ 
 library(terra)
+  r <- rast(ncols=100, nrows=100)
+    r[] <- round(runif(ncell(r), 1,8), digits=0)
 
-r <- rast(ncols=100, nrows=100)
-  r[] <- round(runif(ncell(r), 1,8), digits=0)
+rEnt <- raster.entropy(r, d=5, categorical = TRUE, global = TRUE)
+  opar <- par(no.readonly=TRUE)
+    par(mfcol=c(2,1))
+      plot(r)
+        plot(rEnt)
+  par(opar)
 
-rEnt <- raster.entropy(r, d=3, categorical = TRUE, global = TRUE)
- opar <- par(no.readonly=TRUE)
-   par(mfcol=c(2,1))
-     plot(r)
-     plot(rEnt)
- par(opar)
-}
 }
 \references{
 Fuchs M., R. Hoffmann, F. Schwonke (2008) Change Detection with GRASS 

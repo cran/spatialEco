@@ -44,12 +44,13 @@ pairs(dat, pch=20)
 # Remove identified variable(s)
 head( dat[,-which(names(dat) \%in\% cor.vars)] )
 
- \donttest{
+\donttest{
 # Evaluate linear correlations on nonlinear data
 #   using nonlinear correlation function
 plot(cor.data[[1]], pch=20) 
-  collinear(cor.data[[1]], p=0.80, nonlinear = TRUE ) 		       
-}
+  collinear(cor.data[[1]], p=0.80, nonlinear = TRUE ) 	
+}	       
+
 }
 \author{
 Jeffrey S. Evans  <jeffrey_evans<at>tnc.org>

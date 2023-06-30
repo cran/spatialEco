@@ -28,7 +28,6 @@ in the entire raster and does not use the GeographicLib (Karney, 2013) spheroid
 distance method for geographic data.
 }
 \examples{
-\dontrun{
 library(sf)
 library(terra)
 
@@ -58,7 +57,6 @@ rd <- rasterDistance(rnc, y=ids)
 #     crs(rnc) <- "ESRI:102008" 
 # system.time({ rasterDistance(rnc, y=1) })  
 # system.time({ distance(rnc, target=2) }) 
-}
 
 }
 \references{

@@ -31,7 +31,6 @@ random range of quadrat rotations. You can specify each of these parameters
 using an explicit vector that will be sampled eg., seq(100,300,0.5)
 }
 \examples{
-\donttest{
 library(sf)
 library(terra) 
 
@@ -44,7 +43,8 @@ library(terra)
  # Fixed size 250 and no rotation 
  s <- quadrats(e, s = 250, n = 10)
    plot(st_geometry(s))
-  
+ 
+\donttest{   
  # Variable sizes 100-300 and rotation of 0-45 degrees
  s <- quadrats(e, s = c(100,300), n = 10, r = c(0,45))
    plot(st_geometry(s))
@@ -52,5 +52,6 @@ library(terra)
  # Variable sizes 100-300 and no rotation 
  s <- quadrats(e, s = c(100,300), n = 10)
   plot(st_geometry(s))
-}     
+}   
+ 
 }

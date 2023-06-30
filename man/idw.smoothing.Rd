@@ -31,17 +31,17 @@ distance, including all neighbors within 1000 (d=1000) would require k to equal
 all of the potential neighbors (n-1 or k=nrow(x)-1).
 }
 \examples{
-\donttest{
-library(sf)
 
-data(meuse, package = "sp")
-meuse <- st_as_sf(meuse, coords = c("x", "y"), crs = 28992, 
-                  agr = "constant")
-  meuse <- meuse[sample(1:nrow(meuse), 50),]
-     
-# Calculate distance weighted mean on cadmium variable in meuse data   
-cadmium.idw <- idw.smoothing(meuse, 'cadmium', k=nrow(meuse), d = 1000)
-  meuse$cadmium.wm <- cadmium.idw
+library(sf)
+if(require(sp, quietly = TRUE)) {
+  data(meuse, package = "sp")
+  meuse <- st_as_sf(meuse, coords = c("x", "y"), crs = 28992, 
+                    agr = "constant")
+}
+      
+ # Calculate distance weighted mean on cadmium variable in meuse data   
+   cadmium.idw <- idw.smoothing(meuse, 'cadmium', k=nrow(meuse), d = 1000)                
+   meuse$cadmium.wm <- cadmium.idw
  
    opar <- par(no.readonly=TRUE)
      par(mfrow=c(2,1)) 
@@ -50,5 +50,5 @@ cadmium.idw <- idw.smoothing(meuse, 'cadmium', k=nrow(meuse), d = 1000)
    par(opar)
 
 plot(meuse[c("cadmium","cadmium.wm")], pch=20)   
-} 
+
 }

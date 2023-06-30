@@ -23,7 +23,6 @@
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
 #'
 #' @examples
-#' \dontrun{
 #' library(sf)
 #' library(terra)
 #' 
@@ -53,10 +52,9 @@
 #' #     crs(rnc) <- "ESRI:102008" 
 #' # system.time({ rasterDistance(rnc, y=1) })  
 #' # system.time({ distance(rnc, target=2) }) 
-#' }
 #'
 #' @seealso \code{\link[terra]{distance}, \link[terra]{distance}}
-#' 
+#'
 #' @import terra
 #' @export rasterDistance 
 rasterDistance <- function(x, y, scale = FALSE){

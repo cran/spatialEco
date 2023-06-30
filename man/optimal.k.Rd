@@ -27,22 +27,21 @@ Find optimal k of k-Medoid partitions using
              silhouette widths
 }
 \examples{
-\dontrun{
 library(cluster)
-x <- rbind(cbind(rnorm(10,0,0.5), rnorm(10,0,0.5)),
-           cbind(rnorm(15,5,0.5), rnorm(15,5,0.5)))
+  x <- rbind(cbind(rnorm(10,0,0.5), rnorm(10,0,0.5)),
+             cbind(rnorm(15,5,0.5), rnorm(15,5,0.5)))
 
-clust <- optimal.k(x, 20, plot=TRUE, cluster=TRUE)
-  plot(silhouette(clust$model), col = c('red', 'green'))
-    plot(clust$model, which.plots=1, main='K-Medoid fit')
+  clust <- optimal.k(x, 20, plot=TRUE, cluster=TRUE)
+    plot(silhouette(clust$model), col = c('red', 'green'))
+      plot(clust$model, which.plots=1, main='K-Medoid fit')
 
 # Extract multivariate and univariate mediods (class centers)
-clust$model$medoids
-  pam(x[,1], 1)$medoids  
+  clust$model$medoids
+    pam(x[,1], 1)$medoids  
 
 # join clusters to data
-x <- data.frame(x, k=clust$model$clustering) 
-}
+  x <- data.frame(x, k=clust$model$clustering) 
+
 }
 \references{
 Theodoridis, S. & K. Koutroumbas(2006) Pattern Recognition 3rd ed.
