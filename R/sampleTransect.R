@@ -12,23 +12,25 @@
 #' @param id          A unique identification column in x
 #' @param ...         Additional arguments passed to st_sample 
 #'
-#' @note 
+#' @details
 #' Function create lines and samples using random or defined direction 
 #' and length transects and then creates a point sample along each transect. 
 #' The characteristic of the sample points are defined by arguments passed 
 #' to the sf::st_sample function. The distance and azimuth arguments allow
 #' for specifying the exact length and direction for each points transect.   
 #'
+#' @return 
+#' A list object contaning sf LINES and POINTS objects representing random transects 
+#' and sample points along each transect. The "ID" column links the resulting data. 
+#' 
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
 #'
 #' @examples 
-#' 
-#' library(sf)
 #' if(require(sp, quietly = TRUE)) {
+#' library(sf)
 #'   data(meuse, package = "sp")
 #'   meuse <- st_as_sf(meuse, coords = c("x", "y"), crs = 28992, 
 #'                     agr = "constant")
-#' }
 #' meuse <- meuse[sample(1:nrow(meuse),10),]
 #' 
 #' transects <- sampleTransect(meuse, min.dist=200, max.dist=500, 
@@ -38,6 +40,10 @@
 #'        plot(st_geometry(transects$samples), 
 #' 	        col="red", pch=19, add=TRUE)
 #' 
+#' } else { 
+#'   cat("Please install sp package to run example", "\n")
+#' }
+#'
 #' @export sampleTransect
 sampleTransect <- function(x, min.dist, max.dist, distance = NULL,
                            azimuth = NULL, id = NULL, ...) {

@@ -9,9 +9,7 @@
 #' @param files       (TRUE/FALSE) Write file to disk
 #' @param echo        (TRUE/FALSE) Echo progress
 #'
-#' @return A data.frame with climate results 
-#'
-#' @note 
+#' @details 
 #' data is available for Long -131.0 W and -53.0 W; lat 52.0 N and 14.5 N
 #' Function uses the Single Pixel Extraction tool and returns year, yday, 
 #'       dayl(s), prcp (mm/day), srad (W/m^2), swe (kg/m^2), tmax (deg c), 
@@ -19,18 +17,20 @@
 #' Metadata for DAYMET single pixel extraction: 
 #' \url{ https://daymet.ornl.gov/files/UserGuides/current/readme_singlepointextraction.pdf }
 #' 
+#' @return A data.frame with geographic coordinate point-level climate results 
+#'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'         
 #' @examples
 #' \donttest{
 #' ( d <- daymet.point(lat = 36.0133, long = -84.2625, start.year = 2013, 
 #'                     end.year=2014, site = "1", files = FALSE, echo = FALSE) )
-#' }
+#'}
 #'
 #' @export
 daymet.point <- function (lat, long, start.year, end.year, site=NULL, 
                           files = FALSE, echo = FALSE) {
-    if(!any(which(utils::installed.packages()[,1] %in% "RCurl")))
+	if(length(find.package("RCurl", quiet = TRUE)) == 0)
       stop("please install RCurl package before running this function")
     if(missing(lat)) stop("Please define lat") 
     if(missing(long)) stop("Please define long") 
@@ -44,8 +44,8 @@ daymet.point <- function (lat, long, start.year, end.year, site=NULL,
 	if (echo == TRUE) {
       message(paste("Downloading DAYMET data for: ", site, " at ", 
           lat, "/", long, " latitude/longitude !\n", sep = ""))
-    }	
-    x <- try( RCurl::getURL(download.url, ssl.verifypeer = FALSE) )
+    }
+    x <- try( RCurl::getURL(download.url, ssl.verifypeer = FALSE), silent=TRUE)
 	  if (!inherits(x, "try-error")) {
         dat <- utils::read.csv(textConnection(x), skip = 7)
 		  names(dat) <- c("year", "julian", "dayl", "prcp", "srad", "swe", 
@@ -53,12 +53,17 @@ daymet.point <- function (lat, long, start.year, end.year, site=NULL,
 		if(!is.null(site)) dat <- data.frame(site = site, dat)
       } else {
 	    stop("There was an error downloading this file")
-	  }  
+	  }
+    dat <- utils::read.csv(textConnection(x), skip = 7)
+	  names(dat) <- c("year", "julian", "dayl", "prcp", "srad", "swe", 
+		              "tmax", "tmin", "vp")
+	    if(!is.null(site)) dat <- data.frame(site = site, dat)
+      
 	if( files == TRUE ) {
 	  if(is.null(site)) site = paste( paste("lat", lat, sep="."), 
 	                                  paste("long", long, sep="."), sep=".") 
       utils::write.csv( paste(site, "_", start.year, "_", end.year, ".csv", sep = ""),
 	             row.names = FALSE)
-    }	
+    }
   return(dat)
- }
+}

@@ -12,15 +12,6 @@
 #' @param threshold    The threshold for number of minimum observations in the time-series
 #' @param ...          Not used
 #'
-#' @return Depending on arguments, a vector containing: 
-#' * Theil-Sen slope, always returned 
-#' * Kendall's tau two-sided test, if tau TRUE
-#' * intercept for trend if intercept TRUE
-#' * p value for trend fit if p.value TRUE
-#' * lower confidence level at 95-pct if confidence TRUE
-#' * upper confidence level at 95-pct if confidence TRUE
-#' @md
-#'
 #' @details 
 #' This function implements Kendall's nonparametric test for a monotonic trend 
 #' using the Theil-Sen (Theil 1950; Sen 1968; Siegel 1982) method to estimate 
@@ -34,6 +25,15 @@
 #' prevent the function from failing but, will likely invalidate the statistic. 
 #' A threshold of <=4 will yield all NA values. If method= "none" a modification of the
 #' EnvStats::kendallTrendTest code is implemented.       
+#'
+#' @return Depending on arguments, a vector containing: 
+#' * Theil-Sen slope, always returned 
+#' * Kendall's tau two-sided test, if tau TRUE
+#' * intercept for trend if intercept TRUE
+#' * p value for trend fit if p.value TRUE
+#' * lower confidence level at 95-pct if confidence TRUE
+#' * upper confidence level at 95-pct if confidence TRUE
+#' @md
 #' 
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'
@@ -67,13 +67,16 @@
 kendall <- function(y, tau = TRUE, intercept = TRUE, p.value = TRUE, 
                     confidence = TRUE, method=c("zhang", "yuepilon", "none"),
 					threshold = 6, ...) {
-    if(!any(which(utils::installed.packages()[,1] %in% "zyp")))
-      stop("please install zyp package before running this function")
+	if(any(method %in% c("zhang", "yuepilon"))) {
+	  if(length(find.package("zyp", quiet = TRUE)) == 0)
+        stop("please install zyp package before running this function")
+	}    
     if(threshold < 6)
-    warning("Setting the time-series threshold to fewer than 6 obs may invalidate 
-	  the statistic and <= 4 will result in NA's") 
+      warning("Setting the time-series threshold to fewer than 6 obs may invalidate 
+	    the statistic and n <= 4 will always result in NA's") 
     if(length(y[!is.na(y)]) < threshold) 
-      stop("The Kendall Tau should have at least 6 observations")	  
+      warning("The Kendall Tau should have at least 6 observations")	  
+
     out.names <- c("slope", "tau", "intercept", "p-value", "limits.LCL", "limits.UCL")[
 	               which(c(TRUE, tau, intercept, p.value, rep(confidence,2)))]  
     idx <- 2
@@ -81,32 +84,31 @@ kendall <- function(y, tau = TRUE, intercept = TRUE, p.value = TRUE,
         if(intercept == TRUE) { idx = append(idx, 11) }  
           if(p.value == TRUE) { idx = append(idx, 6) }
 	        if(confidence == TRUE) { idx = append(idx, c(1,4)) }
-
   mk.trend <- function (y, x = seq(along = y), alternative = "two.sided", 
                         conf.level = 0.95, ...)  {
-  out.names <- c("slope", "tau", "intercept", "p-value", "limits.LCL", "limits.UCL")	
+    out.names <- c("slope", "tau", "intercept", "p-value", "limits.LCL", "limits.UCL")	
     n <- length(y)
     alternative <- match.arg(alternative, c("two.sided", "greater", "less"))						
-    vark <- function(x, y) {
-        ties.x <- rle(sort(x))$lengths
-        ties.y <- rle(sort(y))$lengths
-        n <- length(x)
-        t1 <- n * (n - 1) * (2 * n + 5)
-        t2 <- sum(ties.x * (ties.x - 1) * (2 * ties.x + 5))
-        t3 <- sum(ties.y * (ties.y - 1) * (2 * ties.y + 5))
-        v1 <- (t1 - t2 - t3)/18
-        if (n > 2) {
-          t1 <- sum(ties.x * (ties.x - 1) * (ties.x - 2))
-          t2 <- sum(ties.y * (ties.y - 1) * (ties.y - 2))
-          v2 <- (t1 * t2)/(9 * n * (n - 1) * (n - 2))
-        } else  {
-        v2 <- 0
-          t1 <- sum(ties.x * (ties.x - 1)) * sum(ties.y * (ties.y - 1))
-          v3 <- t1/(2 * n * (n - 1))
-          v1 + v2 + v3
-      }
-      return(v1)
-    }						
+      vark <- function(x, y) {
+          ties.x <- rle(sort(x))$lengths
+          ties.y <- rle(sort(y))$lengths
+          n <- length(x)
+          t1 <- n * (n - 1) * (2 * n + 5)
+          t2 <- sum(ties.x * (ties.x - 1) * (2 * ties.x + 5))
+          t3 <- sum(ties.y * (ties.y - 1) * (2 * ties.y + 5))
+          v1 <- (t1 - t2 - t3)/18
+          if (n > 2) {
+            t1 <- sum(ties.x * (ties.x - 1) * (ties.x - 2))
+            t2 <- sum(ties.y * (ties.y - 1) * (ties.y - 2))
+            v2 <- (t1 * t2)/(9 * n * (n - 1) * (n - 2))
+          } else  {
+          v2 <- 0
+            t1 <- sum(ties.x * (ties.x - 1)) * sum(ties.y * (ties.y - 1))
+            v3 <- t1/(2 * n * (n - 1))
+            v1 + v2 + v3
+        }
+        return(v1)
+      }						
    if(length(stats::na.omit(y)) < threshold) { 
      v <- c(NA,NA,NA,NA, NA, NA) 
 	   names(v) <- out.names
@@ -144,14 +146,15 @@ kendall <- function(y, tau = TRUE, intercept = TRUE, p.value = TRUE,
     v <-c(estimate[c(2,1,3)], p.value, limits) 
       names(v) <- out.names	  
     }
-  return(v)
-}
-  if(method[1] == "none") {
+    return(v)
+  }
+  if(length(y[!is.na(y)]) < threshold) { 
+    fit.results <- rep(NA,length(out.names))
+  } else if(method[1] == "none") { 
     fit.results <- mk.trend(y)
-  } else {
+  }  else {
     fit.results <- zyp::zyp.trend.vector(y, method=method[1])[idx]	
   }	
     names(fit.results) <- out.names  
   return(fit.results)
 }	
-  

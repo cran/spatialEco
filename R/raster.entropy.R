@@ -8,17 +8,16 @@
 #'                     entropy (FALSE/TRUE)
 #' @param ...          Optional arguments passed terra focal function              
 #'  
-#' @return terra SpatRaster class object            
-#'
-#' @description
+#' @details
 #' Entropy calculated as: H = -sum(Pi*ln(Pi)) where; Pi, Proportion of one value 
 #' to total values Pi=n(p)/m and m, Number of unique values. Expected range: 
 #' 0 to log(m) H=0 if window contains the same value in all cells.
 #' H increases with the number of different values in the window. The ellipsis
 #' arguments can be used to write to disk using the filename argument. 
 #'
-#' Maximum entropy is reached when all values are different, same as log(m)
-#'   max.ent <- function(x) { log( length( unique(x) ) ) }
+#' @return terra SpatRaster class object            
+#'
+#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'
 #' @references
 #' Fuchs M., R. Hoffmann, F. Schwonke (2008) Change Detection with GRASS 
@@ -35,6 +34,9 @@
 #'       plot(r)
 #'         plot(rEnt)
 #'   par(opar)
+#'
+#' # Maximum entropy is reached when all values are different, same as log(m)
+#' #   for example; log( length( unique(x) ) ) 
 #'
 #' @export raster.entropy  
 raster.entropy <- function(x, d = 5, categorical = FALSE, 

@@ -7,16 +7,13 @@
 #                      "fcover", "lai", "ndvi"
 #' @param ver          Product version options are "newest", "v1", "v2", "v3"
 #'
-#' @return A vector of download URL's for the products
-#'
-#' @details
+#' @details 
 #' Provides a query of the ESA's Copernicus Global Land Service global 
 #  datasets which can then be used to download product(s).
 #' The query is performed on the manifest files and return URL's
 #' however, to download data you will need login credentials which,
 #' can be acquired from: http://land.copernicus.eu   
 #'
-#' @details
 #' If provided, dates need to be in a "YYYY-MM-DD" format. The dates 
 #' are an explicit search string and can contain dates that are not in 
 #' the imagery. As such, the user should generate a daily date string
@@ -27,18 +24,16 @@
 #' It is highly recommended that you do not change the default  
 #' ver="newest" argument unless there is a specific reason to.  
 #' 
-#' @details Available products
+#' Available products
 #' * fapar    Fraction of photosynthetically active radiation  
 #'            absorbed by the vegetation
 #' * fcover   Fraction of green vegetation cover
 #' * lai      Leaf Area index
 #' * ndvi     Normalized Difference Vegetation Index 
-#' @md
 #'
-#' @details
-#' Not yet implemented; Soil Water Index, Surface Soil Moisture,
-#  and Land Surface Temperature.
-#' Copernicus product details: http://land.copernicus.eu/global/products/
+#' Not yet implemented; Soil Water Index, Surface Soil Moisture, and Land Surface Temperature.
+#'
+#' @return A vector of download URL's for the products
 #'
 #' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
 #'
@@ -46,38 +41,38 @@
 #' \donttest{
 #' # Create date string for query
 #' d <- seq(as.Date("2020/05/01"), as.Date("2020-09-01"), by="day")
-#'
-#' # Search for 300m (333m) LAI within specified date range 
-#' all.urls <- cgls_urls(dates = d, resolution = 300, 
-#'                         product = "lai")
-#'						 
-#' ## Search for 1000m LAI within specified date range  
-#' # all.urls <- cgls_urls(dates = d, resolution = 1000, 
-#' #                       product = "lai")		
-#'
-#' ## Return all 300m LAI 
-#' # lai <- cgls_urls(resolution = 300, product = "lai")
-#' #   head( basename(lai) )
 #' 
-#' ## Example of downloading URL's
-#' ## You need to define your login credentials to download data
-#' # username = "xxxx"  
-#' # password = "xxxx" 
-#' # 	  
-#' #   for(i in 1:length(all.urls)){
-#' #     if(i > 1){ Sys.sleep(3) }
-#' #     file.url <- paste0("https://", paste(username, password, sep=":"), "@", 
-#' #                        sub(".*//", "", all.urls[i]))  
-#' #     download.file(file.url, file.path(getwd(), 
-#' # 	              basename(all.urls[i])), mode = 'wb') 
-#' #   }
+#' # Search for 300m (333m) LAI within specified date range 
+#' ( dates.lai <- cgls_urls(dates = d, resolution = 300, 
+#'                         product = "lai") )
+#' 
+#' # Return all 300m LAI 
+#' all.lai <- cgls_urls(resolution = 300, product = "lai")
+#'   nrow(all.lai)
 #' }
+#'
+#' \dontrun{						 
+#' # Example for downloading URL's
+#' # You need to define your login credentials to download data
+#' #   username = "xxxx"  
+#' #   password = "xxxx" 
+#'	  
+#'   for(i in 1:length(dates.lai)){
+#'     if(i > 1){ Sys.sleep(3) }
+#'     file.url <- paste0("https://", paste(username, password, sep=":"), "@", 
+#'                        sub(".*//", "", dates.lai[i]))  
+#'       download.file(file.url, file.path(tempdir(), 
+#'                     basename(dates.lai[i])), mode = 'wb') 
+#'   }
+#' }
+#'
+#' @md
 #' @export cgls_urls 
 cgls_urls <- function(dates = NULL, resolution = c(1000, 300),  
                        product = c("fapar", "fcover", "lai", "ndvi"),
                        ver = c("newest", "v1", "v2", "v3")) {
     manifest.url <- "https://land.copernicus.vgt.vito.be/manifest/"
-   if(!any(which(utils::installed.packages()[,1] %in% "stringr")))
+  if(length(find.package("stringr", quiet = TRUE)) == 0)
       stop("please install stringr package before running this function")	
     if(resolution[1] == 300) {
       r1 = "333m" 
