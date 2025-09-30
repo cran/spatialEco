@@ -1,8 +1,8 @@
 Package: spatialEco
 Type: Package
 Title: Spatial Analysis and Modelling Utilities
-Version: 2.0-2
-Date: 2023-11-17
+Version: 2.0-3
+Date: 2025-09-29
 Authors@R: c(
     person(family="Evans", given="Jeffrey S.", email = "jeffrey_evans@tnc.org", 
          role = c("aut", "cre"), comment = c(ORCID = "0000-0002-5533-7044")),
@@ -29,9 +29,10 @@ NeedsCompilation: no
 Repository: CRAN
 LazyData: true
 Encoding: UTF-8
-RoxygenNote: 7.2.3
-Packaged: 2023-11-17 21:27:53 UTC; jeffrey_evans
-Author: Jeffrey S. Evans [aut, cre] (<https://orcid.org/0000-0002-5533-7044>),
+RoxygenNote: 7.3.3
+Packaged: 2025-09-30 03:43:50 UTC; jeffrey_evans
+Author: Jeffrey S. Evans [aut, cre] (ORCID:
+    <https://orcid.org/0000-0002-5533-7044>),
   Melanie A. Murphy [ctb],
   Karthik Ram [ctb]
-Date/Publication: 2023-11-17 22:40:02 UTC
+Date/Publication: 2025-09-30 04:40:03 UTC

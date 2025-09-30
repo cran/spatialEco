@@ -54,7 +54,7 @@
 #' * nsim - value of NULL to represent p values were derived from observed data (k=0)
 #' * p - Probability based observations above/below confidence interval
 #' * t.test - Probability based on t-test
-#'   \item clusters - If "clust" argument TRUE, vector representing LISA clusters
+#' * clusters - If "clust" argument TRUE, vector representing LISA clusters
 #'
 #' When simulated (k>0), a list containing: 
 #'  * I - Global autocorrelation statistic

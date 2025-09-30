@@ -7,7 +7,7 @@
 #'                      to be used as weights
 #' @param bw            Distance bandwidth of Gaussian Kernel, must be units 
 #'                      of projection
-#' @param ref           A terra SpatRaster, sf class object or c[xmin,xmax,ymin,ymax] 
+#' @param ref           A terra SpatRaster, vect, ext or sf vector, bbox 
 #'                      vector to estimate the kde extent
 #' @param res           Resolution of raster when ref not SpatRaster           
 #' @param standardize   Standardize results to 0-1 (FALSE/TRUE)
@@ -56,7 +56,12 @@
 #' cadmium.kde.1000 <- sf.kde(x = meuse, y = meuse$cadmium, res=40, 
 #'                           bw = 1000, standardize = TRUE)						  
 #'   plot(c(cadmium.kde.500, cadmium.kde.1000))
-#'   			  			
+#' 
+#' # Using defined raster
+#' r <- terra::rast(terra::ext(meuse), resolution =  40, 
+#' 		               crs=terra::crs(meuse))   
+#'   pt.kde <- sf.kde(x = meuse, bw = 1000, standardize = TRUE,  ref = r) 
+#'  
 #' }
 #' 
 #' @export sp.kde sf.kde
@@ -71,28 +76,70 @@ sf.kde <- function(x, y = NULL, bw = NULL, ref = NULL, res = NULL,
   if(unique(as.character(sf::st_geometry_type(x))) != "POINT")
     stop(deparse(substitute(x)), " must be single-part POINT geometry") 
   if(is.null(scale.factor)) scale.factor = 1     
-  ref.flag = inherits(ref, "SpatRaster")
-  if(is.null(res) &&  ref.flag == TRUE) {
+  if(is.null(res) && inherits(ref, "SpatRaster")) {
     res <- terra::res(ref)
   }
-  if(is.null(res) &&  ref.flag == FALSE) {
+  if(is.null(res) && !inherits(ref, "SpatRaster")) {
     res <- 100
 	message("resoultion not defined, defaulting to 100")
   }
+  if(!any(c(inherits(ref, "sf"), inherits(ref, "SpatVector"), inherits(ref, "SpatRaster"),  
+     inherits(ref, "bbox"), inherits(ref, "SpatExtent"), inherits(ref, "NULL"))) ) 
+       stop("Reference must be sf (vector, bbox) or terra (SpatRaster, SpatVector, SpatExtent). 
+	         If not defined, will be extent of points (x)") 
+  if(any(c(inherits(ref, "sf"), inherits(ref, "SpatVector"), inherits(ref, "SpatRaster"),     
+       inherits(ref, "bbox"), inherits(ref, "SpatExtent"))) ) {
+    if(sf::st_is_longlat(ref))
+      stop("Coordinate Reference System must be projected coordinates (not lat/long)")
+  }	 
   if(is.null(ref)) {
+    message("Creating reference raster from extent of points (x)")
     ref <- terra::rast(terra::ext(x), resolution =  res, 
-		               crs=terra::crs(x))
-  } else if(inherits(ref, "numeric")) {
-    if(length(ref) != 4) 
-      stop("Need xmin, xmax, ymin, ymax bounding coordinates")
+		               crs=terra::crs(x))  
+  } else if(inherits(ref, "SpatRaster")) {
+    message("Using ", deparse(substitute(ref)), " as reference raster")  
+    if(!terra::crs(x) == terra::crs(ref) )
+      stop("CRS do not match")
+	  if(mask == TRUE) {
+	    m <- ref
+        if(!terra::hasValues(m)) { m[] <- 1 } 		
+	  }
+        ref[] <- NA	  
+  } else if(inherits(ref, "sf")) {
+    message("Using extent from ", deparse(substitute(ref)), " as reference raster")  
+    if(!terra::crs(x) == terra::crs(ref))
+      stop("CRS do not match")	
     ref <- terra::rast(terra::ext(ref), resolution =  res, 
-		               crs=terra::crs(x))
-  } else {
-    if(!inherits(ref, "SpatRaster"))
-      stop(deparse(substitute(ref)), " must be a terra SpatRast object")
-	if(terra::res(ref)[1] != res)
-	  message("reference raster defined, res argument is being ignored")
+		               crs=terra::crs(x))      
+  } else if(inherits(ref, "SpatVector")) { 
+    message("Using extent from ", deparse(substitute(ref)), " as reference raster")    
+    sf::st_is_longlat(ref)
+	  stop("Coordinate Reference System be projected coordinates (not lat/long)")
+    ref <- terra::rast(terra::ext(ref), resolution =  res, 
+		               crs=terra::crs(x))  
+  } else if(inherits(ref, "bbox")) {
+    message("Using defined extent ", deparse(substitute(ref)), " as reference raster")    
+    ref <- terra::rast(terra::ext(as.numeric(ref)[c(1,3,2,4)]), resolution =  res, 
+		               crs=terra::crs(x))  
+  } else if(inherits(ref, "SpatExtent")) {
+    message("Using defined extent ", deparse(substitute(ref)), " as reference raster")  
+    ref <- terra::rast(ref, resolution =  res, 
+		               crs=terra::crs(x))  
   }
+   if(mask == TRUE & !exists("m")) {
+     m <- ref 
+      if(!terra::hasValues(m)) { m[] <- 1 } 
+    }
+  # check if points are contained within refrence raster
+  rext <- sf::st_as_sf(terra::as.polygons(terra::ext(ref)))
+  xext <- sf::st_as_sf(terra::as.polygons(terra::ext(x)))
+  inside <- sf::st_within(sf::st_buffer(xext, -res), rext, sparse=FALSE)
+  if(!inside[,1][1]) 
+    stop("Points are not inside the reference raster")
+
+  # check if the crs match
+  if(terra::crs(x) != terra::crs(x))
+    stop("CRS do not match")
 
   # weighted kde function, modification of MASS::kde2d 
   fhat <- function (x, y, h, w, n = 25, lims = c(range(x), range(y))) {
@@ -108,8 +155,8 @@ sf.kde <- function(x, y = NULL, bw = NULL, ref = NULL, res = NULL,
       }	
     if (any(h <= 0)) stop("bandwidths must be strictly positive")
       if (missing(w)) { w <- numeric(nx) + 1 }
-    gx <- seq(lims[1], lims[2], length = n[1])
-    gy <- seq(lims[3], lims[4], length = n[2])
+      gx <- seq(lims[1], lims[2], length = n[1])
+      gy <- seq(lims[3], lims[4], length = n[2])
           h <- h/4
         ax <- outer(gx, x, "-") / h[1]
       ay <- outer(gy, y, "-") / h[2]
@@ -118,7 +165,6 @@ sf.kde <- function(x, y = NULL, bw = NULL, ref = NULL, res = NULL,
             ( sum(w) * h[1] * h[2] )
     return(list(x = gx, y = gy, z = z))
   }
-  
   if(is.null(bw)){ 
     bwf <- function(x){
       r <- stats::quantile(x, c(0.25, 0.75))
@@ -131,7 +177,6 @@ sf.kde <- function(x, y = NULL, bw = NULL, ref = NULL, res = NULL,
   } else {
     bw <- c(bw,bw)
   }
-  
   n <- c(terra::nrow(ref), terra::ncol(ref)) 
     if(!is.null(y)) {
       message("\n","calculating weighted kde","\n")
@@ -144,88 +189,13 @@ sf.kde <- function(x, y = NULL, bw = NULL, ref = NULL, res = NULL,
     }
   k$z <- k$z * scale.factor	
   if( standardize == TRUE ) { k$z <- (k$z - min(k$z)) / (max(k$z) - min(k$z)) }
-    pts <- data.frame(expand.grid(x=k$x, y=k$y), 
-                         z=round(as.vector(array(k$z,length(k$z))) *
-                         scale.factor, 10))
-    kde.est <- terra::rast(pts, type="xyz", extent = terra::ext(ref) )
-   if(mask == TRUE) {
-     kde.est <- terra::mask(kde.est, ref) 
-	}
+    kde.est <- flip(terra::rast(k[[3]], crs=terra::crs(x), extent=terra::ext(ref)) )
+    # pts <- data.frame(expand.grid(x=k$x, y=k$y), 
+    #                      z=round(as.vector(array(k$z,length(k$z))) *
+    #                      scale.factor, 10))
+    # kde.est <- terra::rast(pts, type="xyz", extent = terra::ext(ref), resolution = res[1] )
+      if(mask == TRUE) { kde.est <- terra::mask(kde.est, m) }
     terra::crs(kde.est) <- terra::crs(x)  
   return( kde.est )  
 }  
 sp.kde = sf.kde
-
-# sf.kde <- function(x, y = NULL, bw = NULL, ref = NULL, res = NULL,   
-#                    standardize = FALSE, scale.factor = NULL, 
-# 				   mask = FALSE) {
-#   if(missing(x))
-#     stop("x argument must be provided")
-#   ref.flag = inherits(ref, "SpatRaster")
-#   if(!inherits(x, c("sf", "sfc") ))	
-#     stop(deparse(substitute(x)), " must be a sf, or sfc object")
-#   if(unique(as.character(sf::st_geometry_type(x))) != "POINT")
-#       stop(deparse(substitute(x)), " must be single-part POINT geometry") 
-#   if(is.null(ref)) {
-#     if(!is.null(res)) {
-#       ref <- terra::rast(terra::ext(x), resolution =  res)
-#     } else {
-#       ref <- terra::rast(terra::ext(x))
-#        message("defaulting to ", terra::res(ref)[1], "x", terra::res(ref)[2], " cell resolution")
-#     }	
-#   }
-#   if(inherits(ref, "numeric")) {
-#     if(length(ref) != 4) 
-#       stop("Need xmin, xmax, ymin, ymax bounding coordinates")
-#       if(!is.null(res)) {
-#         ref <- terra::rast(terra::ext(ref), resolution =  res)
-#       } else {
-#         ref <- terra::rast(terra::ext(ref))
-#         message("defaulting to ", terra::res(ref)[1], "x", terra::res(ref)[2], " cell resolution")
-#       }	
-#   } else {
-#     if(!inherits(ref, "SpatRaster"))
-#       stop(deparse(substitute(ref)), " must be a terra SpatRast object")
-#   }
-#   n <- c(terra::nrow(ref), terra::ncol(ref)) 
-#   if(!is.null(bw)) {
-#     message("Using specified bandwidth: "); print(bw)
-#   } else {	
-#     if(is.null(y)) {
-# 	  bw = suppressWarnings(ks::hpi(sf::st_coordinates(x)[,1:2]))
-# 	    message("Unweighted automatic bandwidth: "); print(bw)
-# 	} else {
-# 	  bw = suppressWarnings(ks::Hscv.diag(cbind(sf::st_coordinates(x)[,1:2],y)))
-# 	    message("Weighted automatic CV bandwidth: "); print(bw)
-# 	} 
-#   } 
-#   if(!is.null(y)) {
-#     message("\n","calculating weighted kde","\n")	
-# 	kde.est <- suppressWarnings( 
-# 	  terra::rast(matrix(ks::kde(sf::st_coordinates(x)[,1:2], 
-#         h=bw, eval.points=terra::xyFromCell(ref, 1:terra::ncell(ref)), 
-#         gridsize=n, w = y, density=TRUE)$estimate,
-# 		nrow=n[1], ncol=n[2], byrow=TRUE),
-#         extent=terra::ext(ref)) )				
-#   } else {
-# 	message("\n","calculating unweighted kde","\n")
-# 	kde.est <- suppressWarnings( 
-# 	  terra::rast(matrix(ks::kde(sf::st_coordinates(x)[,1:2], 
-#         h=bw, eval.points=terra::xyFromCell(ref, 1:terra::ncell(ref)), 
-#         gridsize=n, density=TRUE)$estimate,
-# 		nrow=n[1], ncol=n[2], byrow=TRUE),
-#         extent=terra::ext(ref)) )		
-#   }
-#   if(!is.null(scale.factor)) kde.est <- kde.est * scale.factor	
-# 	if( standardize == TRUE ) { kde.est <- kde.est / 
-# 	    terra::global(kde.est, "max", na.rm=TRUE)[,1] }	
-#       if(mask) {
-# 	    if(!ref.flag) {
-# 		  message("Since a raster was not used as ref, there is nothing to mask")
-# 		} else {  
-# 	      kde.est <- terra::mask(kde.est, ref) 
-# 		}
-# 	  }  
-#     terra::crs(kde.est) <- terra::crs(x)
-#   return( kde.est )  
-# }

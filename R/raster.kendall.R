@@ -69,6 +69,8 @@ raster.kendall <- function(x, intercept = TRUE, p.value = TRUE,
     stop("please install zyp package before running this function")
   if (!inherits(x, "SpatRaster")) 
     stop(deparse(substitute(x)), " must be a terra SpatRaster object")
+  if(terra::nlyr(x) > 150)
+    warning("The Kendall Tau can become numerically unstable with large numbers of observations")   
   if(min.obs < 6)
     warning("Setting the time-series threshold (n) to fewer than 6 obs may invalidate 
 	  the statistic and <= 4 will result in NA's") 

@@ -1,16 +1,16 @@
-eb68f6282ffb1793c68cf1046e349ace *DESCRIPTION
-dea002449f97106eb5438a2ad0955738 *NAMESPACE
+c0ee23eb82fb1731d87a33c53d977137 *DESCRIPTION
+45fc4cfb1cf897be0f971f4c38855436 *NAMESPACE
 60dfe420f97c70590fca61a92dcbc4a5 *R/TM5-data.R
 84b3bd0048c884b98c92acf1a7797589 *R/all_pairwise.R
 0a94c0820662483a96c4012633138ebb *R/annulus.matrix.R
 67717181a02290f103e89198b41d9525 *R/ants-data.R
-c14ab25186d1f924214f994c7f4805c3 *R/aspline.downscale.R
+8362e9ac1d7649d868cb3115d78d02af *R/aspline.downscale.R
 05188c9677cf5114204b9baf4e5c6236 *R/background.R
 f518b44a8bab832100b4a8c8a10aa03e *R/bbox_poly.R
 b75a0bd7f06a3a7680ad8728ec7d71cf *R/bearing.distance.R
 4c3a1b1b96db56c088cb1c3d86f23822 *R/breeding.density.R
 9172d47b0e05e96f64d120ecf9f19567 *R/built.index.R
-ba9deb3563470cae124d532830080770 *R/cgls_urls.R
+f21d497b162474a5573e18bda1887aa6 *R/cgls_urls.R
 a2d3c1cda04b0bc5fd691ae68cc33f83 *R/chae.R
 812600629eed3ad1797418a01bd5cd66 *R/chen-data.R
 7e07bfd48cd62e5f1dd65f5af6b5c54b *R/classBreaks.R
@@ -21,10 +21,10 @@ de65bbe03f5aa27b85391bf23f4bdd2f *R/conf.interval.R
 88947800a34b8dcc328f0e5b07e54c94 *R/cor.data.R
 30b3afaa52ee4a9e4b72107a090c68e3 *R/correlogram.R
 4a089b5fccdad09a145992a816a1ff49 *R/cross.tab.R
-8f024274b0a860a984f45b4f2b4e218a *R/crossCorrelation.R
+693aadf981fe91ae5d482c08b59bc147 *R/crossCorrelation.R
 7a678f4a8ebc5d6fe325f8a0b14b77dd *R/csi.R
 e5ceabde7e591f92c4566ff8e2eb1874 *R/curvature.R
-12aa1da5ce3626878360e7f117870b20 *R/dahi.R
+6b207d49d5fce5689229447dfd32b0d9 *R/dahi.R
 cbaf9fb232f81a47f27a403c6b4f0084 *R/date_seq.R
 19853ccea7174957c838a912c7f5d540 *R/daymet.point.R
 0c5a7e1e371f12b4c1743e7f2e9a0445 *R/daymet.tiles.R
@@ -32,7 +32,7 @@ cbaf9fb232f81a47f27a403c6b4f0084 *R/date_seq.R
 836ff1c221e666f0e804a1cf6f607352 *R/dissection.R
 28f2dc0893bd87087c6274a781b9ed10 *R/divergence.R
 10129bc00bdcc65279e7b4b0b6f9a07b *R/effect.size.R
-ea53693ea7d1cd330ebfd83c3964fcad *R/elev-data.R
+dd1717e9e366b08c342a0d9046f38263 *R/elev-data.R
 c914d74aa3f9e6d8df9a17db4fbc6813 *R/erase.points.R
 8ee54fc27e3d8270f655d6add94393e4 *R/extract_vertices.R
 f97f914380c1ef79402d9b023406095c *R/fuzzySum.R
@@ -64,7 +64,7 @@ e2e905332145bf22d30f7c15fe9dd104 *R/morans.plot.R
 43ef8c2cb6e083fb58f74eb1c8ba3131 *R/nni.R
 44744b22ab23ad4040f205d1b1db6997 *R/nth.values.R
 2f59aedc05575365323e6eb04f6fece8 *R/o.ring.R
-e6ef1dc18c749b021c320dbe4035f59d *R/oli.aws.R
+c4b1b902b587b7e38fe727038d0faf6d *R/oli.aws.R
 5d1070c9db4f7202dcdbe85f675140a4 *R/optimal.k.R
 5dbf2ad7c6e2df40253d5acf1a0e16d6 *R/optimized.sample.variance.R
 0158e8d91aa175dfc9816e8cf1fc347c *R/outliers.R
@@ -92,9 +92,9 @@ f41b806771665d905169f7bc45830ca8 *R/random.raster.R
 ba019edc9071aef6d02530278320c89f *R/raster.deviation.R
 ee012e81503cba28e1cfa8ee67116f56 *R/raster.downscale.R
 5b08ff8f2cca736e5b01389dc1246754 *R/raster.entropy.R
-222930f127ef90cf1022ed1d101c09fc *R/raster.gaussian.smooth.R
+70936f2d0a97e6818b58d9d3ac033ea1 *R/raster.gaussian.smooth.R
 8a05c62181b67edf6865faf54556a9b7 *R/raster.invert.R
-26604c125edb323e508dca9edbda6701 *R/raster.kendall.R
+fd641f1ef1d6df0768da3f3e45dce8c9 *R/raster.kendall.R
 bd09f28c81d45d8b0dea6b5bd5dcc8fb *R/raster.mds.R
 e4963deabb39459f3fef08122d2f3e59 *R/raster.modified.ttest.R
 c2ce2c5822d411898c6c50ded64e29a9 *R/raster.moments.R
@@ -111,7 +111,7 @@ afdf044baaf6c77fdb98dac784c1c6d0 *R/sample.annulus.R
 0bc318c040ec46b549321ff0d6c7036e *R/sampleTransect.R
 6b80a0a6c99ea6a3be82330debe5a04a *R/sar.R
 5d1f220adc37f800c15026dbd3745e1e *R/separability.R
-453d1bbb24e8aa00da12250746bf5e4c *R/sf.kde.R
+cad70f8b0b62d82a7d86a53578e7cd4c *R/sf.kde.R
 9ba338cfbe22a4b3a164fc5c81b2a38d *R/sf_dissolve.R
 977dc010ab6185b65e4e94a2a5b67bd8 *R/sg.smooth.R
 84f4e17d4d01e9fee6f87564e4ec1475 *R/shannons.R
@@ -141,12 +141,13 @@ e787cf40b52698ec1ca146ab4963635a *R/tri.R
 b19b271bfaf06dbc87a4b4f9cd6dfef4 *R/vrm.R
 13b76af1a25e4c0d860ec1645eb09895 *R/winsorize.R
 e01dda0755a0d50f7179a161097d6f23 *R/wt.centroids.R
+49cfb2ba09a1ca978c70407665942abe *R/z_normalization.R
 d271990ddfe234d46835ac6458162077 *data/ants.rda
 b4d321210f2cfa842de02276b24358bd *data/chen.rda
 9b4b9ce381681ed30637c19044e8fecd *data/cor.data.rda
 11c3f9686e4faec545691689d338363b *data/pu.rda
-d5f190585a335751a8870bba67d7c60d *inst/CITATION
-0c9f564148b499b2e363ed9af7130ea2 *inst/NEWS
+ca5439504f3b3cb79ff8e535bf5f09c5 *inst/CITATION
+50ac42a2911ad38129bda1df244426f9 *inst/NEWS
 a28e69493c27da72c711e40851b66818 *inst/extdata/Landsat_TM5.tif
 1af9875819cac1c65c43d9ee4b86d2e5 *inst/extdata/elev.tif
 250462476e55c81ce7c1c9702982f9d5 *man/TM5.Rd
@@ -159,7 +160,7 @@ cc503d5dae9f10d3eea56987dfe4307e *man/annulus.matrix.Rd
 45d5936b8e4ff42ba8172f8d8d1b7316 *man/bearing.distance.Rd
 fe5096513a43fcb6c4d6091d4b6bb2ec *man/breeding.density.Rd
 37afd3fd5124b5e2494d813deca68fab *man/built.index.Rd
-434e6113f89f109679afa8c4347c97f6 *man/cgls_urls.Rd
+b4192bdf65af8a03154d09385d322997 *man/cgls_urls.Rd
 95a9eb375da45a1bc7775bcd4e824142 *man/chae.Rd
 b8b5ca16a8eb076260edce3fa507164c *man/chen.Rd
 efe41ff71150d0675dc1966b0beabfd7 *man/classBreaks.Rd
@@ -173,7 +174,7 @@ d005708a580f7d83f8ace2ac7fd4fd2a *man/cross.tab.Rd
 bdbff8fed0c2bba03908362e53d98da5 *man/crossCorrelation.Rd
 a60f2469adc3f6f72e1a626ffd486a66 *man/csi.Rd
 9819f56876ea5971557e2d073c9c8537 *man/curvature.Rd
-f3576060b6d58eeebbf5aa15214d85f6 *man/dahi.Rd
+f59bbef1a1842de05f2f038219aa13da *man/dahi.Rd
 bbe84aebba3ed572bc5ae51e9a01ffdf *man/date_seq.Rd
 605d98639ed97fdf2824a526df78f581 *man/daymet.point.Rd
 677f022b452adcaf6343ae7d27dc2248 *man/daymet.tiles.Rd
@@ -181,7 +182,7 @@ bbe84aebba3ed572bc5ae51e9a01ffdf *man/date_seq.Rd
 e0a83cd3329e68df45d82f124e50acf8 *man/dissection.Rd
 2be49aa1b4a49e749c8d29dbea7b2fed *man/divergence.Rd
 496260bd3343a007b95a056c916b45e2 *man/effect.size.Rd
-cec5555f09955e8c83c47ddc3f7c41c5 *man/elev.Rd
+1353252d7cfafa50a46ed3b0d81a5f5e *man/elev.Rd
 41af24135d2f1ae5fd62603a1516c2ac *man/erase.point.Rd
 7860c22f9c292ce590ffee928cda7e4c *man/extract.vertices.Rd
 a6a1904dfb11bccd830d04348bad23a3 *man/figures/logo.png
@@ -214,7 +215,7 @@ a43f03533f7114841c002719f543a62d *man/morans.plot.Rd
 b5afbe40c9030a372071bcfcb4be5583 *man/nni.Rd
 3d411e189bb1e836d6363c7fc8be0d5a *man/nth.values.Rd
 5153758d1a784d24fac00514f6ceaa55 *man/o.ring.Rd
-724bf3ca839067bd6ef45705748d596a *man/oli.asw.Rd
+894590b3b9f2913f9bba071609b4c66a *man/oli.aws.Rd
 b556cb029414f0689932b8d0507222aa *man/optimal.k.Rd
 643cfc252dbb961a09891c7f3c196f9c *man/optimized.sample.variance.Rd
 11bb2dabf0cd15cb866963fe5849c273 *man/outliers.Rd
@@ -242,7 +243,7 @@ b4573192c9339b24b78fd60813920385 *man/random.raster.Rd
 a20a34af4ea9a55b891916a0f2174ab9 *man/raster.deviation.Rd
 807f20368aa0f951ad4759798d2aacfb *man/raster.downscale.Rd
 39b3ba19cda4ccfbfc8d600f54a4e612 *man/raster.entropy.Rd
-66d2aa705d39c50519a9c2e75f9aee68 *man/raster.gaussian.smooth.Rd
+ef54be6f89356f316ea4ef9e0ce9027c *man/raster.gaussian.smooth.Rd
 6cfc13c8446c1c57b0b34d20b8813d4a *man/raster.invert.Rd
 4e654c8cdcbaec9ac4f1821ab6d65171 *man/raster.kendall.Rd
 c21bd96ce7c37354bd3c1490a69273d8 *man/raster.mds.Rd
@@ -261,7 +262,7 @@ cf60c23196bd9124be891b970c24e3fe *man/sample.annulus.Rd
 09e157d895c83e06610e487d109493b8 *man/sampleTransect.Rd
 ceb9802896d342db6ff7b992fbc39476 *man/sar.Rd
 e911e6fa0bedf449171d677094165a92 *man/separability.Rd
-cf235419cb538d5571bf5986359d5842 *man/sf.kde.Rd
+54831c4b1630a98a626c381c65ddca68 *man/sf.kde.Rd
 b191f573491d9a153d79402cbf259929 *man/sf_dissolve.Rd
 a1dcd47c0abf818030ba12353c507f07 *man/sg.smooth.Rd
 b6a92f741d8868baa3d27c4abd6e9aa8 *man/shannons.Rd
@@ -291,3 +292,4 @@ ce09c522e819645a7251712e4b450a7f *man/tri.Rd
 c4695581c07e46dc34850f6fe4495fb1 *man/vrm.Rd
 1a06d6ff6509e9bee92d0a4735e3e839 *man/winsorize.Rd
 10816c7f01a4ad2553ac5ea0a71c49f2 *man/wt.centroid.Rd
+a0bfe090413cd5990eb6538fa0687bd0 *man/z_normalization.Rd
