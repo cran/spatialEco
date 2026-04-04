@@ -1,10 +1,10 @@
 Package: spatialEco
 Type: Package
 Title: Spatial Analysis and Modelling Utilities
-Version: 2.0-3
-Date: 2025-09-29
+Version: 2.0-4
+Date: 2026-03-06
 Authors@R: c(
-    person(family="Evans", given="Jeffrey S.", email = "jeffrey_evans@tnc.org", 
+    person(family="Evans", given="Jeffrey S.", email = "sage_insights@outlook.com", 
          role = c("aut", "cre"), comment = c(ORCID = "0000-0002-5533-7044")),
   person(family="Murphy", given="Melanie A.", role = "ctb"),			 
   person(family="Ram", given="Karthik", role = "ctb") )
@@ -20,7 +20,7 @@ Suggests: spatstat.geom (>= 3.0-3), spatstat.explore, spdep, ks,
         cluster, readr, RCurl, RANN, rms, yaImpute, mgcv, zyp,
         SpatialPack (>= 0.3), MASS, caret, dplyr, earth, Matrix, gstat,
         spatstat.data, methods, units, sp, stringr, lwgeom, geodata
-Maintainer: Jeffrey S. Evans <jeffrey_evans@tnc.org>
+Maintainer: Jeffrey S. Evans <sage_insights@outlook.com>
 License: GPL-3
 URL: https://github.com/jeffreyevans/spatialEco,
         https://jeffreyevans.github.io/spatialEco/
@@ -30,9 +30,9 @@ Repository: CRAN
 LazyData: true
 Encoding: UTF-8
 RoxygenNote: 7.3.3
-Packaged: 2025-09-30 03:43:50 UTC; jeffrey_evans
+Packaged: 2026-03-06 23:11:35 UTC; sage_
 Author: Jeffrey S. Evans [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-5533-7044>),
   Melanie A. Murphy [ctb],
   Karthik Ram [ctb]
-Date/Publication: 2025-09-30 04:40:03 UTC
+Date/Publication: 2026-04-04 05:10:12 UTC
