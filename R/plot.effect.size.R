@@ -6,7 +6,7 @@
 #'
 #' @return Plot of effect size object with group effect sizes and 95% confidence  
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'                    
 #' @method plot effect.size 
 #' @export    	                               

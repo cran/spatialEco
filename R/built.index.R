@@ -58,7 +58,7 @@
 #'   automatically mapping urban areas from TM imagery. International Journal of 
 #'   Remote Sensing 24(3):583-594
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @examples
 #' \donttest{

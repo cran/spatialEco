@@ -101,5 +101,5 @@ Kullback, S., R.A. Leibler (1951). On information and sufficiency. Annals of
 Mathematical Statistics. 22(1):79–86
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }

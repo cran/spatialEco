@@ -17,7 +17,7 @@
 #'
 #' @return terra SpatRaster class object            
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references
 #' Fuchs M., R. Hoffmann, F. Schwonke (2008) Change Detection with GRASS 

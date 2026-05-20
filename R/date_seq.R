@@ -10,7 +10,7 @@
 #' @return 
 #' A date vector of class POSIXct for minute and Date for other options 
 #'     
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples
 #' # monthly steps 1990/01/01 - 2019/12/31

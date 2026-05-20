@@ -27,7 +27,7 @@
 #'
 #' @return Vector of McCune & Keon (2002) Heat Load Index
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references 
 #' McCune, B., and D. Keon (2002) Equations for potential annual direct 

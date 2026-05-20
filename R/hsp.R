@@ -21,7 +21,7 @@
 #'   connectivity in Yellowstone National Park with landscape genetics. 
 #'   Ecology 91:252-261
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'    
 #' @examples
 #' \donttest{ 

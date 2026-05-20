@@ -26,7 +26,7 @@
 #'
 #' @return A terra SpatRaster class object of the TRI
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'  
 #' @references 
 #' Riley, S.J., S.D. DeGloria and R. Elliot (1999) A terrain 

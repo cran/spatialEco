@@ -55,5 +55,5 @@ of spatial relationships in populations. Ecology 35:445-453
 Cressie, N (1991) Statistics for spatial data. Wiley & Sons, New York.
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }

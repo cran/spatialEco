@@ -61,5 +61,5 @@ Dixon, W.J. (1960) Simplified Estimation from Censored Normal Samples. Annals of
   Statistics. 31(2):385-391
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

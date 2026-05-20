@@ -28,7 +28,7 @@
 #' *  upper.ci - Upper confidence interval
 #' @md
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'                                                              
 #' @examples 
 #'  x <- seq(-20, 20, 0.1)

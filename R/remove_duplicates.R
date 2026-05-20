@@ -13,7 +13,7 @@
 #'
 #' @return sf object, of same feature class as x, with duplicate geometries removed
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #' 
 #' @examples
 #' library(sf)

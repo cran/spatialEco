@@ -42,13 +42,13 @@
 #'   * std.error - If se = TRUE, SpatRaster's of the standard error 
 #' @md
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references
 #' Bruce, P., & A. Bruce. (2017). Practical Statistics for Data Scientists. O’Reilly Media.
 #'
 #' @examples 
-#' \donttest{
+#' \dontrun{
 #' if (require(geodata, quietly = TRUE)) {
 #' library(terra)
 #' library(geodata)

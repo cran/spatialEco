@@ -52,5 +52,5 @@ De Reu, J., J. Bourgeois, M. Bats, A. Zwertvaegher, V. Gelorini, et al., (2014)
   Geomorphology, 186:39-49.
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

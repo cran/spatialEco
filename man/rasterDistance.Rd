@@ -61,5 +61,5 @@ Arya S., Mount D. M., Netanyahu N. S., Silverman R. and Wu A. Y (1998), An
 \code{\link[terra]{distance}, \link[terra]{distance}}
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

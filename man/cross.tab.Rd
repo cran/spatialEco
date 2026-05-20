@@ -59,5 +59,5 @@ cross.tab(lulc2010, lulc2020, values = v, labs = l, pct=TRUE)
 Pontius Jr, R.G., Shusas, E., McEachern, M. (2004). Detecting important categorical land changes
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

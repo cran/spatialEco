@@ -77,5 +77,5 @@ Hudak, A.T., N.L. Crookston, J.S. Evans, M.J. Falkowski, A.M.S. Smith, P. Gessle
   Canadian Journal of Remote Sensing 32: 126-138.
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

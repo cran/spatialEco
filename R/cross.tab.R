@@ -16,7 +16,7 @@
 #'
 #' @return a table with the cross tabulated counts 
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'                                                                           
 #' @references 
 #' Pontius Jr, R.G., Shusas, E., McEachern, M. (2004). Detecting important categorical land changes 

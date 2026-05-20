@@ -23,7 +23,7 @@
 #' A SpatRaster class object representing local deviation from the raster or the 
 #' specified global statistic
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references
 #'  Magee, Lonnie (1998). Nonlocal Behavior in Polynomial Regressions. The American 

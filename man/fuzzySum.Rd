@@ -31,5 +31,5 @@ p = c(0.3,0.2,0.1)
 
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

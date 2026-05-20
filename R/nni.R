@@ -21,7 +21,7 @@
 #' Score value, p = p value, expected.mean.distance = Expected mean 
 #' distance, observed.mean.distance = Observed meand distance.
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references 
 #' Clark, P.J., and F.C. Evans (1954) Distance to nearest neighbour as a measure 

@@ -49,5 +49,5 @@ x <- rnorm(100,mean=1500,sd=800)
                                            
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }

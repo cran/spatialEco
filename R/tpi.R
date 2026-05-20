@@ -11,7 +11,7 @@
 #' 
 #' @return A terra SpatRaster object of tpi A terra SpatRaster object
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references
 #' De Reu, J., J. Bourgeois, M. Bats, A. Zwertvaegher, V. Gelorini, et al., (2014) 

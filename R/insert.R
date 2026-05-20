@@ -17,7 +17,7 @@
 #'
 #' @return A data.frame with the new row or column inserted
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @examples
 #' d <- data.frame(ID=1:10, y=runif(10))

@@ -18,7 +18,7 @@
 #'            standard errors 
 #' @md
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references
 #' W. S. Cleveland, E. Grosse and W. M. Shyu (1992) Local regression models. 

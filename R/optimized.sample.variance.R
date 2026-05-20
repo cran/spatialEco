@@ -11,7 +11,7 @@
 #' A data.frame with "idx" representing the index of the original vector  
 #' and "y" is the value of the sampled data
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples
 #' library(sf)

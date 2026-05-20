@@ -54,7 +54,7 @@ Using add.coords adds spatial coordinates to the model, including creating the a
 rasters for prediction.
 }
 \examples{
-\donttest{
+\dontrun{
 if (require(geodata, quietly = TRUE)) {
 library(terra)
 library(geodata)
@@ -92,5 +92,5 @@ Friedman (1991) Multivariate Adaptive Regression Splines (with discussion)
 Annals of Statistics 19(1):1–141
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }

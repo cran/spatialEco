@@ -50,5 +50,5 @@ This function corrects straight-line (euclidean) distances for topographic-slope
 
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

@@ -20,7 +20,7 @@
 #'
 #' @return A vector (single value) representing the I similarity statistic
 #'
-#' @author Jeffrey Evans <jeffrey_evans@@tnc.org> and Jeremy VanDerWal  
+#' @author Jeffrey Evans <sage_insights@@outlook.com> and Jeremy VanDerWal  
 #'
 #' @references 
 #' Warren, D. L., R. E. Glor, M. Turelli, and D. Funk. (2008).

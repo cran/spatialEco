@@ -67,5 +67,5 @@ transects <- sampleTransect(meuse, min.dist=200, max.dist=500,
 
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

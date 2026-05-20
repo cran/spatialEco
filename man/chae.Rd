@@ -36,5 +36,5 @@ Wang, T., J. M, A.N. Hogan, S. Fong, K. Licon et al.  (2020) quantitative
   networks. Cell Systems 11(2)176-185
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

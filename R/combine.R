@@ -14,7 +14,7 @@
 #' @return 
 #' A ratified (factor) terra SpatRaster representing unique combinations.
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples
 #' library(terra)

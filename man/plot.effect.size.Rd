@@ -18,5 +18,5 @@ Plot of effect size object with group effect sizes and 95% confidence
 Plot function for effect.size object
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

@@ -10,7 +10,7 @@
 #'
 #' @return Value of fuzzy sum
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @examples 
 #' p = c(0.8,0.76,0.87)

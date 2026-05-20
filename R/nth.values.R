@@ -10,7 +10,7 @@
 #'
 #' @return Numeric vector of Nth values 
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @examples
 #' nth.values(1:20, N=3, smallest = TRUE)                 

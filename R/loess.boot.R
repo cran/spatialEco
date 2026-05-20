@@ -36,7 +36,7 @@
 #'   5) stddev - Standard deviation of loess fit at each x value
 #' @md
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references
 #' Cleveland, WS, (1979) Robust Locally Weighted Regression and Smoothing Plots Journal  

@@ -56,5 +56,5 @@ Sobel, I., & G. Feldman, (1969) A 3x3 Isotropic Gradient Operator for Image Proc
   presented at the Stanford Artificial Intelligence Project (SAIL).
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

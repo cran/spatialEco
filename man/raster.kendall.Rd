@@ -90,5 +90,5 @@ Biometrika, 69(1):242-244
 \code{\link[terra]{app}} for available ... arguments
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }

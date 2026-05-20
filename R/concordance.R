@@ -19,7 +19,7 @@
 #'
 #' @return list object with: concordance, discordance, tied and pairs
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references 
 #' Austin, P.C. & E.W. Steyerberg (2012) Interpreting the concordance statistic of a 

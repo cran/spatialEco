@@ -37,5 +37,5 @@ Sappington, J.M., K.M. Longshore, D.B. Thomson (2007). Quantifying Landscape
   the Mojave Desert. Journal of Wildlife Management. 71(5):1419-1426
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

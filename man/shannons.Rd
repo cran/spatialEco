@@ -50,5 +50,5 @@ Roth, D. S., I. Perfecto, and B. Rathcke (1994) The effects of management system
   ground-foraging ant diversity in Costa Rica. Ecological Applications 4(3):423-436.
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

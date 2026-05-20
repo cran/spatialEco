@@ -22,7 +22,7 @@
 #'  
 #' @return Messages and a vector of correlated variables 
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples 
 #' data(cor.data)

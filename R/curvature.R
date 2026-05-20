@@ -30,7 +30,7 @@
 #' 
 #' @return raster class object of surface curvature
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #' 
 #' @references
 #' Bolstad, P.V., and T.M. Lillesand (1992). Improved classification of forest 

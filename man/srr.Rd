@@ -32,5 +32,5 @@ elev <- rast(system.file("extdata/elev.tif", package="spatialEco"))
  }     
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

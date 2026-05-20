@@ -48,7 +48,7 @@
 #' 
 #' @return A terra SpatRaster class object of the weighted MSAVI metric 
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @references 
 #' Haboudane, D., et al. (2004) Hyperspectral Vegetation Indices and Novel Algorithms 

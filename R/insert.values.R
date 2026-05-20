@@ -16,7 +16,7 @@
 #' A vector with values of y inserted into x and the position(s) 
 #' defined by the index
 #'  
-#' @author Jeffrey S. Evans <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans <sage_insights@@outlook.com>
 #'
 #' @examples
 #' (x=1:10)

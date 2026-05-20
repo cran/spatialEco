@@ -91,5 +91,5 @@ Kaufman Y., and L. Remer (1994) Detection of forests using mid-IR reflectance:
 An application for aerosol studies. IEEE T. Geosci.Remote. 32(3):672-683.
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }

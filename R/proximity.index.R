@@ -11,7 +11,7 @@
 #' A vector equal to nrow(x) of proximity index values, if a background value is 
 #' specified NA values will be returned in the position(s) of the specified class
 #'   
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references 
 #' Gustafson, E.J., & G.R. Parker (1994) Using an Index of Habitat Patch Proximity 

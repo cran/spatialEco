@@ -34,5 +34,5 @@ SAR is calculated as: resolution^2 * cos( (degrees(slope) * (pi / 180)) )
 Berry, J.K. (2002). Use surface area for realistic calculations. Geoworld 15(9):20-1.
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

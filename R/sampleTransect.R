@@ -23,7 +23,7 @@
 #' A list object contaning sf LINES and POINTS objects representing random transects 
 #' and sample points along each transect. The "ID" column links the resulting data. 
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @examples 
 #' if(require(sp, quietly = TRUE)) {

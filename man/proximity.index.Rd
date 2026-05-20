@@ -64,5 +64,5 @@ Gustafson, E.J., & G.R. Parker (1994) Using an Index of Habitat Patch Proximity
   for Landscape Design. Landscape and Urban Planning 29:117-130
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

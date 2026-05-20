@@ -2,8 +2,9 @@
 #' @description Calculates the cosine similarity and angular similarity on  
 #'              two vectors or a matrix
 #' 
-#' @param x A vector or matrix object 
-#' @param y If x is a vector, then a vector object 
+#' @param x          A vector or matrix object 
+#' @param y          If x is a vector, then a vector object 
+#' @param angular    Booliean (TRUE/FALSE) return angular similarity
 #'
 #' @details 
 #' The cosine similarity index is a measure of similarity between two 
@@ -42,7 +43,7 @@
 #' csi(as.vector(scale(x)),scale(y))
 #'
 #' @export   
-csi <- function (x, y = NULL) {
+csi <- function (x, y = NULL, angular = TRUE) {
     if (is.matrix(x) && is.null(y)) {
       s = array(0, c(ncol(x), ncol(x)))
       f = colnames(x)
@@ -54,13 +55,22 @@ csi <- function (x, y = NULL) {
 	  acs  <- 1 - (cos(s)^ -1 / pi)
 	  diag(s) = 1
       diag(acs) = 1
-      return(list(similarity=s, angular.similarity=acs))
+	  if(angular) {
+        return(list(similarity = s, angular.similarity = acs))
+      } else {
+        return(list(similarity=s))
+	  }      
     }
     else if (is.vector(x) && is.vector(y)) {
       cs <- crossprod(x, y) / sqrt(crossprod(x) * crossprod(y))
 	  acs <- 1 - (cos(cs)^ -1 / pi)
-	  s <- c(cs,acs)
-	  names(s) <- c("similarity", "angular.similarity")
+	  if(angular) {
+        s <- c(cs,acs)
+	      names(s) <- c("similarity", "angular.similarity")
+      } else {
+        s <- c(cs,acs)
+	      names(s) <- c("similarity")
+	  }
 	  return(s)
     }
     else if (is.vector(x) && is.matrix(y)) {
@@ -68,9 +78,14 @@ csi <- function (x, y = NULL) {
       names(s) = colnames(y)
         for (i in 1:ncol(y)) { s[i] = csi(x, y[, i])[1] }
 	  acs  <- 1 - (cos(s)^ -1 / pi)
-	  s <- rbind(s,acs)
-	  rownames(s) <-c("similarity", "angular.similarity")
-      return(s)
+	  if(angular) {
+	    s <- rbind(s,acs)
+	      rownames(s) <-c("similarity", "angular.similarity")
+      } else {
+	    s <- s
+		  rownames(s) <- c("similarity")
+	  }
+	  return(s)
     } else {
       stop("Error: function supports two vectors or single matrix")
     }

@@ -37,7 +37,7 @@
 #' * TD - Transformed Divergence index
 #' @md
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references
 #' Anderson, M. J., & Clements, A. (2000) Resolving environmental disputes: a  

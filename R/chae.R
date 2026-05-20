@@ -9,7 +9,7 @@
 #'   translation of dog-to-human aging by conserved remodeling of epigenetic 
 #'   networks. Cell Systems 11(2)176-185
 #'     
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples
 #' dat <- data.frame(DogAge = seq(0,18,0.25),

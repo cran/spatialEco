@@ -23,7 +23,7 @@
 #'
 #' @return A vector value representing the time to event 
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @examples
 #' # Binomial instance

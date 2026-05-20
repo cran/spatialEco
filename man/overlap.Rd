@@ -49,5 +49,5 @@ Warren, D. L., R. E. Glor, M. Turelli, and D. Funk. (2008).
   Approaches to Niche Evolution. Evolution 62:2868-2883.
 }
 \author{
-Jeffrey Evans <jeffrey_evans@tnc.org> and Jeremy VanDerWal
+Jeffrey Evans <sage_insights@outlook.com> and Jeremy VanDerWal
 }

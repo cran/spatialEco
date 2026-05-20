@@ -16,7 +16,7 @@
 #' percent volume else, if sample (TRUE) n sf POINT object with points 
 #' that represent the percent volume of the sub-sample
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples 
 #' \donttest{

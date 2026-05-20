@@ -14,7 +14,7 @@
 #' data.frame with "H" (Shannon's diversity) and "evenness" (Shannon's 
 #' evenness where H / max( sum(x) ) ) and ESN 
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references 
 #' Shannon, C. E. and W. Weaver (1948) A mathematical theory of communication. The Bell 

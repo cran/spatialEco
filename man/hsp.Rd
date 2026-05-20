@@ -52,5 +52,5 @@ Murphy M.A., J.S. Evans, and A.S. Storfer (2010) Quantify Bufo boreas
   Ecology 91:252-261
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

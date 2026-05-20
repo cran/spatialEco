@@ -17,7 +17,7 @@
 #'
 #' @return A matrix object with defined null.value and 1, representing retained rings  
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @examples
 #' annulus.matrix(5)                   # 5 concentric rings

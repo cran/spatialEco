@@ -30,7 +30,7 @@
 #'   * raster layer 6 - upper confidence level at 95 pct, if confidence TRUE
 #' @md
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references 
 #' Theil, H. (1950) A rank invariant method for linear and polynomial regression 

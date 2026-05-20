@@ -69,5 +69,5 @@ Evans, J.S., S.R. Schill, G.T. Raber (2015) A Systematic Framework for Spatial
   and a Sustainable Future. F. Huettman (eds). Springer, NY.
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

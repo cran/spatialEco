@@ -16,7 +16,7 @@
 #'
 #' @return A terra SpatRaster class object 
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'                                                                           
 #' @references
 #' Quinn, G.P., & M.J. Keough (2002) Experimental design and data analysis 

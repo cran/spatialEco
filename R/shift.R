@@ -8,7 +8,7 @@
 #' @return 
 #' A vector, length equal to x, with offset length filled with pad values
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples
 #' x <- 1:10

@@ -90,5 +90,5 @@ Atmosphere-Ocean 38(3): 395-429.
 \code{\link[zyp]{zyp.trend.vector}} for model details
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }

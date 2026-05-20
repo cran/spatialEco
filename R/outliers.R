@@ -6,7 +6,7 @@
 #'
 #' @return value for the modified Z-score
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references
 #' Iglewicz, B. & D.C. Hoaglin (1993) How to Detect and Handle Outliers, 

@@ -51,5 +51,5 @@ g1 <- raster.gaussian.smooth(elev, s = 2, n = 7)
 
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

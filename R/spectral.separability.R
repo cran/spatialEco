@@ -20,7 +20,7 @@
 #' @return 
 #' A matrix of class-wise Jeffries-Matusita or Bhattacharyya distance separability values
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references
 #' Bhattacharyya, A. (1943) On a measure of divergence between two statistical 

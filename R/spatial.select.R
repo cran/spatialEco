@@ -34,7 +34,7 @@
 #' An sf object representing a subset of y based on the spatial query of x or, 
 #' if predicate = contingency a sparse matrix representing neighbor indexes
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'                                                                    
 #' @examples 
 #' if(require(sp, quietly = TRUE)) {

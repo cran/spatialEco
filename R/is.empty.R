@@ -16,7 +16,7 @@
 #' @return A Boolean indicating empty elements in a vector, if all.na = FALSE
 #' a TRUE/FALSE value will be returned for each element in the vector 
 #'  
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples
 #' is.empty( c("") )

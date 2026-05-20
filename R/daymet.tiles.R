@@ -12,7 +12,7 @@
 #' The library includes the DAYMAT tile index "DAYMET_tiles" which can be add using 
 #' data(), see examples. 
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'                                                                           
 #' @export daymet.tiles
 daymet.tiles <- function(...) {

@@ -20,7 +20,7 @@
 #'
 #' @return A sf POINT feature class or data.frame with x,y coordinates
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @examples
 #' library(sf)

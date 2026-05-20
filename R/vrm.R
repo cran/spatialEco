@@ -12,7 +12,7 @@
 #'
 #' @return A terra SpatRaster class object of the VRI
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'  
 #' @references 
 #' Sappington, J.M., K.M. Longshore, D.B. Thomson (2007). Quantifying Landscape 

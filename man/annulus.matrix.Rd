@@ -39,5 +39,5 @@ annulus.matrix(9, 3, 7)             # 9 rings with 3 inner and 7 outer set to 0
 
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

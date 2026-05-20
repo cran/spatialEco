@@ -39,5 +39,5 @@ Boehner, J., and Antonic, O. (2009) Land-surface parameters specific to
    33:195-226
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

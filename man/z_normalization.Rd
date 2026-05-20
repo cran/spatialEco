@@ -54,5 +54,5 @@ Iglewicz, B. & D.C. Hoaglin (1993) How to Detect and Handle Outliers,
   American Society for Quality Control, Milwaukee, WI.
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

@@ -53,5 +53,5 @@ Chen, J. M., Liu, R., & Ju, W. (2014). A simple and effective method for estimat
   leaf area index from Landsat imagery. Remote Sensing of Environment, 152:538–548.
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

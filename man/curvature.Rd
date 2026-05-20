@@ -72,5 +72,5 @@ Zevenbergen, L.W. & C.R. Thorne (1987). Quantitative Analysis of Land Surface
   Topography. Earth Surface Processes and Landforms, 12:47-56.
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

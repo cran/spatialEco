@@ -101,5 +101,5 @@ two spatial processes. Biometrics 49:305-314.
 \code{\link[SpatialPack]{modified.ttest}} for test details
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }

@@ -20,7 +20,7 @@
 #' @return 
 #' returns an object of class "kmeans" which has a print and a fitted method
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references 
 #' Singh, H., & K. Kaur (2013) New Method for Finding Initial Cluster Centroids in 

@@ -43,7 +43,7 @@
 #'             auto-covariance term
 #' @md
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references
 #' Besag, J.E., (1972) Nearest-neighbour systems and the auto-logistic model for binary 

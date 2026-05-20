@@ -150,5 +150,5 @@ Warton, D.i., and L.C. Shepherd (2010) Poisson Point Process Models Solve the Ps
 Problem for Presence-only Data in Ecology. The Annals of Applied Statistics, 4(3):1383-1402
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }

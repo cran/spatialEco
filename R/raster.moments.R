@@ -15,7 +15,7 @@
 #'
 #' @return A terra SpatRaster object representing the local distributional moment
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples 
 #' \donttest{

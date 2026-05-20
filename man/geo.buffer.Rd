@@ -41,5 +41,5 @@ b <- geo.buffer(x=s, r=1000)
 \code{\link[sf]{st_buffer}} for st_buffer ... arguments
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

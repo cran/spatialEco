@@ -24,7 +24,7 @@
 #'          statistic (dev argument) 
 #' @md
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples                                                  
 #' x <- rnorm(100,mean=1500,sd=800) 

@@ -32,10 +32,10 @@
 #' Friedman (1991) Multivariate Adaptive Regression Splines (with discussion) 
 #'   Annals of Statistics 19(1):1–141
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples 
-#' \donttest{
+#' \dontrun{
 #' if (require(geodata, quietly = TRUE)) {
 #' library(terra)
 #' library(geodata)

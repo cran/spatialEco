@@ -74,5 +74,5 @@ s <- background(sa, p=500, known=locs,
 
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

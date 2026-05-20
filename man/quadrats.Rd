@@ -60,5 +60,5 @@ s <- quadrats(e, s = c(100,300), n = 10)
  
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

@@ -38,5 +38,5 @@ Roberts. D.W., and Cooper, S.V. (1989). Concepts and techniques of vegetation ma
   USDA Forest Service GTR INT-257, Ogden, UT, pp 90-96
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

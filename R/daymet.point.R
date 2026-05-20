@@ -19,7 +19,7 @@
 #' 
 #' @return A data.frame with geographic coordinate point-level climate results 
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'         
 #' @examples
 #' \donttest{

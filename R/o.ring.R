@@ -29,7 +29,7 @@
 #'
 #' @return plot of o-ring and data.frame with plot labels and descriptions  
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'    
 #' @references
 #' Wiegand T., and K. A. Moloney (2004) Rings, circles and null-models for point 

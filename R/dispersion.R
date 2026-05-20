@@ -13,7 +13,7 @@
 #' @return 
 #' data.frame with columns H values for each target, H , sH, sHmax 
 #'  
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references
 #' Evans, J.S., S.R. Schill, G.T. Raber (2015) A Systematic Framework for Spatial 

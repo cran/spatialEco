@@ -12,7 +12,7 @@
 #'
 #' @return a new point representing location of baring and distance 
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @examples 
 #'  pt <- cbind( x=480933, y=4479433)

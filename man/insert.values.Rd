@@ -41,5 +41,5 @@ of l. In this way you can insert the same value at multiple locations.
 
 }
 \author{
-Jeffrey S. Evans <jeffrey_evans@tnc.org>
+Jeffrey S. Evans <sage_insights@outlook.com>
 }

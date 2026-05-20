@@ -68,5 +68,5 @@ Magee, Lonnie (1998). Nonlocal Behavior in Polynomial Regressions. The American
    Probability. Chapman and  Hall/CRC. ISBN 0-412-98321-4
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

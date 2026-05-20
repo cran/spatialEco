@@ -33,5 +33,5 @@ East of north is a surveying convention and defaults to true.
 
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

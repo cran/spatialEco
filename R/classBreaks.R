@@ -12,7 +12,7 @@
 #' A vector containing class break values the length is n+1 to allow for 
 #' specification of ranges
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #' 
 #' @examples
 #'  y <- rnbinom(100, 10, 0.5)

@@ -46,5 +46,5 @@ any( is.empty( c(1,2,3) ) )
 
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

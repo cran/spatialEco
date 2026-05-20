@@ -6,7 +6,7 @@
 #'
 #' @return Symmetrical (NxN) matrix of a Gaussian distribution
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'  
 #' @examples 
 #' opar <- par()

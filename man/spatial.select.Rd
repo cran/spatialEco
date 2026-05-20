@@ -105,5 +105,5 @@ spatial.select(spolys, predicate = "contingency", neighbors = "rook")
 \url{https://en.wikipedia.org/wiki/DE-9IM} for details on DE-9IM topology model
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }

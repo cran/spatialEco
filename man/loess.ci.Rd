@@ -55,5 +55,5 @@ Chapter 8 of Statistical Models in S eds J.M. Chambers and T.J. Hastie,
 Wadsworth & Brooks/Cole.
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }

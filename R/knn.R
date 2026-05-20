@@ -25,7 +25,7 @@
 #' A data.frame with row indexes (optional), rownames, ids (optional) and 
 #' distance of k
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @examples 
 #' \donttest{

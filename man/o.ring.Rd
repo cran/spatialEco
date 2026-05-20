@@ -57,5 +57,5 @@ Wiegand T., and K. A. Moloney (2004) Rings, circles and null-models for point
 pattern analysis in ecology. Oikos 104:209-229
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

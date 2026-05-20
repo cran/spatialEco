@@ -16,7 +16,7 @@
 #' f() and g(). 
 #' @return pairwise Kullback-Leibler divergence index (matrix)   
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references 
 #' Kullback S., and R. A. Leibler (1951) On information and sufficiency.  

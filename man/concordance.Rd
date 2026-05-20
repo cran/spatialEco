@@ -48,5 +48,5 @@ Royston, P. & D.G. Altman (2010) Visualizing and assessing discrimination in the
   logistic  regression model. Statistics in Medicine 29(24):2508-2520
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

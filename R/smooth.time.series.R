@@ -20,7 +20,7 @@
 #' @return 
 #' A terra SpatRaster containing imputed or smoothed data.  
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples
 #' \donttest{

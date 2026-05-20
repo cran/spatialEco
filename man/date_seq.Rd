@@ -45,5 +45,5 @@ d <- date_seq("2008/12/29", "2008/12/31", step="minute")
 
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

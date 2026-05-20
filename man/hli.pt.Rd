@@ -75,5 +75,5 @@ McCune, B. (2007). Improved estimates of incident radiation and heat load
   of Vegetation Science 18:751-754.
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

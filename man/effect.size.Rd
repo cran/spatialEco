@@ -45,5 +45,5 @@ Cohen, J., (1988) Statistical Power Analysis for the Behavioral Sciences
 Cohen, J (1992) A power primer. Psychological Bulletin 112(1):155-159
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

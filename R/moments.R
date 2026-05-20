@@ -24,7 +24,7 @@
 #' * mode  Mode (dominate)
 #' @md
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples 
 #' x <- runif(1000,0,100)

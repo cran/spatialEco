@@ -37,7 +37,7 @@
 #'   * t.test - Paired t.test statistic  (if stat = "t.test")
 #'   * p.value - p-value of the paired t.test statistic (if stat = "t.test") 
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references
 #' Cohen, J. (1960). A coefficient of agreement for nominal scales. Educational  

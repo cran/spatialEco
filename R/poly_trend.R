@@ -20,7 +20,7 @@
 #' * order        Specified polynomial order
 #' @md
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @examples
 #'  set.seed(42)

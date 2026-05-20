@@ -159,5 +159,5 @@ Shao, J., (1993) Linear model selection by cross-validation. JASA 88:486-494
 \code{\link[spdep]{autocov_dist}}
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }

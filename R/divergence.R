@@ -8,7 +8,7 @@
 #' 
 #' @return single value vector with divergence statistic
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'  
 #' @examples
 #' x <- round(runif(10,1,4),0)

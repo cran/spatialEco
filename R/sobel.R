@@ -22,7 +22,7 @@
 #'
 #' @return A raster class object or raster written to disk 
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'                                                                           
 #' @references
 #' Sobel, I., & G. Feldman, (1969) A 3x3 Isotropic Gradient Operator for Image Processing, 

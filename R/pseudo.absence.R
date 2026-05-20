@@ -54,7 +54,7 @@
 #'   * sigma   Selected bandwidth of KDE 
 #' @md
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #' 
 #' @references
 #' Berman, M. and Diggle, P. (1989) Estimating weighted integrals of the second-order 

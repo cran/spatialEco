@@ -16,7 +16,7 @@
 #' @return 
 #' A terra SpatRaster object of Roberts and Cooper (1989) Solar-radiation Aspect Index
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #' 
 #' @references 
 #' Roberts. D.W., and Cooper, S.V. (1989). Concepts and techniques of vegetation mapping. 

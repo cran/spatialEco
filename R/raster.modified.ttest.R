@@ -26,7 +26,7 @@
 #'   * moran.y - Moran's-I for y  
 #' @md
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'                                                                           
 #' @references
 #' Clifford, P., S. Richardson, D. Hemon (1989), Assessing the significance of the  

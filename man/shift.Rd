@@ -28,5 +28,5 @@ shift(x, 5, 0)  # Shift by 5 and fill (pad) with 0
 
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

@@ -1,8 +1,8 @@
 Package: spatialEco
 Type: Package
 Title: Spatial Analysis and Modelling Utilities
-Version: 2.0-4
-Date: 2026-03-06
+Version: 2.0-5
+Date: 2026-05-19
 Authors@R: c(
     person(family="Evans", given="Jeffrey S.", email = "sage_insights@outlook.com", 
          role = c("aut", "cre"), comment = c(ORCID = "0000-0002-5533-7044")),
@@ -29,10 +29,10 @@ NeedsCompilation: no
 Repository: CRAN
 LazyData: true
 Encoding: UTF-8
-RoxygenNote: 7.3.3
-Packaged: 2026-03-06 23:11:35 UTC; sage_
+Config/roxygen2/version: 8.0.0
+Packaged: 2026-05-19 18:19:06 UTC; sage_
 Author: Jeffrey S. Evans [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-5533-7044>),
   Melanie A. Murphy [ctb],
   Karthik Ram [ctb]
-Date/Publication: 2026-04-04 05:10:12 UTC
+Date/Publication: 2026-05-20 06:20:03 UTC

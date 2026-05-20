@@ -5,7 +5,7 @@
 #'
 #' @return A vector of polygon perimeters in projection units
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @examples 
 #' library(sf)

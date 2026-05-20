@@ -11,7 +11,7 @@
 #'
 #' @return A terra SpatRaster class object of the Surface Area Ratio
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #' 
 #' @references 
 #' Berry, J.K. (2002). Use surface area for realistic calculations. Geoworld 15(9):20-1.

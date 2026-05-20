@@ -60,5 +60,5 @@ Ward, J.H., (1963) Hierarchical grouping to optimize an objective function. Jour
 \code{\link[stats]{hclust}} for details on hierarchical clustering
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

@@ -33,7 +33,7 @@
 #'
 #' @return A plot of the scaled variable against its spatially lagged values. 
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'
 #' @references 
 #' Chen., Y. (2015) A New Methodology of Spatial Cross-Correlation Analysis. 

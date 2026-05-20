@@ -38,5 +38,5 @@ sv <- spatialEco::sieve(x, a = 60, unit = "km")
 } 
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

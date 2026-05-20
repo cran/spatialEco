@@ -16,7 +16,7 @@
 #'
 #' @return a vector or data.frame of parsed interger value(s) associated with input bit
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org> 
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com> 
 #'
 #' @examples 
 #' # Return value for bit 5 for integer value 100

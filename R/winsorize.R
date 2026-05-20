@@ -20,7 +20,7 @@
 #' A transformed vector the same length as x, unless na.rm is TRUE, then x is length 
 #' minus number of NA's
 #' 
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #' 
 #' @references 
 #' Dixon, W.J. (1960) Simplified Estimation from Censored Normal Samples. Annals of Mathematical 

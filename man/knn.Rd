@@ -92,5 +92,5 @@ knn(y, x, k=2)
 \code{\link[RANN]{nn2}} for details on search algorithm
 }
 \author{
-Jeffrey S. Evans  <jeffrey_evans@tnc.org>
+Jeffrey S. Evans  <sage_insights@outlook.com>
 }

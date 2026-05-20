@@ -22,7 +22,7 @@
 #' sqrt(  ( (Ne - 1) * sigma(e)^2 + (Nc - 1) * sigma(c)^2 ) / (Ne + Nc - 2) )   
 #'   where; Ne, Nc = n of experimental and control groups.
 #'
-#' @author Jeffrey S. Evans  <jeffrey_evans@@tnc.org>
+#' @author Jeffrey S. Evans  <sage_insights@@outlook.com>
 #'         
 #' @references  
 #' Cohen, J., (1988) Statistical Power Analysis for the Behavioral Sciences 

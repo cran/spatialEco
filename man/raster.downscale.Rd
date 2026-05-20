@@ -69,7 +69,7 @@ the prediction interval for standard error defaults to "confidence" else is the 
 uncertainty (eg., prediction or confidence).
 }
 \examples{
-\donttest{
+\dontrun{
 if (require(geodata, quietly = TRUE)) {
 library(terra)
 library(geodata)
@@ -127,5 +127,5 @@ tmax.ds <- raster.downscale(x, y, scatter=TRUE, residuals = TRUE,
 Bruce, P., & A. Bruce. (2017). Practical Statistics for Data Scientists. O’Reilly Media.
 }
 \author{
-Jeffrey S. Evans  \href{mailto:jeffrey_evans@tnc.org}{jeffrey_evans@tnc.org}
+Jeffrey S. Evans  \href{mailto:sage_insights@outlook.com}{sage_insights@outlook.com}
 }
